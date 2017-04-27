@@ -1,0 +1,31 @@
+" Note:
+" y      - 現在表示中のページのURLをコピー
+" [[, ]] - 次のページ
+" t - 新しいタブで検索
+" o - 現在のタブで検索
+
+" カーソルの移動距離
+nnoremap j 5j
+nnoremap k 5k
+nnoremap l gt
+nnoremap h gT
+
+" タブ切り替え
+nnoremap <C-l> <M-Right>
+nnoremap <C-h> <M-Left>
+
+" ヒントの表示のされ方の変更
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+hi Hint z-index:5000; font-family:Menlo; font-size:16px; color:white; background-color:red; border-color:ButtonShadow; border-width:0px; border-style:solid; padding:0px 2px 0px 2px; position:absolute;
+
+" [[, ]]といったキーで移動する対象を増やす
+set nextpattern=\bnext\b,\bmore\b,next,^次(の)?ページ,\b次.*,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
+set previouspattern=\bprev|previous\b,prev,^前(の)?ページ,\b前.*,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$ 
+
+" qmarks
+qmark b http://jiroron666.hatenablog.com/
+qmark g https://github.com/jiro4989
+qmark k http://twintuntun.blog80.fc2.com/
+qmark p http://www.pixiv.net/
+qmark s https://soundcloud.com/you/sets
+qmark t http://tm.lucky-duet.com/

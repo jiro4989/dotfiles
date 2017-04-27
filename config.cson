@@ -1,0 +1,14 @@
+"*":
+  "autocomplete-java":
+    javaHome: "C:\\Program Files\\Java\\jdk1.8.0_121"
+  core:
+    packagesWithKeymapsDisabled: []
+  editor:
+    fontFamily: "Myrica M"
+    fontSize: 16
+    invisibles: {}
+    lineHeight: 1.2
+  "exception-reporting":
+    userId: "d92085dc-ede2-9890-6b08-edd54ab8e25b"
+  jumpy:
+    fontSize: 1
