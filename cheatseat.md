@@ -183,6 +183,16 @@ Note: レジスタはa-zの合計26個が利用できる。
 - TableModeRe : テーブルを更新
 - *Tmt        : TableModeToggle - テーブルモード切替
 
+## emmet-vim
+
+- <C-y>, : 実行
+- <C-t>  : 独自バインド
+
+## surround.vim
+
+- ds' : シングルクォートの削除
+- cs'" : シングルクォートをダブルクォートに置換
+
 # ヘルプ
 
   - :h digraphs-default

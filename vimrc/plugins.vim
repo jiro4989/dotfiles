@@ -16,17 +16,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "}}}
 
 " プラグインの追加
-NeoBundle 'https://github.com/Shougo/neocomplete.vim'
-NeoBundle 'https://github.com/Shougo/neomru.vim'
-NeoBundle 'https://github.com/Shougo/unite.vim'
-NeoBundle 'https://github.com/Shougo/vimfiler.vim'
-NeoBundle 'https://github.com/dhruvasagar/vim-table-mode'
-NeoBundle 'https://github.com/h1mesuke/vim-alignta'
-NeoBundle 'https://github.com/rcmdnk/vim-markdown'
-NeoBundle 'https://github.com/tomasr/molokai'
-NeoBundle 'https://github.com/tomtom/tcomment_vim'
-NeoBundle 'https://github.com/udalov/kotlin-vim'
-"NeoBundle 'artur-shaik/vim-javacomplete2'
+
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'dhruvasagar/vim-table-mode'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'rcmdnk/vim-markdown'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'udalov/kotlin-vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'surround.vim'
 
 " 変更不要"{{{
 
@@ -45,5 +47,4 @@ source ~/dotfiles/vimrc/plugins/vim-alignta.vim
 source ~/dotfiles/vimrc/plugins/vim-markdown.vim
 source ~/dotfiles/vimrc/plugins/vim-tabel-mode.vim
 source ~/dotfiles/vimrc/plugins/vimfiler.vim
-source ~/dotfiles/vimrc/plugins/vim-javacomplete2.vim
 

@@ -116,10 +116,6 @@ au FileType python setlocal foldmethod=indent foldnestmax=1
 
 " 試験運用中"{{{
 
-inoremap jj <Esc>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
-
 " 改行のみの行を削除
 vnoremap <Leader>d :s/^\n//g<CR>
 
@@ -136,6 +132,11 @@ nnoremap <Leader><Leader>f va{zf
 "}}}
 
 " 頻出利用コマンドの置き換え"{{{
+
+inoremap jj <Esc>
+
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
 
 " Escの置き換え
 noremap <C-j> <Esc>
@@ -240,6 +241,7 @@ inoremap {<CR> {}<Left><CR><Esc>ko
 
 " 行末にセミコロンを追加
 inoremap <C-l> <ESC>$a;
+inoremap cc <ESC>$a:
 
 " <tag>でくくる
 nnoremap <Leader><Leader>t yyp<Right>i/<Esc>^
