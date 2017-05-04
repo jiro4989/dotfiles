@@ -1,0 +1,36 @@
+" 頻出利用コマンドの置き換え"{{{
+
+inoremap jj <Esc>
+
+nnoremap <Space>w :w<CR>
+nnoremap <Space>q :q<CR>
+
+" Escの置き換え
+noremap <C-j> <Esc>
+noremap! <C-j> <Esc>
+
+" コロンの置き換え
+nnoremap <C-n> :
+
+" 一文字削除でヤンクを上書きしない
+nnoremap x "_x
+
+" Yコマンドを他のコマンドの規則性に合わせる
+nnoremap Y y$
+
+" 行頭行末へ移動
+nnoremap <Space>h ^
+nnoremap <Space>l $
+
+" タブ切り替え
+nnoremap <C-l> gt
+nnoremap <C-h> gT
+
+" 箇条書き文章の文章番号をインクリメントしてコピー
+nnoremap <C-b> yyp<C-a>
+
+" コマンド履歴の切り替え
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+"}}}

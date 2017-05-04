@@ -6,6 +6,7 @@
 @return
 @version
 Application
+ArrayIndexOutOfBoundsException
 ArrayList
 BigDecimal
 Boolean
@@ -37,6 +38,7 @@ Map
 Matcher
 Math
 NodeList
+NullPointerException
 NumberFormatException
 Optional
 PI

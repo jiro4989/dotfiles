@@ -9,6 +9,7 @@ git clone https://github.com/Shougo/neobundle.vim.git
 mklink %userprofile%"\.vimrc" %userprofile%"\dotfiles\.vimrc"
 mklink %userprofile%"\.gvimrc" %userprofile%"\dotfiles\.gvimrc"
 mklink %userprofile%"\.vimperatorrc" %userprofile%"\dotfiles\.vimperatorrc"
+mklink %userprofile%"\.vrapperrc" %userprofile%"\dotfiles\.vrapperrc"
 
 mklink /D %userprofile%"\.vim\bundle" %userprofile%"\dotfiles\bundle"
 mklink /D %userprofile%"\.vim\dict" %userprofile%"\dotfiles\dict"
