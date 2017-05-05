@@ -241,7 +241,6 @@ inoremap {<CR> {}<Left><CR><Esc>ko
 
 " 行末にセミコロンを追加
 inoremap <C-l> <ESC>$a;
-inoremap cc <ESC>$a:
 
 " <tag>でくくる
 nnoremap <Leader><Leader>t yyp<Right>i/<Esc>^
