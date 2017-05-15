@@ -29,6 +29,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'udalov/kotlin-vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'surround.vim'
+NeoBundle 'PProvost/vim-ps1'
 
 " 変更不要"{{{
 
