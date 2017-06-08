@@ -1,3 +1,5 @@
+au GUIEnter * simalt ~x
+
 " カラースキーム"{{{
 
 colorscheme molokai

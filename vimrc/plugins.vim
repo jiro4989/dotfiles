@@ -30,6 +30,7 @@ NeoBundle 'udalov/kotlin-vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'surround.vim'
 NeoBundle 'PProvost/vim-ps1'
+NeoBundle 'leafgarland/typescript-vim.git'
 
 " 変更不要"{{{
 

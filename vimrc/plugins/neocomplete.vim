@@ -17,6 +17,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
       \ 'default' : '',
       \ 'scala' : $HOME . '/.vim/dict/scala.dict',
       \ 'java' : $HOME . '/.vim/dict/java.dict',
+      \ 'kotlin' : $HOME . '/.vim/dict/kotlin.dict',
       \ }
 "}}}
 "

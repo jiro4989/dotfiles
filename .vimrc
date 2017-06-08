@@ -85,9 +85,11 @@ set history=200  " コマンドの履歴の保存上限を変更
 "}}}
 
 " 拡張子設定"{{{ 
+au BufNewFile,BufRead *.{kt} set filetype=kotlin
 " マークダウン拡張子の統一
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-au BufNewFile,BufRead *.py setlocal noexpandtab tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.py setlocal expandtab tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.ts set filetype=typescript
 
 " オリジナル拡張子の設定
 au BufNewFile,BufRead *.{jpy} set filetype=jpy
