@@ -1,4 +1,5 @@
-﻿" マッピングにおけるプレフィックスキー
+﻿set fileencoding=utf-8
+" マッピングにおけるプレフィックスキー
 let mapleader = "\<Space>"
 
 source ~/dotfiles/vimrc/plugins.vim
