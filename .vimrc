@@ -209,7 +209,7 @@ nnoremap <Leader><Leader>i mhgg=G'h
 noremap <Plug>(ToggleColorColumn)
       \ :<c-u>let &colorcolumn = len(&colorcolumn) > 0 ? '' :
       \   join(range(81, 9999), ',')<CR>
-nmap <Leader><Leader>c <Plug>(ToggleColorColumn)
+nnoremap <Leader><Leader>c <Plug>(ToggleColorColumn)
 
 "}}}
 
@@ -247,6 +247,8 @@ inoremap <C-l> <ESC>$a;
 
 " <tag>でくくる
 nnoremap <Leader><Leader>t yyp<Right>i/<Esc>^
+
+nnoremap <F6> ggO# -*- coding: utf-8 -*-<Esc>
 
 "}}}
 

@@ -26,7 +26,7 @@ set columns=130
 set lines=40
 
 if has("win32") || has("win64")
-  set guifont=MyricaM_M,Myrica_M:h14:cSHIFTJIS
+  set guifont=MyricaM_M:h14:cSHIFTJIS,Myrica_M:h14:cSHIFTJIS
 else
   set guifont=Monospace\ 16
 endif
