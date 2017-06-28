@@ -1,1 +1,1 @@
-nmap <F5> ggO#!/bin/sh<Esc>
+nmap <F5> ggO#!/bin/bash<Esc>
