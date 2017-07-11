@@ -36,3 +36,8 @@ done
 
 # ユーザフォルダの日本語を英語に変更
 LANG=C xdg-user-dirs-gtk-update
+
+# 自分用のツールを配置するディレクトリを生成
+mkdir ~/myscripts
+# 自分用のスクリプト配置場所にパスを通す
+echo 'PATH=$PATH:~/myscripts' >> ~/.bashrc
