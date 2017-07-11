@@ -33,6 +33,7 @@ for d in python java javascript php ruby scala bash kotlin; do
     mkdir -p ~/workspace/${d}/${e}
   done
 done
+mkdir -p ~/workspace/mysql/proj
 
 # ユーザフォルダの日本語を英語に変更
 LANG=C xdg-user-dirs-gtk-update
