@@ -7,6 +7,8 @@ source ~/dotfiles/vimrc/plugins.vim
 " オプション設定
 " --------------
 
+set runtimepath+=$HOME/vimfiles,$HOME/vimfiles/after
+
 " UI"{{{
 
 if has("win32") || has("win64")
@@ -247,8 +249,6 @@ inoremap <C-l> <ESC>$a;
 
 " <tag>でくくる
 nnoremap <Leader><Leader>t yyp<Right>i/<Esc>^
-
-nnoremap <F6> ggO# -*- coding: utf-8 -*-<Esc>
 
 "}}}
 

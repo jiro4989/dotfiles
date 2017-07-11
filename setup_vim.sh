@@ -16,3 +16,6 @@ mkdir ~/.vim
 ln -sf ~/dotfiles/bundle ~/.vim
 ln -sf ~/dotfiles/dict ~/.vim
 ln -sf ~/dotfiles/vimfiles ~/.vim
+
+# LinuxMintではこっちの設定で機能するように和る
+ln -sf ~/dotfiles/vimfiles ~/vimfiles
