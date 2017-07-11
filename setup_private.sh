@@ -24,6 +24,9 @@ sudo apt-get install python-pip -y
 pip install --user setuptools
 sudo pip install rainbowstream
 
+# mysql
+sudo apt-get install mysql-server -y
+
 # ワークスペースの作成
 for d in python java javascript php ruby scala bash kotlin; do
   for e in dist lib proj; do
