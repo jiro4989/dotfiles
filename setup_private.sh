@@ -25,6 +25,11 @@ pip install --user setuptools
 sudo pip install rainbowstream
 
 # ワークスペースの作成
-mkdir -p ~/workspace/{java,javascript,php,ruby,scala,python}/{dist,lib,proj}
+for d in python java javascript php ruby scala bash kotlin; do
+  for e in dist lib proj; do
+    mkdir -p ~/workspace/${d}/${e}
+  done
+done
+
 # ユーザフォルダの日本語を英語に変更
 LANG=C xdg-user-dirs-gtk-update
