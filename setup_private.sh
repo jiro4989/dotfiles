@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# メールソフト
-sudo apt-get install sylpheed -y
-
+# メールソフトsudo apt-get install sylpheed -y 
 # ペイントソフト
 sudo apt-get install krita -y
 
@@ -27,8 +25,9 @@ sudo pip install rainbowstream
 # mysql
 sudo apt-get install mysql-server -y
 
+
 # ワークスペースの作成
-for d in python java javascript php ruby scala bash kotlin; do
+for d in python java javascript html php ruby scala bash kotlin; do
   for e in dist lib proj tool; do
     mkdir -p ~/workspace/${d}/${e}
   done
@@ -42,3 +41,7 @@ LANG=C xdg-user-dirs-gtk-update
 mkdir ~/myscripts
 # 自分用のスクリプト配置場所にパスを通す
 echo 'PATH=$PATH:~/myscripts' >> ~/.bashrc
+
+# kotlinやJVM系のツールをインストールするためのツール
+curl -s get.sdkman.io | bash
+
