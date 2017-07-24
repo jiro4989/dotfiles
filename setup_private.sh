@@ -25,6 +25,8 @@ sudo pip install rainbowstream
 # mysql
 sudo apt-get install mysql-server -y
 
+sudo `which python3` `which python`
+sudo `which pip3` `which pip`
 
 # ワークスペースの作成
 for d in python java javascript html php ruby scala bash kotlin; do
@@ -41,6 +43,9 @@ LANG=C xdg-user-dirs-gtk-update
 mkdir ~/myscripts
 # 自分用のスクリプト配置場所にパスを通す
 echo 'PATH=$PATH:~/myscripts' >> ~/.bashrc
+
+# メモ置き場
+mkdir ~/Documents/note
 
 # kotlinやJVM系のツールをインストールするためのツール
 curl -s get.sdkman.io | bash
