@@ -1,8 +1,64 @@
-﻿set fileencoding=utf-8
+set fileencoding=utf-8
 " マッピングにおけるプレフィックスキー
 let mapleader = "\<Space>"
 
 source ~/dotfiles/vimrc/plugins.vim
+
+" スクリプト
+" --------------
+
+" getter setter toString自動生成
+function! s:GetterSetterToString()
+  let l:keyinput = input("input properties: ")
+  let l:props = split(l:keyinput, ",")
+  unlet keyinput
+
+  " 入力されたテキストの展開
+  let l:list = []
+  for l:prop in l:props
+    call add(l:list, split(l:prop, " "))
+  endfor
+  unlet l:props
+  unlet l:prop
+
+  let l:text = ""
+  " バッファに書き込むテキストの組み立て
+  " getter, setter, toStringを作る
+  for l:typevar in l:list
+    let l:type = l:typevar[0]
+    let l:var = l:typevar[1]
+    let l:uppervar = toupper(l:var[0]) . l:var[1:]
+    let l:text = l:text . "public " . l:type . " get" . l:uppervar . "() {\<CR>"
+      \ . "return " . l:var . ";\<CR>"
+      \ . "}\<CR>\<CR>"
+      \ . "public void set" . l:uppervar . "(" . l:type . " " . l:var . ") {\<CR>"
+      \ . "this." . l:var . " = " . l:var . ";\<CR>"
+      \ . "}\<CR>\<CR>"
+  endfor
+  unlet l:uppervar
+
+  let l:text = l:text . "@Override\<CR>" . "public String toString() {\<CR>" . 'return "'
+  for l:typevar in l:list
+    let l:type = l:typevar[0]
+    let l:var = l:typevar[1]
+    let l:text = l:text . '" ' . l:var . ' = " + ' . l:var . ' + '
+  endfor
+  let l:text = l:text[:-4] . "\<CR>" . "}\<CR>\<CR>"
+
+  unlet l:list
+  unlet l:typevar
+  unlet l:type
+  unlet l:var
+
+  " カーソル位置取得
+  let l:pos = getpos(".")
+  execute ":normal i" . l:text
+  call setpos(".", l:pos)
+
+  unlet l:text
+  unlet l:pos
+endfunction
+command! GST call <SID>GetterSetterToString()
 
 " オプション設定
 " --------------
@@ -242,7 +298,7 @@ inoremap (( ()<Left>
 inoremap [[ []<Left>
 inoremap {{ {}<Left>
 inoremap << <><Left>
-inoremap {<CR> {}<Left><CR><Esc>ko
+"inoremap {<CR> {}<Left><CR><Esc>ko
 
 " 行末にセミコロンを追加
 inoremap <C-l> <ESC>$a;
