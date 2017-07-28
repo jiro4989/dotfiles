@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# メールソフトsudo apt-get install sylpheed -y 
+# メールソフト
+
+sudo apt-get install sylpheed-i18n -y 
+
 # ペイントソフト
 sudo apt-get install krita -y
 
