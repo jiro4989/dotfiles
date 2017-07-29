@@ -11,7 +11,7 @@ sudo apt-get install krita -y
 sudo apt install kazam -y
 
 # mp4を変換するツール
-sudo apt install libav-tools imagemagick
+sudo apt install libav-tools imagemagick -y
 
 # markdownをdocxを含む様々な拡張子のファイルに変換するソフト
 sudo apt-get install pandoc -y
