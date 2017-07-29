@@ -19,3 +19,9 @@ ln -sf ~/dotfiles/vimfiles ~/.vim
 
 # LinuxMintではこっちの設定で機能するように和る
 ln -sf ~/dotfiles/vimfiles ~/vimfiles
+
+# linuxmintでvim8を使えるようにする。
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim
+
