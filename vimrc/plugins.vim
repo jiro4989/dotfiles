@@ -16,19 +16,19 @@ if dein#load_state(s:deindir)
 
   " プラグインの追加{{{
 
+  call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/neomru.vim')
-  call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimfiler.vim')
-  call dein#add('dhruvasagar/vim-table-mode')
+  "call dein#add('dhruvasagar/vim-table-mode')
   call dein#add('h1mesuke/vim-alignta')
   call dein#add('rcmdnk/vim-markdown')
-  call dein#add('tomtom/tcomment_vim')
+  "call dein#add('tomtom/tcomment_vim')
   call dein#add('udalov/kotlin-vim')
   call dein#add('mattn/emmet-vim')
-  call dein#add('surround.vim')
+  "call dein#add('surround.vim')
   call dein#add('PProvost/vim-ps1')
-  call dein#add('leafgarland/typescript-vim.git')
+  "call dein#add('leafgarland/typescript-vim.git')
 
   "}}}
 
@@ -40,6 +40,11 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+" 未インストールの場合はインストール
+if dein#check_install()
+  call dein#install()
+endif
 
 "}}}
 

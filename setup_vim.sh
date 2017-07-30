@@ -5,7 +5,7 @@ sudo apt-get update -y
 
 mkdir bundle
 cd bundle
-git clone https://github.com/Shougo/neobundle.vim.git
+git clone https://github.com/Shougo/dein.vim.git
 mkdir ~/tmp
 
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
@@ -16,8 +16,9 @@ mkdir ~/.vim
 ln -sf ~/dotfiles/bundle ~/.vim
 ln -sf ~/dotfiles/dict ~/.vim
 ln -sf ~/dotfiles/vimfiles ~/.vim
+ln -sf ~/dotfiles/colors ~/.vim
 
-# LinuxMintではこっちの設定で機能するように和る
+# LinuxMintではこっちの設定で機能する
 ln -sf ~/dotfiles/vimfiles ~/vimfiles
 
 # linuxmintでvim8を使えるようにする。
