@@ -298,7 +298,7 @@ inoremap (( ()<Left>
 inoremap [[ []<Left>
 inoremap {{ {}<Left>
 inoremap << <><Left>
-"inoremap {<CR> {}<Left><CR><Esc>ko
+inoremap {<CR> {}<Left><CR><Esc>ko
 
 " 行末にセミコロンを追加
 inoremap <C-l> <ESC>$a;
