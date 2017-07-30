@@ -1,42 +1,45 @@
-" プラグイン管理プラグイン
-" ========================
+" プラグイン設定ファイル
 
-" 変更不要"{{{
+" 変更不要{{{
 
-if 0 | endif
-if has('vim_starting')
-  if &compatible
-    set nocompatible               
-  endif
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+  set nocompatible
 endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
 
-"}}}
+set runtimepath+=~/.vim/bundle/dein.vim
+let s:deindir = expand('~/.vim/bundle/dein.vim')
 
-" プラグインの追加
+if dein#load_state(s:deindir)
+  call dein#begin(s:deindir)
 
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'dhruvasagar/vim-table-mode'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'rcmdnk/vim-markdown'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'udalov/kotlin-vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'surround.vim'
-NeoBundle 'PProvost/vim-ps1'
-NeoBundle 'leafgarland/typescript-vim.git'
+  "}}}
 
-" 変更不要"{{{
+  " プラグインの追加{{{
 
-call neobundle#end()
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/vimfiler.vim')
+  call dein#add('dhruvasagar/vim-table-mode')
+  call dein#add('h1mesuke/vim-alignta')
+  call dein#add('rcmdnk/vim-markdown')
+  call dein#add('tomtom/tcomment_vim')
+  call dein#add('udalov/kotlin-vim')
+  call dein#add('mattn/emmet-vim')
+  call dein#add('surround.vim')
+  call dein#add('PProvost/vim-ps1')
+  call dein#add('leafgarland/typescript-vim.git')
+
+  "}}}
+
+  " 変更不要{{{
+
+  call dein#end()
+  call dein#save_state()
+endif
+
 filetype plugin indent on
-NeoBundleCheck
+syntax enable
 
 "}}}
 
