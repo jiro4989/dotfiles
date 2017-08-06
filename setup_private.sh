@@ -29,6 +29,9 @@ sudo pip install rainbowstream
 # mysql
 sudo apt-get install mysql-server -y
 
+# リモートデスクトップ用のツール
+sudo apt-get install remmina -y
+
 sudo `which python3` `which python`
 sudo `which pip3` `which pip`
 
