@@ -32,6 +32,12 @@ sudo apt-get install mysql-server -y
 sudo `which python3` `which python`
 sudo `which pip3` `which pip`
 
+# リモート接続
+sudo apt-get install openssh-server -y
+
+# 標準出力をクリップボードにコピー
+sudo apt-get install xsel -y
+
 # ワークスペースの作成
 for d in python java javascript html php ruby scala bash kotlin; do
   for e in dist lib proj tool; do
