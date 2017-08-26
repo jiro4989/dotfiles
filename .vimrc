@@ -140,6 +140,7 @@ set tabstop=2    " Tab幅
 set shiftwidth=2 " 自動挿入されるインデントスペース幅
 set nrformats=   " 0から始まる数字もすべて10進数としてインクリメント可能に変更
 set history=200  " コマンドの履歴の保存上限を変更
+set clipboard=unnamedplus " クリップボードにコピー
 
 "}}}
 
