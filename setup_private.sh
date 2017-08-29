@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # メールソフト
-
 sudo apt-get install sylpheed-i18n -y 
 sudo apt-get install sylpheed-doc -y 
 
@@ -17,20 +16,8 @@ sudo apt install libav-tools imagemagick -y
 # markdownをdocxを含む様々な拡張子のファイルに変換するソフト
 sudo apt-get install pandoc -y
 
-# cui rss reader
-sudo apt-get install newsbeuter -y
-echo '' > ~/rss.txt
-
-# cui twitter client
-sudo apt-get install python-pip -y
-pip install --user setuptools
-sudo pip install rainbowstream
-
 # mysql
 sudo apt-get install mysql-server -y
-
-sudo `which python3` `which python`
-sudo `which pip3` `which pip`
 
 # sshリモート接続
 sudo apt-get install openssh-server -y
@@ -44,25 +31,22 @@ sudo apt-get install x11vnc -y
 # WINE
 sudo apt-get install wine -y
 
-# ワークスペースの作成
-for d in python java javascript html php ruby scala bash kotlin; do
-  for e in dist lib proj tool; do
-    mkdir -p ~/workspace/${d}/${e}
-  done
-done
-mkdir -p ~/workspace/mysql/proj
+# bashrcの設定を追加
+cat ./.bashrc >> ~/.bashrc
+
+# kotlinやJVM系のツールをインストールするためのツール
+curl -s get.sdkman.io | bash
 
 # ユーザフォルダの日本語を英語に変更
 LANG=C xdg-user-dirs-gtk-update
 
-# 自分用のツールを配置するディレクトリを生成
-mkdir ~/myscripts
-# 自分用のスクリプト配置場所にパスを通す
-echo 'PATH=$PATH:~/myscripts' >> ~/.bashrc
-
 # メモ置き場
 mkdir ~/Documents/note
 
-# kotlinやJVM系のツールをインストールするためのツール
-curl -s get.sdkman.io | bash
+# ワークスペースの作成
+ws=~/workspace
+mkdir $ws
+cd $ws
+mkdir -p projects
+git clone https://github.com/jiro4989/scripts.git
 
