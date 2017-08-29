@@ -46,6 +46,9 @@ LANG=C xdg-user-dirs-gtk-update
 # メモ置き場
 mkdir ~/Documents/note
 
+# sylpheedのメール通知用
+sudo apt-get install -y zenity
+
 # ワークスペースの作成
 ws=~/workspace
 mkdir $ws
