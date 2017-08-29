@@ -34,6 +34,9 @@ sudo apt-get install wine -y
 # bashrcの設定を追加
 cat ./.bashrc >> ~/.bashrc
 
+# sylpheedの自動アプデに必要なので
+sudo apt-get install -y curl
+
 # kotlinやJVM系のツールをインストールするためのツール
 curl -s get.sdkman.io | bash
 
