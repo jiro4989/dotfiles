@@ -49,6 +49,9 @@ mkdir ~/Documents/note
 # sylpheedのメール通知用
 sudo apt-get install -y zenity
 
+# アプリランチャ Ctrl + Spaceで呼び出し
+sudo apt-get install -y synapse
+
 # ワークスペースの作成
 ws=~/workspace
 mkdir $ws
