@@ -52,6 +52,8 @@ sudo apt-get install -y zenity
 # アプリランチャ Ctrl + Spaceで呼び出し
 sudo apt-get install -y synapse
 
+sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
+
 # ワークスペースの作成
 ws=~/workspace
 mkdir $ws

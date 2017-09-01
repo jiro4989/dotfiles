@@ -1,8 +1,0 @@
-http://rss.rssad.jp/rss/itmtop/1.0/topstory.xml
-http://twintuntun.blog80.fc2.com/?xml https://syachiku-chan.com/?feed=rss2
-https://syachiku-chan.com/?feed=rss2
-http://rss.asahi.com/rss/asahi/national.rdf
-http://rss.asahi.com/rss/asahi/politics.rdf
-http://rss.asahi.com/rss/asahi/business.rdf
-http://rss.asahi.com/rss/asahi/international.rdf
-
