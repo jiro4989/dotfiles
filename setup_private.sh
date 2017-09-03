@@ -52,6 +52,9 @@ sudo apt-get install -y zenity
 # アプリランチャ Ctrl + Spaceで呼び出し
 sudo apt-get install -y synapse
 
+# ISO焼き込みコマンドの追加
+sudo apt-get install -y growisofs
+
 sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
 
 # ワークスペースの作成
