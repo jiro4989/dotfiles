@@ -154,6 +154,11 @@ au BufNewFile,BufRead *.ts set filetype=typescript
 " オリジナル拡張子の設定
 au BufNewFile,BufRead *.{jpy} set filetype=jpy
 
+" 新規ファイルを開いた時にテンプレートを読み込む
+au BufNewFile *.py 0r $HOME/.vim/template/python.txt
+au BufNewFile *.go 0r $HOME/.vim/template/go.txt
+au BufNewFile *.java 0r $HOME/.vim/template/java.txt
+
 "}}}
 
 " テキスト整形"{{{

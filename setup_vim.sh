@@ -17,6 +17,7 @@ ln -sf ~/dotfiles/bundle ~/.vim
 ln -sf ~/dotfiles/dict ~/.vim
 ln -sf ~/dotfiles/vimfiles ~/.vim
 ln -sf ~/dotfiles/colors ~/.vim
+ln -sf ~/dotfiles/template ~/.vim
 
 # LinuxMintではこっちの設定で機能する
 ln -sf ~/dotfiles/vimfiles ~/vimfiles
