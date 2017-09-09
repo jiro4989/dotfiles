@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # $1 展開するtarファイル名
-# $2 /usr/localに保存するときのgoのディレクトリ名 (ex: go-1.9)
+# $2 /usr/localに保存するgoのディレクトリ名 (ex: go-1.9)
 
 set -eux
 : $1 $2
