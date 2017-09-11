@@ -58,6 +58,9 @@ sudo apt-get install -y growisofs
 # セキュリティソフト
 sudo apt-get install -y clamav
 
+# 画面分割
+sudo apt-get install -y screen
+
 sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
 
 # ワークスペースの作成
