@@ -12,6 +12,8 @@ set runtimepath+=$HOME/vimfiles,$HOME/vimfiles/after
 
 " GOプログラムの入力補完
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+" インポート補完
+let g:go_fmt_command = "goimports"
 
 " UI"{{{
 
