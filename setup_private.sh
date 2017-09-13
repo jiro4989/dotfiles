@@ -25,9 +25,6 @@ sudo apt-get install openssh-server -y
 # 標準出力をクリップボードにコピー
 sudo apt-get install xsel -y
 
-# リモート接続
-sudo apt-get install x11vnc -y
-
 # WINE
 sudo apt-get install wine -y
 
@@ -36,9 +33,6 @@ cat ./.bashrc >> ~/.bashrc
 
 # sylpheedの自動アプデに必要なので
 sudo apt-get install -y curl
-
-# kotlinやJVM系のツールをインストールするためのツール
-curl -s get.sdkman.io | bash
 
 # ユーザフォルダの日本語を英語に変更
 LANG=C xdg-user-dirs-gtk-update
@@ -60,6 +54,9 @@ sudo apt-get install -y clamav
 
 # 画面分割
 sudo apt-get install -y screen
+
+# タイル型ウィンドウマネージャ
+sudo apt-get install -y xmonad
 
 sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
 

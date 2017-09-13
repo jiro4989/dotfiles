@@ -29,8 +29,8 @@ if dein#load_state(s:deindir)
   "call dein#add('surround.vim')
   call dein#add('PProvost/vim-ps1')
   "call dein#add('leafgarland/typescript-vim.git')
-  call dein#add('fatih/vim-go')
-  call dein#add('vim-jp/vim-go-extra')
+  "call dein#add('fatih/vim-go')
+  "call dein#add('vim-jp/vim-go-extra')
 
   "}}}
 

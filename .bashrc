@@ -8,3 +8,6 @@ export PATH=$PATH:/usr/lib/go-1.9/bin/:$GOPATH/bin
 
 # キー入力ロックを無効化
 stty stop undef
+
+# 画面ロックエイリアスの追加
+alias lock='gnome-screensaver-command -l'
