@@ -26,7 +26,7 @@ sudo apt-get install openssh-server -y
 sudo apt-get install xsel -y
 
 # WINE
-sudo apt-get install wine -y
+sudo apt-get install wine-stable -y
 
 # bashrcの設定を追加
 cat ./.bashrc >> ~/.bashrc
