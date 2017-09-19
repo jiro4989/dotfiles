@@ -58,6 +58,9 @@ sudo apt-get install -y screen
 # タイル型ウィンドウマネージャ
 sudo apt-get install -y xmonad
 
+# 標準出力をクリップボードにコピーする
+sudo apt-get install -y xclip
+
 sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
 
 # ワークスペースの作成
