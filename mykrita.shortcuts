@@ -1,0 +1,17 @@
+[Shortcuts]
+activateNextLayer=PgUp; Ctrl+Shift+R
+activatePreviousLayer=PgDown; Ctrl+Shift+F
+clear=D
+edit_cut=none
+edit_redo=Ctrl+Shift+Z; Ctrl+X
+fullscreen=none
+mirrorImageHorizontal=H
+options_configure=0
+pathpoint-insert=none
+remove_layer=Shift+Del; Del
+reset_fg_bg=none
+show_color_history=none
+toggle_fg_bg=none
+undo_polygon_selection=Shift+Z;\s
+view_zoom_in=Ctrl++; Ctrl+1
+view_zoom_out=Ctrl+-; Ctrl+2
