@@ -1,20 +1,23 @@
 ｃ	Coffeescript	名詞	
-ｇ	Go言語	名詞	
-ｇ	GoLang	名詞	
 ｇ	GitHub	名詞	
+ｇ	GoLang	名詞	
+ｇ	Go言語	名詞	
 ｊ	Java	名詞	
 ｊ	Javascript	名詞	
 ｐ	Powershell	名詞	
 ｐ	Python	名詞	
 ｓ	Shellscript	名詞	
-ｔ	Typescript	名詞	
 ｔ	Twitter	名詞	
+ｔ	Typescript	名詞	
 ｗ	Wikipedia	名詞	
 ｗ	WordPress	名詞	
 す	スクリプト	名詞	
 す	スクリプト言語	名詞	
 すた	Stack Overflow	名詞	
 すた	スタックオーバーフロー	名詞	
+で	ディストリビューション	名詞	
+で	ディレクトリ	名詞	
+ふ	フォルダ	名詞	
 ぷ	プログラミング	名詞	
 ぷ	プログラミング言語	名詞	
 ぷ	プログラム	名詞	
