@@ -36,7 +36,7 @@ set cursorline       " カーソル位置の行番号のハイライト
 " 不可視文字の表示
 set list
 " 不可視文字を表示方法
-set listchars=tab:>-,trail:-,eol:?,extends:>,precedes:<,nbsp:%
+set listchars=tab:>-,trail:-,eol:$,extends:>,precedes:<,nbsp:%
 
 "全角スペースをハイライト表示"{{{
 function! ZenkakuSpace()
