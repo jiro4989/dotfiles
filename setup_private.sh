@@ -61,6 +61,10 @@ sudo apt-get install -y xmonad
 # 標準出力をクリップボードにコピーする
 sudo apt-get install -y xclip
 
+# メーラ
+sudo apt-get install -y thunderbird
+sudo apt-get install -y thunderbird-locale-ja
+
 sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
 
 # ワークスペースの作成
