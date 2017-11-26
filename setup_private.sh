@@ -65,6 +65,9 @@ sudo apt-get install -y xclip
 sudo apt-get install -y thunderbird
 sudo apt-get install -y thunderbird-locale-ja
 
+# unzipで文字化けしない解答ツール
+sudo apt-get install -y unar
+
 sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
 
 # ワークスペースの作成
