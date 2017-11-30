@@ -31,6 +31,7 @@ if dein#load_state(s:deindir)
   "call dein#add('leafgarland/typescript-vim.git')
   call dein#add('fatih/vim-go')
   "call dein#add('vim-jp/vim-go-extra')
+  call dein#add('keith/swift.vim')
 
   "}}}
 
