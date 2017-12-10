@@ -1,0 +1,21 @@
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Go
+export GOPATH=$HOME/.go
+export PATH=$PATH:/usr/local/go-1.9/bin:$GOPATH/bin
+
+# 追加したコマンド系
+export PATH=$PATH:~/.bin
+
+# キー入力ロックを無効化
+stty stop undef
+
+# 画面ロックエイリアスの追加
+alias lock='gnome-screensaver-command -l'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/jiro/.sdkman"
+[[ -s "/home/jiro/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jiro/.sdkman/bin/sdkman-init.sh"
+

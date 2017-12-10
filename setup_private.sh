@@ -29,7 +29,7 @@ sudo apt-get install xsel -y
 sudo apt-get install wine-stable -y
 
 # bashrcの設定を追加
-cat ./.bashrc >> ~/.bashrc
+echo "source ~/dotfiles/.bashrc.jiro" >> ~/.bashrc
 
 # sylpheedの自動アプデに必要なので
 sudo apt-get install -y curl
