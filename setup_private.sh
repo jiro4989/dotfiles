@@ -68,6 +68,9 @@ sudo apt-get install -y thunderbird-locale-ja
 # unzipで文字化けしない解答ツール
 sudo apt-get install -y unar
 
+# node.js
+sudo apt-get install -y npm
+
 sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist.conf
 
 # ワークスペースの作成
