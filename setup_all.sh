@@ -8,5 +8,6 @@ bash setup_java.sh
 bash setup_python.sh
 bash setup_go.sh
 bash setup_private.sh
+bash setup_git.sh
 
 sudo apt-get update -y
