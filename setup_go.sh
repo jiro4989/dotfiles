@@ -8,4 +8,4 @@ go get github.com/mattn/go-gtk/gtk
 go install github.com/mattn/go-gtk/gtk
 go get github.com/nsf/gocode
 go get golang.org/x/tools/cmd/godoc
-
+go get github.com/urfave/cli
