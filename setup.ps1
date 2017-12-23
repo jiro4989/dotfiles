@@ -16,4 +16,5 @@
 , "ruby"
 , "kotlinc"
 , "gimp"
+, "slack"
 ) | % { choco install $_ -y }

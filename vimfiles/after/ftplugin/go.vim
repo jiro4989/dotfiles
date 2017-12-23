@@ -9,3 +9,4 @@ inorea foriv for i, v := range iter {<CR>fmt.Println(i, v)<CR>}<ESC>
 inorea forv for _, v := range iter {<CR>fmt.Println(v)<CR>}<ESC>
 inorea pri fmt.Println()<ESC><LEFT>
 inorea loginit func init() {<CR>log.SetFlags(log.Ldate \| log.Ltime \| log.Lshortfile)<CR>}<ESC>
+inorea defc defer f.Close()
