@@ -86,7 +86,7 @@ set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v
 
 " 編集"{{{
 
-set expandtab    " Tabをスペースに変換
+"set expandtab    " Tabをスペースに変換
 set tabstop=2    " Tab幅
 set shiftwidth=2 " 自動挿入されるインデントスペース幅
 set nrformats=   " 0から始まる数字もすべて10進数としてインクリメント可能に変更
