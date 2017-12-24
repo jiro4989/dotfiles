@@ -13,3 +13,4 @@ go get github.com/nsf/termbox-go
 go get github.com/mattn/go-colorable
 go get github.com/julienroland/keyboard-termbox
 go get github.com/goreleaser/goreleaser
+go get github.com/loadoff/excl
