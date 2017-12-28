@@ -1,4 +1,4 @@
-set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
+set fileencodings=utf-8,cp932
 
 " マッピングにおけるプレフィックスキー
 let mapleader = "\<Space>"
