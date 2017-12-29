@@ -33,6 +33,10 @@ if dein#load_state(s:deindir)
   "call dein#add('vim-jp/vim-go-extra')
   call dein#add('keith/swift.vim')
 
+  " 以下は自作のプラグイン
+  call dein#add('jiro4989/todo.vim')
+  call dein#add('jiro4989/daylog.vim')
+
   "}}}
 
   " 変更不要{{{
