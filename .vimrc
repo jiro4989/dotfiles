@@ -1,7 +1,9 @@
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,cp932
-scriptencoding utf-8
+set encoding=utf-8            " 保存時の文字コード
+set fileencoding=utf-8        " 読み込み時の文字コード
+set fileencodings=utf-8,cp932 " 読み込み時の文字コード。左が優先
+scriptencoding utf-8          " スクリプト内でマルチバイト文字を扱う場合に必要
+set fileformats=unix,dos,mac  " 改行コードの自動判別。左が優先
+set ambiwidth=double          " □といった文字が崩れる問題の解決
 
 " マッピングにおけるプレフィックスキー
 let mapleader = "\<Space>"
@@ -283,4 +285,29 @@ nnoremap Q <Nop>
 nnoremap <Leader><Leader>. :e $HOME/.vimrc<CR>
 
 "}}}
+
+
+
+
+"行頭のスペースの連続をハイライトさせる
+"Tab文字も区別されずにハイライトされるので、区別したいときはTab文字の表示を別に
+"設定する必要がある。
+function! SOLSpaceHilight()
+    syntax match SOLSpace "^\s\+" display containedin=ALL
+    highlight SOLSpace term=underline ctermbg=LightGray
+endf
+"全角スペースをハイライトさせる。
+function! JISX0208SpaceHilight()
+    syntax match JISX0208Space "　" display containedin=ALL
+    highlight JISX0208Space term=underline ctermbg=LightCyan
+endf
+"syntaxの有無をチェックし、新規バッファと新規読み込み時にハイライトさせる
+if has("syntax")
+    syntax on
+        augroup invisible
+        autocmd! invisible
+        autocmd BufNew,BufRead * call SOLSpaceHilight()
+        autocmd BufNew,BufRead * call JISX0208SpaceHilight()
+    augroup END
+endif
 
