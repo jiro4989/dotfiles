@@ -109,15 +109,10 @@ au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 au BufNewFile,BufRead *.py setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.ts set filetype=typescript
 
-" オリジナル拡張子の設定
-au BufNewFile,BufRead *.{jpy} set filetype=jpy
-
 " 新規ファイルを開いた時にテンプレートを読み込む
 au BufNewFile *.py 0r $HOME/.vim/template/python.txt
 au BufNewFile *.java 0r $HOME/.vim/template/java.txt
 au BufNewFile *.sh,*.bash 0r $HOME/.vim/template/bash.txt
-" vim-goで自動で入れてくれるようになったので不要
-" au BufNewFile *.go 0r $HOME/.vim/template/go.txt
 
 "}}}
 
@@ -260,6 +255,7 @@ inoremap <Silent> <C-j> <Esc>
 " 括弧補完
 inoremap "" ""<Left>
 inoremap '' ''<Left>
+inoremap `` ``<Left>
 inoremap (( ()<Left>
 inoremap [[ []<Left>
 inoremap {{ {}<Left>
