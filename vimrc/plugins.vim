@@ -28,6 +28,7 @@ if dein#load_state(s:deindir)
   call dein#add('fatih/vim-go')
   call dein#add('keith/swift.vim')
   call dein#add('Yggdroot/indentLine')
+  call dein#add('aklt/plantuml-syntax')
 
   " 以下は自作のプラグイン
   call dein#add('jiro4989/todo.vim')
