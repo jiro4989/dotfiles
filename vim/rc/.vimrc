@@ -12,6 +12,9 @@ let maplocalleader = ","
 " プラグイン設定
 source ~/.vim/rc/dein/rc.vim
 
+" todoメモを開く
+nnoremap <Space>to :e ~/Dropbox/note/todo.txt<CR>
+
 " オプション
 " --------------
 
