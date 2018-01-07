@@ -12,9 +12,6 @@ let maplocalleader = ","
 " プラグイン設定
 source ~/.vim/rc/dein/rc.vim
 
-" todoメモを開く
-nnoremap <Space>to :e ~/Dropbox/note/todo.txt<CR>
-
 " オプション
 " --------------
 
@@ -98,6 +95,7 @@ set imsearch=-1
 "}}}
 " 拡張子設定"{{{ 
 au BufNewFile,BufRead *.{kt} set filetype=kotlin
+
 " マークダウン拡張子の統一
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 au BufNewFile,BufRead *.py setlocal expandtab tabstop=4 shiftwidth=4
@@ -117,6 +115,7 @@ set formatoptions+=c  " コメンド行にのみ適用
 set formatoptions+=j  " コメントリーダーを可能な限り削除
 set formatoptions+=mM " マルチバイト文字に対応
 set formatoptions+=n  " 番号付きリストに対応
+
 " Note: formatoptions+=a を有効にするとunite.vimが正常に動作しなくなるので全てに
 " 適用されるようにフラグをセットするのは危険行末に空白を挟むことで自動整形が有効
 " になる。
@@ -267,4 +266,6 @@ nnoremap Q <Nop>
 nnoremap <Leader><Leader>. :e $HOME/.vimrc<CR>
 
 "}}}
-
+" todoメモを開く{{{
+nnoremap <Leader><Leader>t :e ~/Dropbox/note/todo.txt<CR>
+"}}}

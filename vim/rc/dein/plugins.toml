@@ -9,3 +9,7 @@ hook_add = 'source ~/.vim/rc/plugins/vim-alignta.vim'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 
+[[plugins]]
+repo = 'glidenote/memolist.vim'
+hook_add = 'source ~/.vim/rc/plugins/memolist.vim'
+
