@@ -7,6 +7,7 @@ set ambiwidth=double          " □といった文字が崩れる問題の解決
 
 " マッピングにおけるプレフィックスキー
 let mapleader = "\<Space>"
+let maplocalleader = ","
 
 source ~/dotfiles/vimrc/plugins.vim
 
@@ -57,14 +58,12 @@ if has('syntax')
   call ZenkakuSpace()
 endif
 "}}}
-"
 " vimgrepを行った時にQuickFixWindowを開く"{{{
 augroup grepopen
   autocmd!
   autocmd QuickfixCmdPost vimgrep cw
 augroup END
 "}}}
-"
 " 開いたファイルをカレントディレクトリに設定"{{{
 augroup grlcd
   autocmd!
@@ -73,7 +72,6 @@ augroup END
 "}}}
 
 "}}}
-
 " 保存"{{{
 set nobomb " BOMなしで保存する
 
@@ -87,7 +85,6 @@ set laststatus=2
 set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v,%l)/%L%8P\ 
 
 "}}}
-
 " 編集"{{{
 
 set expandtab    " Tabをスペースに変換
@@ -103,7 +100,6 @@ set iminsert=0
 set imsearch=-1
 
 "}}}
-
 " 拡張子設定"{{{ 
 au BufNewFile,BufRead *.{kt} set filetype=kotlin
 " マークダウン拡張子の統一
@@ -117,7 +113,6 @@ au BufNewFile *.java 0r $HOME/.vim/template/java.txt
 au BufNewFile *.sh,*.bash 0r $HOME/.vim/template/bash.txt
 
 "}}}
-
 " テキスト整形"{{{
 
 set textwidth=80      " 文字列の折り返し桁数
@@ -144,7 +139,6 @@ au FileType python setlocal foldmethod=indent foldnestmax=1
 vnoremap <Leader>d :s/^\n//g<CR>
 
 "}}}
-
 " 折りたたみ"{{{
 
 " 折りたたみの開閉
@@ -154,7 +148,6 @@ nnoremap + za
 nnoremap <Leader><Leader>f va{zf
 
 "}}}
-
 " 頻出利用コマンドの置き換え"{{{
 
 inoremap jj <Esc>
@@ -191,7 +184,6 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 "}}}
-
 " 検索 "{{{
 
 " 標準の検索でのエスケープを不要にする
@@ -206,14 +198,12 @@ nnoremap ( :cprevious<CR>
 nnoremap ) :cnext<CR>
 
 "}}}
-
 " 置換 "{{{
 
 nnoremap gs :%s///g<Left><Left><Left>
 vnoremap gs :s///g<Left><Left><Left>
 
 "}}}
-
 " 整形 "{{{
 
 " 行末の空白を削除
@@ -235,7 +225,6 @@ nnoremap <Leader><Leader>c <Plug>(ToggleColorColumn)
 "}}}
 
 "}}}
-
 " ウィンドウ幅の操作"{{{
 
 " 行幅の変更
@@ -247,7 +236,6 @@ nnoremap <Left> <C-w><
 nnoremap <Right> <C-w>>
 
 "}}}
-
 " テキスト入力"{{{
 
 " 挿入モード終了時にIME状態を保存しない
@@ -271,7 +259,6 @@ inoremap <C-l> <ESC>$a;
 nnoremap <Leader><Leader>t yyp<Right>i/<Esc>^
 
 "}}}
-
 " 危険なコマンドの無効化"{{{
 
 nnoremap ZZ <Nop>
@@ -279,7 +266,6 @@ nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
 "}}}
-
 " vimrcを開く"{{{
 
 nnoremap <Leader><Leader>. :e $HOME/.vimrc<CR>

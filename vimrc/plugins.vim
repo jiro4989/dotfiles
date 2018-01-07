@@ -31,8 +31,8 @@ if dein#load_state(s:deindir)
   call dein#add('aklt/plantuml-syntax')
 
   " 以下は自作のプラグイン
-  call dein#add('jiro4989/todo.vim')
   call dein#add('jiro4989/daylog.vim')
+  call dein#add('jiro4989/todo.txt-vim')
 
   "}}}
 
