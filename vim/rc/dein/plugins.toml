@@ -1,0 +1,11 @@
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = 'source ~/.vim/rc/plugins/unite.vim'
+
+[[plugins]]
+repo = 'h1mesuke/vim-alignta'
+hook_add = 'source ~/.vim/rc/plugins/vim-alignta.vim'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+

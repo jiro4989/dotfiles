@@ -9,18 +9,11 @@ set ambiwidth=double          " □といった文字が崩れる問題の解決
 let mapleader = "\<Space>"
 let maplocalleader = ","
 
-source ~/dotfiles/vimrc/plugins.vim
+" プラグイン設定
+source ~/.vim/rc/dein/rc.vim
 
-" オプション設定
+" オプション
 " --------------
-
-set runtimepath+=$HOME/vimfiles,$HOME/vimfiles/after
-
-let g:go_bin_path = expand($GOPATH . "/bin")
-" GOプログラムの入力補完
-exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
-" インポート補完
-let g:go_fmt_command = "goimports"
 
 " UI"{{{
 
