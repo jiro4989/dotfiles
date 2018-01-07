@@ -8,10 +8,6 @@ on_i = 1
 # unite.vimと一緒に起動するプラグイン {{{
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-on_source = ['unite.vim']
-
-[[plugins]]
 repo = 'Shougo/vimfiler.vim'
 hook_add = 'source ~/.vim/rc/plugins/vimfiler.vim'
 on_source = ['unite.vim']
