@@ -50,6 +50,11 @@ on_ft = ['markdown']
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
 
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+hook_add = 'source ~/.vim/rc/plugins/vim-table-mode.vim'
+on_ft = ['text', 'markdown']
+
 # }}}
 
 # }}}

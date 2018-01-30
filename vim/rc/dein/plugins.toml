@@ -16,3 +16,7 @@ repo = 'Yggdroot/indentLine'
 repo = 'glidenote/memolist.vim'
 hook_add = 'source ~/.vim/rc/plugins/memolist.vim'
 
+[[plugins]]
+repo = 'twitvim/twitvim'
+hook_add = 'source ~/.vim/rc/plugins/twitvim.vim'
+

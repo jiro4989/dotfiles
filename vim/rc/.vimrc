@@ -10,6 +10,7 @@ let mapleader = "\<Space>"
 let maplocalleader = ","
 
 " プラグイン設定
+set runtimepath+=~/.vim/after/ftplugin
 source ~/.vim/rc/dein/rc.vim
 
 " オプション
@@ -18,7 +19,7 @@ source ~/.vim/rc/dein/rc.vim
 " UI"{{{
 
 if has("win32") || has("win64")
-  colorscheme desert
+  colorscheme molokai
 else
   colorscheme molokai
   syntax on
