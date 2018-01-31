@@ -10,6 +10,7 @@ let mapleader = "\<Space>"
 let maplocalleader = ","
 
 " プラグイン設定
+set runtimepath+=~/.vim
 set runtimepath+=~/.vim/after/ftplugin
 source ~/.vim/rc/dein/rc.vim
 
