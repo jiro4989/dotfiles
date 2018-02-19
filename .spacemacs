@@ -1,6 +1,6 @@
 ;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
-;; It must be stored in your home directory.
+;; このファイルはSpacemacsのスタートアップとして作成されました。
+;; これはあなたのホームディレクトリに格納しなくてはなりません。
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     html
      windows-scripts
      go
      python
@@ -48,15 +49,15 @@ values."
      markdown
      org
      java
-     kotlin
+     go
+     clojure
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
      syntax-checking
      version-control
-     japanese
-     ps1
+     powershell
      twitter
      )
    ;; List of additional packages that will be installed without being
@@ -285,7 +286,7 @@ values."
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc…
+   ;; over any automatically added closing parenthesis, bracket, quote, etc
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
    dotspacemacs-smart-closing-parenthesis nil
    ;; Select a scope to highlight delimiters. Possible values are `any',
@@ -327,6 +328,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq frame-title-format "%f")
   (line-number-mode 1)
   (setq x-select-enable-clipboard t)
+
+  ;; DDSKK
+  (when (require 'skk nil t)
+    (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
+    (setq default-input-method "japanese-skk")
+    (require 'skk-study)
+    ;; use skkserve
+    (setq skk-server-host "localhost")
+    (setq skk-server-portnum 1178))
   )
 
 (defun dotspacemacs/user-config ()
@@ -348,10 +358,12 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(send-mail-function (quote smtpmail-send-it)))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 587))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C")))))
