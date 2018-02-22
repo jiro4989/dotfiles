@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
      html
      windows-scripts
      go
@@ -57,7 +58,6 @@ values."
      spell-checking
      syntax-checking
      version-control
-     powershell
      twitter
      )
    ;; List of additional packages that will be installed without being
@@ -151,8 +151,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("MyricaM M"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -324,19 +324,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ("org" . "elpa.zilongshanren.com/org/")
           ("gnu" . "elpa.zilongshanren.com/gnu/")))
   (add-to-list `load-path (expand-file-name "~/.emacs.d/layers/+web-services/twitter"))
-  (require `twittering-mode)
-  (setq frame-title-format "%f")
-  (line-number-mode 1)
-  (setq x-select-enable-clipboard t)
-
-  ;; DDSKK
-  (when (require 'skk nil t)
-    (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
-    (setq default-input-method "japanese-skk")
-    (require 'skk-study)
-    ;; use skkserve
-    (setq skk-server-host "localhost")
-    (setq skk-server-portnum 1178))
   )
 
 (defun dotspacemacs/user-config ()
@@ -346,13 +333,42 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (require `twittering-mode)
+  (setq frame-title-format "%f") ;; Spacemacsのタイトルにフルパスを表示
+  (line-number-mode 1) ;; 行番号を表示
+  (setq x-select-enable-clipboard t) ;; クリップボードコピーを許可
+  ;; SPCはM-mの置き換えなので、リーダーのSPACEを使いたい場合はM-mを使う
+  (global-set-key (kbd "M-m o s") 'eshell) ;; eshellを開くショートカットの追加
+
+  ;; shellの文字化けを回避
+  (add-hook
+   'shell-mode-hook
+   '(lambda ()
+      (set-buffer-process-coding-system 'sjis 'sjis)))
+
+  ;(setenv "PATH"
+  ;        (concat
+  ;         "C:\\Program Files\\Git\\usr\\bin;"
+  ;         (getenv "PATH")))
+
+  ;;; 区切り文字はなし
+  ;(setq exec-path (append exec-path '("C:\\Program Files\\Git\\usr\\bin;")))
+
+  ;; DDSKK
+  (when (require 'skk nil t)
+    (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
+    (setq default-input-method "japanese-skk")
+    (require 'skk-study)
+    ;; use skkserve
+    (setq skk-server-host "localhost")
+    (setq skk-server-portnum 1178))
+  (require 'linum)
+  (global-linum-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
-(require 'linum)
-(global-linum-mode 1)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
