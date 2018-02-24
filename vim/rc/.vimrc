@@ -109,7 +109,7 @@ au BufNewFile *.java 0r $HOME/.vim/template/java.txt
 au BufNewFile *.sh,*.bash 0r $HOME/.vim/template/bash.txt
 
 " ファイル内に複数の拡張子が登場するときのシンタックス判定の範囲設定
-autocmd FileType jsp,asp,php,xml,perl,html syntax sync minlines=500 maxlines=1000
+autocmd FileType jsp,asp,php,xml,perl,html,javascript,css syntax sync minlines=500 maxlines=1000
 
 "}}}
 " テキスト整形"{{{

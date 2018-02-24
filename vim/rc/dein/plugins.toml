@@ -3,19 +3,70 @@ repo = 'Shougo/unite.vim'
 hook_add = 'source ~/.vim/rc/plugins/unite.vim'
 
 [[plugins]]
+repo = 'Shougo/neocomplete.vim'
+hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
+
+# Python3の導入がめんどくさそうだったんで保留
+#[[plugins]]
+#repo = 'Shougo/denite.nvim'
+#hook_add = 'source ~/.vim/rc/plugins/denite.vim'
+#
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#hook_add = 'source ~/.vim/rc/plugins/deoplete.vim'
+
+[[plugins]]
 repo = 'Shougo/neomru.vim'
 
+# ステータスバー変更
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = 'source ~/.vim/rc/plugins/vim-airline.vim'
+
+# vim-airlineのテーマ
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+# Git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = 'source ~/.vim/rc/plugins/vim-fugitive.vim'
+
+# Gitの差分表示
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = 'source ~/.vim/rc/plugins/vim-gitgutter.vim'
+
+# deopleteにpythonの自動補間を提供
+#[[plugins]]
+#repo = 'zchee/deoplete-jedi'
+
+# linterによる構文チェック
+#[[plugins]]
+#repo = 'w0rp/ale'
+#hook_add = 'source ~/.vim/rc/plugins/ale.vim'
+
+# 2018/02/24 Win10で動作せずにつきコメントアウト
+## ctags, gtags
+#[[plugins]]
+#repo = 'jsfaint/gen_tags.vim'
+#hook_add = 'source ~/.vim/rc/plugins/gen_tags.vim'
+
+# 桁揃え
 [[plugins]]
 repo = 'h1mesuke/vim-alignta'
 hook_add = 'source ~/.vim/rc/plugins/vim-alignta.vim'
 
+# インデント位置を可視化
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 
+# メモ帳
 [[plugins]]
 repo = 'glidenote/memolist.vim'
 hook_add = 'source ~/.vim/rc/plugins/memolist.vim'
 
+# Twitter
 [[plugins]]
 repo = 'twitvim/twitvim'
 hook_add = 'source ~/.vim/rc/plugins/twitvim.vim'

@@ -65,7 +65,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    
-;; configuration in `dotspacemacs/user-config'.
+   ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
                                       helm-ls-git
                                       epc
@@ -73,11 +73,12 @@ values."
                                       jedi-core
                                       rotate
                                       ddskk
+                                      evil-numbers
                                       matlab-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(exec-path-from-shell)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -145,9 +146,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
-                         spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(molokai)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -335,17 +334,38 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (require `twittering-mode)
-  (setq frame-title-format "%f") ;; Spacemacsのタイトルにフルパスを表示
-  (line-number-mode 1) ;; 行番号を表示
-  (setq x-select-enable-clipboard t) ;; クリップボードコピーを許可
+  ;; Spacemacsのタイトルにフルパスを表示
+  (setq frame-title-format "%f")
+  ;; 行番号を表示
+  (line-number-mode 1)
+
+  (setq x-select-enable-clipboard t)
   ;; SPCはM-mの置き換えなので、リーダーのSPACEを使いたい場合はM-mを使う
   (global-set-key (kbd "M-m o s") 'eshell) ;; eshellを開くショートカットの追加
+
+  ;; Vimのインクリメント、デクリメント
+  (define-key evil-normal-state-map (kbd "C-;") #'evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "C--") #'evil-numbers/dec-at-pt)
 
   ;; shellの文字化けを回避
   (add-hook
    'shell-mode-hook
    '(lambda ()
       (set-buffer-process-coding-system 'sjis 'sjis)))
+
+  ;; written by Stefan Reichoer <reichoer@web.de>
+  (defun eshell/less (&rest args)
+    "Invoke `view-file' on the file.
+\"less +42 foo\" also goes to line 42 in the buffer."
+    (interactive)
+    (while args
+      (if (string-match "\\`\\+\\([0-9]+\\)\\'" (car args))
+          (let* ((line (string-to-number (match-string 1 (pop args))))
+                 (file (pop args)))
+            (view-file file)
+            (goto-line line))
+        (view-file (pop args)))))
+
   ;; エイリアス設定
   (setq eshell-command-aliases-list
         (append
@@ -387,6 +407,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (molokai-theme yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill twittering-mode toc-org tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rotate restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode powershell popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jedi ivy-hydra indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make helm-ls-git google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diminish diff-hl define-word ddskk cython-mode counsel-projectile company-web company-statistics company-go company-emacs-eclim company-anaconda column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587))
