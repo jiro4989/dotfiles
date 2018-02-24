@@ -59,6 +59,7 @@ values."
      syntax-checking
      version-control
      twitter
+     gnus
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -152,7 +153,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("MyricaM M"
-                               :size 14
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -345,14 +346,26 @@ you should place your code here."
    'shell-mode-hook
    '(lambda ()
       (set-buffer-process-coding-system 'sjis 'sjis)))
+  ;; エイリアス設定
+  (setq eshell-command-aliases-list
+        (append
+         (list
+          (list "ll" "ls -ltr")
+          (list "la" "ls -a")
+          (list "o" "xdg-open")
+          (list "emacs" "find-file $1")
+          (list "m" "find-file $1")
+          (list "mc" "find-file $1")
+          (list "d" "dired .")
+          (list "l" "eshell/less $1"))))
 
-  ;(setenv "PATH"
-  ;        (concat
-  ;         "C:\\Program Files\\Git\\usr\\bin;"
-  ;         (getenv "PATH")))
-
-  ;;; 区切り文字はなし
-  ;(setq exec-path (append exec-path '("C:\\Program Files\\Git\\usr\\bin;")))
+  ;; 今日の日付のファイルを開く
+  (defun make-today-file()
+    (interactive)
+    (let ((dist-dir (concat (getenv "HOME") "/Dropbox/note/daylog")) ;; 保存先ディレクトリ
+          (ct (format-time-string "%Y-%m-%d" (current-time))))
+      (find-file (concat dist-dir "/" ct ".org"))))
+  (global-set-key (kbd "M-m o t") 'make-today-file)
 
   ;; DDSKK
   (when (require 'skk nil t)
