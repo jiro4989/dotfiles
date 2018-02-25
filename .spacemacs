@@ -31,10 +31,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
      yaml
      html
      windows-scripts
-     go
      python
      clojure
      ;; ----------------------------------------------------------------
@@ -51,11 +51,16 @@ values."
      org
      java
      go
+     (go :variables
+         go-use-gometalinter t
+         go-tab-width 4
+         gofmt-command "goimports")
      clojure
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
+     auto-completion
      syntax-checking
      version-control
      twitter
@@ -347,6 +352,65 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "C-;") #'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C--") #'evil-numbers/dec-at-pt)
 
+  ;; gnus ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (gnus-add-configuration
+   '(article
+     (horizontal 1.0
+	               (vertical 25
+			                     (group 1.0))
+	               (vertical 1.0
+			                     (summary 0.25 point)
+			                     (article 1.0)))))
+  (gnus-add-configuration
+   '(summary
+     (horizontal 1.0
+	               (vertical 25
+			                     (group 1.0))
+	               (vertical 1.0
+			                     (summary 1.0 point)))))
+
+  ;; eww ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (setq eww-search-prefix "https://www.google.co.jp//search?q=")
+
+  (defvar eww-disable-colorize t)
+  (defun shr-colorize-region--disable (orig start end fg &optional bg &rest _)
+    (unless eww-disable-colorize
+      (funcall orig start end fg)))
+  (advice-add 'shr-colorize-region :around 'shr-colorize-region--disable)
+  (advice-add 'eww-colorize-region :around 'shr-colorize-region--disable)
+
+  (defun eww-disable-color ()
+    ;; eww で文字色を反映させない
+    (interactive)
+    (setq-local eww-disable-colorize t)
+    (eww-reload))
+
+  (defun eww-enable-color ()
+    ;; eww で文字色を反映させる
+    (interactive)
+    (setq-local eww-disable-colorize nil)
+    (eww-reload))
+
+  (defun eww-disable-images ()
+    ;; eww で画像表示させない
+    (interactive)
+    (setq-local shr-put-image-function 'shr-put-image-alt)
+    (eww-reload))
+
+  (defun eww-enable-images ()
+    ;; eww で画像表示させる
+    (interactive)
+    (setq-local shr-put-image-function 'shr-put-image)
+    (eww-reload))
+  (defun shr-put-image-alt (spec alt &optional flags)
+    (insert alt))
+
+  ;; はじめから非表示
+  (defun eww-mode-hook--disable-image ()
+    (setq-local shr-put-image-function 'shr-put-image-alt))
+  (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
+
+  ;; eshell ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; shellの文字化けを回避
   (add-hook
    'shell-mode-hook
@@ -379,15 +443,30 @@ you should place your code here."
           (list "d" "dired .")
           (list "l" "eshell/less $1"))))
 
-  ;; 今日の日付のファイルを開く
-  (defun make-today-file()
+  ;; 今日の日付のファイルを開く ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defun make-today-note()
     (interactive)
     (let ((dist-dir (concat (getenv "HOME") "/Dropbox/note/daylog")) ;; 保存先ディレクトリ
           (ct (format-time-string "%Y-%m-%d" (current-time))))
       (find-file (concat dist-dir "/" ct ".org"))))
-  (global-set-key (kbd "M-m o t") 'make-today-file)
+  (global-set-key (kbd "M-m o t") 'make-today-note)
 
-  ;; DDSKK
+  ;; 今日の日報ファイルを開く ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; TODO
+  (defun make-today-daylog()
+    (interactive)
+    (let ((daylog-dir (concat (getenv "HOME") "/Dropbox/note/daylog/"))
+          (today-string (format-time-string "%Y-%m-%d" (current-time))))
+      (let ((today-daylog-file (concat daylog-dir today-string ".org")))
+        (when (not (file-exists-p today-daylog-file))
+          ;; 今日のファイルがまだ存在しなかったら、前回のファイルをコピーする
+          (copy-file
+           (last (directory-files daylog-dir t ".org"))
+           today-daylog-file
+           t t))
+        (find-file today-daylog-file))))
+
+  ;; DDSKK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (when (require 'skk nil t)
     (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
     (setq default-input-method "japanese-skk")
@@ -409,7 +488,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (molokai-theme yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill twittering-mode toc-org tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rotate restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode powershell popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jedi ivy-hydra indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make helm-ls-git google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diminish diff-hl define-word ddskk cython-mode counsel-projectile company-web company-statistics company-go company-emacs-eclim company-anaconda column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
+    (web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode flycheck-gometalinter elscreen tabbar molokai-theme yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill twittering-mode toc-org tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rotate restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode powershell popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jedi ivy-hydra indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make helm-ls-git google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diminish diff-hl define-word ddskk cython-mode counsel-projectile company-web company-statistics company-go company-emacs-eclim company-anaconda column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587))
