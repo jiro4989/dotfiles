@@ -243,14 +243,15 @@ inoremap <Silent> <Esc> <Esc>
 inoremap <Silent> <C-j> <Esc>
 
 " 括弧補完
-inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap `` ``<Left>
-inoremap (( ()<Left>
-inoremap [[ []<Left>
-inoremap {{ {}<Left>
-inoremap << <><Left>
-inoremap {<CR> {}<Left><CR><Esc>ko
+inoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+inoremap ` ``<ESC>i
+inoremap [ []<ESC>i
+inoremap < <><ESC>i
 
 " 行末にセミコロンを追加
 inoremap <C-l> <ESC>$a;

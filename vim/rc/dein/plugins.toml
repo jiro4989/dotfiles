@@ -18,14 +18,14 @@ hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
-# ステータスバー変更
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = 'source ~/.vim/rc/plugins/vim-airline.vim'
-
-# vim-airlineのテーマ
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
+## ステータスバー変更
+#[[plugins]]
+#repo = 'vim-airline/vim-airline'
+#hook_add = 'source ~/.vim/rc/plugins/vim-airline.vim'
+#
+## vim-airlineのテーマ
+#[[plugins]]
+#repo = 'vim-airline/vim-airline-themes'
 
 # Git
 [[plugins]]
@@ -70,4 +70,9 @@ hook_add = 'source ~/.vim/rc/plugins/memolist.vim'
 [[plugins]]
 repo = 'twitvim/twitvim'
 hook_add = 'source ~/.vim/rc/plugins/twitvim.vim'
+
+# Bookmark
+[[plugins]]
+repo = 'MattesGroeger/vim-bookmarks'
+hook_add = 'source ~/.vim/rc/plugins/vim-bookmarks.vim'
 

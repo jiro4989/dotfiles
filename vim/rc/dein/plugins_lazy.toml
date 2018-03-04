@@ -52,6 +52,11 @@ repo = 'dhruvasagar/vim-table-mode'
 hook_add = 'source ~/.vim/rc/plugins/vim-table-mode.vim'
 on_ft = ['text', 'markdown']
 
+[[plugins]]
+repo = 'jpalardy/vim-slime'
+hook_add = 'source ~/.vim/rc/plugins/vim-slime.vim'
+on_ft = ['elisp', 'clojure']
+
 # }}}
 
 # }}}
