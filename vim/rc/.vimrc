@@ -139,6 +139,10 @@ au FileType python setlocal foldmethod=indent foldnestmax=1
 vnoremap <Leader>d :s/^\n//g<CR>
 
 "}}}
+
+
+nnoremap <Leader>s :terminal ++close ++curwin<CR>
+
 " 折りたたみ"{{{
 
 " 折りたたみの開閉
