@@ -1,5 +1,5 @@
 " メモの保存先
-let g:memolist_path = "$HOME/Dropbox/note/memolist"
+let g:memolist_path = "$HOME/Dropbox/note/memo"
 
 " suffix type (default markdown)
 let g:memolist_memo_suffix = "md"
@@ -17,7 +17,7 @@ let g:memolist_prompt_categories = 1
 " let g:memolist_qfixgrep = 1
 
 " use vimfler (default 0)
-let g:memolist_vimfiler = 1
+let g:memolist_vimfiler = 0
 
 " remove filename prefix (default 0)
 let g:memolist_filename_prefix_none = 1

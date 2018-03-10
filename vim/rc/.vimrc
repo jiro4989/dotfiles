@@ -260,9 +260,6 @@ inoremap < <><ESC>i
 " 行末にセミコロンを追加
 inoremap <C-l> <ESC>$a;
 
-" <tag>でくくる
-nnoremap <Leader><Leader>t yyp<Right>i/<Esc>^
-
 "}}}
 " 危険なコマンドの無効化"{{{
 
@@ -277,5 +274,5 @@ nnoremap <Leader><Leader>. :e $HOME/.vimrc<CR>
 
 "}}}
 " todoメモを開く{{{
-nnoremap <Leader><Leader>t :e ~/Dropbox/note/todo.txt<CR>
+nnoremap <Leader><Leader>t :e ~/Dropbox/note/task/todo.txt<CR>
 "}}}
