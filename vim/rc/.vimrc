@@ -11,6 +11,7 @@ let maplocalleader = ","
 
 " プラグイン設定
 set runtimepath+=~/.vim
+set runtimepath+=~/.vim/colors
 set runtimepath+=~/.vim/after/ftplugin
 source ~/.vim/rc/dein/rc.vim
 
