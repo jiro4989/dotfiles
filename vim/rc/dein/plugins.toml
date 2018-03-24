@@ -57,10 +57,6 @@ hook_add = 'source ~/.vim/rc/plugins/vim-gitgutter.vim'
 repo = 'h1mesuke/vim-alignta'
 hook_add = 'source ~/.vim/rc/plugins/vim-alignta.vim'
 
-# インデント位置を可視化
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-
 # メモ帳
 [[plugins]]
 repo = 'glidenote/memolist.vim'
