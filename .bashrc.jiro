@@ -6,6 +6,9 @@ export PATH=$JAVA_HOME/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go-1.9/bin:$GOPATH/bin
 
+# SetupScriptDir
+export SETUP_SCRIPT_DIR=$HOME/workspace/github/repos/scripts/setup
+
 # 追加したコマンド系
 export PATH=$PATH:~/.bin
 
