@@ -1,6 +1,6 @@
 ;; -*- mode: emacs-lisp -*-
-;; このファイルはSpacemacsのスタートアップとして作成されました。
-;; これはあなたのホームディレクトリに格納しなくてはなりません。
+;; This file is loaded by Spacemacs at startup.
+;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -31,45 +31,44 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     csv
-     javascript
-     yaml
-     html
-     windows-scripts
-     python
-     clojure
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
+     auto-completion
      better-defaults
+     clojure
+     csv
      emacs-lisp
      git
+     gnus
+     ; helm
+     html
+     ivy
+     java
+     javascript
      markdown
      org
-     java
+     python
+     spell-checking
+     syntax-checking
+     twitter
+     version-control
+     windows-scripts
+     yaml
      go
      (go :variables
          go-use-gometalinter t
          go-tab-width 4
          gofmt-command "goimports")
-     clojure
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
-     version-control
-     twitter
-     gnus
-     ;; auto-completion
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
-   
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
                                       helm-ls-git
@@ -81,9 +80,6 @@ values."
                                       evil-numbers
                                       bash-completion
                                       matlab-mode
-
-                                      ;; auto-complete
-                                      company
 
                                       ;; lisp
                                       paredit
@@ -98,7 +94,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(exec-path-from-shell)
+   dotspacemacs-excluded-packages '()
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -125,7 +121,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 20
+   dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -171,7 +167,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("MyricaM M"
+   dotspacemacs-default-font '("Monospace"
                                :size 18
                                :weight normal
                                :width normal
@@ -306,7 +302,7 @@ values."
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc
+   ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
    dotspacemacs-smart-closing-parenthesis nil
    ;; Select a scope to highlight delimiters. Possible values are `any',
@@ -353,6 +349,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
   (require `twittering-mode)
   ;; Spacemacsのタイトルにフルパスを表示
   (setq frame-title-format "%f")
@@ -507,35 +504,17 @@ you should place your code here."
   ;;   (cider-repl-toggle-pretty-printing))
 
   ;; DDSKK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  (when (require 'skk nil t)
-    (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
-    (setq default-input-method "japanese-skk")
-    (require 'skk-study)
-    ;; use skkserve
-    (setq skk-server-host "localhost")
-    (setq skk-server-portnum 1178))
-  (require 'linum)
-  (global-linum-mode 1)
-  )
+  ;; (when (require 'skk nil t)
+  ;;   (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
+  ;;   (setq default-input-method "japanese-skk")
+  ;;   (require 'skk-study)
+  ;;   ;; use skkserve
+  ;;   (setq skk-server-host "localhost")
+  ;;   (setq skk-server-portnum 1178))
+  ;; (require 'linum)
+  ;; (global-linum-mode 1)
 
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (bash-completion helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line csv-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode flycheck-gometalinter elscreen tabbar molokai-theme yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill twittering-mode toc-org tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rotate restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode powershell popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jedi ivy-hydra indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make helm-ls-git google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-ivy flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diminish diff-hl define-word ddskk cython-mode counsel-projectile company-web company-statistics company-go company-emacs-eclim company-anaconda column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
- '(send-mail-function (quote smtpmail-send-it))
- '(smtpmail-smtp-server "smtp.gmail.com")
- '(smtpmail-smtp-service 587))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C")))))
