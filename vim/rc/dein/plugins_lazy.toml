@@ -1,16 +1,8 @@
-# 自分以外のプラグイン {{{
-
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
-on_i = 1
-
-# vimfiler系 unite, deniteに依存しない
-[[plugins]]
-repo = 'cocopon/vaffle.vim'
-hook_add = 'source ~/.vim/rc/plugins/vaffle.vim'
-
-# 特定ファイルタイプのためのプラグイン {{{
+# plugins_lazy.toml は特定の拡張子を開いた時にだけ読み込む設定を記述します。
+#
+# 概要
+#   plugins.tomlに記述するべき設定は特定の拡張子のファイルを開くときだけ読み込ん
+#   で欲しい設定です。
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
@@ -72,19 +64,3 @@ on_ft = ['html', 'javascript']
 [[plugins]]
 repo = 'tpope/vim-surround'
 on_ft = ['html', 'javascript']
-
-# }}}
-
-# }}}
-# 自分のプラグイン {{{
-
-[[plugins]]
-repo = 'jiro4989/daylog.vim'
-on_ft = ['text', 'markdown']
-
-[[plugins]]
-repo = 'jiro4989/todo.txt-vim'
-on_ft = ['text']
-
-# }}}
-

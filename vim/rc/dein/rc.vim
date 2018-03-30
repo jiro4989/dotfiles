@@ -12,9 +12,11 @@ if dein#load_state(s:deindir)
   "Load TOML
   let s:toml      = s:toml_dir . '/plugins.toml'
   let s:lazy_toml = s:toml_dir . '/plugins_lazy.toml'
+  let s:own_toml  = s:toml_dir . '/plugins_own.toml'
 
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#load_toml(s:own_toml, {'lazy': 2})
 
   call dein#end()
   call dein#save_state()

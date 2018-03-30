@@ -214,9 +214,6 @@ vnoremap gs :s///g<Left><Left><Left>
 " 行末の空白を削除
 nnoremap <Leader><Leader>d :%s/\s\+$//ge<CR>
 
-" ソート
-vnoremap gfs :sort<CR>
-
 " フォーマット
 nnoremap <Leader><Leader>i mhgg=G'h
 

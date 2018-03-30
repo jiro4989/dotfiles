@@ -1,3 +1,11 @@
+# plugins.toml は常時読み込むプラグインの設定を記述します。
+#
+# 概要
+#   plugins.tomlに記述するべき設定は特定の拡張子のファイルを開くときだけ読み込ん
+#   で欲しい設定ではなく、常に読み込むひつようのあるプラグインの設定です。
+#
+#   拡張子ごとに遅延読み込みする設定はplugins_lazy.tomlに記述します。
+
 [[plugins]]
 repo = 'Shougo/unite.vim'
 hook_add = 'source ~/.vim/rc/plugins/unite.vim'
@@ -5,6 +13,12 @@ hook_add = 'source ~/.vim/rc/plugins/unite.vim'
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
+on_i = 1
+
+# vimfiler系 unite, deniteに依存しないファイラ
+[[plugins]]
+repo = 'cocopon/vaffle.vim'
+hook_add = 'source ~/.vim/rc/plugins/vaffle.vim'
 
 # Python3の導入がめんどくさそうだったんで保留
 #[[plugins]]
@@ -17,15 +31,6 @@ hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-
-## ステータスバー変更
-#[[plugins]]
-#repo = 'vim-airline/vim-airline'
-#hook_add = 'source ~/.vim/rc/plugins/vim-airline.vim'
-#
-## vim-airlineのテーマ
-#[[plugins]]
-#repo = 'vim-airline/vim-airline-themes'
 
 # Git
 [[plugins]]
@@ -57,7 +62,7 @@ hook_add = 'source ~/.vim/rc/plugins/vim-gitgutter.vim'
 repo = 'h1mesuke/vim-alignta'
 hook_add = 'source ~/.vim/rc/plugins/vim-alignta.vim'
 
-# メモ帳
+# メモ
 [[plugins]]
 repo = 'glidenote/memolist.vim'
 hook_add = 'source ~/.vim/rc/plugins/memolist.vim'
