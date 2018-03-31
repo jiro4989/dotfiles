@@ -14,3 +14,5 @@ inorea logf log.Fatal(err)<ESC>
 inorea defc defer f.Close()
 inorea rnil return nil<ESC>
 inorea rerr return err<ESC>
+inorea funcm func main() {<CR>}<ESC>ko
+inorea funct func Test(t *testing.T) {<CR>}<ESC>k^wea
