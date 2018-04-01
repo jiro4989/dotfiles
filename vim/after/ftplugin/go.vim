@@ -16,3 +16,4 @@ inorea rnil return nil<ESC>
 inorea rerr return err<ESC>
 inorea funcm func main() {<CR>}<ESC>ko
 inorea funct func Test(t *testing.T) {<CR>}<ESC>k^wea
+inorea makec c := make(chan int, runtime.NumCPU())<CR>var wg sync.WaitGroup
