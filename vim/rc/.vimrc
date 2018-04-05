@@ -274,3 +274,6 @@ nnoremap <Leader><Leader>. :e $HOME/.vimrc<CR>
 " todoメモを開く{{{
 nnoremap <Leader><Leader>t :e ~/Dropbox/note/task/todo.txt<CR>
 "}}}
+
+
+command! AppendDocumentFormat :call append(line("."), "vim:tw=78:")

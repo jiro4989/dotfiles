@@ -50,10 +50,6 @@ hook_add = 'source ~/.vim/rc/plugins/vim-slime.vim'
 on_ft = ['elisp', 'clojure']
 
 [[plugins]]
-repo = 'taichouchou2/html5.vim'
-on_ft = ['html']
-
-[[plugins]]
 repo = 'hail2u/vim-css3-syntax'
 on_ft = ['html', 'css']
 

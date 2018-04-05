@@ -16,4 +16,5 @@ inorea rnil return nil<ESC>
 inorea rerr return err<ESC>
 inorea funcm func main() {<CR>}<ESC>ko
 inorea funct func Test(t *testing.T) {<CR>}<ESC>k^wea
-inorea makec c := make(chan int, runtime.NumCPU())<CR>var wg sync.WaitGroup
+inorea makec ch := make(chan int, runtime.NumCPU())<CR>var wg sync.WaitGroup
+inorea gort ch := make(chan int, runtime.NumCPU())<CR>var wg sync.WaitGroup<CR><CR>for i, v := range iter {<CR>wg.Add(1)<CR>go func() {<CR>defer wg.Done()<CR>ch <- 1<CR><-ch<CR>}()<CR>}<CR>wg.Wait()
