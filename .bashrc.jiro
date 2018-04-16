@@ -4,7 +4,8 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 # Go
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go-1.9/bin:$GOPATH/bin
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:/usr/local/go-1.9/bin:$GOBIN
 
 # SetupScriptDir
 export SETUP_SCRIPT_DIR=$HOME/workspace/github/repos/scripts/setup
