@@ -10,6 +10,7 @@ export PATH=$PATH:/usr/local/go-1.9/bin:$GOBIN
 # SetupScriptDir
 export SETUP_SCRIPT_DIR=$HOME/workspace/github/repos/scripts/setup
 export GOWORKSPACE=$GOPATH/src/github.com/jiro4989
+export BLOG=~/workspace/github/repos/jilog-hugo
 
 # 追加したコマンド系
 export PATH=$PATH:~/.bin
@@ -23,3 +24,5 @@ alias lock='gnome-screensaver-command -l'
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jiro/.sdkman"
 [[ -s "/home/jiro/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jiro/.sdkman/bin/sdkman-init.sh"
+
+alias glog='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
