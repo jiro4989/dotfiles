@@ -6,7 +6,7 @@
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-hook_add = 'source ~/.vim/rc/plugins/emmet-vim.vim'
+hook_add = 'source ~/.vim/rc/plugin/emmet-vim.vim'
 on_ft = ['html', 'php', 'javascript', 'typescript']
 
 [[plugins]]
@@ -15,7 +15,7 @@ on_ft = ['ps1']
 
 [[plugins]]
 repo = 'fatih/vim-go'
-hook_add = 'source ~/.vim/rc/plugins/vim-go.vim'
+hook_add = 'source ~/.vim/rc/plugin/vim-go.vim'
 on_ft = ['go']
 
 [[plugins]]
@@ -32,7 +32,7 @@ on_ft = ['kotlin']
 
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
-hook_add = 'source ~/.vim/rc/plugins/vim-markdown.vim'
+hook_add = 'source ~/.vim/rc/plugin/vim-markdown.vim'
 on_ft = ['markdown']
 
 [[plugins]]
@@ -41,12 +41,12 @@ on_ft = ['toml']
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
-hook_add = 'source ~/.vim/rc/plugins/vim-table-mode.vim'
+hook_add = 'source ~/.vim/rc/plugin/vim-table-mode.vim'
 on_ft = ['text', 'markdown']
 
 [[plugins]]
 repo = 'jpalardy/vim-slime'
-hook_add = 'source ~/.vim/rc/plugins/vim-slime.vim'
+hook_add = 'source ~/.vim/rc/plugin/vim-slime.vim'
 on_ft = ['elisp', 'clojure']
 
 [[plugins]]

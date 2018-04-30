@@ -4,7 +4,7 @@ endif
 
 set runtimepath+=~/.vim/dein
 let s:deindir  = expand('~/.vim/dein')
-let s:toml_dir = expand('~/.config/vim/dein')
+let s:toml_dir = expand('~/.vim/rc/plugin/dein')
 
 if dein#load_state(s:deindir)
   call dein#begin(s:deindir)
