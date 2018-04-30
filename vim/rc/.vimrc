@@ -33,7 +33,9 @@ set ruler            " カーソルの位置表示
 set incsearch        " インクリメンタルサーチ
 set hlsearch         " 検索語句のハイライト
 set display=lastline " テキストが長すぎて表示しきれない場合でも表示する
-set cursorline       " カーソル位置の行番号のハイライト
+set synmaxcol=200    " 1行あたりのシンタックス解析の文字数
+set lazyredraw
+set ttyfast
 
 " 不可視文字の表示
 set list
