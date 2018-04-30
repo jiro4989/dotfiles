@@ -5,7 +5,7 @@ au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown
 
 " タブ設定
 au BufNewFile,BufRead *.py     setlocal expandtab tabstop=4 shiftwidth=4
-au BufNewFile,BufRead Makefile setlocal noexpandtab tabstop=4 shiftwidth=4
+au BufNewFile,BufRead Makefile,*.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " 新規ファイルを開いた時にテンプレートを読み込む
 au BufNewFile *.py 0r        $HOME/.vim/template/python.txt
