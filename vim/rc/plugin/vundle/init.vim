@@ -20,6 +20,9 @@ source ~/.vim/rc/plugin/vaffle.vim
 Plugin 'Shougo/neomru.vim'
 
 Plugin 'vimwiki/vimwiki'
+source ~/.vim/rc/plugin/vimwiki.vim
+
+Plugin 'scrooloose/nerdtree'
 
 " Gitの差分表示
 Plugin 'tpope/vim-fugitive'

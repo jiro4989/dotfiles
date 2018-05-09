@@ -1,3 +1,1 @@
-set nocompatible
-filetype plugin on
-syntax on
+let g:vimwiki_list = [{'path':'~/Dropbox/vimwiki/src/', 'path_html':'~/Dropbox/vimwiki/html/'}]

@@ -106,9 +106,6 @@ nnoremap Q <Nop>
 " vimrcを開く
 nnoremap <Leader><Leader>. :e $HOME/.vim/vimrc<CR>
 
-" todoメモを開く
-nnoremap <Leader><Leader>t :e ~/Dropbox/note/task/todo.txt<CR>
-
 " コマンド
 "-------------------------------------------------------------------------------
 
