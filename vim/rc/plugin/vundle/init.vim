@@ -14,21 +14,19 @@ source ~/.vim/rc/plugin/unite.vim
 Plugin 'Shougo/neocomplete.vim'
 source ~/.vim/rc/plugin/neocomplete.vim
 
-Plugin 'cocopon/vaffle.vim'
-source ~/.vim/rc/plugin/vaffle.vim
-
 Plugin 'Shougo/neomru.vim'
 
 Plugin 'vimwiki/vimwiki'
 source ~/.vim/rc/plugin/vimwiki.vim
 
 Plugin 'scrooloose/nerdtree'
+source ~/.vim/rc/plugin/nerdtree.vim
 
 " Gitの差分表示
 Plugin 'tpope/vim-fugitive'
 source ~/.vim/rc/plugin/vim-fugitive.vim
 
-Plugin 'kairblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 source ~/.vim/rc/plugin/vim-gitgutter.vim
 
 " 桁揃え
@@ -59,8 +57,15 @@ Plugin 'pangloss/vim-javascript'
 
 Plugin 'tpope/vim-surround'
 
+" 括弧補完
+Plugin 'cohama/lexima.vim'
+
+" ステータスラインの変更
+Plugin 'Lokaltog/vim-powerline'
+
 call vundle#end()
 filetype plugin indent on
 
 " カスタム設定
+"
 

@@ -78,17 +78,6 @@ nnoremap <Right> <C-w>>
 inoremap <Silent> <Esc> <Esc>
 inoremap <Silent> <C-j> <Esc>
 
-" 括弧補完
-inoremap { {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
-inoremap ` ``<ESC>i
-inoremap [ []<ESC>i
-inoremap < <><ESC>i
-
 " 行末にセミコロンを追加
 inoremap <C-l> <ESC>$a;
 
@@ -105,6 +94,9 @@ nnoremap Q <Nop>
 
 " vimrcを開く
 nnoremap <Leader><Leader>. :e $HOME/.vim/vimrc<CR>
+
+" プラグイン初期化ファイルを開く
+nnoremap <Leader><Leader>p :e $HOME/.vim/rc/plugin/vundle/init.vim<CR>
 
 " コマンド
 "-------------------------------------------------------------------------------
