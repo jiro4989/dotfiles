@@ -16,8 +16,9 @@ source ~/.vim/rc/plugin/neocomplete.vim
 
 Plugin 'Shougo/neomru.vim'
 
-Plugin 'vimwiki/vimwiki'
-source ~/.vim/rc/plugin/vimwiki.vim
+" メモ
+Plugin 'glidenote/memolist.vim'
+source ~/.vim/rc/plugin/memolist.vim
 
 Plugin 'scrooloose/nerdtree'
 source ~/.vim/rc/plugin/nerdtree.vim
