@@ -4,6 +4,7 @@ inorea lpe log.Println(err)<ESC>
 
 " 例外処理
 inorea iferr if err != nil {<CR>log.Println(err)<CR>return err<CR>}<ESC>
+inorea swerr if err != nil {<CR>switch e := err.(type) {<CR>case *Error:<CR>default:<CR>}<CR>}<CR>
 
 " deferクローズ
 inorea defc defer f.Close()
