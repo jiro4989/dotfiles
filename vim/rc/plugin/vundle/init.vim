@@ -20,8 +20,9 @@ Plugin 'Shougo/neomru.vim'
 Plugin 'glidenote/memolist.vim'
 source ~/.vim/rc/plugin/memolist.vim
 
-Plugin 'scrooloose/nerdtree'
-source ~/.vim/rc/plugin/nerdtree.vim
+" ファイラー
+Plugin 'cocopon/vaffle.vim'
+source ~/.vim/rc/plugin/vaffle.vim
 
 " Gitの差分表示
 Plugin 'tpope/vim-fugitive'
