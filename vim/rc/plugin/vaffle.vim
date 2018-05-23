@@ -1,1 +1,1 @@
-nnoremap <Leader>o :e .<CR>
+nnoremap <Leader>v :e .<CR>

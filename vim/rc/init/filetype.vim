@@ -17,3 +17,7 @@ autocmd FileType jsp,asp,php,xml,perl,html,javascript,css syntax sync minlines=5
 
 au FileType markdown setlocal nowrap
 au FileType html,xml,fxml setlocal nowrap textwidth=0
+
+" changelog
+let g:changelog_dateformat = "%Y/%m/%d %H:%M:%S"
+let g:changelog_username = ""

@@ -55,8 +55,15 @@ source ~/.vim/rc/plugin/vim-table-mode.vim
 
 Plugin 'hail2u/vim-css3-syntax'
 
+" Javascript
 Plugin 'pangloss/vim-javascript'
+Plugin 'mattn/jscomplete-vim'
 
+" Node.js
+Plugin 'myhere/vim-nodejs-complete'
+source ~/.vim/rc/plugin/vim-nodejs-complete.vim
+
+" 括り文字操作
 Plugin 'tpope/vim-surround'
 
 " 括弧補完
