@@ -14,6 +14,25 @@ nnoremap <C-n> :
 " 一文字削除でヤンクを上書きしない
 nnoremap x "_x
 
+" ヤンク、ペーストにクリップボードを使う
+nnoremap y "+y
+vnoremap y "+y
+nnoremap Y "+Y
+vnoremap Y "+Y
+nnoremap p "+p
+vnoremap p "+p
+nnoremap P "+P
+vnoremap P "+P
+nnoremap c "+c
+vnoremap c "+c
+nnoremap C "+C
+vnoremap C "+C
+nnoremap d "+d
+vnoremap d "+d
+nnoremap D "+D
+vnoremap D "+D
+
+
 " Yコマンドを他のコマンドの規則性に合わせる
 nnoremap Y y$
 

@@ -1,0 +1,46 @@
+" minvimrc は最小構成のvimrcです。
+"
+" 概要
+"   minvimrcは必要最低限の設定に絞ったvimrcです。
+"
+"   キーマッピングをvimの初期設定からあまりにも乖離するような設定はせず
+"   他人に「これコピペするといいよ」とすぐに共有でき
+"   且ついろんな環境で使える設定に絞っています。
+
+" シンタックスハイライト
+colorscheme desert
+syntax on
+
+" 危険なコマンドの無効化
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+nnoremap Q <Nop>
+
+set number           " 行番号を表示
+set ruler            " カーソルの位置表示
+set incsearch        " インクリメンタルサーチ
+set hlsearch         " 検索語句のハイライト
+set display=lastline " テキストが長すぎて表示しきれない場合でも表示する
+set synmaxcol=200    " 1行あたりのシンタックス解析の文字数
+set nrformats=       " 0から始まる数字もすべて10進数としてインクリメント可能に変更
+
+" ヤンク、ペーストにクリップボードを使う
+nnoremap y "+y
+vnoremap y "+y
+nnoremap Y "+Y
+vnoremap Y "+Y
+nnoremap p "+p
+vnoremap p "+p
+nnoremap P "+P
+vnoremap P "+P
+nnoremap x "+x
+vnoremap x "+x
+nnoremap c "+c
+vnoremap c "+c
+nnoremap C "+C
+vnoremap C "+C
+nnoremap d "+d
+vnoremap d "+d
+nnoremap D "+D
+vnoremap D "+D
+
