@@ -56,10 +56,15 @@ source ~/.vim/rc/plugin/vim-table-mode.vim
 Plugin 'hail2u/vim-css3-syntax'
 
 " Javascript
+" シンタックスハイライトとインデント
 Plugin 'pangloss/vim-javascript'
+
+" メソッド補完
 Plugin 'mattn/jscomplete-vim'
+source ~/.vim/rc/plugin/jscomplete-vim.vim
 
 " Node.js
+" メソッド補完
 Plugin 'myhere/vim-nodejs-complete'
 source ~/.vim/rc/plugin/vim-nodejs-complete.vim
 
