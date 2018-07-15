@@ -24,23 +24,3 @@ set display=lastline " テキストが長すぎて表示しきれない場合で
 set synmaxcol=200    " 1行あたりのシンタックス解析の文字数
 set nrformats=       " 0から始まる数字もすべて10進数としてインクリメント可能に変更
 
-" ヤンク、ペーストにクリップボードを使う
-nnoremap y "+y
-vnoremap y "+y
-nnoremap Y "+Y
-vnoremap Y "+Y
-nnoremap p "+p
-vnoremap p "+p
-nnoremap P "+P
-vnoremap P "+P
-nnoremap x "+x
-vnoremap x "+x
-nnoremap c "+c
-vnoremap c "+c
-nnoremap C "+C
-vnoremap C "+C
-nnoremap d "+d
-vnoremap d "+d
-nnoremap D "+D
-vnoremap D "+D
-
