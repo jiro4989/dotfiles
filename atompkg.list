@@ -1,7 +1,6 @@
 autocomplete@0.47.0
 autocomplete-python@1.10.5
 file-icons@2.1.19
-git-checkout@0.3.2
 git-control@0.9.0
 git-log@0.4.1
 git-plus@7.10.2
@@ -9,7 +8,9 @@ go-plus@5.8.3
 japanese-menu@1.14.0
 language-batch@0.4.0
 language-markdown@0.25.1
+language-plantuml@0.2.0
 markdown-scroll-sync@2.1.2
+plantuml-viewer@0.7.2
 platformio-ide-terminal@2.8.1
 project-manager@3.3.5
 python-indent@1.1.5
