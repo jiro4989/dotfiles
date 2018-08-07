@@ -9,6 +9,3 @@ set runtimepath+=~/.vim/colors
 set runtimepath+=~/.vim/after/ftplugin
 
 runtime! rc/init/*.vim
-
-" プラグイン設定
-source ~/.vim/rc/plugin/vundle/init.vim
