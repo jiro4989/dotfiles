@@ -67,4 +67,7 @@ Plug 'cohama/lexima.vim'
 " ステータスラインの変更
 Plug 'Lokaltog/vim-powerline'
 
+" Markdownアウトライナ
+Plug 'vim-scripts/VOoM'
+
 call plug#end()
