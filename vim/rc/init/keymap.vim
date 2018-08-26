@@ -96,7 +96,7 @@ nnoremap Q <Nop>
 nnoremap <Leader><Leader>. :e $HOME/.vim/vimrc<CR>
 
 " プラグイン初期化ファイルを開く
-nnoremap <Leader><Leader>p :e $HOME/.vim/rc/plugin/vundle/init.vim<CR>
+nnoremap <Leader><Leader>p :e $HOME/.vim/rc/init/load-plugins.vim<CR>
 
 " コマンド
 "-------------------------------------------------------------------------------
