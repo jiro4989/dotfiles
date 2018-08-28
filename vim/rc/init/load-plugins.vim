@@ -70,4 +70,8 @@ Plug 'Lokaltog/vim-powerline'
 " Markdownアウトライナ
 Plug 'vim-scripts/VOoM'
 
+" 自作
+" Backlog
+Plug 'jiro4989/vim-backlog'
+
 call plug#end()
