@@ -64,9 +64,6 @@ Plug 'tpope/vim-surround'
 " 括弧補完
 Plug 'cohama/lexima.vim'
 
-" ステータスラインの変更
-Plug 'Lokaltog/vim-powerline'
-
 " Markdownアウトライナ
 Plug 'vim-scripts/VOoM'
 
