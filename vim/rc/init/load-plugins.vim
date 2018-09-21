@@ -67,6 +67,9 @@ Plug 'cohama/lexima.vim'
 " Markdownアウトライナ
 Plug 'vim-scripts/VOoM'
 
+" CSVハイライト
+Plug 'mechatroner/rainbow_csv'
+
 " 自作
 " Backlog
 Plug 'jiro4989/vim-backlog'
