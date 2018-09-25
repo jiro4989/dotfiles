@@ -70,6 +70,9 @@ Plug 'vim-scripts/VOoM'
 " CSVハイライト
 Plug 'mechatroner/rainbow_csv'
 
+" Vue
+Plug 'posva/vim-vue'
+
 " 自作
 " Backlog
 Plug 'jiro4989/vim-backlog'
