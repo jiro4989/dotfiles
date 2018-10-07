@@ -77,7 +77,7 @@ Plug 'posva/vim-vue'
 Plug 'vim-scripts/Align'
 Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
 
-Plug "aklt/plantuml-syntax", { 'for':'puml' }
+Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
 " 自作
 " Backlog
