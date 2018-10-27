@@ -79,6 +79,10 @@ Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
 
 Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
+" コメントアウト
+Plug 'tyru/caw.vim'
+source ~/.vim/rc/plugin/caw.vim
+
 " 自作
 " Backlog
 Plug 'jiro4989/vim-backlog'
