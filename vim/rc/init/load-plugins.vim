@@ -83,6 +83,12 @@ Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 Plug 'tyru/caw.vim'
 source ~/.vim/rc/plugin/caw.vim
 
+" 折りたたみタイトル
+Plug 'LeafCage/foldCC'
+
+" ヤンクハイライト
+Plug 'machakann/vim-highlightedyank'
+
 " 自作
 " Backlog
 Plug 'jiro4989/vim-backlog'
