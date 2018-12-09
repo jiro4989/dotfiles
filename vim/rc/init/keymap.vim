@@ -46,6 +46,13 @@ vnoremap gs :s///g<Left><Left><Left>
 " ファイル全体のインデント
 nnoremap <Leader><Leader>i mhgg=G'h
 
+" クリップボード操作
+nnoremap <C-c> V"+y
+nnoremap <C-x> V"+d
+vnoremap <C-c> "+y
+vnoremap <C-x> "+d
+nnoremap <C-g> "+p
+
 " 検索{{{
 "" 標準の検索でのエスケープを不要にする
 nnoremap / /\v
