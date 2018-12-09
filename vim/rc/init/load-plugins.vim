@@ -89,6 +89,9 @@ Plug 'LeafCage/foldCC'
 " ヤンクハイライト
 Plug 'machakann/vim-highlightedyank'
 
+" Nim
+Plug 'zah/nim.vim'
+
 " 自作
 " Backlog
 Plug 'jiro4989/vim-backlog'
