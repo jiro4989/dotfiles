@@ -48,7 +48,7 @@ nnoremap <Leader><Leader>i mhgg=G'h
 
 " クリップボード操作
 nnoremap <C-c> V"+y
-nnoremap <C-x> V"+d
+"nnoremap <C-x> V"+d
 vnoremap <C-c> "+y
 vnoremap <C-x> "+d
 nnoremap <C-g> "+p
