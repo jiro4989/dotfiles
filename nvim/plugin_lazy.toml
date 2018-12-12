@@ -1,0 +1,61 @@
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = '''source expand('<sfile>:p:h')/plugin.d/vim-go.vim'''
+on_ft = ['go']
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['puml']
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+hook_add = '''source expand('<sfile>:p:h')/plugin.d/vim-markdown.vim'''
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+hook_add = '''source expand('<sfile>:p:h')/plugin.d/vim-table-mode.vim'''
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+hook_add = '''source expand('<sfile>:p:h')/plugin.d/emmet-vim.vim'''
+on_ft = ['html']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = ['css']
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'mattn/jscomplete-vim'
+hook_add = '''source expand('<sfile>:p:h')/plugin.d/jscomplete-vim.vim'''
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'myhere/vim-nodejs-complete'
+hook_add = '''source expand('<sfile>:p:h')/plugin.d/vim-nodejs-complete.vim'''
+on_ft = ['javascript']
+
+# Markdown Outliner
+[[plugins]]
+repo = 'vim-scripts/VOoM'
+on_ft = ['markdown']
+
+# highlight CSV
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'
+on_ft = ['csv']
+
+# nim
+[[plugins]]
+repo = 'zah/nim.vim'
+on_ft = ['nim']
+
