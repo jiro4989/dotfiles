@@ -8,4 +8,6 @@ set ambiwidth=double          " □といった文字が崩れる問題の解決
 set runtimepath+=~/.vim/colors
 set runtimepath+=~/.vim/after/ftplugin
 
-runtime! rc/init/*.vim
+runtime! conf.d/*.vim
+
+source <sfile>:p:h/plugins.vim
