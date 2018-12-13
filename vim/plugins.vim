@@ -76,9 +76,6 @@ Plug 'vim-scripts/VOoM'
 " CSVハイライト
 Plug 'mechatroner/rainbow_csv'
 
-" Vue
-Plug 'posva/vim-vue'
-
 " SQL Formatter
 Plug 'vim-scripts/Align'
 Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
@@ -97,9 +94,5 @@ Plug 'machakann/vim-highlightedyank'
 
 " Nim
 Plug 'zah/nim.vim'
-
-" 自作
-" Backlog
-Plug 'jiro4989/vim-backlog'
 
 call plug#end()
