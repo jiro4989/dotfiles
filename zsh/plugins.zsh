@@ -8,8 +8,9 @@ if [ ! -e "$ZPLUG_HOME" ]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
 zplug "mollifier/cd-gitroot"
-zplug "b4b4r07/enhancd", use:enhancd.sh
+zplug "b4b4r07/enhancd", use:init.sh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
@@ -21,5 +22,4 @@ if ! zplug check --verbose; then
   fi
 fi
 
-# zplug load --verbose
 zplug load
