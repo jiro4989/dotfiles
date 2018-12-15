@@ -45,6 +45,16 @@ tree -L 1 --charset=C
 
 シンボリックリンクを貼るコマンドは下記。
 
+vim用
+
 ```bash
 ln -sfn $HOME/dotfiles/vim $HOME/.vim
 ```
+
+nvim用
+
+```bash
+mkdir -p $HOME/.config
+ln -sfn $HOME/dotfiles/vim $HOME/.config/nvim
+```
+
