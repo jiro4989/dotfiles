@@ -1,1 +1,1 @@
-source ~/.config/nvim/vimrc
+source $HOME/.config/nvim/vimrc
