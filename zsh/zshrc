@@ -1,8 +1,14 @@
 #!/usr/bin/env zsh
 
 script_dir=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
+lib_dir="$script_dir/../lib/sh"
 
 setopt prompt_subst #表示毎にPROMPTで設定されている文字列を評価する
+
+# bash/zsh共通設定
+for f in "$lib_dir"/*.sh; do
+  source "$f"
+done
 
 # sourceで直接複数指定できないみたいだったのでforループ
 for f in "$script_dir"/conf.d/*.zsh; do
