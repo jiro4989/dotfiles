@@ -3,6 +3,11 @@
 export ZPLUG_HOME="$HOME/.zplug"
 source "$ZPLUG_HOME/init.zsh"
 
+# zplugが入ってなければインストール
+if [ ! -e "$ZPLUG_HOME" ]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+fi
+
 zplug "mollifier/cd-gitroot"
 zplug "b4b4r07/enhancd", use:enhancd.sh
 zplug "zsh-users/zsh-completions"

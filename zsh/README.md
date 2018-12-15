@@ -1,5 +1,5 @@
-zplug
+`$HOME/.zshrc`に以下の設定を追記するだけで設定完了
 
 ```bash
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+source $HOME/src/github.com/jiro4989/dotfiles/zsh/zshrc
 ```
