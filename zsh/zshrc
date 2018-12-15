@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+script_dir=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
+
+# sourceで直接複数指定できないみたいだったのでforループ
+for f in "$script_dir"/conf.d/*.zsh; do
+  source "$f"
+done
+
+source "$script_dir/plugins.zsh"
