@@ -36,3 +36,14 @@ tree -L 1 --charset=C
 | conf.d                | vim標準機能の各種設定ファイルを配置                           |
 | conf.plugins.d        | vimpluginの各種設定ファイルを配置。ファイル名はpluginname.vim |
 
+## 設定の適用方法
+
+`$HOME/.vim`にこのvimディレクトリのシンボリックリンクを貼るだけで機能する。
+配置後はvimのプラグインマネージャで各種プラグインをインストールすれば
+プラグイン設定も完了する。
+
+シンボリックリンクを貼るコマンドは下記。
+
+```bash
+ln -sfn $HOME/dotfiles/vim $HOME/.vim
+```
