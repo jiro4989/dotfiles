@@ -18,12 +18,12 @@ tree -L 1 --charset=C
     |-- dict
     |-- gvimrc
     |-- init.vim
-    |-- minvimrc
     |-- plugged
     |-- plugins.vim
     |-- template
     |-- vimperatorrc
     |-- vimrc
+    |-- vimrc.min
     `-- vrapperrc
 
 ## 設定
@@ -31,9 +31,9 @@ tree -L 1 --charset=C
 | ファイル/ディレクトリ | 説明                                                          |
 |-----------------------|---------------------------------------------------------------|
 | vimrc                 | 設定の起点。いわゆるindex的な設定                             |
+| vimrc.min             | 最小構成vimrc。プラグインなし。コピペで済む                   |
 | plugins.vim           | プラグイン設定のindex。vimrcからsourceされる。                |
 | init.vim              | neovimの設定。実体はvimrcをsourceするだけ                     |
-| minvimrc              | 最小構成vimrc。プラグインなし。コピペで済む                   |
 | conf.d                | vim標準機能の各種設定ファイルを配置                           |
 | conf.plugins.d        | vimpluginの各種設定ファイルを配置。ファイル名はpluginname.vim |
 
