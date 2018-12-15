@@ -48,13 +48,14 @@ tree -L 1 --charset=C
 vim用
 
 ```bash
-ln -sfn $HOME/dotfiles/vim $HOME/.vim
+ln -sfn $HOME/src/github.com/jiro4989/dotfiles/vim $HOME/.vim
+
 ```
 
 nvim用
 
 ```bash
 mkdir -p $HOME/.config
-ln -sfn $HOME/dotfiles/vim $HOME/.config/nvim
+ln -sfn $HOME/src/github.com/jiro4989/dotfiles/vim $HOME/.config/nvim
 ```
 
