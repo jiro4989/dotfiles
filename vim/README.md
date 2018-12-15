@@ -31,8 +31,9 @@ tree -L 1 --charset=C
 | ファイル/ディレクトリ | 説明                                                          |
 |-----------------------|---------------------------------------------------------------|
 | vimrc                 | 設定の起点。いわゆるindex的な設定                             |
+| plugins.vim           | プラグイン設定のindex。vimrcからsourceされる。                |
 | init.vim              | neovimの設定。実体はvimrcをsourceするだけ                     |
-| plugins.vim           | vimrcからsource。プラグイン設定のindex                        |
+| minvimrc              | 最小構成vimrc。プラグインなし。コピペで済む                   |
 | conf.d                | vim標準機能の各種設定ファイルを配置                           |
 | conf.plugins.d        | vimpluginの各種設定ファイルを配置。ファイル名はpluginname.vim |
 
