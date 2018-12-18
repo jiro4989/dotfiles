@@ -8,7 +8,6 @@ else
 endif
 
 set number           " 行番号を表示
-set relativenumber   " カーソル位置からの相対行番号を表示
 set ruler            " カーソルの位置表示
 set incsearch        " インクリメンタルサーチ
 set hlsearch         " 検索語句のハイライト
