@@ -1,3 +1,7 @@
+setlocal expandtab
+setlocal tabstop=4
+setlocal shiftwidth=4
+
 inorea sinit def __init__(self):
 inorea smain if __name__ == '__main__':
 inorea ccc <Esc>A:<Esc>

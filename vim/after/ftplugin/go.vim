@@ -1,3 +1,7 @@
+setlocal noexpandtab
+setlocal tabstop=4
+setlocal shiftwidth=4
+
 " 出力
 inorea pri fmt.Println()<ESC><LEFT>
 inorea lpe log.Println(err)<ESC>
