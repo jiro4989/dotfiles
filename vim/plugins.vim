@@ -1,7 +1,5 @@
-let s:base_dir = expand('<sfile>:p:h')
-
 function! s:_source(filename)
-  return execute('source ' . s:base_dir . '/conf.plugins.d/' . a:filename)
+  return execute('source ' . g:CONFIG_ROOT_DIR . '/conf.plugins.d/' . a:filename)
 endfunction
 
 call plug#begin('~/.vim/plugged')
