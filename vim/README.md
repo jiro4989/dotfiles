@@ -45,6 +45,8 @@ tree -L 1 --charset=C
 
 シンボリックリンクを貼るコマンドは下記。
 
+### Linux用
+
 vim用
 
 ```bash
@@ -57,5 +59,14 @@ nvim用
 ```bash
 mkdir -p $HOME/.config
 ln -sfn $HOME/src/github.com/jiro4989/dotfiles/vim $HOME/.config/nvim
+```
+
+### Windows用
+
+vim用
+
+```bash
+mklink /D %userprofile%\.vim %userprofile%\src\github.com\jiro4989\dotfiles\vim
+mklink /D %userprofile%\vimfiles %userprofile%\src\github.com\jiro4989\dotfiles\vim
 ```
 
