@@ -8,6 +8,7 @@ au BufNewFile,BufRead *.py     setlocal expandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufRead Makefile,*.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " 新規ファイルを開いた時にテンプレートを読み込む
+" TODO: ここのテンプレート指定がいけてない
 au BufNewFile *.py 0r        $HOME/.vim/template/python.txt
 au BufNewFile *.java 0r      $HOME/.vim/template/java.txt
 au BufNewFile *.sh,*.bash 0r $HOME/.vim/template/bash.txt
