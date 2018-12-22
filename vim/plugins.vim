@@ -6,7 +6,8 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 
-" 追加で導入するプラグイン
+" 導入するプラグイン記述する範囲 {{{
+" 初期化{{{
 
 " 統一的UI
 Plug 'Shougo/unite.vim'
@@ -17,6 +18,8 @@ Plug 'Shougo/neocomplete.vim'
 call s:_source('neocomplete.vim')
 
 Plug 'Shougo/neomru.vim'
+"}}}
+" 全般/共通{{{
 
 " ファイラー
 Plug 'cocopon/vaffle.vim'
@@ -41,7 +44,7 @@ Plug 'LeafCage/foldCC'
 
 " ヤンクハイライト
 Plug 'machakann/vim-highlightedyank'
-
+"}}}
 " Git{{{
 " Gitクライアント
 Plug 'tpope/vim-fugitive'
@@ -51,7 +54,6 @@ call s:_source('vim-fugitive.vim')
 Plug 'airblade/vim-gitgutter'
 call s:_source('vim-gitgutter.vim')
 "}}}
-
 " 拡張子別 {{{
 
 " Go
@@ -113,6 +115,7 @@ Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
 
 " PlantUML
 Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
+"}}}
 "}}}
 
 call plug#end()
