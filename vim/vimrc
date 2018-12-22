@@ -12,4 +12,4 @@ let g:CONFIG_ROOT_DIR = expand('<sfile>:p:h')
 
 runtime! conf.d/*.vim
 
-source <sfile>:p:h/plugins.vim
+execute('source ' . g:CONFIG_ROOT_DIR . '/plugins.vim')
