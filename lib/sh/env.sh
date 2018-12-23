@@ -9,7 +9,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 # Go
 export GOPATH=$HOME
-export PATH=$PATH:/usr/lib/go-1.10/bin
 
 # 追加したコマンド系
 export PATH=$PATH:$HOME/bin
