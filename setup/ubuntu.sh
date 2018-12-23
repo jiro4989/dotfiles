@@ -23,6 +23,7 @@ update-alternatives --config x-terminal-emulator
 # 日本語入力
 sudo apt-get install -y ibus-mozc
 #}}}
+
 # ghqでdotfilesを取得 {{{
 export GOPATH=$HOME
 export PATH=$PATH:$HOME/bin
@@ -30,12 +31,14 @@ sudo apt install -y golang-1.10
 go get github.com/motemen/ghq
 ghq get jiro4989/dotfiles
 #}}}
+
 # bash/zsh{{{
 my_repo=~/src/github.com/jiro4989
 dot_dir="$my_repo/dotfiles"
 echo "source $dot_dir/bash/bashrc" >> ~/.bashrc
 echo "source $dot_dir/zsh/zshrc" >> ~/.zshrc
 #}}}
+
 # git config{{{
 git config --global user.email "jiroron666@gmail.com"
 git config --global user.name "jiro4989"
@@ -44,6 +47,7 @@ git config --global alias.see "browse"
 git config --global ghq.root "~/src"
 git config --global commit.template "$dot_dir/git/commit.template"
 #}}}
+
 # docker{{{
 sudo apt install docker.io
 
@@ -55,11 +59,13 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 sudo systemctl enable docker
 #}}}
+
 # emacs{{{
 sudo apt-get install -y emacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -sf $HOME/dotfiles/.spacemacs $HOME/.emacs.d/
 #}}}
+
 # go{{{
 go get -u github.com/cweill/gotests/...
 go get -u github.com/mholt/archiver/cmd/archiver
@@ -116,6 +122,7 @@ go get -u github.com/skanehira/docui
 # リポジトリ管理
 go get github.com/motemen/ghq
 #}}}
+
 # gtk theme{{{
 git clone https://github.com/tliron/install-gnome-themes /tmp/install-gnome-themes
 sudo apt install ruby
@@ -129,11 +136,13 @@ sudo apt install papirus-icon-theme
 # app thems
 sudo apt install materia-gtk-theme
 #}}}
+
 # vim{{{
 sudo apt install vim
 sudo apt install vim-gnome
 ln -snf "$dot_dir/vim" $HOME/.vim
 #}}}
+
 # nvim{{{
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
@@ -141,6 +150,7 @@ sudo mv nvim.appimage /usr/bin/nvim
 mkdir -p $HOME/.config
 ln -snf "$dot_dir/vim" "$HOME/.config/nvim"
 #}}}
+
 # atom{{{
 sudo add-apt-repository ppa:webupd8team/atom
 sudo apt-get update
