@@ -1,6 +1,6 @@
 # dotfiles
 
-設定ファイルを管理する。
+設定ファイルと環境構築スクリプトを管理する。
 
 ## ディレクトリ構成
 
@@ -28,12 +28,15 @@ tree -dL 2 --charset=C
         |-- conf.d
         `-- img
 
-## vim
+## 環境構築
 
-設定ファイルはここで管理しているけれど、vimの環境を構築するスクリプトは別で管理
-している。リポジトリは[scripts](https://github.com/jiro4989/scripts)で管理。
+以下のコマンドを実行.
 
-`scripts/shell/vim.sh`を実行するだけでvimの環境構築は完了する。
+Ubuntu用
+
+```bash
+curl https://raw.githubusercontent.com/jiro4989/dotfiles/master/setup/ubuntu.sh | bash
+```
 
 ## lib/sh
 
