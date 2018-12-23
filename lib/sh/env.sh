@@ -18,7 +18,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.cargo/bin
 
 # nim
-export PATH=/home/jiro/.nimble/bin:$PATH
+export PATH=$PATH:$HOME/.nimble/bin
 
 export BROWSER=chromium-browser
 
