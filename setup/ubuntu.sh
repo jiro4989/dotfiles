@@ -57,7 +57,6 @@ main() { #{{{
 } # }}}
 
 setup_general() { #{{{
-  # 全般
   # ユーザフォルダの日本語を英語に変更
   LANG=C xdg-user-dirs-gtk-update
 
@@ -85,13 +84,11 @@ setup_ghq() { # {{{
 } # }}}
 
 setup_shell() { # {{{
-  # bash/zsh
   echo "source $dot_dir/bash/bashrc" >>~/.bashrc
   echo "source $dot_dir/zsh/zshrc" >>~/.zshrc
 } # }}}
 
 setup_git_config() { # {{{
-  # git config
   git config --global user.email "jiroron666@gmail.com"
   git config --global user.name "jiro4989"
   git config --global alias.pr "pull-request"
@@ -101,7 +98,6 @@ setup_git_config() { # {{{
 } # }}}
 
 setup_docker() { # {{{
-  # docker
   sudo apt install docker.io
 
   sudo groupadd docker
@@ -114,14 +110,12 @@ setup_docker() { # {{{
 } # }}}
 
 setup_emacs() { # {{{
-  # emacs
   sudo apt-get install -y emacs
   git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
   ln -sf $HOME/dotfiles/.spacemacs $HOME/.emacs.d/
 } # }}}
 
 setup_go() { # {{{
-  # go
   go get -u github.com/cweill/gotests/...
   go get -u github.com/mholt/archiver/cmd/archiver
 
@@ -179,7 +173,6 @@ setup_go() { # {{{
 } # }}}
 
 setup_gtk_theme() { # {{{
-  # gtk theme
   git clone https://github.com/tliron/install-gnome-themes /tmp/install-gnome-themes
   sudo apt install ruby
   /tmp/install-gnome-themes/install-gnome-themes
@@ -194,14 +187,12 @@ setup_gtk_theme() { # {{{
 } # }}}
 
 setup_vim() { # {{{
-  # vim
   sudo apt install vim
   sudo apt install vim-gnome
   ln -snf "$dot_dir/vim" $HOME/.vim
 } # }}}
 
 setup_nvim() { # {{{
-  # nvim
   curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
   chmod u+x nvim.appimage
   sudo mv nvim.appimage /usr/bin/nvim
@@ -210,7 +201,6 @@ setup_nvim() { # {{{
 } # }}}
 
 setup_atom() { # {{{
-  # atom
   sudo add-apt-repository ppa:webupd8team/atom
   sudo apt-get update
   sudo apt-get upgrade -y
