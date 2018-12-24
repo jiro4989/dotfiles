@@ -32,6 +32,8 @@ main() { #{{{
     _nvim) setup_nvim ;;
     _atom) setup_atom ;;
     _)
+      # サブコマンド指定がない場合は全部のタスクを実行する
+      # curl URL | bash でスクリプトを実行するための対応
       sudo apt update -y
 
       setup_general
