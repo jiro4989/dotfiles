@@ -31,6 +31,11 @@ main() { #{{{
     _vim) setup_vim ;;
     _nvim) setup_nvim ;;
     _atom) setup_atom ;;
+    _mac_ubuntu) 
+      # mac_ubuntuは必ずしも入れるわけではないので
+      # 全部タスクの方には含めない
+      setup_mac_ubuntu
+      ;;
     _)
       # サブコマンド指定がない場合は全部のタスクを実行する
       # curl URL | bash でスクリプトを実行するための対応
@@ -206,6 +211,16 @@ setup_atom() { # {{{
   sudo apt-get upgrade -y
   sudo apt-get install -y atom
 } # }}}
+
+setup_mac_ubuntu() { #{{{
+  sudo add-apt-repository ppa:noobslab/macbuntu
+  sudo apt-get update -y
+  sudo apt-get install -y macbuntu-os-icons-lts-v7 macbuntu-os-ithemes-lts-v7
+  sudo apt-get install -y slingscold
+  sudo apt-get install -y albert
+  sudo apt-get install -y plank
+  sudo apt-get install -y macbuntu-os-plank-theme-lts-v7
+} #}}}
 
 usage() { # {{{
   local script_name
