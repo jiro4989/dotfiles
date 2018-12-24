@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # ls頻出オプション
+alias ls='ls --color=auto'
 alias ll='ls -la'
 alias llh='ls -lah'
 
