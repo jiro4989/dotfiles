@@ -7,7 +7,7 @@ export PATH=$PATH:$HOME/bin
 my_repo=~/src/github.com/jiro4989
 dot_dir="$my_repo/dotfiles"
 
-main() {#{{{
+main() { #{{{
   # ヘルプオプションチェック
   case "$sub_cmd" in
     -h | --help | help)
@@ -52,9 +52,9 @@ main() {#{{{
       usage
       ;;
   esac
-}#}}}
+} # }}}
 
-setup_general() {#{{{
+setup_general() { #{{{
   # 全般
   # ユーザフォルダの日本語を英語に変更
   LANG=C xdg-user-dirs-gtk-update
@@ -73,22 +73,22 @@ setup_general() {#{{{
 
   # 日本語入力
   sudo apt-get install -y ibus-mozc
-}#}}}
+} # }}}
 
-setup_ghq() {#{{{
+setup_ghq() { # {{{
   # ghqでdotfilesを取得
   sudo apt install -y golang-1.10
   go get github.com/motemen/ghq
   ghq get jiro4989/dotfiles
-}#}}}
+} # }}}
 
-setup_shell() {#{{{
+setup_shell() { # {{{
   # bash/zsh
   echo "source $dot_dir/bash/bashrc" >>~/.bashrc
   echo "source $dot_dir/zsh/zshrc" >>~/.zshrc
-}#}}}
+} # }}}
 
-setup_git_config() {#{{{
+setup_git_config() { # {{{
   # git config
   git config --global user.email "jiroron666@gmail.com"
   git config --global user.name "jiro4989"
@@ -96,9 +96,9 @@ setup_git_config() {#{{{
   git config --global alias.see "browse"
   git config --global ghq.root "~/src"
   git config --global commit.template "$dot_dir/git/commit.template"
-}#}}}
+} # }}}
 
-setup_docker() {#{{{
+setup_docker() { # {{{
   # docker
   sudo apt install docker.io
 
@@ -109,16 +109,16 @@ setup_docker() {#{{{
   sudo chmod +x /usr/local/bin/docker-compose
 
   sudo systemctl enable docker
-}#}}}
+} # }}}
 
-setup_emacs() {#{{{
+setup_emacs() { # {{{
   # emacs
   sudo apt-get install -y emacs
   git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
   ln -sf $HOME/dotfiles/.spacemacs $HOME/.emacs.d/
-}#}}}
+} # }}}
 
-setup_go() {#{{{
+setup_go() { # {{{
   # go
   go get -u github.com/cweill/gotests/...
   go get -u github.com/mholt/archiver/cmd/archiver
@@ -174,9 +174,9 @@ setup_go() {#{{{
 
   # リポジトリ管理
   go get github.com/motemen/ghq
-}#}}}
+} # }}}
 
-setup_gtk_theme() {#{{{
+setup_gtk_theme() { # {{{
   # gtk theme
   git clone https://github.com/tliron/install-gnome-themes /tmp/install-gnome-themes
   sudo apt install ruby
@@ -189,36 +189,36 @@ setup_gtk_theme() {#{{{
 
   # app thems
   sudo apt install materia-gtk-theme
-}#}}}
+} # }}}
 
-setup_vim() {#{{{
+setup_vim() { # {{{
   # vim
   sudo apt install vim
   sudo apt install vim-gnome
   ln -snf "$dot_dir/vim" $HOME/.vim
-}#}}}
+} # }}}
 
-setup_nvim() {#{{{
+setup_nvim() { # {{{
   # nvim
   curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
   chmod u+x nvim.appimage
   sudo mv nvim.appimage /usr/bin/nvim
   mkdir -p $HOME/.config
   ln -snf "$dot_dir/vim" "$HOME/.config/nvim"
-}#}}}
+} # }}}
 
-setup_atom() {#{{{
+setup_atom() { # {{{
   # atom
   sudo add-apt-repository ppa:webupd8team/atom
   sudo apt-get update
   sudo apt-get upgrade -y
   sudo apt-get install -y atom
-}#}}}
+} # }}}
 
-usage() {#{{{
+usage() { # {{{
   script_name=$(basename $0)
   cat <<EOS
-$script_name is script to setup OS.
+$script_name is script to setup Ubuntu OS.
 
 description:
     if you execute script with taskname then, script executes one task.
@@ -230,6 +230,6 @@ usage:
     $script_name
 EOS
   exit 1
-}#}}}
+} # }}}
 
 main
