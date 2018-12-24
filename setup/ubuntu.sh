@@ -208,6 +208,7 @@ setup_atom() { # {{{
 } # }}}
 
 usage() { # {{{
+  local script_name
   script_name=$(basename $0)
   cat <<EOS
 $script_name is script to setup Ubuntu OS.
