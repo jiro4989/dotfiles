@@ -72,13 +72,13 @@ setup_general() { #{{{
   sudo echo "blacklist pcspkr" >>/etc/modprobe.d/blacklist.conf
 
   # フォント 'Ricty Diminished'
-  sudo apt-get install -y fonts-ricty-diminished
+  sudo apt install -y fonts-ricty-diminished
 
   # デフォルトターミナルの変更
   update-alternatives --config x-terminal-emulator
 
   # 日本語入力
-  sudo apt-get install -y ibus-mozc
+  sudo apt install -y ibus-mozc
 } # }}}
 
 setup_ghq() { # {{{
@@ -115,7 +115,7 @@ setup_docker() { # {{{
 } # }}}
 
 setup_emacs() { # {{{
-  sudo apt-get install -y emacs
+  sudo apt install -y emacs
   git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
   ln -sf $HOME/dotfiles/.spacemacs $HOME/.emacs.d/
 } # }}}
@@ -207,19 +207,19 @@ setup_nvim() { # {{{
 
 setup_atom() { # {{{
   sudo add-apt-repository ppa:webupd8team/atom
-  sudo apt-get update
-  sudo apt-get upgrade -y
-  sudo apt-get install -y atom
+  sudo apt update
+  sudo apt upgrade -y
+  sudo apt install -y atom
 } # }}}
 
 setup_mac_ubuntu() { #{{{
   sudo add-apt-repository ppa:noobslab/macbuntu
-  sudo apt-get update -y
-  sudo apt-get install -y macbuntu-os-icons-lts-v7 macbuntu-os-ithemes-lts-v7
-  sudo apt-get install -y slingscold
-  sudo apt-get install -y albert
-  sudo apt-get install -y plank
-  sudo apt-get install -y macbuntu-os-plank-theme-lts-v7
+  sudo apt update -y
+  sudo apt install -y macbuntu-os-icons-lts-v7 macbuntu-os-ithemes-lts-v7
+  sudo apt install -y slingscold
+  sudo apt install -y albert
+  sudo apt install -y plank
+  sudo apt install -y macbuntu-os-plank-theme-lts-v7
 } #}}}
 
 usage() { # {{{
