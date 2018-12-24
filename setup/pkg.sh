@@ -71,7 +71,7 @@ $script_name is script to manage OS packages.
 
 description:
     "in"  subcommand installs packages from package list file.
-    "out" subcommand output packages to package list file.
+    "out" subcommand outputs packages to package list file.
 
     package list file is put to "pkg.d" directory.
 
