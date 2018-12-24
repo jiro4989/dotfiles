@@ -41,12 +41,12 @@ main() { #{{{
       setup_shell
       setup_git_config
       setup_docker
-      setup_emacs
       setup_go
       setup_gtk_theme
       setup_vim
       setup_nvim
       setup_atom
+      setup_emacs
 
       sudo apt upgrade -y
       ;;
