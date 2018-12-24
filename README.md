@@ -32,10 +32,20 @@ tree -dL 2 --charset=C
 
 以下のコマンドを実行.
 
-Ubuntu用
+### Ubuntu
+
+全部の環境構築
 
 ```bash
 curl https://raw.githubusercontent.com/jiro4989/dotfiles/master/setup/ubuntu.sh | bash
+```
+
+部分的に環境構築したい場合
+
+```bash
+./ubuntu.sh -h
+# -> 指定可能なサブコマンドが表示されるのでそれを指定する
+# ex: ./ubuntu.sh vim
 ```
 
 ## lib/sh
