@@ -43,9 +43,22 @@ curl https://raw.githubusercontent.com/jiro4989/dotfiles/master/setup/ubuntu.sh 
 部分的に環境構築したい場合
 
 ```bash
+cd setup
 ./ubuntu.sh -h
 # -> 指定可能なサブコマンドが表示されるのでそれを指定する
-# ex: ./ubuntu.sh vim
+#    ex: ./ubuntu.sh vim
+```
+
+インストールしたパッケージの入出力
+
+```bash
+cd setup
+
+# インストールする
+./pkg.sh in ubuntu
+
+# パッケージ一覧をファイル保存する
+./pkg.sh out ubuntu
 ```
 
 ## lib/sh
