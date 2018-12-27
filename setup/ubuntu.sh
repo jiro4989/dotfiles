@@ -175,6 +175,9 @@ setup_go() { # {{{
 
   # リポジトリ管理
   go get github.com/motemen/ghq
+
+  # JSONをGoの構造体に変換
+  go get github.com/ChimeraCoder/gojson/gojson
 } # }}}
 
 setup_gtk_theme() { # {{{
