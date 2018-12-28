@@ -11,6 +11,9 @@ alias lock='gnome-screensaver-command -l'
 # Gitのログをツリー状にし、ログを1行で出力する
 alias glog='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
 
+alias d='docker'
+alias dc='docker-compose'
+
 # xdg-openを省略で呼び出す
 e() {
   local v=$1
