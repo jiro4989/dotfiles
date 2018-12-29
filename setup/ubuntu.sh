@@ -117,7 +117,7 @@ setup_docker() { # {{{
 setup_emacs() { # {{{
   sudo apt install -y emacs
   git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-  ln -sf $HOME/dotfiles/.spacemacs $HOME/.emacs.d/
+  ln -sf $dot_dir/spacemacs/.spacemacs $HOME/.emacs.d/
 } # }}}
 
 setup_go() { # {{{
