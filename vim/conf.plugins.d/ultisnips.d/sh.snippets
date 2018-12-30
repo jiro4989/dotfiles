@@ -1,0 +1,33 @@
+snippet fori "for ((i=0; i<max; i++)) ..."
+for ((${1:Counter}=0; $1<${2:Max}; $1++)); do
+  ${3:Implementetion}
+done
+endsnippet
+
+global !p
+def parse_args(args):
+	varnames = []
+	for line in args.split("\n"):
+		vs = line.strip(" \t#-").split(" ")
+		if 0 < len(vs):
+			v = vs[0].strip()
+			if v == "":
+				continue
+			varnames.append(v)
+	ret = ""
+	for v in varnames:
+		ret += "local %s\n  " % (v)
+	for i, v in enumerate(varnames):
+		ret += "%s=$%d\n  " % (v, (i+1))
+	return ret.rstrip()
+endglobal
+
+snippet genf "関数を生成する"
+# ${1:FunctionName} は${2:Description}
+# - ${3:Arguments}
+$1() {
+  `!p snip.rv = parse_args(t[3])`
+
+  ${4:Implementetion}
+}
+endsnippet
