@@ -8,6 +8,8 @@ global !p
 def parse_args(args):
 	varnames = []
 	for line in args.split("\n"):
+		if not "# - " in line:
+			continue
 		vs = line.strip(" \t#-").split(" ")
 		if 0 < len(vs):
 			v = vs[0].strip()
@@ -26,7 +28,7 @@ snippet genf "関数を生成する"
 # ${1:FunctionName} は${2:Description}
 # - ${3:Arguments}
 $1() {
-  `!p snip.rv = parse_args(t[3])`
+  `!p snip.rv = parse_args("# - " + t[3])`
 
   ${4:Implementetion}
 }
