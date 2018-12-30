@@ -45,6 +45,7 @@ def _parse_field(field):
 		f = ft[0].strip()
 		t = ft[1].strip()
 		ret.append((f, t))
+	return ret
 
 def make_assert_equal(args):
 	# FIXME: この関数を実行すると落ちる
@@ -69,8 +70,9 @@ def make_assert_equal(args):
 	_ifs = [f[0] for f in ifs]
 	argsstr = ", ".join(_ifs).rstrip(", ")
 	exp_ret = [f[0] for f in efs]
+	exp_ret = ["got%d" % (i+1) for i, f in enumerate(exp_ret)]
 	_exp_ret = exp_ret
-	exp_ret = ", ".join(exp_ret).rstrip(", ")
+	exp_ret = ", ".join(exp_ret).rstrip()
 	exec_func = "%s := %s(%s)" % (exp_ret, func_name, argsstr)
 	ret.append(exec_func)
 	for i, v in enumerate([f[0] for f in efs]):
