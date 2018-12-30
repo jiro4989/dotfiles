@@ -1,6 +1,18 @@
-snippet genf
+snippet genf "関数を生成する"
 // ${1:FuncName} ${2:Desc}
 func $1($3) {
 	$4
+}
+endsnippet
+
+snippet fori "for loop"
+for $1 := 0; $1 < $2; $1++ {
+	$3
+}
+endsnippet
+
+snippet forv "for range loop"
+for _, $1 := range $2 {
+	$3
 }
 endsnippet
