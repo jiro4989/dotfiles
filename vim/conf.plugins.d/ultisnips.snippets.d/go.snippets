@@ -19,26 +19,80 @@ endsnippet
 snippet genf "関数を生成する"
 // ${1:funcName} ${2:desc}
 func $1(${3:arguments}) {
-	$4
+	${4:implementation}
 }
 endsnippet
+
+global !p
+def parse_field(field):
+	fts = ""
+	for line in field.split("\n"):
+		ft = line.strip().split(" ")
+		if len(ft) < 2:
+			continue
+		f = ft[0].strip()
+		t = ft[1].strip()
+		f = "%s: %s," % (f, t)
+		fts += "%s\n\t\t\t" % (f)
+	return fts.rstrip()
+
+def _parse_field(field):
+	ret = []
+	for line in field.split("\n"):
+		ft = line.strip().split(" ")
+		if len(ft) < 2:
+			continue
+		f = ft[0].strip()
+		t = ft[1].strip()
+		ret.append((f, t))
+
+def make_assert_equal(args):
+	# FIXME: この関数を実行すると落ちる
+	func_name         = args[1]
+	input_field_type  = args[2]
+	expect_field_type = args[3]
+	ifs = _parse_field(input_field_type)
+	efs = _parse_field(expect_field_type)
+	_ifs = [f[0] for f in ifs]
+	_efs = [f[0] for f in efs]
+	_ifs.extend(_efs)
+	var_names = ", ".join(_ifs).rstrip(", ")
+
+	_ifs = ["v." + f[0] for f in ifs]
+	_efs = ["v." + f[0] for f in efs]
+	_ifs.extend(_efs)
+	range_var_names = ", ".join(_ifs).rstrip(", ")
+	def_var = "%s := %s" % (var_names, range_var_names)
+	ret = []
+	ret.append(def_var)
+
+	_ifs = [f[0] for f in ifs]
+	argsstr = ", ".join(_ifs).rstrip(", ")
+	exp_ret = [f[0] for f in efs]
+	_exp_ret = exp_ret
+	exp_ret = ", ".join(exp_ret).rstrip(", ")
+	exec_func = "%s := %s(%s)" % (exp_ret, func_name, argsstr)
+	ret.append(exec_func)
+	for i, v in enumerate([f[0] for f in efs]):
+		assert_eq = "assert.Equal(t, %s, %s)" % (v, _exp_ret[i])
+		ret.append(assert_eq)
+	return "\n\t\t".join(ret).rstrip()
+endglobal
 
 snippet gent "テストコードを生成する"
 func Test${1:functionName}(t *testing.T) {
 	type TD struct {
-		$2 $3
-		$4 $5
+		${2:Input Field Type}
+		${3:Expect Field Type}
 	}
 	tds := []TD{
 		TD{
-			$2: $6,
-			$4: $7,
+			`!p snip.rv = parse_field(t[2])`
+			`!p snip.rv = parse_field(t[3])`
 		},
 	}
 	for _, v := range tds {
-		$2, $4 := v.$2, v.$4
-		ret := $1($2)
-		assert.Equal(t, $4, ret)
+		`!p snip.rv = make_assert_equal(t)`
 	}
 }
 endsnippet
