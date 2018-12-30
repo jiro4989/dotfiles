@@ -6,7 +6,7 @@ let maplocalleader = ","
 "-------------------------------------------------------------------------------
 
 " モード切替
-inoremap jj <Esc>
+" inoremap jj <Esc>
 noremap <C-j> <Esc>
 noremap! <C-j> <Esc>
 nnoremap <C-n> :
