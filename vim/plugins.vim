@@ -42,6 +42,14 @@ Plug 'LeafCage/foldCC'
 
 " ヤンクハイライト
 Plug 'machakann/vim-highlightedyank'
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+call s:_source('ultisnips.vim')
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
 "}}}
 " Git{{{
 " Gitクライアント
