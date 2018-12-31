@@ -15,6 +15,9 @@ call s:_source('unite.vim')
 Plug 'Shougo/neocomplete.vim'
 call s:_source('neocomplete.vim')
 
+" Plug 'Shougo/deoplete.nvim'
+" call s:_source('deoplete.nvim.vim')
+
 Plug 'Shougo/neomru.vim'
 "}}}
 " 全般/共通{{{
