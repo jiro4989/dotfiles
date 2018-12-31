@@ -83,7 +83,11 @@ setup_general() { #{{{
 
 setup_ghq() { # {{{
   # ghqでdotfilesを取得
-  sudo apt install -y golang-1.10
+
+  sudo add-apt-repository ppa:longsleep/golang-backports
+  sudo apt-get update
+  sudo apt-get install -y golang-go
+
   go get github.com/motemen/ghq
   ghq get jiro4989/dotfiles
 } # }}}
