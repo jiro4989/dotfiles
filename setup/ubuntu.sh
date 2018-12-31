@@ -79,6 +79,9 @@ setup_general() { #{{{
 
   # 日本語入力
   sudo apt install -y ibus-mozc
+
+  # python pip3
+  sudo apt install -y python3-pip
 } # }}}
 
 setup_ghq() { # {{{
@@ -210,6 +213,7 @@ setup_nvim() { # {{{
   sudo mv nvim.appimage /usr/bin/nvim
   mkdir -p $HOME/.config
   ln -snf "$dot_dir/vim" "$HOME/.config/nvim"
+  sudo -H pip3 install pynvim
 } # }}}
 
 setup_atom() { # {{{
