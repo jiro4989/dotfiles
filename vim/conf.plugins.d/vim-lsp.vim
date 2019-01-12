@@ -6,3 +6,12 @@ if executable('pyls')
     \ 'whitelist': ['python'],
     \ })
 endif
+
+" " Go
+" if executable('golsp')
+"     au User lsp_setup call lsp#register_server({
+"        \ 'name': 'golsp',
+"        \ 'cmd': {server_info->['golsp', '-mode', 'stdio']},
+"        \ 'whitelist': ['go'],
+"        \ })
+" endif
