@@ -53,6 +53,11 @@ call s:_source('ultisnips.vim')
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
+" Language Server
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "}}}
 " Git{{{
 " Gitクライアント

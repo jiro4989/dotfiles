@@ -82,6 +82,9 @@ setup_general() { #{{{
 
   # python pip3
   sudo apt install -y python3-pip
+
+  # Language Server
+  pip install python-language-server
 } # }}}
 
 setup_ghq() { # {{{
