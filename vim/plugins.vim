@@ -113,6 +113,8 @@ autocmd! User vim-markdown call s:_source('vim-markdown.vim')
 Plug 'dhruvasagar/vim-table-mode', { 'for':'markdown' }
 autocmd! User vim-table-mode call s:_source('vim-table-mode.vim')
 
+" Markdown形式の目次を自動生成する
+Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
 "}}}
 
 " TOML
