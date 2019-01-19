@@ -4,7 +4,7 @@
 export LANG=ja_JP.UTF-8
 
 # Java
-export JAVA_HOME=/usr/lib/jvm/java-10-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Go
