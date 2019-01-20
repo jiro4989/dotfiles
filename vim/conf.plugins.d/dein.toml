@@ -195,12 +195,12 @@ if executable('gopls')
   augroup END
 endif
 
-nnoremap <silent> <Leader>d :LspDefinition<CR>
-nnoremap <silent> <Leader>p :LspHover<CR>
-nnoremap <silent> <Leader>r :LspReferences<CR>
-nnoremap <silent> <Leader>i :LspImplementation<CR>
-nnoremap <silent> <Leader>s :split \| :LspDefinition <CR>
-nnoremap <silent> <Leader>v :vsplit \| :LspDefinition <CR>
+nnoremap <silent> <Leader>ld :LspDefinition<CR>
+nnoremap <silent> <Leader>lp :LspHover<CR>
+nnoremap <silent> <Leader>lr :LspReferences<CR>
+nnoremap <silent> <Leader>li :LspImplementation<CR>
+nnoremap <silent> <Leader>ls :split \| :LspDefinition <CR>
+nnoremap <silent> <Leader>lv :vsplit \| :LspDefinition <CR>
 """
 
 [[plugins]]
