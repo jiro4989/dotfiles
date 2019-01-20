@@ -1,5 +1,8 @@
-# 初期化{{{
+# ------------------------------------------------------------------------------
+#                                    初期化
+# ------------------------------------------------------------------------------
 
+# denite - キー入力による統一的インタフェース {{{
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = """
@@ -91,29 +94,32 @@ if dein#tap('denite.nvim')
         \)
 endif
 """
-
-# 補完
+# }}}
+# deoplete - 非同期自動補完{{{
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = """
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
 """
-
+# }}}
+# neomru - {{{
 [[plugins]]
 repo = 'Shougo/neomru.vim'
+# }}}
 
-#}}}
-# 全般/共通{{{
+# ------------------------------------------------------------------------------
+#                                  全般/共通
+# ------------------------------------------------------------------------------
 
-# ファイラー
+# defx - ファイラー{{{
 [[plugins]]
 repo = 'cocopon/vaffle.vim'
 hook_add = """
 nnoremap <Leader>v :e .<CR>
 """
-
-# 桁揃え
+# }}}
+# vim-alignta - 桁揃え{{{
 [[plugins]]
 repo = 'h1mesuke/vim-alignta'
 hook_add = """
@@ -123,32 +129,32 @@ vnoremap gf, :Align,<CR>
 vnoremap gf. :Align.<CR>
 vnoremap gf() :Align ( )<CR>
 """
-
-# 括り文字操作
+# }}}
+# vim-surround - 括り文字操作{{{
 [[plugins]]
 repo = 'tpope/vim-surround'
-
-# 括弧補完
+# }}}
+# lexima - 括弧補完{{{
 [[plugins]]
 repo = 'cohama/lexima.vim'
-
-# コメントアウト
+# }}}
+# caw - コメントアウト{{{
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = """
 nmap <Leader>c <Plug>(caw:I:toggle)
 vmap <Leader>c <Plug>(caw:I:toggle)
 """
-
-# 折りたたみ時のタイトル表示変更
+# }}}
+# foldCC - 折りたたみ時のタイトル表示変更{{{
 [[plugins]]
 repo = 'LeafCage/foldCC'
-
-# ヤンクハイライト
+# }}}
+# vim-highlightedyank - ヤンクハイライト{{{
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
-
-# Track the engine.
+# }}}
+# ultisnips - スニペット{{{
 [[plugins]]
 repo = 'SirVer/ultisnips'
 hook_add = """
@@ -162,12 +168,12 @@ let g:UltiSnipsEditSplit="vertical"
 
 let g:UltiSnipsSnippetDirectories=["conf.plugins.d/ultisnips.snippets.d"]
 """
-
-# Snippets are separated from the engine. Add this if you want them:
+# }}}
+# vimi-snippets - スニペット{{{
 [[plugins]]
 repo = 'honza/vim-snippets'
-
-# Language Server
+# }}}
+# *LSP - Language Server Protocol {{{
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 
@@ -214,29 +220,17 @@ let g:lsp_async_completion = 1
 
 [[plugins]]
 repo = 'natebosch/vim-lsc'
-
-#}}}
-# Git{{{
-# Gitクライアント
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-hook_add = """
-nmap [figitive] <Nop>
-map <Leader>g [figitive]
-nmap <silent> [figitive]s :<C-u>Gstatus<CR>
-nmap <silent> [figitive]d :<C-u>Gdiff<CR>
-nmap <silent> [figitive]b :<C-u>Gblame<CR>
-nmap <silent> [figitive]l :<C-u>Glog<CR>
-"""
-
-# 差分表示を左端に表示
+# }}}
+# vim-gitgutter - Gitファイル差分を左端に表示{{{
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+# }}}
 
-#}}}
-# 拡張子別 {{{
+# ------------------------------------------------------------------------------
+#                                    言語別
+# ------------------------------------------------------------------------------
 
-# Go
+# (Go) vim-go - IDE的な機能{{{
 [[plugins]]
 repo = 'fatih/vim-go'
 hook_add = """
@@ -254,41 +248,36 @@ let g:go_def_mapping_enabled = 0
 " GoTest時の画面分割
 let g:go_term_mode = 'split'
 """
-
-# Nim
+# }}}
+# (Nim) nim.vim - シンタックスハイライト{{{
 [[plugins]]
 repo = 'zah/nim.vim'
-
-# HTML/JS/CSS {{{
-
-# HTMLスニペット
+# }}}
+# (HTML) emmet-vim - スニペット{{{
 [[plugins]]
 repo = 'mattn/emmet-vim'
-
-# Javascript{{{
-# シンタックスハイライトとインデント
+# }}}
+# (JavaScript) vim-javascript - シンタックスハイライトとインデント{{{
 [[plugins]]
 repo = 'pangloss/vim-javascript'
-
-# メソッド補完
+# }}}
+# (JavaScript) jscomplete-vim - メソッド補完{{{
 [[plugins]]
 repo = 'mattn/jscomplete-vim'
 hook_add = """
 " DOMとMozilla関連とES6のメソッドを補完
 let g:jscomplete_use = ['dom', 'moz', 'es6th']
 """
-#}}}
-
-# CSS3
+# }}}
+# (CSS) vim-css3-syntax - CSS3シンタックスハイライト{{{
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
-#}}}
-
-# PowerShell
+# }}}
+# (PowerShell) vim-ps1 - シンタックスハイライト{{{
 [[plugins]]
 repo = 'PProvost/vim-ps1'
-
-# Node.js
+# }}}
+# (Node.js) vim-nodejs-complete - 補完{{{
 [[plugins]]
 repo = 'myhere/vim-nodejs-complete'
 hook_add = """
@@ -305,12 +294,12 @@ let g:nodejs_complete_config = {
 \  'max_node_compl_len': 15
 \}
 """
-
-# Markdown{{{
-# アウトライナ
+# }}}
+# (Markdown) VOoM - アウトライナ{{{
 [[plugins]]
 repo = 'vim-scripts/VOoM'
-
+# }}}
+# (Markdown) vim-markdown - シンタックスハイライト{{{
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
 hook_add = """
@@ -330,35 +319,35 @@ let g:vim_markdown_json_frontmatter=0
 " 折り畳み無効化
 set nofoldenable
 """
-
+# }}}
+# (Markdown) vim-table-mode - テーブル整形{{{
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
 hook_add = """
 let g:table_mode_corner='|'
 """
-
-# Markdown形式の目次を自動生成する
+# }}}
+# (Markdown) vim-markdown-toc - Markdown形式の目次の自動生成{{{
 [[plugins]]
 repo = 'mzlogin/vim-markdown-toc'
-#}}}
-
-# TOML
+# }}}
+# (TOML) vim-toml - シンタックスハイライト{{{
 [[plugins]]
 repo = 'cespare/vim-toml'
-
-# CSVハイライト
+# }}}
+# (CSV) rainbow_csv - 虹色ハイライト{{{
 [[plugins]]
 repo = 'mechatroner/rainbow_csv'
-
-# SQL{{{
-# Formatter
+# }}}
+# (SQL) Align - Formatter{{{
 [[plugins]]
 repo = 'vim-scripts/Align'
+# }}}
+# (SQL) SQLUtilities{{{
 [[plugins]]
 repo = 'vim-scripts/SQLUtilities'
-#}}}
-
-# PlantUML
+# }}}
+# (PlantUML) plantuml-syntax - シンタックスハイライト{{{
 [[plugins]]
 repo = 'aklt/plantuml-syntax'
-#}}}
+# }}}
