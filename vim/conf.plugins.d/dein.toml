@@ -1,0 +1,364 @@
+# 初期化{{{
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = """
+if dein#tap('denite.nvim')
+  " Add custom menus
+  let s:menus = {}
+  let s:menus.file = {'description': 'File search (buffer, file, file_rec, file_mru'}
+  let s:menus.line = {'description': 'Line search (change, grep, line, tag'}
+  let s:menus.others = {'description': 'Others (command, command_history, help)'}
+  let s:menus.file.command_candidates = [
+        \ ['buffer', 'Denite buffer'],
+        \ ['file: Files in the current directory', 'Denite file'],
+        \ ['file_rec: Files, recursive list under the current directory', 'Denite file_rec'],
+        \ ['file_mru: Most recently used files', 'Denite file_mru']
+        \ ]
+  let s:menus.line.command_candidates = [
+        \ ['change', 'Denite change'],
+        \ ['grep :grep', 'Denite grep'],
+        \ ['line', 'Denite line'],
+        \ ['tag', 'Denite tag']
+        \ ]
+  let s:menus.others.command_candidates = [
+        \ ['command', 'Denite command'],
+        \ ['command_history', 'Denite command_history'],
+        \ ['help', 'Denite help']
+        \ ]
+
+  call denite#custom#var('menu', 'menus', s:menus)
+
+  nnoremap [denite] <Nop>
+  nmap <Leader>f [denite]
+  nnoremap <silent> [denite]b :Denite buffer<CR>
+  nnoremap <silent> [denite]c :Denite changes<CR>
+  nnoremap <silent> [denite]f :Denite file<CR>
+  nnoremap <silent> [denite]g :Denite grep<CR>
+  nnoremap <silent> [denite]h :Denite help<CR>
+  nnoremap <silent> [denite]l :Denite line<CR>
+  nnoremap <silent> [denite]t :Denite tag<CR>
+  nnoremap <silent> [denite]m :Denite file_mru<CR>
+  nnoremap <silent> [denite]u :Denite menu<CR>
+
+  call denite#custom#map(
+        \ 'insert',
+        \ '<Down>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<Up>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-N>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-P>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-G>',
+        \ '<denite:assign_next_txt>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-T>',
+        \ '<denite:assign_previous_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'normal',
+        \ '/',
+        \ '<denite:enter_mode:insert>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<Esc>',
+        \ '<denite:enter_mode:normal>',
+        \ 'noremap'
+        \)
+endif
+"""
+
+# 補完
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = """
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_completion_start_length = 1
+"""
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+#}}}
+# 全般/共通{{{
+
+# ファイラー
+[[plugins]]
+repo = 'cocopon/vaffle.vim'
+hook_add = """
+nnoremap <Leader>v :e .<CR>
+"""
+
+# 桁揃え
+[[plugins]]
+repo = 'h1mesuke/vim-alignta'
+hook_add = """
+vnoremap gf= :Align=<CR>
+vnoremap gf: :Align:<CR>
+vnoremap gf, :Align,<CR>
+vnoremap gf. :Align.<CR>
+vnoremap gf() :Align ( )<CR>
+"""
+
+# 括り文字操作
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+# 括弧補完
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+# コメントアウト
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = """
+nmap <Leader>c <Plug>(caw:I:toggle)
+vmap <Leader>c <Plug>(caw:I:toggle)
+"""
+
+# 折りたたみ時のタイトル表示変更
+[[plugins]]
+repo = 'LeafCage/foldCC'
+
+# ヤンクハイライト
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+
+# Track the engine.
+[[plugins]]
+repo = 'SirVer/ultisnips'
+hook_add = """
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:UltiSnipsSnippetDirectories=["conf.plugins.d/ultisnips.snippets.d"]
+"""
+
+# Snippets are separated from the engine. Add this if you want them:
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# Language Server
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = """
+" Python
+if executable('pyls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyls',
+    \ 'cmd': {server_info->['pyls']},
+    \ 'whitelist': ['python'],
+    \ })
+endif
+
+if executable('gopls')
+  augroup LspGo
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'go-lang',
+        \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+    autocmd FileType go setlocal omnifunc=lsp#complete
+  augroup END
+endif
+
+nnoremap <silent> <Leader>ld :LspDefinition<CR>
+nnoremap <silent> <Leader>lp :LspHover<CR>
+nnoremap <silent> <Leader>lr :LspReferences<CR>
+nnoremap <silent> <Leader>li :LspImplementation<CR>
+nnoremap <silent> <Leader>ls :split \| :LspDefinition <CR>
+nnoremap <silent> <Leader>lv :vsplit \| :LspDefinition <CR>
+"""
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+hook_add = """
+let g:lsp_async_completion = 1
+"""
+
+[[plugins]]
+repo = 'natebosch/vim-lsc'
+
+#}}}
+# Git{{{
+# Gitクライアント
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = """
+nmap [figitive] <Nop>
+map <Leader>g [figitive]
+nmap <silent> [figitive]s :<C-u>Gstatus<CR>
+nmap <silent> [figitive]d :<C-u>Gdiff<CR>
+nmap <silent> [figitive]b :<C-u>Gblame<CR>
+nmap <silent> [figitive]l :<C-u>Glog<CR>
+"""
+
+# 差分表示を左端に表示
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+#}}}
+# 拡張子別 {{{
+
+# Go
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = """
+let g:go_bin_path = expand($GOPATH . "/bin")
+
+" GOプログラムの入力補完
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+
+" インポート補完
+let g:go_fmt_command = "goimports"
+
+" Ctrl-J無効化
+let g:go_def_mapping_enabled = 0
+
+" GoTest時の画面分割
+let g:go_term_mode = 'split'
+"""
+
+# Nim
+[[plugins]]
+repo = 'zah/nim.vim'
+
+# HTML/JS/CSS {{{
+
+# HTMLスニペット
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+# Javascript{{{
+# シンタックスハイライトとインデント
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+
+# メソッド補完
+[[plugins]]
+repo = 'mattn/jscomplete-vim'
+hook_add = """
+" DOMとMozilla関連とES6のメソッドを補完
+let g:jscomplete_use = ['dom', 'moz', 'es6th']
+"""
+#}}}
+
+# CSS3
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+#}}}
+
+# PowerShell
+[[plugins]]
+repo = 'PProvost/vim-ps1'
+
+# Node.js
+[[plugins]]
+repo = 'myhere/vim-nodejs-complete'
+hook_add = """
+autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
+if !exists('g:neocomplcache_omni_functions')
+  let g:neocomplcache_omni_functions = {}
+endif
+let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
+
+let g:node_usejscomplete = 1
+
+let g:nodejs_complete_config = {
+\  'js_compl_fn': 'jscomplete#CompleteJS',
+\  'max_node_compl_len': 15
+\}
+"""
+
+# Markdown{{{
+# アウトライナ
+[[plugins]]
+repo = 'vim-scripts/VOoM'
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+hook_add = """
+" ハイライト設定
+hi link htmlItalic LineNr
+hi link htmlBold WarningMsg
+hi link htmlBoldItalic ErrorMsg
+
+let g:vim_markdown_folding_disabled=1
+
+let g:vim_markdown_liquid=1
+let g:vim_markdown_math=0
+let g:vim_markdown_frontmatter=1
+let g:vim_markdown_toml_frontmatter=1
+let g:vim_markdown_json_frontmatter=0
+
+" 折り畳み無効化
+set nofoldenable
+"""
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+hook_add = """
+let g:table_mode_corner='|'
+"""
+
+# Markdown形式の目次を自動生成する
+[[plugins]]
+repo = 'mzlogin/vim-markdown-toc'
+#}}}
+
+# TOML
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+# CSVハイライト
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'
+
+# SQL{{{
+# Formatter
+[[plugins]]
+repo = 'vim-scripts/Align'
+[[plugins]]
+repo = 'vim-scripts/SQLUtilities'
+#}}}
+
+# PlantUML
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+#}}}
