@@ -2,8 +2,7 @@
 let mapleader = "\<Space>"
 let maplocalleader = ","
 
-" 頻出コマンド
-"-------------------------------------------------------------------------------
+" よく使う{{{
 
 " モード切替
 " inoremap jj <Esc>
@@ -52,7 +51,7 @@ nnoremap <C-c> V"+y
 vnoremap <C-c> "+y
 vnoremap <C-x> "+d
 nnoremap <C-g> "+p
-
+"}}}
 " 検索{{{
 "" 標準の検索でのエスケープを不要にする
 nnoremap / /\v
@@ -94,7 +93,3 @@ nnoremap <Leader><Leader>. :e $HOME/.vim/vimrc<CR>
 "" プラグイン初期化ファイルを開く
 nnoremap <Leader><Leader>p :e $HOME/.vim/plugins.vim<CR>
 "}}}
-" コマンド
-"-------------------------------------------------------------------------------
-
-command! AppendDocumentFormat :call append(line("."), "vim:tw=78:")
