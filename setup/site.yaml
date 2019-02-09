@@ -16,6 +16,7 @@
           - python3
           - python3-pip
           - zsh
+          - git
         update_cache: yes
         state: present
     - name: Install pip modules
