@@ -49,3 +49,6 @@
     - "github.com/peco/peco/cmd/peco/..."
     - "github.com/skanehira/docui"
     - "github.com/ChimeraCoder/gojson/gojson"
+
+- name: Download dotfiles
+  shell: ghq get jiro4989/dotfiles

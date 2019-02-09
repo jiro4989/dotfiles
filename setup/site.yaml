@@ -1,19 +1,27 @@
 - hosts: localhost
   connection: local
+  tasks:
+    - name: Make config directory
+      file:
+        path: "{{ lookup('env', 'HOME') }}/.config"
+        state: directory
+    - name: Install apt packages
+      become: true
+      apt:
+        name:
+          - mysql-workbench
+          - ruby
+          - ibus-mozc
+          - python3
+          - python3-pip
+        update_cache: yes
+        state: present
+    - name: Install pip modules
+      pip:
+        name:
+          - pynvim
+          - python-language-server
   roles:
     - go
     - docker
-  # tasks:
-  #   - name: MySQL Client
-  #     apt:
-  #       name: mysql-workbench
-  #       state: installed
-  #     become: true
-  #
-  #   - name: pip modules
-  #     pip:
-  #       name:
-  #         - pynvim
-  #         - python-language-server
-  #
-  #   - include: tasks/go.yaml
+    - vim
