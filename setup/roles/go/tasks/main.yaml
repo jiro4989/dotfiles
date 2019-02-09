@@ -1,0 +1,54 @@
+---
+
+- name: Mkdir download directory
+  become: true
+  file:
+    path: "{{ work_dir }}"
+    state: directory
+
+- name: Download go source
+  become: true
+  get_url:
+    url: "{{ download_url }}"
+    dest: "{{ archive_file }}"
+
+- name: Unarchive go source
+  become: true
+  unarchive:
+    src: "{{ archive_file }}"
+    dest: "{{ work_dir }}"
+
+- name: Put go command
+  become: true
+  file:
+    src: "{{ source_dir }}/bin/go"
+    dest: "{{ base_dir }}/bin/go"
+    state: link
+
+- name: Install golang modules
+  shell: "GOPATH={{ GOPATH }} GO111MODULE=off go get -u {{ item }}"
+  with_items:
+    - "github.com/motemen/ghq"
+    - "github.com/fatih/color"
+    - "github.com/julienroland/keyboard-termbox"
+    - "github.com/mattn/go-colorable"
+    - "github.com/nsf/termbox-go"
+    - "golang.org/x/tools/cmd/godoc"
+    - "github.com/tealeg/xlsx"
+    - "github.com/loadoff/excl"
+    - "github.com/BurntSushi/toml"
+    - "github.com/golang/dep/cmd/dep"
+    - "github.com/tcnksm/ghr"
+    - "github.com/atotto/clipboard/cmd/gocopy"
+    - "github.com/derekparker/delve/cmd/dlv"
+    - "github.com/alecthomas/gometalinter"
+    - "github.com/axw/gocov/gocov"
+    - "github.com/hhatto/gocloc/cmd/gocloc"
+    - "github.com/mitchellh/gox"
+    - "github.com/mvdan/sh/cmd/shfmt"
+    - "github.com/peco/peco/cmd/peco/..."
+    - "github.com/skanehira/docui"
+    - "github.com/ChimeraCoder/gojson/gojson"
+
+- name: Download dotfiles
+  shell: ghq get jiro4989/dotfiles
