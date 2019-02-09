@@ -1,0 +1,19 @@
+- hosts: localhost
+  connection: local
+  roles:
+    - go
+    - docker
+  # tasks:
+  #   - name: MySQL Client
+  #     apt:
+  #       name: mysql-workbench
+  #       state: installed
+  #     become: true
+  #
+  #   - name: pip modules
+  #     pip:
+  #       name:
+  #         - pynvim
+  #         - python-language-server
+  #
+  #   - include: tasks/go.yaml
