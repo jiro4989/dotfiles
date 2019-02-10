@@ -4,9 +4,11 @@
 
 ## 前提条件
 
-- python3
-- pip3
-- ansible
+- Ansible2
+
+以下の公式インストール手順に従ってAnsibleをインストールする
+
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-via-apt-ubuntu
 
 Ansible version
 
