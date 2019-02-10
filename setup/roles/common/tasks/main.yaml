@@ -23,4 +23,7 @@
   become: true
   pip:
     name:
+      - pynvim
       - python-language-server
+    executable: pip3
+    state: latest
