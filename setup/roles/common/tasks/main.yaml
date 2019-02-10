@@ -18,11 +18,6 @@
       - systemd
     update_cache: yes
     state: present
-- name: systemd started
-  become: true
-  systemd:
-    name: systemd
-    state: started
 - name: Install pip modules
   pip:
     name:
