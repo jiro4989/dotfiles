@@ -28,6 +28,7 @@
     state: latest
 - name: Install pip modules
   become: true
+  ignore_erros: true
   pip:
     name:
       - pynvim
