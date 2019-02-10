@@ -4,5 +4,5 @@ set -eu
 
 sudo apt-get update
 sudo apt-get install software-properties-common
-sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo add-apt-repository --yes --update ppa:ansible/ansible-2.7
 sudo apt-get install ansible -y
