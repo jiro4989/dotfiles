@@ -8,7 +8,6 @@
   become: true
   apt:
     name:
-      - fonts-ricty-diminished
       - mysql-workbench
       - ruby
       - ibus-mozc
