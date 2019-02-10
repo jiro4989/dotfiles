@@ -23,5 +23,4 @@
   become: true
   pip:
     name:
-      - pynvim
       - python-language-server
