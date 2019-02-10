@@ -21,7 +21,9 @@
 - name: Upgrade pip
   become: true
   pip:
-    name: pip
+    name:
+      - pip
+      - pip3
     executable: pip3
     state: latest
 - name: Install pip modules
