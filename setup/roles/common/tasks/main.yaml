@@ -11,7 +11,6 @@
       - mysql-workbench
       - ruby
       - ibus-mozc
-      - python-pip
       - python3
       - python3-pip
       - zsh
