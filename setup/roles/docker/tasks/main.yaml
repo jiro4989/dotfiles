@@ -21,6 +21,7 @@
     append: yes
 
 - name: Docker daemon status is started
+  become: true
   systemd:
     name: docker
     state: started
