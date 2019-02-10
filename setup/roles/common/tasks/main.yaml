@@ -20,15 +20,15 @@
     state: present
 - name: Upgrade pip
   become: true
+  ignore_errors: true
   pip:
     name:
       - pip
-      - pip3
     executable: pip3
     state: latest
 - name: Install pip modules
   become: true
-  ignore_erros: true
+  ignore_errors: true
   pip:
     name:
       - pynvim
