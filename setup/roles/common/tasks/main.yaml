@@ -19,6 +19,10 @@
       - systemd
     update_cache: yes
     state: present
+- name: Upgrade pip
+  pip:
+    name: pip
+    version: 9.0.1
 - name: Install pip modules
   pip:
     name:
