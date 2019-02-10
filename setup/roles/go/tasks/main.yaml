@@ -51,4 +51,4 @@
     - "github.com/ChimeraCoder/gojson/gojson"
 
 - name: Download dotfiles
-  shell: ghq get jiro4989/dotfiles
+  shell: "{{ GOPATH }}/bin/ghq get jiro4989/dotfiles"
