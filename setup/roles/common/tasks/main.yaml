@@ -20,6 +20,7 @@
     update_cache: yes
     state: present
 - name: Install pip modules
+  become: true
   pip:
     name:
       - pynvim
