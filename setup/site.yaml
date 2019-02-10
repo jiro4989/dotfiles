@@ -1,36 +1,7 @@
 - hosts: localhost
   connection: local
-  tasks:
-    - name: Make config directory
-      file:
-        path: "{{ lookup('env', 'HOME') }}/.config"
-        state: directory
-    - name: Install apt packages
-      become: true
-      apt:
-        name:
-          - fonts-ricty-diminished
-          - mysql-workbench
-          - ruby
-          - ibus-mozc
-          - python3
-          - python3-pip
-          - zsh
-          - git
-          - systemd
-        update_cache: yes
-        state: present
-    - name: systemd started
-      become: true
-      systemd:
-        name: systemd
-        state: started
-    - name: Install pip modules
-      pip:
-        name:
-          - pynvim
-          - python-language-server
   roles:
+    - common
     - go
     - docker
     - vim
