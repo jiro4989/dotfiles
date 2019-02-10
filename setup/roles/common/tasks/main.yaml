@@ -19,11 +19,6 @@
       - systemd
     update_cache: yes
     state: present
-- name: Upgrade pip
-  become: true
-  pip:
-    name: pip
-    state: latest
 - name: Install pip modules
   pip:
     name:
