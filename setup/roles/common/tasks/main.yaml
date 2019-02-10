@@ -22,7 +22,7 @@
 - name: Upgrade pip
   pip:
     name: pip
-    version: 9.0.1
+    state: latest
 - name: Install pip modules
   pip:
     name:
