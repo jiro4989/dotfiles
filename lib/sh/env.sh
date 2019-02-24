@@ -23,7 +23,7 @@ export PATH=$PATH:$HOME/.nimble/bin
 
 export BROWSER=chromium-browser
 
-export EDITOR=vim
+export EDITOR=nvim
 export BROWSER=chromium-browser
 export TERMINAL=terminator
 
