@@ -25,5 +25,12 @@
                 }
             ]
         }
-    ]
+    ],
+    "editor.rulers": [
+        80
+    ],
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": true
+    }
 }

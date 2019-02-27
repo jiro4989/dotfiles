@@ -6,8 +6,13 @@ cospaia.paredit-revived
 danijel-malik.nimble
 ecmel.vscode-html-css
 hollowtree.vue-snippets
+HookyQR.beautify
+jebbs.plantuml
+joaompinto.asciidoctor-vscode
 kosz78.nim
 MS-CEINTL.vscode-language-pack-ja
 ms-vscode.cpptools
 octref.vetur
+shuworks.vscode-table-formatter
 vscodevim.vim
+wwm.better-align
