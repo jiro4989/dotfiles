@@ -21,6 +21,9 @@ export PATH=$PATH:$HOME/.cargo/bin
 # nim
 export PATH=$PATH:$HOME/.nimble/bin
 
+# snap
+export PATH=/snap/bin:$PATH
+
 export BROWSER=chromium-browser
 
 export EDITOR=nvim
