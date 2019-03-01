@@ -101,6 +101,7 @@ repo = 'Shougo/deoplete.nvim'
 hook_add = """
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 """
 # }}}
 # neomru - {{{
@@ -154,21 +155,21 @@ repo = 'LeafCage/foldCC'
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
 # }}}
-# ultisnips - スニペット{{{
-[[plugins]]
-repo = 'SirVer/ultisnips'
-hook_add = """
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-let g:UltiSnipsSnippetDirectories=["conf.plugins.d/ultisnips.snippets.d"]
-"""
-# }}}
+# # ultisnips - スニペット{{{
+# [[plugins]]
+# repo = 'SirVer/ultisnips'
+# hook_add = """
+# " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+# let g:UltiSnipsExpandTrigger="<tab>"
+# let g:UltiSnipsJumpForwardTrigger="<c-b>"
+# let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+# 
+# " If you want :UltiSnipsEdit to split your window.
+# let g:UltiSnipsEditSplit="vertical"
+# 
+# let g:UltiSnipsSnippetDirectories=["conf.plugins.d/ultisnips.snippets.d"]
+# """
+# # }}}
 # vimi-snippets - スニペット{{{
 [[plugins]]
 repo = 'honza/vim-snippets'
