@@ -43,3 +43,5 @@ peco_src() {
   fi
 }
 
+alias asdoc='docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram'
+alias asdocp='docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor-pdf -r asciidoctor-diagram'
