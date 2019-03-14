@@ -55,10 +55,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'natebosch/vim-lsc'
 let g:lsp_async_completion = 1
 
-" Gitクライアント
-Plug 'tpope/vim-fugitive'
-call s:_source('vim-fugitive.vim')
-
 " 差分表示を左端に表示
 Plug 'airblade/vim-gitgutter'
 call s:_source('vim-gitgutter.vim')
