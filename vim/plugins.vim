@@ -5,15 +5,15 @@ endfunction
 call plug#begin('~/.vim/plugged')
 
 " 導入するプラグイン記述する範囲 {{{
-" 初期化{{{
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   全般/共通
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 統一的UI
 Plug 'Shougo/unite.vim'
 call s:_source('unite.vim')
-
 Plug 'Shougo/neomru.vim'
-"}}}
-" 全般/共通{{{
 
 " ファイラー
 Plug 'cocopon/vaffle.vim'
@@ -39,14 +39,12 @@ Plug 'LeafCage/foldCC'
 " ヤンクハイライト
 Plug 'machakann/vim-highlightedyank'
 
-" Track the engine.
+" スニペット
 Plug 'SirVer/ultisnips'
 call s:_source('ultisnips.vim')
-
-" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" Language Server
+" Language Server Protocol
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 call s:_source('asyncomplete.vim.vim')
@@ -56,8 +54,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'natebosch/vim-lsc'
 let g:lsp_async_completion = 1
 
-"}}}
-" Git{{{
 " Gitクライアント
 Plug 'tpope/vim-fugitive'
 call s:_source('vim-fugitive.vim')
@@ -65,8 +61,10 @@ call s:_source('vim-fugitive.vim')
 " 差分表示を左端に表示
 Plug 'airblade/vim-gitgutter'
 call s:_source('vim-gitgutter.vim')
-"}}}
-" 拡張子別 {{{
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                    言語別
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Go
 Plug 'fatih/vim-go', { 'for':'go' }
@@ -75,24 +73,19 @@ autocmd! User vim-go call s:_source('vim-go.vim')
 " Nim
 Plug 'zah/nim.vim', { 'for':'nim' }
 
-" HTML/JS/CSS {{{
-
 " HTMLスニペット
 Plug 'mattn/emmet-vim', { 'for':'html' }
 autocmd! User emmet-vim call s:_source('vim-alignta.vim')
 
-" Javascript{{{
 " シンタックスハイライトとインデント
 Plug 'pangloss/vim-javascript', { 'for':'javascript' }
 
 " メソッド補完
 Plug 'mattn/jscomplete-vim', { 'for':'javascript' }
 autocmd! User jscomplete-vim call s:_source('jscomplete-vim.vim')
-"}}}
-"
+
 " CSS3
 Plug 'hail2u/vim-css3-syntax', { 'for':'css' }
-"}}}
 
 " PowerShell
 Plug 'PProvost/vim-ps1', { 'for':'ps1' }
@@ -101,7 +94,7 @@ Plug 'PProvost/vim-ps1', { 'for':'ps1' }
 Plug 'myhere/vim-nodejs-complete', { 'for':'javascript' }
 autocmd! User vim-nodejs-complete call s:_source('vim-nodejs-complete.vim')
 
-" Markdown{{{
+" Markdown
 " アウトライナ
 Plug 'vim-scripts/VOoM'
 
@@ -113,7 +106,6 @@ autocmd! User vim-table-mode call s:_source('vim-table-mode.vim')
 
 " Markdown形式の目次を自動生成する
 Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
-"}}}
 
 " TOML
 Plug 'cespare/vim-toml', { 'for':'toml' }
@@ -121,15 +113,13 @@ Plug 'cespare/vim-toml', { 'for':'toml' }
 " CSVハイライト
 Plug 'mechatroner/rainbow_csv'
 
-" SQL{{{
 " Formatter
 Plug 'vim-scripts/Align'
 Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
-"}}}
 
 " PlantUML
 Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
-"}}}
+
 "}}}
 
 call plug#end()
