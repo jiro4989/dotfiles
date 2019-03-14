@@ -1,0 +1,57 @@
+:toc:
+:sectnums:
+
+= vim
+
+Vimの設定ファイル構成を記載。
+
+= ファイルとディレクトリ
+
+[options="header"]
+|========================================================================================
+| ファイル/ディレクトリ | 説明
+| vimrc                 | 設定の起点。いわゆるindex的な設定
+| vimrc.min             | 最小構成vimrc。プラグインなし。コピペで済む
+| plugins.vim           | プラグイン設定のindex。vimrcからsourceされる。
+| init.vim              | neovimの設定。実体はvimrcをsourceするだけ
+| conf.d                | vim標準機能の各種設定ファイルを配置
+| conf.plugins.d        | vimpluginの各種設定ファイルを配置。ファイル名はpluginname.vim
+|========================================================================================
+
+= 設定の適用方法
+
+` $HOME/.vim `にこのvimディレクトリのシンボリックリンクを貼るだけで機能する。
+配置後はvimのプラグインマネージャで各種プラグインをインストールすれば
+プラグイン設定も完了する。
+
+シンボリックリンクを貼るコマンドは下記。
+
+== Linux用
+
+vim用
+
+```bash
+ln -sfn $HOME/src/github.com/jiro4989/dotfiles/vim $HOME/.vim
+
+```
+
+nvim用
+
+```bash
+mkdir -p $HOME/.config
+ln -sfn $HOME/src/github.com/jiro4989/dotfiles/vim $HOME/.config/nvim
+```
+
+== Windows用
+
+vim用
+
+```bash
+mklink /D %userprofile%\.vim %userprofile%\src\github.com\jiro4989\dotfiles\vim
+mklink /D %userprofile%\vimfiles %userprofile%\src\github.com\jiro4989\dotfiles\vim
+```
+
+= LSP(Language Server Protocol)の対応状況
+
+https://github.com/prabirshrestha/vim-lsp/wiki/Servers[Wiki]を参照したらどの言語
+が対応しているかがわかる。
