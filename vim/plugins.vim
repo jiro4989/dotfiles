@@ -48,9 +48,10 @@ Plug 'honza/vim-snippets'
 
 " Language Server
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 call s:_source('asyncomplete.vim.vim')
+Plug 'prabirshrestha/vim-lsp'
+call s:_source('vim-lsp.vim')
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'natebosch/vim-lsc'
 let g:lsp_async_completion = 1
