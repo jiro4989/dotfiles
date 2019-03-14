@@ -11,13 +11,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/unite.vim'
 call s:_source('unite.vim')
 
-" 自動補完
-Plug 'Shougo/neocomplete.vim'
-call s:_source('neocomplete.vim')
-
-" Plug 'Shougo/deoplete.nvim'
-" call s:_source('deoplete.nvim.vim')
-
 Plug 'Shougo/neomru.vim'
 "}}}
 " 全般/共通{{{
@@ -57,6 +50,7 @@ Plug 'honza/vim-snippets'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
+call s:_source('asyncomplete.vim.vim')
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'natebosch/vim-lsc'
 let g:lsp_async_completion = 1
