@@ -103,19 +103,20 @@ autocmd! User vim-table-mode call s:_source('vim-table-mode.vim')
 " FIXME: この辺のプラグインが干渉してビジュアルモード中にクラッシュすることがあ
 " るので調査中
 
-" " Markdown形式の目次を自動生成する
-" Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
-"
-" " TOML
-" Plug 'cespare/vim-toml', { 'for':'toml' }
-"
-" " CSVハイライト
-" Plug 'mechatroner/rainbow_csv', {'for':'csv'}
-"
-" " Formatter
-" Plug 'vim-scripts/Align'
-" Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
-"
+" Markdown形式の目次を自動生成する
+Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
+
+" TOML
+Plug 'cespare/vim-toml', { 'for':'toml' }
+
+" CSVハイライト
+Plug 'mechatroner/rainbow_csv', {'for':'csv'}
+
+" Formatter
+Plug 'vim-scripts/Align'
+Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
+
+" FIXME: このプラグインが原因でSIGSEGVがおきてる？
 " " PlantUML
 " Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
