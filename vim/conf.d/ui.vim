@@ -7,6 +7,12 @@ else
   set t_Co=256
 endif
 
+" 背景を透過
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+
 set number           " 行番号を表示
 set ruler            " カーソルの位置表示
 set incsearch        " インクリメンタルサーチ
