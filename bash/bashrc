@@ -15,7 +15,7 @@ source "$script_dir/plugins.sh"
 
 function _update_ps1() {
     PS1="$(powerline-shell $?)
-$ "
+\\$ "
 }
 
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
