@@ -24,10 +24,8 @@ export PATH=$PATH:$HOME/.nimble/bin
 # snap
 export PATH=/snap/bin:$PATH
 
-export BROWSER=chromium-browser
-
 export EDITOR=nvim
-export BROWSER=chromium-browser
+export BROWSER=chromium
 export TERMINAL=terminator
 
 export CGO_CXXFLAGS_ALLOW=".*" 
