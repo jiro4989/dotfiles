@@ -19,7 +19,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.cargo/bin
 
 # nim
-export PATH=$PATH:$HOME/.nimble/bin
+export PATH=$HOME/.nimble/bin:$PATH
 
 # snap
 export PATH=/snap/bin:$PATH
