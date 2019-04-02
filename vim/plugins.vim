@@ -41,8 +41,8 @@ Plug 'LeafCage/foldCC'
 Plug 'machakann/vim-highlightedyank'
 
 " スニペット
-Plug 'SirVer/ultisnips'
-call s:_source('ultisnips.vim')
+" Plug 'SirVer/ultisnips'
+" call s:_source('ultisnips.vim')
 Plug 'honza/vim-snippets'
 
 " Language Server Protocol
@@ -63,7 +63,7 @@ call s:_source('vim-gitgutter.vim')
 " 2. 言語別設定 {{{
 
 " Go
-Plug 'fatih/vim-go', { 'for':'go' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 autocmd! User vim-go call s:_source('vim-go.vim')
 
 " Nim
