@@ -63,7 +63,7 @@ call s:_source('vim-gitgutter.vim')
 " 2. 言語別設定 {{{
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 autocmd! User vim-go call s:_source('vim-go.vim')
 
 " Nim
