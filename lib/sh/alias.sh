@@ -45,3 +45,4 @@ peco_src() {
 
 alias asdoc='docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram'
 alias asdocp='docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor-pdf -r asciidoctor-diagram'
+alias wacomoff='xsetwacom set "Wacom Intuos Pro M Finger touch" Touch off'
