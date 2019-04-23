@@ -37,8 +37,8 @@ call s:_source('caw.vim')
 " 折りたたみ時のタイトル表示変更
 Plug 'LeafCage/foldCC'
 
-" ヤンクハイライト
-Plug 'machakann/vim-highlightedyank'
+" " ヤンクハイライト
+" Plug 'machakann/vim-highlightedyank'
 
 " スニペット
 " Plug 'SirVer/ultisnips'
