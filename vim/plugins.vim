@@ -37,6 +37,7 @@ call s:_source('caw.vim')
 " 折りたたみ時のタイトル表示変更
 Plug 'LeafCage/foldCC'
 
+" FIXME これが原因で落ちてる可能性があるので調査中
 " " ヤンクハイライト
 " Plug 'machakann/vim-highlightedyank'
 
@@ -100,9 +101,6 @@ autocmd! User vim-markdown call s:_source('vim-markdown.vim')
 Plug 'dhruvasagar/vim-table-mode', { 'for':'markdown' }
 autocmd! User vim-table-mode call s:_source('vim-table-mode.vim')
 
-" FIXME: この辺のプラグインが干渉してビジュアルモード中にクラッシュすることがあ
-" るので調査中
-
 " Markdown形式の目次を自動生成する
 Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
 
@@ -116,9 +114,8 @@ Plug 'mechatroner/rainbow_csv', {'for':'csv'}
 Plug 'vim-scripts/Align'
 Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
 
-" FIXME: このプラグインが原因でSIGSEGVがおきてる？
-" " PlantUML
-" Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
+" PlantUML
+Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
 " }}}
 
