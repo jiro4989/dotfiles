@@ -43,6 +43,9 @@ peco_src() {
   fi
 }
 
-alias asdoc='docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram'
-alias asdocp='docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor-pdf -r asciidoctor-diagram'
+alias asdoc='docker run --rm -u $(id -u):$(id -g) -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram'
+alias asdocp='docker run --rm -u $(id -u):$(id -g) -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor-pdf -r asciidoctor-diagram'
 alias wacomoff='xsetwacom set "Wacom Intuos Pro M Finger touch" Touch off'
+
+# クリップボードのテキストをツイートする
+alias ctw='twty "$(xclip -o)"'
