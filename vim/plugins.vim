@@ -108,7 +108,7 @@ Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
 Plug 'cespare/vim-toml', { 'for':'toml' }
 
 " CSVハイライト
-Plug 'mechatroner/rainbow_csv', {'for':'csv'}
+Plug 'mechatroner/rainbow_csv'
 
 " Formatter
 Plug 'vim-scripts/Align'
