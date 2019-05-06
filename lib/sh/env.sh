@@ -24,6 +24,9 @@ export PATH=$HOME/.nimble/bin:$PATH
 # snap
 export PATH=/snap/bin:$PATH
 
+# gem
+export PATH=$PATH:$HOME/.gem/bin
+
 export EDITOR=nvim
 export BROWSER=chromium
 export TERMINAL=terminator
