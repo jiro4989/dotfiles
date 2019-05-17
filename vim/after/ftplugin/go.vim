@@ -19,6 +19,7 @@ inorea logf log.Fatal(err)<ESC>
 
 " function
 inorea funcm func main() {<CR>}<ESC>ko
+inorea funct func TestTODO(t *testing.T) {<CR>}<ESC>ko
 
 " 並列処理
 "inorea gort ch := make(chan int, runtime.NumCPU())<CR>var wg sync.WaitGroup<CR><CR>for i, v := range iter {<CR>wg.Add(1)<CR>go func() {<CR>defer wg.Done()<CR>ch <- 1<CR><-ch<CR>}()<CR>}<CR>wg.Wait()
