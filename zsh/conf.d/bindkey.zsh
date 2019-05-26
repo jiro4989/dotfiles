@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
-#
+
+# Emacs mode
+bindkey -e
+
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
 __peco_src() {
   local selected_dir
@@ -11,3 +14,11 @@ __peco_src() {
 }
 zle -N __peco_src
 bindkey "^P" __peco_src
+
+# ZshではBashのようにhome endが使えないっぽい
+# HOME
+bindkey "^[[1~" beginning-of-line
+# DELETE
+bindkey "^[[3~" delete-char
+# END
+bindkey "^[[4~" end-of-line
