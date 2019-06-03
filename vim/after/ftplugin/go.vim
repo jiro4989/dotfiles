@@ -2,6 +2,11 @@ setlocal noexpandtab
 setlocal tabstop=4
 setlocal shiftwidth=4
 
+" for
+inorea fori for i := 0; i < max; i++ {<CR>}<ESC>k
+inorea forj for j := 0; j < max; j++ {<CR>}<ESC>k
+inorea fork for k := 0; k < max; k++ {<CR>}<ESC>k
+
 " 出力
 inorea pri fmt.Println()<ESC><LEFT>
 inorea lpe log.Println(err)<ESC>
