@@ -1,3 +1,11 @@
+" " LSPのlint機能をOFF
+" " https://qiita.com/succi0303/items/cd30d0ea40d419d4431c
+" " let g:lsp_diagnostics_enabled = 0
+" " debug
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/log/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/log/asyncomplete.log')
+
 " Python
 if executable('pyls')
   au User lsp_setup call lsp#register_server({

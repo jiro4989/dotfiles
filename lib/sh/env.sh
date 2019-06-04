@@ -19,13 +19,16 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.cargo/bin
 
 # nim
-export PATH=$HOME/.nimble/bin:$PATH
+export PATH=$PATH:$HOME/.nimble/bin
 
 # snap
 export PATH=/snap/bin:$PATH
 
 # gem
 export PATH=$PATH:$HOME/.gem/bin
+
+# nodejs
+export PATH=$PATH:$HOME/.npm-global
 
 export EDITOR=nvim
 export BROWSER=chromium
@@ -39,5 +42,8 @@ export CGO_CFLAGS_ALLOW=".*"
 export PS1='\[\033[01;33m\][\t]\[\033[00m\] \[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[01;35m\]$(__git_ps1 "(%s)")\[\033[00m\]\$ '
 
 HISTTIMEFORMAT='%Y-%m-%dT%T%z '
+
+export TEXTIMG_EMOJI_DIR=/usr/local/src/noto-emoji/png/128
+export TEXTIMG_FONT_FILE=/usr/share/fonts/TTF/HackGen-Regular.ttf
 
 screenfetch
