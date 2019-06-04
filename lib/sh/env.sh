@@ -28,7 +28,7 @@ export PATH=/snap/bin:$PATH
 export PATH=$PATH:$HOME/.gem/bin
 
 # nodejs
-export PATH=$PATH:$HOME/.npm-global
+export PATH=$PATH:$HOME/.npm-global/bin
 
 export EDITOR=nvim
 export BROWSER=chromium

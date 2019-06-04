@@ -37,6 +37,15 @@ if executable('css-languageserver')
         \ })
 endif
 
+" Bash
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'whitelist': ['sh'],
+        \ })
+endif
+
 nnoremap <silent> <Leader>d :LspDefinition<CR>
 nnoremap <silent> <Leader>p :LspHover<CR>
 nnoremap <silent> <Leader>r :LspReferences<CR>
