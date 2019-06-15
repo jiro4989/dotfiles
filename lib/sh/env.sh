@@ -30,6 +30,9 @@ export PATH=$PATH:$HOME/.gem/bin
 # nodejs
 export PATH=$PATH:$HOME/.npm-global/bin
 
+# 自作シェル
+export PATH=$PATH:$(dirname $0)/../../bin
+
 export EDITOR=nvim
 export BROWSER=chromium
 export TERMINAL=terminator

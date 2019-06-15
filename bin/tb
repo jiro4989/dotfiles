@@ -1,0 +1,51 @@
+#!/bin/bash
+
+readonly SCRIPT_NAME=$(basename $0)
+
+format_table() {
+  local _delimiter=$1
+  local _input_file=$2
+  cat $_input_file \
+    | sed -E \
+      -e "s/$_delimiter/|/g" \
+      -e "s/.*/|&|/g" \
+      -e "1p" \
+      -e "1s/[^|]+/---/g"
+}
+
+usage() {
+  cat << EOS
+$SCRIPT_NAME はCSV、TSVなどの入力をMarkdown形式に変換します。
+
+Usage:
+    $SCRIPT_NAME [options] [inputfile]
+
+Options:
+    -h, --help                このヘルプを出力する
+    -d, --delimiter string    入力データの区切り文字
+EOS
+}
+
+delimiter="\t"
+input_file=
+
+while (( 0 < $# )); do
+  opt=$1
+  shift
+
+  case "$opt" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    -d|--delimiter)
+      delimiter=$1
+      shift
+      ;;
+    *)
+      input_file=$opt
+      ;;
+  esac
+done
+
+format_table "$delimiter" "$input_file"
