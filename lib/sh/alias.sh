@@ -49,3 +49,8 @@ alias wacomoff='xsetwacom set "Wacom Intuos Pro M Finger touch" Touch off'
 
 # クリップボードのテキストをツイートする
 alias ctw='twty "$(xclip -o)"'
+
+git_set_ssh_url() {
+  remote=$(git remote -v | head -n 1 | awk '{print $2}' | sed 's,https://github.com/,git@github.com:,')
+  git remote set-url origin "$remote"
+}
