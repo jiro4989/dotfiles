@@ -34,8 +34,8 @@ export PATH=$PATH:$HOME/.npm-global/bin
 export PATH=$PATH:$(dirname $0)/../../bin
 
 export EDITOR=nvim
-type chromium && export BROWSER=chromium
-type chromium-browser && export BROWSER=chromium-browser
+type chromium >/dev/null 2>&1 && export BROWSER=chromium
+type chromium-browser >/dev/null 2>&1 && export BROWSER=chromium-browser
 export TERMINAL=terminator
 
 export CGO_CXXFLAGS_ALLOW=".*" 
