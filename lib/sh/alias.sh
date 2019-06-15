@@ -32,7 +32,7 @@ burnout() {
 alias change_terminal="sudo update-alternatives --config x-terminal-emulator"
 
 # 最新のヒストリコマンドを一つクリップボードにコピー
-alias histclip="fc -ln | tail -n 1 | sed -r 's@^\s+@@g' | gocopy"
+alias yy="fc -ln | tail -n 1 | sed -r 's@^\s+@@g' | gocopy"
 
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
 peco_src() {
