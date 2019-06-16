@@ -48,6 +48,6 @@ export PS1='\[\033[01;33m\][\t]\[\033[00m\] \[\033[01;32m\]\u\[\033[00m\]:\[\033
 HISTTIMEFORMAT='%Y-%m-%dT%T%z '
 
 export TEXTIMG_EMOJI_DIR=/usr/local/src/noto-emoji/png/128
-export TEXTIMG_FONT_FILE=/usr/share/fonts/TTF/HackGen-Regular.ttf
+export TEXTIMG_FONT_FILE=/usr/share/fonts/truetype/hack-gen/HackGen-Regular.ttf
 
 screenfetch
