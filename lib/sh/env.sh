@@ -49,5 +49,3 @@ HISTTIMEFORMAT='%Y-%m-%dT%T%z '
 
 export TEXTIMG_EMOJI_DIR=/usr/local/src/noto-emoji/png/128
 export TEXTIMG_FONT_FILE=/usr/share/fonts/truetype/hack-gen/HackGen-Regular.ttf
-
-screenfetch
