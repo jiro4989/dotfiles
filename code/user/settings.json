@@ -1,36 +1,6 @@
 {
-    "git.autofetch": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "explorer.confirmDragAndDrop": false,
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "u"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "undo"
-                }
-            ]
-        },
-        {
-            "before": [
-                "<C-r>"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "redo"
-                }
-            ]
-        }
-    ],
-    "editor.rulers": [
-        80
-    ],
-    "[markdown]": {
-        "editor.wordWrap": "on",
-        "editor.quickSuggestions": true
+    "editor.rulers": [80],
+    "[nim]": {
+        "editor.tabSize":2
     }
 }
