@@ -6,6 +6,7 @@ main() {
   if [ ! -z "$1" ]; then
     if [[ "$1" =~ ^-h|--help$ ]]; then
       usage
+      exit 0
     else
       USER=$1
     fi
