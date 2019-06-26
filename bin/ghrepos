@@ -1,0 +1,34 @@
+#!/bin/bash
+
+readonly SCRIPT_NAME=$(basename $0)
+
+main() {
+  if [ ! -z "$1" ]; then
+    if [[ "$1" =~ ^-h|--help$ ]]; then
+      usage
+    else
+      USER=$1
+    fi
+  fi
+
+  seq 1 3 | while read page; do
+    curl -s "https://api.github.com/users/$USER/repos?per_page=100&page=$page" \
+      | grep full_name \
+      | cut -d : -f 2 \
+      | tr -d '", '
+  done
+}
+
+usage() {
+  cat << EOS
+$SCRIPT_NAME はGitHubのリポジトリの一覧を取得します。
+
+Usage:
+  $SCRIPT_NAME [options] [USER]
+
+Options:
+  -h, --help    このヘルプを出力する
+EOS
+}
+
+main ${1+"$@"}
