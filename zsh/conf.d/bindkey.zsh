@@ -1,14 +1,16 @@
 #!/usr/bin/env zsh
 
-# Emacs mode
-bindkey -e
+# Vi mode
+bindkey -v
+
+# ヒストリ検索
+bindkey -M vicmd '?' history-incremental-search-backward
 
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
 __peco_src() {
-  local selected_dir
-  selected_dir=$(ghq list --full-path | peco)
-  if [[ "$selected_dir" != "" ]]; then
-    cd "$selected_dir"
+  local __repo=$(ghq list --full-path | peco)
+  if [[ "$__repo" != "" ]]; then
+    cd "$__repo"
   fi
   zle reset-prompt
 }
@@ -42,3 +44,14 @@ __peco_edit() {
 }
 zle -N __peco_edit
 alias pe=__peco_edit
+
+# ブランチを切り替える
+__peco_git_checkout() {
+  local __branch=$(git branch --all | grep -v HEAD | peco)
+  if [ -n "$__branch" ]; then
+    git checkout $(echo "$__branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  fi
+  zle accept-line
+}
+zle -N __peco_git_checkout
+alias pgco=__peco_git_checkout
