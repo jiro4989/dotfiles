@@ -5,6 +5,7 @@ bindkey -v
 
 # ヒストリ検索
 bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M viins '' history-incremental-search-backward
 
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
 __peco_src() {
