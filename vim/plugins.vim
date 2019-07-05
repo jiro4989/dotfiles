@@ -123,4 +123,8 @@ Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 "                            ↑↑↑ ここまで ↑↑↑
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" test
+Plug 'jiro4989/vimquiz.vim'
+Plug 'unkontributors/super_unko.vim'
+
 call plug#end()
