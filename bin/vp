@@ -6,7 +6,7 @@ readonly SCRIPT_NAME=$(basename $0)
 
 main() {
   local args=()
-  while ((0 -lt $#)); do
+  while ((0 < $#)); do
     local opt=$1
     shift
     case "$opt" in
@@ -50,7 +50,7 @@ make_autoload() {
 let s:save_cpo = &cpo
 set cpo&vim
 
-function! ${func_name}()
+function! ${plugin_name}#${func_name}()
   " TODO
 endfunction
 
@@ -102,7 +102,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 if !exists(":${command_name}")
-  command! -nargs=0 ${command_name} call ${func_name}()
+  command! -nargs=0 ${command_name} call ${plugin_name}#${func_name}()
 endif
 
 let &cpo = s:save_cpo
