@@ -7,12 +7,6 @@ let maplocalleader = ","
 
 " よく使う{{{
 
-" モード切替
-" inoremap jj <Esc>
-noremap <C-j> <Esc>
-noremap! <C-j> <Esc>
-nnoremap <C-n> :
-
 " 一文字削除でヤンクを上書きしない
 nnoremap x "_x
 
