@@ -1,3 +1,6 @@
+" ui.vim は表示のされ方を定義する。
+" =================================
+
 " colorscheme
 if has("win32") || has("win64")
   colorscheme molokai

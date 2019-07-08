@@ -1,3 +1,9 @@
+" filetype.vim は拡張子をファイルタイプに紐付ける設定を定義する。
+" ===============================================================
+"
+" ここでは拡張子をファイルタイプに紐付ける設定のみを記述し、拡張仕事に異なる詳細
+" な設定は `after/ftplugin` 配下の設定ファイルに記述する。
+
 " 拡張子マッピング
 au BufNewFile,BufRead *.kt setlocal filetype=kotlin
 au BufNewFile,BufRead *.ts setlocal filetype=typescript

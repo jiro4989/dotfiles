@@ -1,3 +1,6 @@
+" keymap.vim はキーマップを定義する。
+" ===================================
+
 " マッピングにおけるプレフィックスキー
 let mapleader = "\<Space>"
 let maplocalleader = ","
