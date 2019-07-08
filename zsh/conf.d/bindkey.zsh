@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Vi mode
-bindkey -v
+# Emacs mode
+bindkey -e
 
 # ヒストリ検索
 bindkey -M vicmd '?' history-incremental-search-backward
