@@ -1,3 +1,10 @@
+" vimrc はVimをカスタマイズする起点。
+" ===================================
+"
+" ここに細かい設定を書いてはならない。
+" Vim本体に含まれる設定は `conf.d/*.vim` に記述する。
+" プラグインの設定は `conf.plugins.d/*.vim` に記述する。
+
 set encoding=utf-8            " 保存時の文字コード
 set fileencoding=utf-8        " 読み込み時の文字コード
 set fileencodings=utf-8,cp932 " 読み込み時の文字コード。左が優先
