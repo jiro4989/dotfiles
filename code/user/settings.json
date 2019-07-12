@@ -4,5 +4,7 @@
         "editor.tabSize":2
     },
     "workbench.colorTheme": "Monokai",
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDragAndDrop": false
 }
