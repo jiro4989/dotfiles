@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -eu
+
+# pecoコマンドが存在しないとこのコマンドは使えないのでチェック
+type peco >/dev/null 2>&1
+ret=$?
+if [ "$ret" -ne 0 ]; then
+  echo "Need 'peco' command in PATH." 1>&2
+  exit 1
+fi
+
+# 新規ブランチを作成する。
+# featureブランチを作成するのでfeatureというプレフィックスが固定で入る。
+new_feature_branch() {
+  echo "Input new branch name"
+  local branch_name
+  read -p "? feature/" branch_name
+
+  local branch="feature/$branch_name"
+  echo Execute: git checkout -b "$branch"
+  git checkout -b "$branch"
+}
+
+# 現在のブランチをremoteリポジトリにpushする。
+push_current_branch_as_upstream() {
+  local current_branch=$(git symbolic-ref --short HEAD)
+  echo Execute: git push --set-upstream origin "$current_branch"
+  git push --set-upstream origin "$current_branch"
+}
+
+# ここに関数名とその説明を書く。''関数名:''という命名でないといけない。
+cmd=$(for cmd in \
+  "new_feature_branch:               ローカルリポジトリに新規にfeatureブランチを作成する" \
+  "push_current_branch_as_upstream:  現在のブランチ名でupstreamとしてブランチをpushする"
+do
+  echo "$cmd"
+done | peco)
+
+# 関数名だけ切りだしてコマンドとして実行
+$(echo "$cmd" | cut -d : -f 1)
