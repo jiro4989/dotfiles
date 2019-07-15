@@ -1,5 +1,7 @@
 #!/bin/bash
 
+readonly REPO_ROOT=$HOME/src/github.com/jiro4989
+
 # 日本語を使用
 export LANG=ja_JP.UTF-8
 
@@ -31,7 +33,7 @@ export PATH=$PATH:$HOME/.gem/bin
 export PATH=$HOME/.npm-global/bin:$PATH
 
 # 自作シェル
-export PATH=$PATH:$(dirname $0)/../../bin
+export PATH=$PATH:$REPO_ROOT/scripts/bin
 
 export EDITOR=nvim
 type chromium >/dev/null 2>&1 && export BROWSER=chromium
