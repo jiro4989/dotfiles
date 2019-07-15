@@ -1,0 +1,47 @@
+#!/bin/bash
+
+set -eu
+
+type ffmpeg >/dev/null 2>&1
+ret=$?
+if [ $ret -ne 0 ]; then
+  cat << EOS >&2
+Need ffmpeg command in PATH
+
+How to install on Ubuntu.
+
+    $ sudo apt install -y ffmpeg
+EOS
+  exit 1
+fi
+
+usage() {
+  cat << EOS
+a
+EOS
+}
+
+input_file=$1
+out_file="$(dirname $input_file)/$(basename $input_file .mp4).gif"
+
+echo "リサイズ後の縦幅を入力してください。"
+echo "横幅は縦幅に合わせて自動で調整されます。"
+read -p "? " height
+echo
+
+echo "フレームレートを指定してください。"
+read -p "? " rate
+echo
+
+echo "変換処理を開始します。この処理には時間がかかります..."
+ffmpeg -i "$input_file" -vf scale=-1:$height -r $rate "$out_file"
+
+cat << EOS
+----------------------------------------------------------
+
+画像の変換が完了しました。
+
+成果物:
+  $out_file
+
+EOS
