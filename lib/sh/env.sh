@@ -28,7 +28,7 @@ export PATH=/snap/bin:$PATH
 export PATH=$PATH:$HOME/.gem/bin
 
 # nodejs
-export PATH=$PATH:$HOME/.npm-global/bin
+export PATH=$HOME/.npm-global/bin:$PATH
 
 # 自作シェル
 export PATH=$PATH:$(dirname $0)/../../bin

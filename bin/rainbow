@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -eu
+
+gradation() {
+  local span=$1
+  local r1=$2
+  local g1=$3
+  local b1=$4
+  local r2=$5
+  local g2=$6
+  local b2=$7
+
+  local r_diff=$(( (r2 - r1) / span))
+  local g_diff=$(( (g2 - g1) / span))
+  local b_diff=$(( (b2 - b1) / span))
+  for ((i=0; i<$span; i++)); do
+    echo "rgba($((r1 + i * r_diff)), $((g1 + i * g_diff)), $((b1 + i * b_diff)), 0.1)"
+  done
+}
+
+span=$1
+
+gradation $span 255 0 0 255 69 0
+gradation $span 255 69 0 255 255 0
+gradation $span 255 255 0 0 128 0
+gradation $span 0 128 0 0 0 255
+gradation $span 0 0 255 75 0 130
+gradation $span 75 0 130 238 130 238
+gradation $span 238 130 238 255 0 0
