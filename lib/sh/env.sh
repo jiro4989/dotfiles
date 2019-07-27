@@ -35,6 +35,10 @@ export PATH=$HOME/.npm-global/bin:$PATH
 # 自作シェル
 export PATH=$PATH:$REPO_ROOT/scripts/bin
 
+# GraalVM
+export GRAALVM_HOME=/opt/graalvm/current
+export PATH=$PATH:$GRAALVM_HOME/bin
+
 export EDITOR=nvim
 type chromium >/dev/null 2>&1 && export BROWSER=chromium
 type chromium-browser >/dev/null 2>&1 && export BROWSER=chromium-browser
