@@ -35,6 +35,9 @@ export PATH=$HOME/.npm-global/bin:$PATH
 # 自作シェル
 export PATH=$PATH:$REPO_ROOT/scripts/bin
 
+# gits
+export PATH=$PATH:$REPO_ROOT/gits/bin
+
 # GraalVM
 export GRAALVM_HOME=/opt/graalvm/current
 export PATH=$PATH:$GRAALVM_HOME/bin
