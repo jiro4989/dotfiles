@@ -49,3 +49,14 @@ alias wacomoff='xsetwacom set "Wacom Intuos Pro M Finger touch" Touch off'
 
 # クリップボードのテキストをツイートする
 alias ctw='twty "$(xclip -o)"'
+
+# vim
+type nvim >& /dev/null && {
+  alias v='nvim'
+} || {
+  alias v='vim'
+}
+
+# git
+alias g='git'
+alias gg='gitctl'
