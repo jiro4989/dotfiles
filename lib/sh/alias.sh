@@ -59,4 +59,4 @@ type nvim >& /dev/null && {
 
 # git
 alias g='git'
-alias gg='gitctl'
+alias gg='gits'
