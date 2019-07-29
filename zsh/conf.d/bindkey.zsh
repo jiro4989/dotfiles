@@ -45,14 +45,3 @@ __peco_edit() {
 }
 zle -N __peco_edit
 alias pe=__peco_edit
-
-# ブランチを切り替える
-__peco_git_checkout() {
-  local __branch=$(git branch --all | grep -v HEAD | peco)
-  if [ -n "$__branch" ]; then
-    git checkout $(echo "$__branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-  fi
-  zle accept-line
-}
-zle -N __peco_git_checkout
-alias pgco=__peco_git_checkout
