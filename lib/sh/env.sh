@@ -42,7 +42,13 @@ export PATH=$PATH:$REPO_ROOT/gits/bin
 export GRAALVM_HOME=/opt/graalvm/current
 export PATH=$PATH:$GRAALVM_HOME/bin
 
-export EDITOR=nvim
+EDITOR=nvim
+type $EDITOR >&/dev/null || {
+  EDITOR=vim
+}
+
+export EDITOR
+
 type chromium >/dev/null 2>&1 && export BROWSER=chromium
 type chromium-browser >/dev/null 2>&1 && export BROWSER=chromium-browser
 export TERMINAL=terminator
