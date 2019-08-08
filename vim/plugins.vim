@@ -102,8 +102,8 @@ autocmd! User vim-nodejs-complete call s:_source('vim-nodejs-complete.vim')
 " アウトライナ
 Plug 'vim-scripts/VOoM'
 
-Plug 'rcmdnk/vim-markdown', { 'for':['md', 'markdown'] }
-autocmd! User vim-markdown call s:_source('vim-markdown.vim')
+" Plug 'rcmdnk/vim-markdown', { 'for':['md', 'markdown'] }
+" autocmd! User vim-markdown call s:_source('vim-markdown.vim')
 
 Plug 'dhruvasagar/vim-table-mode', { 'for':'markdown' }
 autocmd! User vim-table-mode call s:_source('vim-table-mode.vim')
@@ -130,6 +130,7 @@ Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
 Plug 'jiro4989/vimquiz.vim'
 Plug 'unkontributors/super_unko.vim'
+Plug 'gabrielelana/vim-markdown'
 
 "}}}
 
