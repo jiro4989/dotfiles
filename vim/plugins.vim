@@ -99,15 +99,8 @@ Plug 'myhere/vim-nodejs-complete', { 'for':'javascript' }
 autocmd! User vim-nodejs-complete call s:_source('vim-nodejs-complete.vim')
 
 " Markdown
-" アウトライナ
-Plug 'vim-scripts/VOoM'
-
-" Plug 'rcmdnk/vim-markdown', { 'for':['md', 'markdown'] }
-" autocmd! User vim-markdown call s:_source('vim-markdown.vim')
-
-Plug 'dhruvasagar/vim-table-mode', { 'for':'markdown' }
-autocmd! User vim-table-mode call s:_source('vim-table-mode.vim')
-
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown', { 'for':['md', 'markdown'] }
 " Markdown形式の目次を自動生成する
 Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
 
@@ -130,7 +123,6 @@ Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
 Plug 'jiro4989/vimquiz.vim'
 Plug 'unkontributors/super_unko.vim'
-Plug 'gabrielelana/vim-markdown'
 
 "}}}
 
