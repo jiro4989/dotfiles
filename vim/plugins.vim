@@ -55,13 +55,12 @@ Plug 'honza/vim-snippets'
 
 " Language Server Protocol
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-call s:_source('asyncomplete.vim.vim')
 Plug 'prabirshrestha/vim-lsp'
 call s:_source('vim-lsp.vim')
+Plug 'prabirshrestha/asyncomplete.vim'
+call s:_source('asyncomplete.vim.vim')
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'natebosch/vim-lsc'
-let g:lsp_async_completion = 1
 
 " 差分表示を左端に表示
 Plug 'airblade/vim-gitgutter'
@@ -71,8 +70,8 @@ call s:_source('vim-gitgutter.vim')
 " 2. 言語別設定 {{{
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-autocmd! User vim-go call s:_source('vim-go.vim')
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+" autocmd! User vim-go call s:_source('vim-go.vim')
 
 " Nim
 Plug 'zah/nim.vim', { 'for':'nim' }
