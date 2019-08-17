@@ -7,10 +7,19 @@
 " に分類できないか、あるいはここの雑多な設定をまとめて別ファイルに吐き出せないか
 " 県とすること。
 
+" ターミナル以外を開いたときだけcdする
+function! s:change_dir()
+  if &l:buftype ==# 'terminal' || &l:buftype ==# 'nowrite'
+    return
+  endif
+
+  lcd %:p:h
+endfunction
+
 " 開いたファイルをカレントディレクトリに設定
 augroup grlcd
   autocmd!
-  autocmd BufEnter * lcd %:p:h
+  autocmd BufEnter *.* call s:change_dir()
 augroup END
 
 set nobomb      " BOMなしで保存する
