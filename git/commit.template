@@ -21,8 +21,8 @@
 # ✅  :white_check_mark: テスト追加 Adding tests.
 # 🔒  :lock: Fixing security issues.
 # 🌐  :globe_with_meridians: Internationalization and localization.
-# ⬆️  :arrow_up: Upgrading dependencies.
-# ⬇️  :arrow_down: Downgrading dependencies.
+# ⬆️   :arrow_up: Upgrading dependencies.
+# ⬇️   :arrow_down: Downgrading dependencies.
 # ⏪  :rewind: Reverting changes.
 # 🔀  :twisted_rightwards_arrows: Merging branches.
 # 💡  :bulb: Documenting source code.
