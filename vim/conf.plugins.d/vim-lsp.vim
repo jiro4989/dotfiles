@@ -17,15 +17,13 @@ endif
 
 " Go
 if executable('gopls')
-  augroup LspGo
-    au!
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'go-lang',
-        \ 'cmd': {server_info->['gopls']},
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
+    autocmd BufWritePre *.go LspDocumentFormatSync
     autocmd FileType go setlocal omnifunc=lsp#complete
-  augroup END
 endif
 
 " CSS
@@ -46,9 +44,10 @@ if executable('bash-language-server')
         \ })
 endif
 
-nnoremap <silent> <Leader>d :LspDefinition<CR>
-nnoremap <silent> <Leader>p :LspHover<CR>
-nnoremap <silent> <Leader>r :LspReferences<CR>
-nnoremap <silent> <Leader>i :LspImplementation<CR>
-nnoremap <silent> <Leader>s :split \| :LspDefinition <CR>
-nnoremap <silent> <Leader>v :vsplit \| :LspDefinition <CR>
+let g:lsp_async_completion = 1
+nnoremap <silent> gd :LspDefinition<CR>
+nnoremap <silent> gp :LspHover<CR>
+nnoremap <silent> gr :LspReferences<CR>
+nnoremap <silent> gi :LspImplementation<CR>
+nnoremap <silent> gs :split \| :LspDefinition <CR>
+nnoremap <silent> gv :vsplit \| :LspDefinition <CR>
