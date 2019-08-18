@@ -54,6 +54,7 @@ type nvim >& /dev/null && {
   alias v='vim'
 }
 
-# git
-alias g='git'
-alias gg='gits'
+# git alias g='git'
+type hub >& /dev/null && {
+  alias g='hub'
+}
