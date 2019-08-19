@@ -44,3 +44,16 @@ function! ColonEqToVar()
   echo l:selected
 endfunction
 command! ColonEqToVar :call ColonEqToVar()
+
+" 保存時にgoimportsをかける
+function! s:exec_goimports()
+  set cmdheight=3
+  exe ":!goimports -w %"
+  exe ":e!"
+  set cmdheight=1
+endfunction
+
+augroup auto_style
+  autocmd!
+  autocmd bufWritePost *.go call s:exec_goimports()
+augroup END
