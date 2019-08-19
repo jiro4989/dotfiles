@@ -58,3 +58,5 @@ type nvim >& /dev/null && {
 type hub >& /dev/null && {
   alias g='hub'
 }
+
+alias shfmt='shfmt -i 2 -ci -sr -d'
