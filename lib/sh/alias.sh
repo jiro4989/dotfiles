@@ -29,7 +29,22 @@ burnout() {
 alias change_terminal="sudo update-alternatives --config x-terminal-emulator"
 
 # 最新のヒストリコマンドを一つクリップボードにコピー
-alias yy="fc -ln | tail -n 1 | sed -r 's@^\s+@@g' | gocopy"
+clipcopy() {
+  type pbcopy >& /dev/null && {
+    pbcopy
+    return
+  }
+  
+  type gocopy >& /dev/null && {
+    gocopy
+    return
+  }
+
+  echo -e "[ \x1b[31mERROR\x1b[m ] pbcopyかgocopyをインストールしてください"
+  return 1
+}
+
+alias yy="fc -ln | tail -n 1 | sed -E 's@^\s+@@g' | clipcopy"
 
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
 peco_src() {
