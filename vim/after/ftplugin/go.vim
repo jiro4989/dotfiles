@@ -47,10 +47,10 @@ command! ColonEqToVar :call ColonEqToVar()
 
 " 保存時にgoimportsをかける
 function! s:exec_goimports()
-  set cmdheight=3
-  exe ":!goimports -w %"
-  exe ":e!"
-  set cmdheight=1
+  let l:l = line(".")
+  exe "%!goimports"
+  exe ":w"
+  call cursor(l:l, 0)
 endfunction
 
 augroup auto_style
