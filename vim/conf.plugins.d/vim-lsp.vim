@@ -57,6 +57,15 @@ if executable('typescript-language-server')
     autocmd FileType typescript setlocal omnifunc=lsp#complete
 endif
 
+" Clojure
+if executable('clojure-lsp')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'clojure-lsp',
+    \ 'cmd': {server_info->['clojure-lsp']},
+    \ 'whitelist': ['clojure'],
+    \ })
+endif
+
 let g:lsp_async_completion = 1
 nnoremap <silent> gd :LspDefinition<CR>
 nnoremap <silent> gp :LspHover<CR>
