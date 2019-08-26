@@ -29,9 +29,9 @@ burnout() {
 alias change_terminal="sudo update-alternatives --config x-terminal-emulator"
 
 # 最新のヒストリコマンドを一つクリップボードにコピー
-clipcopy() {
-  type pbcopy >& /dev/null && {
-    pbcopy
+clip() {
+  type xsel >& /dev/null && {
+    xsel --clipboard --input
     return
   }
   
@@ -45,6 +45,8 @@ clipcopy() {
 }
 
 alias yy="fc -ln | tail -n 1 | sed -E 's@^\s+@@g' | clipcopy"
+alias histmd='__f() { history | tail -n 1 | sed -E "s/^\s+[0-9]+\s+//g"; }; echo -e "\`\`\`\n$ $(__f) $v\n$(eval $(__f))\n\`\`\`"'
+alias yymd='histmd | clip'
 
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
 peco_src() {
