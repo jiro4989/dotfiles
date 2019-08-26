@@ -35,8 +35,8 @@ clip() {
     return
   }
   
-  type gocopy >& /dev/null && {
-    gocopy
+  type pbcopy >& /dev/null && {
+    pbcopy
     return
   }
 
