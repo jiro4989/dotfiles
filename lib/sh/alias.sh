@@ -44,7 +44,7 @@ clip() {
   return 1
 }
 
-alias yy="fc -ln | tail -n 1 | sed -E 's@^\s+@@g' | clipcopy"
+alias yy="fc -ln | tail -n 1 | sed -E 's@^\s+@@g' | clip"
 alias histmd='__f() { history | tail -n 1 | sed -E "s/^\s+[0-9]+\s+//g"; }; echo -e "\`\`\`\n$ $(__f) $v\n$(eval $(__f))\n\`\`\`"'
 alias yymd='histmd | clip'
 
