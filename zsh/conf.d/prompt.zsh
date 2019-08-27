@@ -12,11 +12,13 @@ precmd () { vcs_info }
 status_code () {
   local color face
 
-  local ok="(*'-')ｲｲｶﾝｼﾞ"
-  local ng="(;^q^%)ｱﾋﾞｬｰ "
+  # local ok="(*'-')ｲｲｶﾝｼﾞ"
+  # local ng="(;^q^%)ｱﾋﾞｬｰ "
+  local ok="(*'-')!"
+  local ng="(;^q^%)?"
 
   color="%(?.${fg[green]}.${fg[blue]})"
-  face="%(?!$ok <!$ng <)"
+  face="%(?.$ok <.$ng <)"
 
   echo "${color}${face}${reset_color}"
 }
