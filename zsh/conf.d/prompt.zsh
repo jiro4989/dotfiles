@@ -10,17 +10,15 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 
 status_code () {
-  local color face
-
-  # local ok="(*'-')ｲｲｶﾝｼﾞ"
-  # local ng="(;^q^%)ｱﾋﾞｬｰ "
-  local ok="(*'-')!"
+  local ok="(*'-'%)!"
   local ng="(;^q^%)?"
 
-  color="%(?.${fg[green]}.${fg[blue]})"
+  local color face reset
+  color="%{%(?.${fg[green]}.${fg[blue]})%}"
   face="%(?.$ok.$ng)"
+  reset="%{$reset_color%}"
 
-  echo "${color}${face}${reset_color}"
+  echo "$color$face$reset"
 }
 
 # %F{色} 任意のテキスト %fで、%fまで色を変更できる
