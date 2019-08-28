@@ -28,24 +28,24 @@ burnout() {
 # ターミナルエミュレータの変更
 alias change_terminal="sudo update-alternatives --config x-terminal-emulator"
 
-# 最新のヒストリコマンドを一つクリップボードにコピー
+# clip はパイプから渡された文字列をクリップボードにコピーする。
 clip() {
   type xsel >& /dev/null && {
     xsel --clipboard --input
     return
   }
-  
+
   type pbcopy >& /dev/null && {
     pbcopy
     return
   }
 
-  echo -e "[ \x1b[31mERROR\x1b[m ] pbcopyかgocopyをインストールしてください"
+  echo -e "[ \x1b[31mERROR\x1b[m ] pbcopyかxselをインストールしてください"
   return 1
 }
 
 alias yy="fc -ln | tail -n 1 | sed -E 's@^\s+@@g' | clip"
-alias histmd='__f() { history | tail -n 1 | sed -E "s/^\s+[0-9]+\s+//g"; }; echo -e "\`\`\`\n$ $(__f) $v\n$(eval $(__f))\n\`\`\`"'
+alias histmd='(__f() { fc -ln | tail -n 1 | sed -E "s@^\s+@@g"; }; echo -e "\`\`\`bash\n$ $(__f) $v\n$(eval $(__f))\n\`\`\`")'
 alias yymd='histmd | clip'
 
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
