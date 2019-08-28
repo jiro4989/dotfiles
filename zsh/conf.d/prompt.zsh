@@ -18,14 +18,14 @@ status_code () {
   local ng="(;^q^%)?"
 
   color="%(?.${fg[green]}.${fg[blue]})"
-  face="%(?.$ok <.$ng <)"
+  face="%(?.$ok.$ng)"
 
   echo "${color}${face}${reset_color}"
 }
 
 # %F{色} 任意のテキスト %fで、%fまで色を変更できる
 PROMPT='%F{003}%*%f %F{magenta}%n%f@%F{blue}%M%f %F{200}[%~]%f${vcs_info_msg_0_}
-`status_code` %# '
+`status_code` < %# '
 
 show_zsh_prompt_colors() {
   for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
