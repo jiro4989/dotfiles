@@ -45,7 +45,7 @@ clip() {
 }
 
 alias yy="fc -ln | tail -n 1 | sed -E 's@^\s+@@g' | clip"
-alias histmd='(__f() { fc -ln | tail -n 1 | sed -E "s@^\s+@@g"; }; echo -e "\`\`\`bash\n$ $(__f) $v\n$(eval $(__f))\n\`\`\`")'
+alias histmd='(__f() { fc -ln | tail -n 1 | sed -E "s@^\s+@@g"; }; echo -e "\`\`\`bash\n$ $(__f)\n$(eval $(__f))\n\`\`\`")'
 alias yymd='histmd | clip'
 
 # ghq管理のディレクトリ配下からリポジトリを検索し、cwdを移動する
