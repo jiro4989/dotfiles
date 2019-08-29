@@ -1,0 +1,12 @@
+---
+
+- name: Make i3wm config directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/i3"
+    state: directory
+
+- name: Make symlink of i3wm config file
+  file:
+    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/i3/config"
+    dest: "{{ lookup('env', 'HOME') }}/.config/i3/config"
+    state: link

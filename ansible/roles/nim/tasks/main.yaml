@@ -1,0 +1,10 @@
+---
+
+- name: Download choosenim setup script
+  get_url:
+    url: "https://nim-lang.org/choosenim/init.sh"
+    dest: "/tmp/init.sh"
+
+- name: Install nim
+  shell: "[ -e {{ lookup('env', 'HOME') }}/.nimble/bin/nim ] || bash /tmp/init.sh -y"
+

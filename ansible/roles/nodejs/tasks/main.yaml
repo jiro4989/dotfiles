@@ -1,0 +1,33 @@
+---
+
+- name: Make global install directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.npm-global"
+    state: directory
+
+- name: Make global install directory
+  shell: "npm config set prefix '~/.npm-global'"
+
+- name: Install Bash language server
+  npm:
+    name: bash-language-server
+    global: true
+  ignore_errors: true
+
+- name: Install CSS language server
+  npm:
+    name: vscode-css-languageserver-bin
+    global: true
+  ignore_errors: true
+
+- name: Install TypeScript
+  npm:
+    name: typescript
+    global: true
+  ignore_errors: true
+
+- name: Install TypeScript language server
+  npm:
+    name: typescript-language-server
+    global: true
+  ignore_errors: true

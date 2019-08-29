@@ -1,0 +1,17 @@
+- hosts: localhost
+  connection: local
+  vars_files:
+    - ./vars/usergroup.yaml
+  roles:
+    - apt
+    - common
+    - nodejs
+    - git
+    - go
+    - docker
+    - vim
+    - shell
+    - font
+    - vscode
+    - nim
+    - clojure

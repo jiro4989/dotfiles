@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  manjaro:
+    image: zalox/manjaro
+    tty: true
+    volumes:
+      - ".:/work"
+    entrypoint:
+      - "/work/setup.sh"

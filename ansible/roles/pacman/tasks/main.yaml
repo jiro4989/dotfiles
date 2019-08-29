@@ -1,0 +1,148 @@
+---
+
+- name: Install snap packages
+  become: true
+  pacman:
+    name:
+      - snapd
+      - systemd
+      - yay
+    update_cache: yes
+    state: latest
+
+- name: Install IME
+  become: true
+  pacman:
+    name:
+      - ibus
+    update_cache: yes
+    state: latest
+
+- name: Install IME with yay
+  become: true
+  shell: "yay -S -Y mozc ibus-mozc"
+  ignore_errors: true
+
+- name: Install Git
+  become: true
+  pacman:
+    name:
+      - git
+      - tig
+    update_cache: yes
+    state: latest
+
+- name: Install shells and terminal
+  become: true
+  pacman:
+    name:
+      - zsh
+      - tmux
+      - shellcheck
+      - termite
+      - bash-bats
+      - sed
+      - make
+      - which
+      - gcc
+    update_cache: yes
+    state: latest
+
+- name: Install editors
+  become: true
+  pacman:
+    name:
+      - vim
+        #- gvim
+      - code
+    update_cache: yes
+    state: latest
+
+- name: Install Go
+  become: true
+  pacman:
+    name:
+      - go
+    update_cache: yes
+    state: latest
+
+- name: Install etc
+  become: true
+  pacman:
+    name:
+      - zip
+      - glibc
+      - ruby
+    update_cache: yes
+    state: latest
+
+- name: Install docker
+  become: true
+  pacman:
+    name:
+      - docker
+      - docker-compose
+    update_cache: yes
+    state: latest
+  ignore_errors: true
+
+- name: Install fonts
+  become: true
+  pacman:
+    name:
+      - noto-fonts-emoji
+      - noto-fonts-extra
+      - noto-fonts-cjk
+    update_cache: yes
+    state: latest
+
+- name: Install nodejs
+  become: true
+  pacman:
+    name:
+      - nodejs
+      - npm
+    update_cache: yes
+    state: latest
+
+- name: Install audio mixer
+  become: true
+  pacman:
+    name:
+      - pulseaudio
+      - pavucontrol
+      - lmms
+    update_cache: yes
+    state: latest
+
+- name: Install games
+  become: true
+  pacman:
+    name:
+      - steam
+      - wine
+      - winetricks
+    update_cache: yes
+    state: latest
+
+- name: Install illustlation
+  become: true
+  pacman:
+    name:
+      - krita
+      - xf86-input-wacom
+    update_cache: yes
+    state: latest
+
+- name: Install etc
+  become: true
+  pacman:
+    name:
+      - snapper
+      - dnsutils
+      - lutris
+      - blueberry # GUI BLuetooth
+      - chromium # Browser
+    update_cache: yes
+    state: latest
+  ignore_errors: true

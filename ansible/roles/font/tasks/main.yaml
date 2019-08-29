@@ -1,0 +1,41 @@
+---
+
+- name: Get latest font file information
+  uri:
+    url: "https://api.github.com/repos/yuru7/HackGen/releases/latest"
+    return_content: true
+    body_format: json
+  register: response
+
+- name: Download font file and unarchive
+  unarchive:
+    src: "{{ response.json.assets[0].browser_download_url }}"
+    dest: "/tmp"
+    remote_src: yes
+
+- name: Mkdir font directory
+  become: true
+  file:
+    path: /usr/share/fonts/truetype/hack-gen
+    state: directory
+    recurse: true
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Copy font files
+  become: true
+  copy:
+    src: "{{ item }}"
+    dest: "/usr/share/fonts/truetype/hack-gen/"
+  with_fileglob:
+    - "/tmp/HackGen*.ttf"
+
+- name: Get noto emoji font
+  become: true
+  git:
+    repo: "https://github.com/googlefonts/noto-emoji"
+    dest: "/usr/local/src/noto-emoji"
+
+- name: Update font cache
+  shell: "fc-cache -f -v"

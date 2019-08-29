@@ -1,0 +1,11 @@
+---
+
+- name: Download leingen
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
+    dest: "/usr/local/bin"
+    mode: 0755
+
+- name: Install clojure
+  shell: lein

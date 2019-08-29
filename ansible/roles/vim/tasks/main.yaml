@@ -1,0 +1,20 @@
+---
+
+- name: Install neovim
+  become: true
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    dest: /usr/local/bin/nvim
+    mode: 0755
+
+- name: Set config vim directory
+  file:
+    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/vim"
+    dest: "{{ lookup('env', 'HOME') }}/.vim"
+    state: link
+
+- name: Set config neovim directory
+  file:
+    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/vim"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: link

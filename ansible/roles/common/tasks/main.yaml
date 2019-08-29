@@ -1,0 +1,117 @@
+---
+
+#- name: Change user dirs language, Japanese to English
+#  shell: "LANG=C xdg-user-dirs-gtk-update"
+
+# - name: Delete user-dirs.dirs
+#   file:
+#     path: "{{ lookup('env', 'HOME') }}/.config/user-dirs.dirs"
+#     state: absent
+# 
+# - name: Create link user-dirs.dirs
+#   file:
+#     src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/user-dirs.dirs"
+#     dest: "{{ lookup('env', 'HOME') }}/.config/user-dirs.dirs"
+#     state: link
+#
+# - name: Make user directories
+#   file:
+#     path: "{{ lookup('env', 'HOME') }}/{{ item }}"
+#     state: directory
+#   with_items:
+#     - desktop
+#     - download
+#     - template
+#     - public
+#     - document
+#     - music
+#     - picture
+#     - video
+
+# - name: Create user
+#   user:
+#     name: "{{ usergroup.user.name }}"
+#     group: "{{ usergroup.user.group }}"
+
+- name: Make config directory
+  #become_user: "{{usergroup.user.name}}"
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config"
+    state: directory
+
+# - name: Install minikube
+#   get_url:
+#     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+#     dest: /usr/local/bin/minikube
+#     mode: 0755
+#     owner: root
+#     group: root
+
+# - name: Create /snap link
+#   become: true
+#   file:
+#     src: /var/lib/snapd/snap
+#     dest: /snap
+#     state: link
+
+- name: Starting snapd
+  become: true
+  systemd:
+    name: snapd.service
+    state: started
+  ignore_errors: true
+
+- name: Upgrade pip
+  become: true
+  ignore_errors: true
+  pip:
+    name:
+      - pip
+    executable: pip3
+    state: latest
+
+- name: Install pip modules
+  become: true
+  ignore_errors: true
+  pip:
+    name:
+      - python-language-server
+    executable: pip3
+    state: latest
+
+- name: Starting Bluetooth
+  become: true
+  systemd:
+    name: bluetooth.service
+    state: started
+  ignore_errors: true
+
+- name: Register bluetooth file existing
+  stat:
+    path: /etc/bluetooth/main.conf
+  register: bluetooth_file
+
+- name: Bluetooth auto enable
+  become: true
+  lineinfile:
+    dest: /etc/bluetooth/main.conf
+    state: present
+    line: AutoEnable=true
+  when: bluetooth_file.stat.exists
+
+- name: Register ibus file existing
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.profile"
+  register: ibus_file
+
+- name: ibus .profile
+  blockinfile:
+    dest:  "{{ lookup('env', 'HOME') }}/.profile"
+    state: present
+    content: |
+      export DefaultImModule=ibus
+      export GTK_IM_MODULE=ibus
+      export QT_IM_MODULE=ibus
+      export XMODIFIERS="@im=ibus"
+      ibus-daemon -drx
+  when: ibus_file.stat.exists

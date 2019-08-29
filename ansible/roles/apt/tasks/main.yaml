@@ -1,0 +1,59 @@
+---
+
+- name: Add apt repositories of official
+  apt_repository:
+    repo: "{{item}}"
+  with_items:
+    - deb http://archive.ubuntu.com/ubuntu bionic main restricted universe multiverse
+    - deb http://archive.ubuntu.com/ubuntu bionic-updates main restricted universe multiverse
+    - deb http://archive.ubuntu.com/ubuntu bionic-backports main restricted universe multiverse
+    - deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
+    - deb http://archive.canonical.com/ubuntu/ bionic partner
+
+- name: Install apt packages
+  apt:
+    name:
+      - snapd
+      - systemd
+      - mysql-workbench
+      - curl
+      - fcitx
+      - fcitx-mozc
+      - fcitx-config-common
+      - ibus-mozc
+      - zsh
+      - git
+      - vim
+      - vim-gnome
+      - nodejs
+      - npm
+      - python3
+      - python-pip
+      - python3-pip
+      - ruby
+      - gem
+      - krita
+      - krita-l10n
+      - kazam
+        #- steam
+      - tig
+      - i3
+      - volumeicon-alsa
+      - xclip
+      - unar
+      - fonts-ricty-diminished
+      - screenfetch
+      - chromium-browser
+      - chromium-browser-l10n
+      - g++
+      - tmux
+      - docker
+      - docker.io
+      - docker-compose
+      - winehq-stable
+      - guake
+      - ffmpeg
+      - openjdk-11-jdk
+      - xsel
+    update_cache: yes
+    state: latest

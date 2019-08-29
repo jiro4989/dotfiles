@@ -1,0 +1,21 @@
+---
+
+# - name: Install docker
+#   become: true
+#   shell: "snap install {{ item }} --classic --stable"
+#   with_items:
+#     - docker
+
+- name: Docker group exists
+  become: true
+  group:
+    name: docker
+    state: present
+
+- name: Working user belongs to docker group
+  become: true
+  user:
+    name: jiro4989
+    state: present
+    groups: docker
+    append: yes

@@ -1,0 +1,7 @@
+language: bash
+
+services:
+  - docker
+
+script:
+  - docker-compose up manjaro
