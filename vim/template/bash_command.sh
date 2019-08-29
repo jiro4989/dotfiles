@@ -24,9 +24,9 @@ main() {
 }
 
 usage() {
-  cat <<- EOS
-  TODO
-  EOS
+  cat << EOS
+TODO
+EOS
 }
 
 log() {

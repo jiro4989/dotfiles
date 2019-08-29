@@ -25,7 +25,15 @@ endfunction
 
 command! AddColors call s:add_colors()
 
+" テンプレートファイルを開いてカレントバッファを上書きする
 function! s:open_template()
-  :r0 expand(g:CONFIG_ROOT_DIR . "/template/bash_command.sh")
+  let l:d = expand(g:CONFIG_ROOT_DIR)
+  let l:tmpl_file = l:d . "/template/bash_command.sh"
+  let l:data = readfile(l:tmpl_file)
+  let l:i = 1
+  for l:line in l:data
+    call setline(l:i, l:line)
+    let l:i = l:i + 1
+  endfor
 endfunction
 command! OpenTemplate call s:open_template()
