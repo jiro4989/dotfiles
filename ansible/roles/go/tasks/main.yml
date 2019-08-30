@@ -1,0 +1,71 @@
+---
+
+- name: Install Go
+  become: true
+  pacman:
+    name:
+      - go
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == "Archlinux"
+
+- name: Setup go 1.12
+  shell: "GOPATH={{ GOPATH }} go get golang.org/dl/go1.12"
+
+- name: Download go1.12
+  shell: "GOPATH={{ GOPATH }} {{ GOPATH }}/bin/go1.12 download"
+
+- name: Link go
+  file:
+    src: "{{ GOPATH }}/bin/go1.12"
+    dest: "{{ GOPATH }}/bin/go"
+    state: link
+
+- name: Install golang modules
+  shell: "GOPATH={{ GOPATH }} GO111MODULE=off go get -u {{ item }}"
+  ignore_errors: true
+  with_items:
+    - "github.com/motemen/ghq"
+    - "golang.org/x/tools/cmd/godoc"
+    - "golang.org/x/tools/cmd/gopls"
+    - "golang.org/x/tools/cmd/gorename"
+    - "golang.org/x/tools/cmd/gomvpkg"
+    - "github.com/tcnksm/ghr"
+    - "github.com/atotto/clipboard/cmd/gocopy"
+    - "github.com/derekparker/delve/cmd/dlv"
+    - "github.com/alecthomas/gometalinter"
+    - "github.com/hhatto/gocloc/cmd/gocloc"
+    - "github.com/mitchellh/gox"
+    - "github.com/mvdan/sh/cmd/shfmt"
+    - "github.com/peco/peco/cmd/peco/..."
+    - "github.com/ChimeraCoder/gojson/gojson"
+    - "github.com/mattn/twty"
+    - "github.com/greymd/ojichat"
+    - "github.com/jiro4989/textimg"
+    - "github.com/xztaityozx/owari"
+    - "github.com/jiro4989/align"
+
+- name: ghq get jiro4989 repositories
+  shell: "{{ GOPATH }}/bin/ghq get jiro4989/{{ item }}"
+  with_items:
+    - "dotfiles"
+    - "setup"
+    - "workspace"
+    - "text-proofreading"
+    - "textimg"
+    - "super_unko"
+    - "scripts"
+
+- name: ghq get other repositories
+  shell: "{{ GOPATH }}/bin/ghq get {{ item }}"
+  with_items:
+    - "tj/git-extras"
+    - "unkontributors/super_unko"
+
+- name: git-extras install
+  become: true
+  shell: "{{ GOPATH }}/src/github.com/tj/git-extras/install.sh"
+
+- name: Install super_unko
+  become: true
+  shell: "{{ GOPATH }}/src/github.com/unkontributors/super_unko/install.sh"

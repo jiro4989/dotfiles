@@ -15,6 +15,8 @@ readonly RED=$'\x1b[31m'
 readonly GREEN=$'\x1b[32m'
 readonly RESET=$'\x1b[m'
 
+readonly BRANCH="${1:-$TRAVIS_BRANCH}"
+
 main() {
   set_os
   update_packages
@@ -71,11 +73,11 @@ before_install() {
 }
 
 install_packages() {
-  git clone -q https://github.com/jiro4989/dotfiles "$DOTDIR"
+  git clone -b "$BRANCH" -q https://github.com/jiro4989/dotfiles "$DOTDIR"
   cd "$DOTDIR/ansible"
   info "Ansibleでの環境構築を開始します。"
   info "この処理には非常に時間がかかります。"
-  ansible-playbook "site_$OS.yaml"
+  ansible-playbook "site.yml"
   return $?
 }
 

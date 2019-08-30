@@ -1,0 +1,79 @@
+---
+
+- name: Install package manager
+  become: true
+  pacman:
+    name:
+      - systemd
+      - yay
+    update_cache: yes
+    state: latest
+
+- name: Install IME
+  become: true
+  pacman:
+    name:
+      - ibus
+    update_cache: yes
+    state: latest
+
+- name: Install IME with yay
+  become: true
+  shell: "yay -S -Y mozc ibus-mozc"
+  ignore_errors: true
+
+- name: Install etc
+  become: true
+  pacman:
+    name:
+      - zip
+      - glibc
+      - sed
+      - make
+      - which
+      - gcc
+    update_cache: yes
+    state: latest
+
+- name: Install audio mixer
+  become: true
+  pacman:
+    name:
+      - pulseaudio
+      - pavucontrol
+      - lmms
+    update_cache: yes
+    state: latest
+
+- name: Install games
+  become: true
+  pacman:
+    name:
+      - steam
+      - wine
+      - winetricks
+    update_cache: yes
+    state: latest
+
+- name: Install illustlation
+  become: true
+  pacman:
+    name:
+      - krita
+      - xf86-input-wacom
+    update_cache: yes
+    state: latest
+
+- name: Install etc
+  become: true
+  pacman:
+    name:
+      - snapper
+      - dnsutils
+      - lutris
+      - blueberry # GUI BLuetooth
+      - chromium # Browser
+    update_cache: yes
+    state: latest
+  ignore_errors: true
+

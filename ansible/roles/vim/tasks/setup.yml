@@ -1,0 +1,18 @@
+---
+
+- name: Install editors
+  become: true
+  pacman:
+    name:
+      - vim
+      - code
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == "Archlinux"
+
+- name: Install neovim
+  become: true
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    dest: /usr/local/bin/nvim
+    mode: 0755

@@ -3,6 +3,7 @@ version: '3'
 services:
   manjaro:
     image: zalox/manjaro
+    env_file: .env
     tty: true
     volumes:
       - ".:/work"

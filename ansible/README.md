@@ -74,3 +74,20 @@ Boldフォントの方だけ反映されるという問題に直面した。
 
 結論：$HOME/.Xresource内のフォント設定をコメントアウトしてOSを再起動したら解決した。
 
+# タスク依存関係
+
+* 初期セットアップ
+  * systemdとかsnapdとか低レイヤのミドルウェアインストール
+* Go環境のインストール (ghq)
+  * dotfiles
+    * editorのセットアップ
+      * Vim, Neovim, VSCode
+    * 各プログラミング言語環境のセットアップ
+      * Nim, Ruby, Python
+    * Docker
+    * terminal
+
+site.yml - ミドルウェアのインストールとデプロイ
+site_setup.yml - ミドルウェアのインストール
+site_deploy.yml - 各種設定のリンク、配置
+site_update.yml - ミドルウェアのアップデート

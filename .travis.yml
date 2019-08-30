@@ -4,4 +4,5 @@ services:
   - docker
 
 script:
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH" > .env
   - docker-compose up manjaro
