@@ -3,6 +3,10 @@ language: bash
 services:
   - docker
 
+env:
+  - SERVICE=manjaro
+  - SERVICE=manjaro_curl
+
 script:
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH" > .env
-  - docker-compose up manjaro
+  - docker-compose up "$SERVICE"
