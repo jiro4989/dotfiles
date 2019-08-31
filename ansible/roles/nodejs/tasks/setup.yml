@@ -1,0 +1,11 @@
+---
+
+- name: Install nodejs
+  become: true
+  pacman:
+    name:
+      - nodejs
+      - npm
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == "Archlinux"

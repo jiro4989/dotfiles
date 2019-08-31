@@ -1,0 +1,13 @@
+---
+
+- name: Install docker
+  become: true
+  pacman:
+    name:
+      - docker
+      - docker-compose
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == "Archlinux"
+  ignore_errors: true
+

@@ -1,0 +1,21 @@
+---
+
+- name: Install shells and terminal
+  become: true
+  pacman:
+    name:
+      - termite
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == "Archlinux"
+
+- name: Create link of urxvt config file
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/termite"
+    state: directory
+
+- name: Create link of urxvt config file
+  file:
+    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/termite/config"
+    dest: "{{ lookup('env', 'HOME') }}/.config/termite/config"
+    state: link

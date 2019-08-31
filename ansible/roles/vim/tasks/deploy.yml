@@ -1,0 +1,14 @@
+---
+
+- name: Set config vim directory
+  file:
+    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/vim"
+    dest: "{{ lookup('env', 'HOME') }}/.vim"
+    state: link
+
+- name: Set config neovim directory
+  file:
+    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/vim"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: link
+

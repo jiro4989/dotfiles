@@ -1,0 +1,45 @@
+---
+
+- name: Make config directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/Code/User/"
+    state: directory
+    recurse: true
+
+- name: Link user settings.json
+  file:
+    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/code/user/settings.json"
+    dest:  "{{ lookup('env', 'HOME') }}/.config/Code/User/settings.json"
+    state: link
+
+############################################################
+# Install extensions
+############################################################
+
+- name: Install VSCode extentions
+  shell: "cat {{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/code/extensions.txt | while read -r pkg; do code --install-extension $pkg; done"
+
+- name: set fact ruby
+  set_fact:
+    PATH: "/snap/bin:$PATH"
+
+############################################################
+# Gem for AsciiDoc extensions
+############################################################
+
+- name: Gem install asciidoctor
+  gem:
+    name: asciidoctor
+    state: latest
+
+- name: Gem install asciidoctor-diagram
+  gem:
+    name: asciidoctor-diagram
+    state: latest
+
+- name: Gem install asciidoctor-pdf
+  gem:
+    name: asciidoctor-pdf
+    state: latest
+    pre_release: yes
+

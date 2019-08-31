@@ -1,0 +1,10 @@
+---
+
+- include_tasks: tasks/archlinux.yml
+  when: ansible_distribution == "Archlinux"
+
+- include_tasks: tasks/archlinux.yml
+  when: ansible_distribution == "Ubuntu"
+
+- include_tasks: tasks/archlinux.yml
+  when: ansible_distribution == "CentOS"

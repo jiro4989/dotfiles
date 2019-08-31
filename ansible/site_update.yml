@@ -1,0 +1,15 @@
+- hosts: localhost
+  connection: local
+  roles:
+    - common
+    # - nodejs
+    # - git
+    # - go
+    # - docker
+    # - vim
+    # - shell
+    # - i3
+    # - terminal
+    # - font
+    - vscode
+    - nim

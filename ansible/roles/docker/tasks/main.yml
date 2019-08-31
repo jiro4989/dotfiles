@@ -1,0 +1,2 @@
+- include_tasks: tasks/setup.yml
+- include_tasks: tasks/deploy.yml
