@@ -9,3 +9,12 @@ services:
       - ".:/work"
     entrypoint:
       - "/work/setup.sh"
+
+  manjaro_curl:
+    image: zalox/manjaro
+    env_file: .env
+    tty: true
+    entrypoint:
+      - sh
+      - -c
+      - 'curl https://raw.githubusercontent.com/jiro4989/dotfiles/$TRAVIS_BRANCH/setup.sh | bash'
