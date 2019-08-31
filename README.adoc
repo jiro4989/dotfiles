@@ -1,0 +1,13 @@
+= dotfiles
+
+image:https://travis-ci.org/jiro4989/dotfiles.svg?branch=master["Build Status", link="https://travis-ci.org/jiro4989/dotfiles"]
+
+設定ファイルと環境構築スクリプトを管理する。
+
+== 環境構築
+
+[source,bash]
+----
+curl "https://raw.githubusercontent.com/jiro4989/dotfiles/master/setup.sh" | bash
+----
+
