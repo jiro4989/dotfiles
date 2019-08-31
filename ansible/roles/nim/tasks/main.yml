@@ -6,5 +6,5 @@
     dest: "/tmp/init.sh"
 
 - name: Install nim
-  shell: "[ -e {{ lookup('env', 'HOME') }}/.nimble/bin/nim ] || bash /tmp/init.sh -y"
+  shell: "[ -e {{ home }}/.nimble/bin/nim ] || bash /tmp/init.sh -y"
 

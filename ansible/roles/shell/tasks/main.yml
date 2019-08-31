@@ -14,40 +14,40 @@
 
 - name: make my source directory
   file:
-    path: "{{ my_git_repo_root }}"
+    path: "{{ git_dir }}"
     state: directory
 
 - name: git clone dotfiles
   git:
     repo: "https://github.com/jiro4989/dotfiles"
-    dest: "{{ my_git_repo_root }}/dotfiles"
+    dest: "{{ git_dir }}/dotfiles"
   ignore_errors: true
 
 - name: bashrc exists
   stat:
-    path: "{{ lookup('env', 'HOME') }}/.bashrc"
+    path: "{{ home }}/.bashrc"
   register: bashrc_file
 
 - name: Add source my bashrc
   lineinfile:
-    dest: "{{ lookup('env', 'HOME') }}/.bashrc"
+    dest: "{{ home }}/.bashrc"
     state: present
     line: source $HOME/src/github.com/jiro4989/dotfiles/bash/bashrc
   when: bashrc_file.stat.exists
 
 - name: Create empty zshrc
   file:
-    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    path: "{{ home }}/.zshrc"
     state: touch
 
 - name: zshrc exists
   stat:
-    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    path: "{{ home }}/.zshrc"
   register: zshrc_file
 
 - name: Add source my zshrc
   lineinfile:
-    dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+    dest: "{{ home }}/.zshrc"
     state: present
     line: source $HOME/src/github.com/jiro4989/dotfiles/zsh/zshrc
   when: zshrc_file.stat.exists
@@ -58,7 +58,7 @@
 
 - name: Create tmux.conf link
   file:
-    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/tmux.conf"
-    dest:  "{{ lookup('env', 'HOME') }}/.tmux.conf"
+    src: "{{ git_dir }}/dotfiles/tmux.conf"
+    dest:  "{{ home }}/.tmux.conf"
     state: link
 
