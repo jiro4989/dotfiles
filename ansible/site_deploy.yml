@@ -1,5 +1,7 @@
 - hosts: localhost
   connection: local
+  vars_files:
+    - "vars/env.yml"
   roles:
     - common_deploy
     - nodejs

@@ -5,18 +5,18 @@
 
 # - name: Delete user-dirs.dirs
 #   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/user-dirs.dirs"
+#     path: "{{ home }}/.config/user-dirs.dirs"
 #     state: absent
 # 
 # - name: Create link user-dirs.dirs
 #   file:
-#     src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/user-dirs.dirs"
-#     dest: "{{ lookup('env', 'HOME') }}/.config/user-dirs.dirs"
+#     src: "{{ git_dir }}/dotfiles/user-dirs.dirs"
+#     dest: "{{ home }}/.config/user-dirs.dirs"
 #     state: link
 #
 # - name: Make user directories
 #   file:
-#     path: "{{ lookup('env', 'HOME') }}/{{ item }}"
+#     path: "{{ home }}/{{ item }}"
 #     state: directory
 #   with_items:
 #     - desktop
@@ -40,7 +40,7 @@
 - name: Make config directory
   #become_user: "{{usergroup.user.name}}"
   file:
-    path: "{{ lookup('env', 'HOME') }}/.config"
+    path: "{{ home }}/.config"
     state: directory
 
 # - name: Install minikube
@@ -91,12 +91,12 @@
 
 - name: Register ibus file existing
   stat:
-    path: "{{ lookup('env', 'HOME') }}/.profile"
+    path: "{{ home }}/.profile"
   register: ibus_file
 
 - name: ibus .profile
   blockinfile:
-    dest:  "{{ lookup('env', 'HOME') }}/.profile"
+    dest:  "{{ home }}/.profile"
     state: present
     content: |
       export DefaultImModule=ibus

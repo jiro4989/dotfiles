@@ -1,3 +1,0 @@
----
-
-my_git_repo_root: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989"

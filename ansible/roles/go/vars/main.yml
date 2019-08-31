@@ -1,6 +1,6 @@
 ---
 
-GOPATH: "{{ lookup('env', 'HOME') }}"
+GOPATH: "{{ home }}"
 base_dir: /usr/local
 go_version: go1.12
 

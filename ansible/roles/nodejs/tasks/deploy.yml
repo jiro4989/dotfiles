@@ -2,7 +2,7 @@
 
 - name: Make global install directory
   file:
-    path: "{{ lookup('env', 'HOME') }}/.npm-global"
+    path: "{{ home }}/.npm-global"
     state: directory
 
 - name: Make global install directory

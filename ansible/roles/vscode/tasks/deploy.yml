@@ -2,14 +2,14 @@
 
 - name: Make config directory
   file:
-    path: "{{ lookup('env', 'HOME') }}/.config/Code/User/"
+    path: "{{ home }}/.config/Code/User/"
     state: directory
     recurse: true
 
 - name: Link user settings.json
   file:
-    src: "{{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/code/user/settings.json"
-    dest:  "{{ lookup('env', 'HOME') }}/.config/Code/User/settings.json"
+    src: "{{ git_dir }}/dotfiles/code/user/settings.json"
+    dest:  "{{ home }}/.config/Code/User/settings.json"
     state: link
 
 ############################################################
@@ -17,7 +17,7 @@
 ############################################################
 
 - name: Install VSCode extentions
-  shell: "cat {{ lookup('env', 'HOME') }}/src/github.com/jiro4989/dotfiles/code/extensions.txt | while read -r pkg; do code --install-extension $pkg; done"
+  shell: "cat {{ git_dir }}/dotfiles/code/extensions.txt | while read -r pkg; do code --install-extension $pkg; done"
 
 - name: set fact ruby
   set_fact:
