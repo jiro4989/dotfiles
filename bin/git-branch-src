@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# 現在のブランチの分岐もとを出力する
+
+git show-branch | grep -F '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -eu
+
+remote=$(git remote -v | head -n 1 | awk '{print $2}' | sed 's,https://github.com/,git@github.com:,')
+git remote set-url origin "$remote"

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -eu
+
+readonly SCRIPT_NAME=$(basename "$0")
+
+while ((0 < $#)); do
+  opt=$1
+  shift
+  case $opt in
+    -h | --help)
+      cat << EOS
+$SCRIPT_NAME はGitのログをツリー状にし、ログを1行で出力する
+EOS
+      exit
+      ;;
+  esac
+done
+
+git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"

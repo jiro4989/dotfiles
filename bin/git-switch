@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+branch=$(git branch --all | grep -v HEAD | peco)
+if [ -n "$branch" ]; then
+  git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
+fi

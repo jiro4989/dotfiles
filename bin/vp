@@ -1,0 +1,123 @@
+#!/bin/bash
+
+set -eu
+
+readonly SCRIPT_NAME=$(basename "$0")
+readonly VERSION="$SCRIPT_NAME version 1.0.0
+Copyright (c) 2019 jiro4989
+Released under the MIT License.
+https://github.com/jiro4989/scripts"
+
+main() {
+  local args=()
+  while ((0 < $#)); do
+    local opt=$1
+    shift
+    case "$opt" in
+      -h | --help)
+        usage
+        return
+        ;;
+      -v | --version)
+        echo -e "$VERSION"
+        return
+        ;;
+      *)
+        args+=("$opt")
+        ;;
+    esac
+  done
+
+  local plugin_name=${args[0]}
+  local command_name=${args[1]}
+  local func_name=${args[2]}
+  mkdir "$plugin_name"
+  cd "$_"
+  make_autoload "$plugin_name" "$command_name" "$func_name"
+  make_doc "$plugin_name" "$command_name" "$func_name"
+  make_plugin "$plugin_name" "$command_name" "$func_name"
+}
+
+usage() {
+  cat << EOS
+$SCRIPT_NAME はVimPluginの雛形リポジトリを生成する。
+
+Usage:
+    $SCRIPT_NAME [options] plugin_name CommandName function_name
+
+Options:
+    -h, --help       このヘルプを出力する
+    -v, --version    バージョン情報を出力する
+EOS
+}
+
+make_autoload() {
+  local plugin_name=$1
+  local command_name=$2
+  local func_name=$3
+  mkdir autoload
+  cat << EOS > "autoload/$plugin_name.vim"
+let s:save_cpo = &cpo
+set cpo&vim
+
+function! ${plugin_name}#${func_name}()
+  " TODO
+endfunction
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+EOS
+
+}
+
+make_doc() {
+  local plugin_name=$1
+  local command_name=$2
+  local func_name=$3
+  mkdir doc
+  cat << EOS > "doc/$plugin_name.txt"
+*${plugin_name}.txt*	Description.
+
+Version:	1.0
+Author:		jiro4989 <jiroron666@gmail.com>
+License:	MIT
+
+CONTENTS						*${plugin_name}-contents*
+
+Commands						|${plugin_name}-commands|
+
+==============================================================================
+COMMANDS						*${plugin_name}-commands*
+
+:${command_name}						*:${command_name}*
+		Description
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noexpandtab:shiftwidth=8:
+EOS
+}
+
+make_plugin() {
+  local plugin_name=$1
+  local command_name=$2
+  local func_name=$3
+  mkdir plugin
+  cat << EOS > "plugin/$plugin_name.vim"
+if exists("g:loaded_${plugin_name}")
+  finish
+endif
+let g:loaded_${plugin_name} = 1
+
+let s:save_cpo = &cpo
+set cpo&vim
+
+if !exists(":${command_name}")
+  command! -nargs=0 ${command_name} call ${plugin_name}#${func_name}()
+endif
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+EOS
+}
+
+main ${1+"$@"}

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -eu
+
+readonly GITS_HOTFIX_BRANCH_FORMAT=${GITS_HOTFIX_BRANCH_FORMAT:="hotfix/#{id}-{desc}"}
+
+echo "====================="
+echo
+echo "Branch format = $GITS_FEATURE_BRANCH_FORMAT"
+read -r -p "?   id = " id
+read -r -p "? desc = " desc
+
+branch=$(echo "$GITS_HOTFIX_BRANCH_FORMAT" | sed -e "s/{id}/$id/" -e "s/{desc}/$desc/")
+echo Execute: git checkout -b "$branch"
+git checkout -b "$branch"
