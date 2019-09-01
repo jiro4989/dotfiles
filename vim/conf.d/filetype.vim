@@ -9,6 +9,7 @@ au BufNewFile,BufRead *.kt setlocal filetype=kotlin
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown
 au BufRead,BufNewFile *.{bl,backlog} setlocal filetype=backlog
+au BufRead,BufNewFile *.{sgb} setlocal filetype=sh tw=0 nowrap
 
 " 新規ファイルを開いた時にテンプレートを読み込む
 " TODO: ここのテンプレート指定がいけてない

@@ -6,7 +6,7 @@ SCRIPT_NAME="$(basename "${BASH_SOURCE:-$0}")"
 readonly SCRIPT_NAME
 
 main() {
-  local file_ext=""
+  local file_ext=".sgb" # shell gei bot
   while ((0 < $#)); do
     local opt=$1
     shift
