@@ -6,7 +6,8 @@ readonly REPO_ROOT=$HOME/src/github.com/jiro4989
 export LANG=ja_JP.UTF-8
 
 # Java
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/default
+
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Go
