@@ -44,6 +44,7 @@
     - "github.com/jiro4989/textimg"
     - "github.com/xztaityozx/owari"
     - "github.com/jiro4989/align"
+    - "github.com/jiro4989/monit"
     - "github.com/oxequa/realize"
 
 - name: ghq get jiro4989 repositories
