@@ -34,6 +34,7 @@ export PATH=$HOME/.npm-global/bin:$PATH
 
 # 自作シェル
 export PATH=$PATH:$REPO_ROOT/scripts/bin
+export PATH=$PATH:$REPO_ROOT/dotfiles/bin
 
 # gits
 export PATH=$PATH:$REPO_ROOT/gits/bin
