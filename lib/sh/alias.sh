@@ -79,5 +79,5 @@ type hub >& /dev/null && {
 alias shfmt='shfmt -i 2 -ci -sr -d'
 
 mygo() {
-  GO111MODULE=off go get "github.com/$USER/$1"
+  GO111MODULE=off go get "github.com/jiro4989/$1"
 }
