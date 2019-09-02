@@ -29,6 +29,7 @@ export PATH=/snap/bin:$PATH
 
 # gem
 export PATH=$PATH:$HOME/.gem/bin
+export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
 
 # nodejs
 export PATH=$HOME/.npm-global/bin:$PATH
