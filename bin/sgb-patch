@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -eu
+
+SCRIPT_NAME="$(basename "${BASH_SOURCE:-$0}")"
+readonly SCRIPT_NAME
+readonly DOMAIN="https://raw.githubusercontent.com"
+
+main() {
+  if (($# < 3)); then
+    usage
+    return 1
+  fi
+
+  local user="$1"
+  local repo="$2"
+  local cmd="$3"
+  local branch="${4:-master}"
+  local url="$DOMAIN/$user/$repo/$branch/$cmd"
+  local tmp_file="$(mktemp --dry-run)"
+  curl -s "$url" | urlize "$cmd" > "$tmp_file"
+  twty -ff "$tmp_file"
+  rm "$tmp_file"
+}
+
+usage() {
+  cat << EOS
+$SCRIPT_NAME はシェル芸botに一時的なスクリプトを配置します。
+
+Usage:
+    $SCRIPT_NAME <user> <repo> <cmd> [branch]
+EOS
+}
+
+main ${1+"$@"}
+exit $?
