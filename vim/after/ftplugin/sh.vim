@@ -37,3 +37,16 @@ function! s:open_template()
   endfor
 endfunction
 command! OpenTemplate call s:open_template()
+
+" 保存時にshfmtをかける
+function! s:exec_shfmt()
+  let l:pos = getcurpos()
+  exe "%!shfmt -i 2 -ci -sr"
+  exe ":w"
+  call setpos('.', l:pos)
+endfunction
+
+augroup auto_style
+  autocmd!
+  autocmd bufWritePost *.sh call s:exec_shfmt()
+augroup END
