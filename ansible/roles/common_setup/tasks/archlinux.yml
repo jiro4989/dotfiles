@@ -19,7 +19,7 @@
 
 - name: Install IME with yay
   become: true
-  shell: "yay -S -Y mozc ibus-mozc"
+  shell: "yay -S -Y mozc ibus-mozc unzip-iconv"
   ignore_errors: true
 
 - name: Install etc
