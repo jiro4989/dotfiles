@@ -33,6 +33,7 @@
       - which
       - gcc
       - indent # C formatter
+      - python-pip
     update_cache: yes
     state: latest
 

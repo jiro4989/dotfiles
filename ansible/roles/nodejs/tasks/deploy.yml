@@ -31,3 +31,9 @@
     name: typescript-language-server
     global: true
   ignore_errors: true
+
+- name: Install Docker language server
+  npm:
+    name: dockerfile-language-server-nodejs
+    global: true
+  ignore_errors: true
