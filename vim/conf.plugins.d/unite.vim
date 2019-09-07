@@ -20,7 +20,7 @@ let g:unite_source_file_mru_filename_format = ''
 
 nnoremap [unite] <Nop>
 " プレフィックスキー
-nmap <Leader>f [unite]
+nmap <Leader>u [unite]
 "現在開いているファイルのディレクトリ下のファイル一覧。
 "開いていない場合はカレントディレクトリ
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
