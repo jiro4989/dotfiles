@@ -27,14 +27,14 @@ Ansible version
 
 以下のコマンドを実行する
 
-```
-sudo ./setup.sh manjaro
+```bash
+sudo ./setup.sh
 ```
 
-AnsiblePlaybookのみ実行したい場合は下記
+インストールしてるツールのアップデートのみ
 
-```
-sudo ./setup.sh manjaro -s
+```bash
+ansible-playbook site_deploy.yml --tags update -K
 ```
 
 # ファイルマネージャー
@@ -63,29 +63,3 @@ xrdb -query | grep font
   あとからsshに変更する際はスクリプトを使う。
   - jiro4989/bin/bin/git-ssh-set-url.sh
 
-# トラブルシュート
-
-## フォントが変わらない
-
-urxvtのフォントが変更されなかった。
-Boldフォントの方だけ反映されるという問題に直面した。
-
-結論：$HOME/.Xresource内のフォント設定をコメントアウトしてOSを再起動したら解決した。
-
-# タスク依存関係
-
-* 初期セットアップ
-  * systemdとかsnapdとか低レイヤのミドルウェアインストール
-* Go環境のインストール (ghq)
-  * dotfiles
-    * editorのセットアップ
-      * Vim, Neovim, VSCode
-    * 各プログラミング言語環境のセットアップ
-      * Nim, Ruby, Python
-    * Docker
-    * terminal
-
-site.yml - ミドルウェアのインストールとデプロイ
-site_setup.yml - ミドルウェアのインストール
-site_deploy.yml - 各種設定のリンク、配置
-site_update.yml - ミドルウェアのアップデート
