@@ -44,23 +44,14 @@ call s:_source('caw.vim')
 " 折りたたみ時のタイトル表示変更
 Plug 'LeafCage/foldCC'
 
-" FIXME これが原因で落ちてる可能性があるので調査中
-" " ヤンクハイライト
-" Plug 'machakann/vim-highlightedyank'
-
 " スニペット
 " Plug 'SirVer/ultisnips'
 " call s:_source('ultisnips.vim')
 Plug 'honza/vim-snippets'
 
-" Language Server Protocol
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" call s:_source('vim-lsp.vim')
-" Plug 'prabirshrestha/asyncomplete.vim'
-" call s:_source('asyncomplete.vim.vim')
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Plug 'natebosch/vim-lsc'
+" オートコンプリート + Language Server Protocol
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call s:_source('coc.nvim.vim')
 
 " 差分表示を左端に表示
 Plug 'airblade/vim-gitgutter'
@@ -122,10 +113,6 @@ Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
 Plug 'jiro4989/vimquiz.vim'
 Plug 'unkontributors/super_unko.vim'
-
-" 補完プラグイン
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call s:_source('coc.nvim.vim')
 
 "}}}
 
