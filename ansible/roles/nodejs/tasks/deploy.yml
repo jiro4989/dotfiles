@@ -34,6 +34,6 @@
 
 - name: Install Docker language server
   npm:
-    name: docker-langserver
+    name: dockerfile-language-server-nodejs
     global: true
   ignore_errors: true
