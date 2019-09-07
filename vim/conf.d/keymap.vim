@@ -38,6 +38,11 @@ vnoremap <C-c> "+y
 vnoremap <C-x> "+d
 nnoremap <C-g> "+p
 
+" TAGで補完を入力
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
 "}}}
 
 " 検索{{{
