@@ -54,13 +54,13 @@ Plug 'LeafCage/foldCC'
 Plug 'honza/vim-snippets'
 
 " Language Server Protocol
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-call s:_source('vim-lsp.vim')
-Plug 'prabirshrestha/asyncomplete.vim'
-call s:_source('asyncomplete.vim.vim')
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'natebosch/vim-lsc'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" call s:_source('vim-lsp.vim')
+" Plug 'prabirshrestha/asyncomplete.vim'
+" call s:_source('asyncomplete.vim.vim')
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'natebosch/vim-lsc'
 
 " 差分表示を左端に表示
 Plug 'airblade/vim-gitgutter'
@@ -122,6 +122,10 @@ Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
 Plug 'jiro4989/vimquiz.vim'
 Plug 'unkontributors/super_unko.vim'
+
+" 補完プラグイン
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call s:_source('coc.nvim.vim')
 
 "}}}
 
