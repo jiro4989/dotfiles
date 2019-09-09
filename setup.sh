@@ -6,12 +6,12 @@ THIS_DIR=$(
   cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd
 )
 readonly THIS_DIR
-cd "$THIS_DIR"
 
 SCRIPT_NAME="$(basename "${BASH_SOURCE:-$0}")"
 readonly SCRIPT_NAME
 
 readonly DOTDIR=$HOME/dotfiles
+readonly ANSIBLE_DIR="$DOTDIR/ansible"
 readonly YMLFILE=site.yml
 OS=""
 readonly RED=$'\x1b[31m'
@@ -30,6 +30,9 @@ main() {
         return
         ;;
       update)
+        cd "$THIS_DIR/ansible"
+        info "Ansibleでの環境構築を開始します。"
+        info "この処理には非常に時間がかかります。"
         ansible-playbook "$YMLFILE" --tags update -K
         return $?
         ;;
@@ -98,7 +101,7 @@ before_install() {
 
 install_packages() {
   git clone -b "$BRANCH" -q https://github.com/jiro4989/dotfiles "$DOTDIR"
-  cd "$DOTDIR/ansible"
+  cd "$ANSIBLE_DIR"
   info "Ansibleでの環境構築を開始します。"
   info "この処理には非常に時間がかかります。"
   ansible-playbook "site.yml"
