@@ -1,0 +1,17 @@
+---
+
+- name: Upgrade pip
+  become: true
+  pip:
+    name:
+      - pip
+    executable: pip3
+    state: latest
+
+- name: Install pip modules
+  pip:
+    name:
+      - python-language-server
+    executable: pip3
+    state: latest
+

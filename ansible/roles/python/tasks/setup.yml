@@ -1,0 +1,10 @@
+---
+
+- name: Install python-pip
+  become: true
+  pacman:
+    name:
+      - python-pip
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == "Archlinux"

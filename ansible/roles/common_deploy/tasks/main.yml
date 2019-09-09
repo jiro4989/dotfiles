@@ -51,24 +51,6 @@
 #     owner: root
 #     group: root
 
-- name: Upgrade pip
-  become: true
-  ignore_errors: true
-  pip:
-    name:
-      - pip
-    executable: pip3
-    state: latest
-
-- name: Install pip modules
-  become: true
-  ignore_errors: true
-  pip:
-    name:
-      - python-language-server
-    executable: pip3
-    state: latest
-
 - name: Starting Bluetooth
   become: true
   systemd:

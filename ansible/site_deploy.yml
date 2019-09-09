@@ -6,6 +6,8 @@
     - role: common_deploy
     - role: nodejs
       tags: [update]
+    - role: python
+      tags: [update]
     - role: git
     - role: go
     - role: docker
