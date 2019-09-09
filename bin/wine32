@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -eu
+
+export WINEPREFIX=~/.wine32
+export WINEARCH=win32
+
+wine $@
