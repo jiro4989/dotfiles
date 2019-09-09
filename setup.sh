@@ -8,9 +8,12 @@ THIS_DIR=$(
 readonly THIS_DIR
 cd "$THIS_DIR"
 
-readonly DOTDIR=$HOME/dotfiles
-OS=""
+SCRIPT_NAME="$(basename "${BASH_SOURCE:-$0}")"
+readonly SCRIPT_NAME
 
+readonly DOTDIR=$HOME/dotfiles
+readonly YMLFILE=site.yml
+OS=""
 readonly RED=$'\x1b[31m'
 readonly GREEN=$'\x1b[32m'
 readonly RESET=$'\x1b[m'
@@ -18,6 +21,22 @@ readonly RESET=$'\x1b[m'
 readonly BRANCH="${1:-$TRAVIS_BRANCH}"
 
 main() {
+  while ((0 < $#)); do
+    local opt="$1"
+    shift
+    case "$opt" in
+      -h | --help)
+        usage
+        return
+        ;;
+      update)
+        ansible-playbook "$YMLFILE" --tags update -K
+        return $?
+        ;;
+      *) ;;
+    esac
+  done
+
   set_os
   update_packages
   before_install
@@ -27,7 +46,12 @@ main() {
 
 usage() {
   cat << EOS
-TODO
+$SCRIPT_NAME はローカル開発環境を構築するスクリプトです。
+
+Usage:
+    $SCRIPT_NAME                必要なソフトウェアをインストールします。
+    $SCRIPT_NAME update         インストール済みのソフトウェアを更新します。
+    $SCRIPT_NAME -h | --help    このヘルプを出力します。
 EOS
 }
 
@@ -49,7 +73,7 @@ set_os() {
 update_packages() {
   # manjaroは不要
   if [[ "$OS" == ubuntu ]]; then
-    apt update -yqq >& /dev/null
+    apt update -yqq >&/dev/null
   fi
 }
 
@@ -82,15 +106,15 @@ install_packages() {
 }
 
 has() {
-  type "$1" >& /dev/null
+  type "$1" >&/dev/null
 }
 
 silent_install() {
   local pkg="$1"
   if [[ "$OS" == manjaro ]]; then
-    pacman -Syyu --noconfirm "$pkg" >& /dev/null
+    pacman -Syyu --noconfirm "$pkg" >&/dev/null
   elif [[ "$OS" == ubuntu ]]; then
-    apt install -yqq "$pkg" >& /dev/null
+    apt install -yqq "$pkg" >&/dev/null
   else
     err "Unsupported OS. (OS = $OS)"
     exit 1
