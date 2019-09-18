@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# ローカルブランチをリモートブランチと同期する
+git remote update -p
