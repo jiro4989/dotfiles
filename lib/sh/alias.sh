@@ -30,12 +30,12 @@ alias change_terminal="sudo update-alternatives --config x-terminal-emulator"
 
 # clip はパイプから渡された文字列をクリップボードにコピーする。
 clip() {
-  type xsel >& /dev/null && {
+  type xsel >&/dev/null && {
     xsel --clipboard --input
     return
   }
 
-  type pbcopy >& /dev/null && {
+  type pbcopy >&/dev/null && {
     pbcopy
     return
   }
@@ -65,14 +65,14 @@ alias wacomoff='xsetwacom set "Wacom Intuos Pro M Finger touch" Touch off'
 alias ctw='twty "$(xclip -o)"'
 
 # vim
-type nvim >& /dev/null && {
+type nvim >&/dev/null && {
   alias v='nvim'
 } || {
   alias v='vim'
 }
 
 # git alias g='git'
-type hub >& /dev/null && {
+type hub >&/dev/null && {
   alias g='hub'
 }
 
@@ -81,3 +81,5 @@ alias shfmt='shfmt -i 2 -ci -sr -d'
 mygo() {
   GO111MODULE=off go get "github.com/jiro4989/$1"
 }
+
+alias nims='nim --hints:off'
