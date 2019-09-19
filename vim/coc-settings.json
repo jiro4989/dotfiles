@@ -24,7 +24,7 @@
         ".git/"
       ],
       "filetypes": [
-        "nim", "nimble"
+        "nim", "nimble", "nims"
       ]
     },
     "bash": {
