@@ -8,3 +8,6 @@
 - name: Install nim
   shell: "[ -e {{ home }}/.nimble/bin/nim ] || bash /tmp/init.sh -y"
 
+- name: Install nimble packages
+  shell: "{{ home }}/.nimble/bin/nimble install nimlsp"
+
