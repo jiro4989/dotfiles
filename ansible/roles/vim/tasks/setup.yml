@@ -10,6 +10,13 @@
     state: latest
   when: ansible_distribution == "Archlinux"
 
+- name: Remove nvim
+  become: true
+  file:
+    path: /usr/local/bin/nvim
+    state: absent
+  tags: [never, update]
+
 - name: Install neovim
   become: true
   get_url:

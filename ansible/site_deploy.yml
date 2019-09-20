@@ -12,6 +12,7 @@
     - role: go
     - role: docker
     - role: vim
+      tags: [update]
     - role: shell
     - role: i3
     - role: terminal
