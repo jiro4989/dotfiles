@@ -87,3 +87,17 @@
       export XMODIFIERS="@im=ibus"
       ibus-daemon -drx
   when: ibus_file.stat.exists
+
+- name: Install tmux-xpanes
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/greymd/tmux-xpanes/v4.1.1/bin/xpanes"
+    dest: "/usr/local/bin/xpanes"
+    mode: "0755"
+
+- name: Install echo-sd
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/fumiyas/home-commands/master/echo-sd"
+    dest: "/usr/local/bin/echo-sd"
+    mode: "0755"
