@@ -44,6 +44,7 @@
       - pulseaudio
       - pavucontrol
       - lmms
+      - soundfont-fluid
     update_cache: yes
     state: latest
 
@@ -79,3 +80,16 @@
     state: latest
   ignore_errors: true
 
+- name: Install tmux-xpanes
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/greymd/tmux-xpanes/v4.1.1/bin/xpanes"
+    dest: "/usr/local/bin/xpanes"
+    mode: "0755"
+
+- name: Install echo-sd
+  become: true
+  get_url:
+    url: "https://raw.githubusercontent.com/fumiyas/home-commands/master/echo-sd"
+    dest: "/usr/local/bin/echo-sd"
+    mode: "0755"
