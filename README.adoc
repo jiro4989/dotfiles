@@ -4,6 +4,25 @@ image:https://travis-ci.org/jiro4989/dotfiles.svg?branch=master["Build Status", 
 
 設定ファイルと環境構築スクリプトを管理する。
 
+== bin
+
+[options="header"]
+|=================
+|Script|Description
+|ghrepos|指定のユーザのGitHubのリポジトリ名の一覧を出力する
+|mp42gif|ffmpegのラッパーで対話式
+|vp|VimPluginリポジトリの雛形を作成する
+|=================
+
+== Install
+
+以下のコマンドを実行する。
+
+[source,bash]
+----
+./install.sh
+----
+
 == 環境構築
 
 初期環境構築。
