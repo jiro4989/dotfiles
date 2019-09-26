@@ -14,15 +14,6 @@ image:https://travis-ci.org/jiro4989/dotfiles.svg?branch=master["Build Status", 
 |vp|VimPluginリポジトリの雛形を作成する
 |=================
 
-== Install
-
-以下のコマンドを実行する。
-
-[source,bash]
-----
-./install.sh
-----
-
 == 環境構築
 
 初期環境構築。
