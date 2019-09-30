@@ -47,7 +47,6 @@
     - "github.com/jiro4989/monit"
     - "github.com/oxequa/realize"
     - "github.com/mholt/archiver/cmd/arc"
-    - "github.com/juliosueiras/terraform-lsp"
 
 - name: ghq get jiro4989 repositories
   shell: "{{ GOPATH }}/bin/ghq get jiro4989/{{ item }}"
