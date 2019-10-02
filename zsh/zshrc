@@ -17,3 +17,5 @@ done
 
 source "$script_dir/plugins.zsh"
 
+# direnv
+eval "$(direnv hook zsh)"
