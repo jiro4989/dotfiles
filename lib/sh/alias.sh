@@ -83,3 +83,10 @@ mygo() {
 }
 
 alias nims='nim --hints:off'
+
+gw() {
+  local branch=$(git branch --all | grep -v HEAD | peco)
+  if [ -n "$branch" ]; then
+    git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
+  fi
+}
