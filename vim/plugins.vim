@@ -107,6 +107,9 @@ Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
 " PlantUML
 Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
 
+" Jsonnet
+Plug 'google/vim-jsonnet'
+
 " }}}
 
 " 3. テスト中の設定 {{{
