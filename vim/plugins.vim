@@ -50,26 +50,36 @@ Plug 'LeafCage/foldCC'
 Plug 'honza/vim-snippets'
 
 " オートコンプリート + Language Server Protocol
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call s:_source('coc.nvim.vim')
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+call s:_source('vim-lsp.vim')
+Plug 'prabirshrestha/asyncomplete.vim'
+call s:_source('asyncomplete.vim.vim')
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'natebosch/vim-lsc'
 
 " 差分表示を左端に表示
 Plug 'airblade/vim-gitgutter'
 call s:_source('vim-gitgutter.vim')
+
+" 非同期コードチェック
+Plug 'w0rp/ale'
+
 "}}}
 
 " 2. 言語別設定 {{{
 
-" Go
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-" autocmd! User vim-go call s:_source('vim-go.vim')
-
 " Nim
-Plug 'zah/nim.vim', { 'for':'nim' }
+" シンタックス
+Plug 'baabelfish/nvim-nim', { 'for':'nim' }
+" 補完
+Plug 'alaviss/nim.nvim', {'for':'nim'}
+call s:_source('nim.nvim.vim')
+"autocmd! User nim-nvim call s:_source('nim.nvim.vim')
 
 " HTMLスニペット
 Plug 'mattn/emmet-vim', { 'for':'html' }
-autocmd! User emmet-vim call s:_source('vim-alignta.vim')
+autocmd! User emmet-vim call s:_source('emmet-vim.vim')
 
 " シンタックスハイライトとインデント
 Plug 'pangloss/vim-javascript', { 'for':'javascript' }
