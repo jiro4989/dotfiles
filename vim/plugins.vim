@@ -74,7 +74,8 @@ Plug 'w0rp/ale'
 Plug 'baabelfish/nvim-nim', { 'for':'nim' }
 " 補完
 Plug 'alaviss/nim.nvim', {'for':'nim'}
-autocmd! User nim-nvim call s:_source('nim.nvim.vim')
+call s:_source('nim.nvim.vim')
+"autocmd! User nim-nvim call s:_source('nim.nvim.vim')
 
 " HTMLスニペット
 Plug 'mattn/emmet-vim', { 'for':'html' }
