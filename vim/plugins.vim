@@ -50,8 +50,13 @@ Plug 'LeafCage/foldCC'
 Plug 'honza/vim-snippets'
 
 " オートコンプリート + Language Server Protocol
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call s:_source('coc.nvim.vim')
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+call s:_source('vim-lsp.vim')
+Plug 'prabirshrestha/asyncomplete.vim'
+call s:_source('asyncomplete.vim.vim')
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'natebosch/vim-lsc'
 
 " 差分表示を左端に表示
 Plug 'airblade/vim-gitgutter'
