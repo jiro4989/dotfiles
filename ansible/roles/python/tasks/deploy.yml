@@ -15,3 +15,11 @@
     executable: pip3
     state: latest
 
+- name: Install pynvim
+  pip:
+    name:
+      - pynvim
+    executable: pip3
+    extra_args: --user
+    state: latest
+
