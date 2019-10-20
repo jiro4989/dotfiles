@@ -1,136 +1,38 @@
-" plugins.vim はプラグイン設定のindexである。
-" ===========================================
-"
-" 各プラグインの設定は `conf.plugins.d/*.vim` に記述する。
-"
-" ここにはプラグインの設定を書いてはならない。設定ファイルをsourceするだけに留め
-" ること。
+if &compatible
+  set nocompatible " Be iMproved
+endif
 
-" 変更不要 {{{
+" Required:
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
-function! s:_source(filename)
-  return execute('source ' . g:CONFIG_ROOT_DIR . '/conf.plugins.d/' . a:filename)
-endfunction
+let s:dein_dir = $HOME . '/.cache/dein'
 
-call plug#begin('~/.vim/plugged')
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-"}}}
+  " Let dein manage dein
+  " Required:
+  call dein#add(s:dein_dir . '/repos/github.com/Shougo/dein.vim')
 
-" 1. 全般/共通 {{{
+  let s:plugin_config_dir = g:CONFIG_ROOT_DIR . '/conf.plugins.d'
+  let s:config_file       = s:plugin_config_dir . '/dein.toml'
+  let s:lazy_config_file  = s:plugin_config_dir . '/dein_lazy.toml'
 
-" 統一的UI
-Plug 'Shougo/denite.nvim'
-call s:_source('denite.nvim.vim')
-Plug 'Shougo/neomru.vim'
+  " Add or remove your plugins here like this:
+  call dein#load_toml(s:config_file,      {'lazy': 0})
+  call dein#load_toml(s:lazy_config_file, {'lazy': 1})
 
-" ファイラー
-Plug 'cocopon/vaffle.vim'
-call s:_source('vaffle.vim')
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
-" 桁揃え
-Plug 'h1mesuke/vim-alignta'
-call s:_source('vim-alignta.vim')
+" Required:
+filetype plugin indent on
+"syntax enable
 
-" 括り文字操作
-Plug 'tpope/vim-surround'
-
-" 括弧補完
-Plug 'cohama/lexima.vim'
-
-" コメントアウト
-Plug 'tyru/caw.vim'
-call s:_source('caw.vim')
-
-" 折りたたみ時のタイトル表示変更
-Plug 'LeafCage/foldCC'
-
-" スニペット
-" Plug 'SirVer/ultisnips'
-" call s:_source('ultisnips.vim')
-Plug 'honza/vim-snippets'
-
-" オートコンプリート + Language Server Protocol
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-call s:_source('vim-lsp.vim')
-Plug 'prabirshrestha/asyncomplete.vim'
-call s:_source('asyncomplete.vim.vim')
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'natebosch/vim-lsc'
-
-" 差分表示を左端に表示
-Plug 'airblade/vim-gitgutter'
-call s:_source('vim-gitgutter.vim')
-
-" 非同期コードチェック
-Plug 'w0rp/ale'
-
-"}}}
-
-" 2. 言語別設定 {{{
-
-" Nim
-" シンタックス
-Plug 'baabelfish/nvim-nim', { 'for':'nim' }
-" 補完
-Plug 'alaviss/nim.nvim', {'for':'nim'}
-call s:_source('nim.nvim.vim')
-"autocmd! User nim-nvim call s:_source('nim.nvim.vim')
-
-" HTMLスニペット
-Plug 'mattn/emmet-vim', { 'for':'html' }
-autocmd! User emmet-vim call s:_source('emmet-vim.vim')
-
-" シンタックスハイライトとインデント
-Plug 'pangloss/vim-javascript', { 'for':'javascript' }
-
-" メソッド補完
-Plug 'mattn/jscomplete-vim', { 'for':'javascript' }
-autocmd! User jscomplete-vim call s:_source('jscomplete-vim.vim')
-
-" CSS3
-Plug 'hail2u/vim-css3-syntax', { 'for':'css' }
-
-" PowerShell
-Plug 'PProvost/vim-ps1', { 'for':'ps1' }
-
-" Node.js
-Plug 'myhere/vim-nodejs-complete', { 'for':'javascript' }
-autocmd! User vim-nodejs-complete call s:_source('vim-nodejs-complete.vim')
-
-" Markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown', { 'for':['md', 'markdown'] }
-" Markdown形式の目次を自動生成する
-Plug 'mzlogin/vim-markdown-toc', { 'for':['md', 'markdown'] }
-
-" TOML
-Plug 'cespare/vim-toml', { 'for':'toml' }
-
-" CSVハイライト
-Plug 'mechatroner/rainbow_csv'
-
-" Formatter
-Plug 'vim-scripts/Align'
-Plug 'vim-scripts/SQLUtilities', { 'for':'sql' }
-
-" PlantUML
-Plug 'aklt/plantuml-syntax', {'for':'plantuml'}
-
-" Jsonnet
-Plug 'google/vim-jsonnet'
-
-" }}}
-
-" 3. テスト中の設定 {{{
-
-Plug 'jiro4989/vimquiz.vim'
-Plug 'unkontributors/super_unko.vim'
-
-"}}}
-
-" 変更不要 {{{
-
-call plug#end()
-
-"}}}
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+ call dein#install()
+endif
