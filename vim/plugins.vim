@@ -19,8 +19,8 @@ call plug#begin('~/.vim/plugged')
 " 1. 全般/共通 {{{
 
 " 統一的UI
-Plug 'Shougo/unite.vim'
-call s:_source('unite.vim')
+Plug 'Shougo/denite.nvim'
+call s:_source('denite.nvim.vim')
 Plug 'Shougo/neomru.vim'
 
 " ファイラー
