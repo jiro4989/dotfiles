@@ -79,6 +79,7 @@ on_ft = ['markdown', 'md']
 # TOML
 [[plugins]]
 repo = 'cespare/vim-toml'
+on_ft = ['toml']
 
 # CSVハイライト
 [[plugins]]
