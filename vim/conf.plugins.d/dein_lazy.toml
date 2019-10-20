@@ -1,0 +1,105 @@
+# シンタックス
+[[plugins]]
+repo = 'baabelfish/nvim-nim'
+
+# 補完
+[[plugins]]
+repo = 'alaviss/nim.nvim'
+on_ft = ['nim', 'nimble']
+hook_add = '''
+au User asyncomplete_setup call asyncomplete#register_source({
+  \ 'name': 'nim',
+  \ 'whitelist': ['nim'],
+  \ 'completor': {opt, ctx -> nim#suggest#sug#GetAllCandidates({start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates)})}
+  \ })
+'''
+
+# HTMLスニペット
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html']
+
+# シンタックスハイライトとインデント
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+
+# メソッド補完
+[[plugins]]
+repo = 'mattn/jscomplete-vim'
+on_ft = ['javascript']
+hook_add = '''
+let g:jscomplete_use = ['dom', 'moz', 'es6th']
+'''
+
+# CSS3
+[[plugins]]
+on_ft = ['css']
+repo = 'hail2u/vim-css3-syntax'
+
+# PowerShell
+[[plugins]]
+repo = 'PProvost/vim-ps1'
+on_ft = ['ps1', 'powershell']
+
+# Node.js
+[[plugins]]
+repo = 'myhere/vim-nodejs-complete'
+on_ft = ['javascript']
+hook_add = '''
+autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
+if !exists('g:neocomplcache_omni_functions')
+  let g:neocomplcache_omni_functions = {}
+endif
+let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
+
+let g:node_usejscomplete = 1
+
+
+let g:nodejs_complete_config = {
+\  'js_compl_fn': 'jscomplete#CompleteJS',
+\  'max_node_compl_len': 15
+\}
+'''
+
+# Markdown
+[[plugins]]
+repo = 'godlygeek/tabular'
+on_ft = ['markdown', 'md']
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown', 'md']
+
+# Markdown形式の目次を自動生成する
+[[plugins]]
+repo = 'mzlogin/vim-markdown-toc'
+on_ft = ['markdown', 'md']
+
+# TOML
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+# CSVハイライト
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'
+on_ft = ['csv']
+
+# Formatter
+[[plugins]]
+repo = 'vim-scripts/Align'
+
+[[plugins]]
+repo = 'vim-scripts/SQLUtilities'
+on_ft = ['sql']
+
+# PlantUML
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['plantuml']
+
+# Jsonnet
+[[plugins]]
+repo = 'google/vim-jsonnet'
+on_ft = ['jsonnet']

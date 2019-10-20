@@ -12,3 +12,11 @@
     dest: "{{ home }}/.config/nvim"
     state: link
 
+- name: Get dein installer
+  get_url:
+    url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+    dest: /tmp/dein_installer.sh
+    mode: 0755
+
+- name: Setup dein
+  shell: "/tmp/dein_installer.sh ~/.cache/dein"

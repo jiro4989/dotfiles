@@ -1,0 +1,189 @@
+# プラグイン管理・遅延ロード
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# 統一的UI
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim']
+hook_add = '''
+nnoremap [denite] <Nop>
+
+" プレフィックスキー
+nmap <Leader>u [denite]
+
+nmap <silent> [denite]h :<C-u>Denite file_mru<CR>i
+nmap <silent> [denite]g :<C-u>Denite grep<CR>
+nmap <silent> [denite]t :<C-u>Denite filetype<CR>
+nmap <silent> [denite]p :<C-u>Denite file_rec<CR>
+nmap <silent> [denite]j :<C-u>Denite line<CR>
+nmap <silent> [denite]] :<C-u>DeniteCursorWord grep<CR>
+nmap <silent> [denite]y :<C-u>Denite neoyank<CR>
+nmap <silent> [denite]r :<C-u>Denite -resume<CR>
+
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+# ファイラー
+[[plugins]]
+repo = 'cocopon/vaffle.vim'
+hook_add = '''
+nnoremap <Leader>v :e .<CR>
+'''
+
+# 桁揃え
+[[plugins]]
+repo = 'h1mesuke/vim-alignta'
+hook_add = '''
+vnoremap gf= :Align=<CR>
+vnoremap gf: :Align:<CR>
+vnoremap gf, :Align,<CR>
+vnoremap gf. :Align.<CR>
+vnoremap gf() :Align ( )<CR>
+'''
+
+# 括り文字操作
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+# 括弧補完
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+# コメントアウト
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = '''
+nmap <Leader>c <Plug>(caw:I:toggle)
+vmap <Leader>c <Plug>(caw:I:toggle)
+'''
+
+# 折りたたみ時のタイトル表示変更
+[[plugins]]
+repo = 'LeafCage/foldCC'
+
+# スニペット
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# オートコンプリート + Language Server Protocol
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+
+" Python
+if executable('pyls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyls',
+    \ 'cmd': {server_info->['pyls']},
+    \ 'whitelist': ['python'],
+    \ })
+endif
+
+" Go
+if executable('gopls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+    autocmd BufWritePre *.go LspDocumentFormatSync
+    autocmd FileType go setlocal omnifunc=lsp#complete
+endif
+
+" CSS
+if executable('css-languageserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'css-languageserver',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
+        \ 'whitelist': ['css', 'less', 'sass'],
+        \ })
+endif
+
+" Bash
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'whitelist': ['sh'],
+        \ })
+endif
+
+" JavaScript and TypeScript
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['javascript', 'javascript.jsx', 'typescript']
+      \ })
+    autocmd FileType javascript setlocal omnifunc=lsp#complete
+    autocmd FileType javascript.jsx setlocal omnifunc=lsp#complete
+    autocmd FileType typescript setlocal omnifunc=lsp#complete
+endif
+
+" Clojure
+if executable('clojure-lsp')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'clojure-lsp',
+    \ 'cmd': {server_info->['clojure-lsp']},
+    \ 'whitelist': ['clojure'],
+    \ })
+endif
+
+let g:lsp_async_completion = 1
+nnoremap <silent> gd :LspDefinition<CR>
+nnoremap <silent> gp :LspHover<CR>
+nnoremap <silent> gr :LspReferences<CR>
+nnoremap <silent> gi :LspImplementation<CR>
+nnoremap <silent> gs :split \| :LspDefinition <CR>
+nnoremap <silent> gv :vsplit \| :LspDefinition <CR>
+
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+hook_add = '''
+" TABで補完
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'natebosch/vim-lsc'
+
+# 差分表示を左端に表示
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# 非同期コードチェック
+[[plugins]]
+repo = 'w0rp/ale'
