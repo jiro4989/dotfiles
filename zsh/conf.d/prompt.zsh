@@ -9,22 +9,12 @@ zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 
-status_code () {
-  local ok="(*'-'%)!"
-  local ng="(;^q^%)?"
-
-  local color face reset
-  color="%{%(?.${fg[green]}.${fg[blue]})%}"
-  face="%(?.$ok.$ng)"
-  reset="%{$reset_color%}"
-
-  echo "$color$face$reset"
-}
-
-# %F{色} 任意のテキスト %fで、%fまで色を変更できる
-PROMPT='%F{003}%*%f %F{magenta}%n%f@%F{blue}%M%f %F{200}[%~]%f${vcs_info_msg_0_}
-`status_code` < %# '
-
 show_zsh_prompt_colors() {
   for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
 }
+
+autoload -Uz add-zsh-hook
+_nicy_prompt() {
+  PROMPT=$("$HOME/.nimble/bin/zshprompt")
+}
+add-zsh-hook precmd _nicy_prompt
