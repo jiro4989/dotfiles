@@ -12,7 +12,7 @@ nnoremap [denite] <Nop>
 " プレフィックスキー
 nmap <Leader>u [denite]
 
-nmap <silent> [denite]h :<C-u>Denite file_mru<CR>i
+nmap <silent> [denite]h :<C-u>Denite file_mru<CR>
 nmap <silent> [denite]g :<C-u>Denite grep<CR>
 nmap <silent> [denite]t :<C-u>Denite filetype<CR>
 nmap <silent> [denite]p :<C-u>Denite file_rec<CR>
