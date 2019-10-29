@@ -103,3 +103,11 @@ on_ft = ['plantuml']
 [[plugins]]
 repo = 'google/vim-jsonnet'
 on_ft = ['jsonnet']
+
+# Terraform
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = ['terraform', 'tf']
+hook_add = '''
+let g:terraform_align=1
+'''
