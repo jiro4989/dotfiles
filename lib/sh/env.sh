@@ -12,8 +12,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 # Go
 export GOPATH=$HOME
-# go mod用
-export GO111MODULE=on
 
 # 追加したコマンド系
 export PATH=$PATH:$HOME/bin
