@@ -15,8 +15,16 @@ const
 
 template job(msg: string, body: untyped) =
   block:
-    echo msg
+    echo "<><> " & msg & " <><><><><><><><>"
     body
+    echo ""
+
+template installPkg(pkg: string) =
+  block:
+    let (cmd, sudo) = foreignDepInstallCmd "vim"
+    let cmd2 = (if sudo: "sudo " else: "") & cmd
+    let cmd3 = cmd2 & " --no-confirm"
+    exec cmd3
 
 proc downloadFile(url, dst: string, mode = "0755") =
   exec &"curl -O {dst} {url}"
@@ -28,20 +36,20 @@ proc symLink(src, dst: string) =
 task setup, "Setup PC":
   if detectOs(Manjaro):
     job "パッケージのインストール":
-      foreignDep "vim"
-      foreignDep "code"
+      installPkg "vim"
+      installPkg "code"
 
-    job "Neovimのインストール":
-      downloadFile "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage", "/usr/local/bin/nvim", "0755"
-
-    job "vimの設定ファイルをリンク":
-      let vimDir = dotDir / "vim"
-      symLink vimDir, home / ".vim"
-      symLink vimDir, confDir / "nvim"
-
-    job "dein.vimのセットアップ":
-      let installer = tmpDir / "dein_installer.sh"
-      downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", installer
-
-      let cacheDir = home / ".cache" / "dein"
-      exec &"{installer} {cacheDir}"
+    # job "Neovimのインストール":
+    #   downloadFile "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage", "/usr/local/bin/nvim", "0755"
+    #
+    # job "vimの設定ファイルをリンク":
+    #   let vimDir = dotDir / "vim"
+    #   symLink vimDir, home / ".vim"
+    #   symLink vimDir, confDir / "nvim"
+    #
+    # job "dein.vimのセットアップ":
+    #   let installer = tmpDir / "dein_installer.sh"
+    #   downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", installer
+    #
+    #   let cacheDir = home / ".cache" / "dein"
+    #   exec &"{installer} {cacheDir}"
