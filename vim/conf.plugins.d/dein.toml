@@ -92,6 +92,9 @@ repo = 'prabirshrestha/async.vim'
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
 
+" 補完時に文字が消えるのを回避するため
+let g:lsp_text_edit_enabled = 0
+
 " Python
 if executable('pyls')
   au User lsp_setup call lsp#register_server({
