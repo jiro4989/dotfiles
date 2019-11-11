@@ -9,14 +9,20 @@ const
   home = getHomeDir()
   confDir = getConfigDir()
   tmpDir = getTempDir()
-  userName = "jiro4989"
-  repoDir = home / "src" / "github.com" / userName
+  user = "jiro4989"
+  repoDir = home / "src" / "github.com" / user
   dotDir = repoDir / "dotfiles"
 
 template job(msg: string, body: untyped) =
   block:
     echo msg
     body
+
+proc addGroup(group: string) =
+  exec &"sudo groupadd {group}"
+
+proc addUserToGropu(user, group: string) =
+  exec &"sudo usermod -a -G {group} {user}"
 
 proc msg(s: string) =
   echo "--------------------------------------------------------------------------------"
@@ -60,6 +66,8 @@ task init, "パッケージ、ツール郡のインストール":
   if detectOs(Manjaro):
     var pkgs = [
       "systemd",
+      "docker",
+      "docker-compose",
       "yay",
       "ibus",
       "zip",
@@ -86,6 +94,9 @@ task init, "パッケージ、ツール郡のインストール":
       "blueberry",
       "chromium",
       "go",
+      "noto-fonts-emoji",
+      "noto-fonts-extra",
+      "noto-fonts-cjk",
       ]
     for pkg in pkgs:
       installPkg pkg
@@ -106,6 +117,9 @@ task init, "パッケージ、ツール郡のインストール":
     for url in urls:
       downloadFile url
     downloadFile "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage", base="nvim"
+
+    addGroup "docker"
+    addUserToGroup user, "docker"
 
 task deploy, "各種設定の配置、リンク":
   let home = getHomeDir()
