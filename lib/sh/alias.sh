@@ -90,3 +90,8 @@ gw() {
     git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
   fi
 }
+
+rebase() {
+  local target="${1:-master}"
+  git rebase -i "$target"
+}
