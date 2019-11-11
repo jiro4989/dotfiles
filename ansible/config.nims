@@ -171,10 +171,11 @@ task deploy, "各種設定の配置、リンク":
   let gopath = home
   putEnv "GOPATH", gopath
 
-  let goVersion = "1.12"
-  let verGo = "go" & goVersion
-  goGet "golang.org/dl/" & verGo
-  exec gopath / "bin" / verGo & " download"
+  job "Setup go":
+    let goVersion = "1.12"
+    let verGo = "go" & goVersion
+    goGet "golang.org/dl/" & verGo
+    exec gopath / "bin" / verGo & " download"
 
   job "Set git configs":
     let configs = [
@@ -193,13 +194,9 @@ task deploy, "各種設定の配置、リンク":
       "golang.org/x/tools/cmd/godoc",
       "golang.org/x/tools/cmd/gopls",
       "golang.org/x/tools/cmd/gorename",
-      "golang.org/x/tools/cmd/gomvpkg",
-      "github.com/tcnksm/ghr",
       "github.com/atotto/clipboard/cmd/gocopy",
       "github.com/derekparker/delve/cmd/dlv",
-      "github.com/alecthomas/gometalinter",
       "github.com/hhatto/gocloc/cmd/gocloc",
-      "github.com/mitchellh/gox",
       "github.com/mvdan/sh/cmd/shfmt",
       "github.com/peco/peco/cmd/peco/...",
       "github.com/ChimeraCoder/gojson/gojson",
@@ -209,7 +206,6 @@ task deploy, "各種設定の配置、リンク":
       "github.com/xztaityozx/owari",
       "github.com/jiro4989/align",
       "github.com/jiro4989/monit",
-      "github.com/oxequa/realize",
       "github.com/mholt/archiver/cmd/arc",
       ]
     for pkg in pkgs:
@@ -218,11 +214,8 @@ task deploy, "各種設定の配置、リンク":
   job "Download git repositories":
     let pkgs = [
       "jiro4989/dotfiles",
-      "jiro4989/setup",
-      "jiro4989/workspace",
+      "jiro4989/sandbox",
       "jiro4989/text-proofreading",
-      "jiro4989/textimg",
-      "jiro4989/super_unko",
       "jiro4989/scripts",
       "jiro4989/clitools",
       "unkontributors/super_unko",
