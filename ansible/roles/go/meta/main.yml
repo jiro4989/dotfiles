@@ -1,5 +1,0 @@
----
-
-dependencies:
-  - { role: common_setup }
-  - { role: git }
