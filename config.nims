@@ -87,6 +87,10 @@ proc symLink(src, dst: string) =
 # Tasks
 ################################################################################
 
+task setup, "環境を構築する (初期化、デプロイ)":
+  setCommand("init")
+  setCommand("deploy")
+
 task init, "パッケージ、ツール郡のインストール":
   if detectOs(Manjaro):
     setCommand("installPacmanPkg")
