@@ -3,8 +3,6 @@ version: '3'
 services:
   manjaro:
     image: zalox/manjaro
-    env_file: .env
-    tty: true
     volumes:
       - ".:/work"
     entrypoint:
@@ -12,9 +10,9 @@ services:
 
   manjaro_curl:
     image: zalox/manjaro
-    env_file: .env
-    tty: true
+    environment:
+      - TRAVIS_BRANCH
     entrypoint:
       - sh
       - -c
-      - 'curl https://raw.githubusercontent.com/jiro4989/dotfiles/$TRAVIS_BRANCH/setup.sh | bash'
+      - 'curl https://raw.githubusercontent.com/jiro4989/dotfiles/$TRAVIS_BRANCH/setup.sh | sh'
