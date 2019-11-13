@@ -198,8 +198,9 @@ ibus-daemon -drx"""
 
 task setupNodeJS, "Node.jsのセットアップ":
   job "Setup nodejs":
-    mkDir home / ".npm-global"
-    runExec "npm config set prefix '~/.npm-global'"
+    let d = "~/.npm-global"
+    runExec &"mkdir {d}"
+    runExec &"npm config set prefix '{d}'"
 
 task setupShell, "シェルのセットアップ":
   job "Setup shells":
@@ -215,7 +216,7 @@ task setupTerminal, "ターミナルのセットアップ":
     symLink dotDir / "tmux.conf", home / ".tmux.conf"
     # termite
     let termDir = confDir / "termite"
-    mkDir termDir
+    runExec &"mkdir {termDir}"
     symLink termDir / "config", confDir / "termite" / "config"
 
 task installShellCmds, "シェルスクリプトのインストール":
@@ -257,7 +258,7 @@ task setupI3, "i3のセットアップ":
 task setupVSCode, "VSCodeのセットアップ":
   job "Linking VSCode config":
     let dst = confDir / "Code" / "User"
-    mkDir dst
+    runExec &"mkdir {dst}"
     let f = "settings.json"
     symLink dotDir / "code" / "user" / f, dst / f
 

@@ -9,4 +9,8 @@ sh init.sh -y
 rm init.sh
 export PATH=$PATH:$HOME/.nimble/bin
 
-nim --hints:off $DRY_RUN setup
+if [ "$DRY_RUN" = true ]; then
+  nim --hints:off -d:dryRun setup
+else
+  nim --hints:off setup
+fi
