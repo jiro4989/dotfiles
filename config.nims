@@ -60,7 +60,7 @@ proc installPkg(pkg: string, yay = false) =
   let cmd =
     if yay: "yay"
     else: "pacman"
-  let expr = &"sudo {cmd} -S --no-confirm {pkg}"
+  let expr = &"sudo {cmd} -S --noconfirm {pkg}"
   msg expr
   exec expr
 

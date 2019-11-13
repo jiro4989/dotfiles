@@ -2,7 +2,7 @@
 
 set -eu
 
-pacman -S --no-confirm gcc
+pacman -S --noconfirm gcc
 
 curl "https://nim-lang.org/choosenim/init.sh" > init.sh
 sh init.sh -y
