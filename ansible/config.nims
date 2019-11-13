@@ -4,8 +4,6 @@
 import os, strformat, distros
 from strutils import split
 
-switch("hints", "off")
-
 const
   home = getHomeDir()
   confDir = getConfigDir()
@@ -51,6 +49,9 @@ proc npmInstall(pkg: string) =
 
 proc pipInstall(pkg: string, cmd="pip3") =
   exec &"{cmd} install {pkg}"
+
+proc gemInstall(pkg: string) =
+  exec &"gem install {pkg}"
 
 proc installPkg(pkg: string, yay = false) =
   let cmd =
@@ -122,9 +123,24 @@ task init, "パッケージ、ツール郡のインストール":
         "shellcheck",
         "bash-bats",
         "termite",
+        "code",
+        "ruby",
         ]
       for pkg in pkgs:
         installPkg pkg
+
+    job "Setup bluetooth auto enable":
+      appendText "/etc/bluetooth/main.conf", "AutoEnable=true"
+
+    job "Setup IME":
+      let prof = home / ".profile"
+      let s = """
+export DefaultImModule=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
+ibus-daemon -drx"""
+      appendText prof, s
 
     job "Setup nodejs":
       mkDir home / ".npm-global"
@@ -169,6 +185,31 @@ task init, "パッケージ、ツール郡のインストール":
     job "Install clojure":
       downloadFile "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
       exec "lein"
+
+    job "Install programming font":
+      let version = "v1.3.0"
+      downloadFile &"https://github.com/yuru7/HackGen/releases/download/{version}/HackGen_{version}.zip", dstDir="/tmp"
+      withDir "/tmp":
+        exec &"unzip {version}.zip"
+      let fontDir = "/usr/share/fonts/truetype/hack-gen"
+      exec &"sudo install -d -o root -g root -m 0755 {fontDir}"
+      exec &"sudo cp -p /tmp/HackGen*.ttf {fontDir}"
+      exec &"sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji"
+      exec "fc-cache -f -v"
+
+    job "Linking i3 config":
+      symLink dotDir / "i3", confDir / "i3"
+
+    job "Linking VSCode config":
+      let dst = confDir / "Code" / "User"
+      mkDir dst
+      let f = "settings.json"
+      symLink dotDir / "code" / "user" / f, dst / f
+
+    job "Install VSCode extensions":
+      withDir confDir / "code":
+        for pkg in readFile("extensions.txt").split("\n"):
+          exec &"code --install-extension {pkg}"
 
 task deploy, "各種設定の配置、リンク":
   let home = getHomeDir()
@@ -231,6 +272,16 @@ task deploy, "各種設定の配置、リンク":
 
   exec "sudo " & home / "src/github.com/unkontributors/super_unko/install.sh"
 
+  job "Setup vim":
+    let vimDir = dotDir / "vim"
+    symLink vimDir, home / ".vim"
+    symLink vimDir, confDir / "nvim"
+
+    let installer = tmpDir / "dein_installer.sh"
+    downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", installer
+
+    let cacheDir = home / ".cache" / "dein"
+    exec &"{installer} {cacheDir}"
   job "Install npm tools":
     let pkgs = [
       "bash-language-server",
@@ -249,6 +300,15 @@ task deploy, "各種設定の配置、リンク":
     for pkg in pkgs:
       pipInstall pkg
 
+  job "Install gem tools":
+    let pkgs = [
+      "asciidoctor",
+      "asciidoctor-diagram",
+      "asciidoctor-pdf",
+      ]
+    for pkg in pkgs:
+      gemInstall pkg
+
   job "Install nimble tools":
     let pkgs = [
       "nimlsp",
@@ -257,14 +317,3 @@ task deploy, "各種設定の配置、リンク":
     for pkg in pkgs:
       nimbleInstall pkg
 
-    # job "vimの設定ファイルをリンク":
-    #   let vimDir = dotDir / "vim"
-    #   symLink vimDir, home / ".vim"
-    #   symLink vimDir, confDir / "nvim"
-    #
-    # job "dein.vimのセットアップ":
-    #   let installer = tmpDir / "dein_installer.sh"
-    #   downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", installer
-    #
-    #   let cacheDir = home / ".cache" / "dein"
-    #   exec &"{installer} {cacheDir}"
