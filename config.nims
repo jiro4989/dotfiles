@@ -106,6 +106,17 @@ task init, "パッケージ、ツール郡のインストール":
   setCommand("setupI3")
   setCommand("setupVSCode")
 
+task deploy, "各種設定の配置、リンク、アップデート":
+  setCommand("installGoXXX")
+  setCommand("updateGitConfig")
+  setCommand("updateGoPkgs")
+  setCommand("updateGitRepos")
+  setCommand("initVim")
+  setCommand("updateNpm")
+  setCommand("updatePip")
+  setCommand("updateGem")
+  setCommand("updateNimble")
+
 task installPacmanPkg, "Pacmanのパッケージをインストール":
   job "Pacman":
     let pkgs = [
@@ -248,17 +259,6 @@ task setupVSCode, "VSCodeのセットアップ":
     withDir confDir / "code":
       for pkg in readFile("extensions.txt").split("\n"):
         exec &"code --install-extension {pkg}"
-
-task deploy, "各種設定の配置、リンク、アップデート":
-  setCommand("installGoXXX")
-  setCommand("updateGitConfig")
-  setCommand("updateGoPkgs")
-  setCommand("updateGitRepos")
-  setCommand("initVim")
-  setCommand("updateNpm")
-  setCommand("updatePip")
-  setCommand("updateGem")
-  setCommand("updateNimble")
 
 task installGoXXX, "Goの特定のバージョンをインストールする":
   job "Setup go":
