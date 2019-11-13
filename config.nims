@@ -91,39 +91,52 @@ proc symLink(src, dst: string) =
 # Tasks
 ################################################################################
 
-let dryRun =
+let dr =
   when defined(dryRun): "-d:dryRun "
   else: ""
+let opt = dr & " --hints:off "
 
 task setup, "環境を構築する (初期化、デプロイ)":
-  selfExec(dryRun & "--hints:off init")
-  selfExec(dryRun & "--hints:off deploy")
+  let tasks = @[
+    "init",
+    "deploy",
+    ]
+  for t in tasks:
+    selfExec opt & t
 
 task init, "パッケージ、ツール郡のインストール":
   if detectOs(Manjaro):
-    selfExec(dryRun & "--hints:off installPacmanPkg")
-  selfExec(dryRun & "--hints:off setupBluetooth")
-  selfExec(dryRun & "--hints:off setupIME")
-  selfExec(dryRun & "--hints:off setupNodeJS")
-  selfExec(dryRun & "--hints:off setupShell")
-  selfExec(dryRun & "--hints:off setupTerminal")
-  selfExec(dryRun & "--hints:off installShellCmds")
-  selfExec(dryRun & "--hints:off setupDocker")
-  selfExec(dryRun & "--hints:off setupClojure")
-  selfExec(dryRun & "--hints:off setupFont")
-  selfExec(dryRun & "--hints:off setupI3")
-  selfExec(dryRun & "--hints:off setupVSCode")
+    selfExec opt & "installPacmanPkg"
+  let tasks = @[
+    "setupBluetooth",
+    "setupIME",
+    "setupNodeJS",
+    "setupShell",
+    "setupTerminal",
+    "installShellCmds",
+    "setupDocker",
+    "setupClojure",
+    "setupFont",
+    "setupI3",
+    "setupVSCode",
+    ]
+  for t in tasks:
+    selfExec opt & t
 
 task deploy, "各種設定の配置、リンク、アップデート":
-  selfExec(dryRun & "--hints:off installGoXXX")
-  selfExec(dryRun & "--hints:off updateGitConfig")
-  selfExec(dryRun & "--hints:off updateGoPkgs")
-  selfExec(dryRun & "--hints:off updateGitRepos")
-  selfExec(dryRun & "--hints:off initVim")
-  selfExec(dryRun & "--hints:off updateNpm")
-  selfExec(dryRun & "--hints:off updatePip")
-  selfExec(dryRun & "--hints:off updateGem")
-  selfExec(dryRun & "--hints:off updateNimble")
+  let tasks = @[
+    "installGoXXX",
+    "updateGitConfig",
+    "updateGoPkgs",
+    "updateGitRepos",
+    "initVim",
+    "updateNpm",
+    "updatePip",
+    "updateGem",
+    "updateNimble",
+    ]
+  for t in tasks:
+    selfExec opt & t
 
 task installPacmanPkg, "Pacmanのパッケージをインストール":
   job "Pacman":
