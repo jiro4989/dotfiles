@@ -166,6 +166,10 @@ task init, "パッケージ、ツール郡のインストール":
       addGroup "docker"
       addUserToGroup user, "docker"
 
+    job "Install clojure":
+      downloadFile "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
+      exec "lein"
+
 task deploy, "各種設定の配置、リンク":
   let home = getHomeDir()
   let gopath = home
