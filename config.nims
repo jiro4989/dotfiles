@@ -32,9 +32,9 @@ proc appendText(file, text: string) =
   when defined(dryRun):
     echo "DRY RUN: appendText " & text
   else:
-    var f = open(file, fmAppend)
-    defer: close(f)
-    f.writeLine(text)
+    let s = openFile(file)
+    let s2 s & "\n" & text
+    writeFile(file, s2)
 
 proc addGroup(group: string) =
   runExec &"sudo groupadd {group}"
