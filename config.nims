@@ -15,6 +15,12 @@ const
 
 putEnv "GOPATH", gopath
 
+template runExec(cmd: string) =
+  when defined(dryRun):
+    echo "DRY RUN: " & cmd
+  else:
+    exec cmd
+
 template job(msg: string, body: untyped) =
   block:
     echo msg
@@ -26,10 +32,10 @@ proc appendText(file, text: string) =
   f.writeLine(text)
 
 proc addGroup(group: string) =
-  exec &"sudo groupadd {group}"
+  runExec &"sudo groupadd {group}"
 
 proc addUserToGroup(user, group: string) =
-  exec &"sudo usermod -a -G {group} {user}"
+  runExec &"sudo usermod -a -G {group} {user}"
 
 proc msg(s: string) =
   echo "--------------------------------------------------------------------------------"
@@ -37,24 +43,24 @@ proc msg(s: string) =
   echo "--------------------------------------------------------------------------------"
 
 proc goGet(pkg: string) =
-  exec &"go get -u {pkg}"
+  runExec &"go get -u {pkg}"
 
 proc ghqGet(pkg: string) =
   let cmd = home / "bin" / "ghq"
-  exec &"{cmd} get -u {pkg}"
+  runExec &"{cmd} get -u {pkg}"
 
 proc nimbleInstall(pkg: string) =
   let cmd = home / ".nimble" / "bin" / "nimble"
-  exec &"{cmd} install -Y {pkg}"
+  runExec &"{cmd} install -Y {pkg}"
 
 proc npmInstall(pkg: string) =
-  exec &"npm install -g {pkg}"
+  runExec &"npm install -g {pkg}"
 
 proc pipInstall(pkg: string, cmd="pip3") =
-  exec &"{cmd} install {pkg}"
+  runExec &"{cmd} install {pkg}"
 
 proc gemInstall(pkg: string) =
-  exec &"gem install {pkg}"
+  runExec &"gem install {pkg}"
 
 proc installPkg(pkg: string, yay = false) =
   let cmd =
@@ -62,7 +68,7 @@ proc installPkg(pkg: string, yay = false) =
     else: "pacman"
   let expr = &"sudo {cmd} -S --noconfirm {pkg}"
   msg expr
-  exec expr
+  runExec expr
 
 proc downloadFile(url, dstDir = "/usr/local/bin", base = "", mode = "0755") =
   let base2 =
@@ -74,14 +80,14 @@ proc downloadFile(url, dstDir = "/usr/local/bin", base = "", mode = "0755") =
   let dst = dstDir / base2
   let expr = &"curl -O {dst} {url}"
   msg expr
-  exec expr
-  exec &"chmod {mode} {dst}"
+  runExec expr
+  runExec &"chmod {mode} {dst}"
 
 proc gitConfig(name, value: string, scope = "global") =
-  exec &"git config --{scope} {name} {value}"
+  runExec &"git config --{scope} {name} {value}"
 
 proc symLink(src, dst: string) =
-  exec &"ln -sfn {src} {dst}"
+  runExec &"ln -sfn {src} {dst}"
 
 ################################################################################
 # Tasks
@@ -193,7 +199,7 @@ ibus-daemon -drx"""
 task setupNodeJS, "Node.jsのセットアップ":
   job "Setup nodejs":
     mkDir home / ".npm-global"
-    exec "npm config set prefix '~/.npm-global'"
+    runExec "npm config set prefix '~/.npm-global'"
 
 task setupShell, "シェルのセットアップ":
   job "Setup shells":
@@ -201,7 +207,7 @@ task setupShell, "シェルのセットアップ":
     let dotDir = "$HOME/src/github.com/jiro4989/dotfiles"
     appendText home / ".bashrc", "source {dotDir}/bash/bashrc"
     appendText home / ".zshrc", "source {dotDir}/zsh/zshrc"
-    exec "chsh -s /usr/bin/zsh"
+    runExec "chsh -s /usr/bin/zsh"
 
 task setupTerminal, "ターミナルのセットアップ":
   job "Setup terminals":
@@ -230,19 +236,19 @@ task setupDocker, "Dockerのセットアップ":
 task setupClojure, "Clojureのセットアップ":
   job "Install clojure":
     downloadFile "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
-    exec "lein"
+    runExec "lein"
 
 task setupFont, "Fontのセットアップ":
   job "Install programming font":
     let version = "v1.3.0"
     downloadFile &"https://github.com/yuru7/HackGen/releases/download/{version}/HackGen_{version}.zip", dstDir="/tmp"
     withDir "/tmp":
-      exec &"unzip {version}.zip"
+      runExec &"unzip {version}.zip"
     let fontDir = "/usr/share/fonts/truetype/hack-gen"
-    exec &"sudo install -d -o root -g root -m 0755 {fontDir}"
-    exec &"sudo cp -p /tmp/HackGen*.ttf {fontDir}"
-    exec &"sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji"
-    exec "fc-cache -f -v"
+    runExec &"sudo install -d -o root -g root -m 0755 {fontDir}"
+    runExec &"sudo cp -p /tmp/HackGen*.ttf {fontDir}"
+    runExec &"sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji"
+    runExec "fc-cache -f -v"
 
 task setupI3, "i3のセットアップ":
   job "Linking i3 config":
@@ -258,14 +264,14 @@ task setupVSCode, "VSCodeのセットアップ":
   job "Install VSCode extensions":
     withDir confDir / "code":
       for pkg in readFile("extensions.txt").split("\n"):
-        exec &"code --install-extension {pkg}"
+        runExec &"code --install-extension {pkg}"
 
 task installGoXXX, "Goの特定のバージョンをインストールする":
   job "Setup go":
     let goVersion = "1.12"
     let verGo = "go" & goVersion
     goGet "golang.org/dl/" & verGo
-    exec gopath / "bin" / verGo & " download"
+    runExec gopath / "bin" / verGo & " download"
 
 task updateGitConfig, "ユーザの.gitconfigを更新する":
   job "Set git configs":
@@ -318,7 +324,7 @@ task updateGitRepos, "GitHubリポジトリを更新する":
     for pkg in pkgs:
       ghqGet pkg
 
-  exec "sudo " & home / "src/github.com/unkontributors/super_unko/install.sh"
+  runExec "sudo " & home / "src/github.com/unkontributors/super_unko/install.sh"
 
 task initVim, "Vim環境の初期設定を行う":
   job "Setup vim":
@@ -330,7 +336,7 @@ task initVim, "Vim環境の初期設定を行う":
     downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", installer
 
     let cacheDir = home / ".cache" / "dein"
-    exec &"{installer} {cacheDir}"
+    runExec &"{installer} {cacheDir}"
 
 task updateNpm, "npmパッケージを更新する":
   job "Install npm tools":
