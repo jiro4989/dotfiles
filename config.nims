@@ -11,6 +11,9 @@ const
   user = "jiro4989"
   repoDir = home / "src" / "github.com" / user
   dotDir = repoDir / "dotfiles"
+  gopath = home
+
+putEnv "GOPATH", gopath
 
 template job(msg: string, body: untyped) =
   block:
@@ -79,6 +82,10 @@ proc gitConfig(name, value: string, scope = "global") =
 
 proc symLink(src, dst: string) =
   exec &"ln -sfn {src} {dst}"
+
+################################################################################
+# Tasks
+################################################################################
 
 task init, "パッケージ、ツール郡のインストール":
   if detectOs(Manjaro):
@@ -211,17 +218,25 @@ ibus-daemon -drx"""
         for pkg in readFile("extensions.txt").split("\n"):
           exec &"code --install-extension {pkg}"
 
-task deploy, "各種設定の配置、リンク":
-  let home = getHomeDir()
-  let gopath = home
-  putEnv "GOPATH", gopath
+task deploy, "各種設定の配置、リンク、アップデート":
+  setCommand("installGoXXX")
+  setCommand("updateGitConfig")
+  setCommand("updateGoPkgs")
+  setCommand("updateGitRepos")
+  setCommand("initVim")
+  setCommand("updateNpm")
+  setCommand("updatePip")
+  setCommand("updateGem")
+  setCommand("updateNimble")
 
+task installGoXXX, "Goの特定のバージョンをインストールする":
   job "Setup go":
     let goVersion = "1.12"
     let verGo = "go" & goVersion
     goGet "golang.org/dl/" & verGo
     exec gopath / "bin" / verGo & " download"
 
+task updateGitConfig, "ユーザの.gitconfigを更新する":
   job "Set git configs":
     let configs = [
       (name: "user.email", value: "jiroron666@gmail.com"),
@@ -233,6 +248,7 @@ task deploy, "各種設定の配置、リンク":
     for c in configs:
       gitConfig c.name, c.value
 
+task updateGoPkgs, "ユーザの.gitconfigを更新する":
   job "Install go tools":
     let pkgs = [
       "github.com/motemen/ghq",
@@ -256,6 +272,7 @@ task deploy, "各種設定の配置、リンク":
     for pkg in pkgs:
       goGet pkg
 
+task updateGitRepos, "GitHubリポジトリを更新する":
   job "Download git repositories":
     let pkgs = [
       "jiro4989/dotfiles",
@@ -272,6 +289,7 @@ task deploy, "各種設定の配置、リンク":
 
   exec "sudo " & home / "src/github.com/unkontributors/super_unko/install.sh"
 
+task initVim, "Vim環境の初期設定を行う":
   job "Setup vim":
     let vimDir = dotDir / "vim"
     symLink vimDir, home / ".vim"
@@ -282,6 +300,8 @@ task deploy, "各種設定の配置、リンク":
 
     let cacheDir = home / ".cache" / "dein"
     exec &"{installer} {cacheDir}"
+
+task updateNpm, "npmパッケージを更新する":
   job "Install npm tools":
     let pkgs = [
       "bash-language-server",
@@ -292,6 +312,7 @@ task deploy, "各種設定の配置、リンク":
     for pkg in pkgs:
       npmInstall pkg
 
+task updatePip, "pipパッケージを更新する":
   job "Install pip tools":
     let pkgs = [
       "python-language-server",
@@ -300,6 +321,7 @@ task deploy, "各種設定の配置、リンク":
     for pkg in pkgs:
       pipInstall pkg
 
+task updateGem, "gemパッケージを更新する":
   job "Install gem tools":
     let pkgs = [
       "asciidoctor",
@@ -309,6 +331,7 @@ task deploy, "各種設定の配置、リンク":
     for pkg in pkgs:
       gemInstall pkg
 
+task updateNimble, "nimbleパッケージを更新する":
   job "Install nimble tools":
     let pkgs = [
       "nimlsp",
