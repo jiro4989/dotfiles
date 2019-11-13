@@ -89,82 +89,66 @@ proc symLink(src, dst: string) =
 
 task init, "パッケージ、ツール郡のインストール":
   if detectOs(Manjaro):
-    job "Pacman":
-      let pkgs = [
-        "systemd",
-        "docker",
-        "docker-compose",
-        "yay",
-        "ibus",
-        "zip",
-        "glibc",
-        "sed",
-        "make",
-        "which",
-        "gcc",
-        "indent",
-        "python-pip",
-        "terraform",
-        "pulseaudio",
-        "pavucontrol",
-        "lmms",
-        "soundfont-fluid",
-        "steam",
-        "wine",
-        "winetricks",
-        "krita",
-        "xf86-input-wacom",
-        "snapper",
-        "dnsutils",
-        "lutris",
-        "blueberry",
-        "chromium",
-        "go",
-        "nodejs",
-        "npm",
-        "noto-fonts-emoji",
-        "noto-fonts-extra",
-        "noto-fonts-cjk",
-        "zsh",
-        "tmux",
-        "shellcheck",
-        "bash-bats",
-        "termite",
-        "code",
-        "ruby",
-        ]
-      for pkg in pkgs:
-        installPkg pkg
+    setCommand("installPacmanPkg")
+  setCommand("setupBluetooth")
+  setCommand("setupIME")
+  setCommand("setupNodeJS")
+  setCommand("setupShell")
+  setCommand("setupTerminal")
+  setCommand("installShellCmds")
+  setCommand("setupDocker")
+  setCommand("setupClojure")
+  setCommand("setupFont")
+  setCommand("setupI3")
+  setCommand("setupVSCode")
 
-    job "Setup bluetooth auto enable":
-      appendText "/etc/bluetooth/main.conf", "AutoEnable=true"
-
-    job "Setup IME":
-      let prof = home / ".profile"
-      let s = """
-export DefaultImModule=ibus
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS="@im=ibus"
-ibus-daemon -drx"""
-      appendText prof, s
-
-    job "Setup nodejs":
-      mkDir home / ".npm-global"
-      exec "npm config set prefix '~/.npm-global'"
-
-    job "Setup shells and terminals":
-      # bash / zsh
-      let dotDir = "$HOME/src/github.com/jiro4989/dotfiles"
-      appendText home / ".bashrc", "source {dotDir}/bash/bashrc"
-      appendText home / ".zshrc", "source {dotDir}/zsh/zshrc"
-      exec "chsh -s /usr/bin/zsh"
-      # tmux
-      symLink dotDir / "tmux.conf", home / ".tmux.conf"
-      # termite
-      let termDir = confDir / "termite"
-      mkDir termDir
-      symLink termDir / "config", confDir / "termite" / "config"
+task installPacmanPkg, "Pacmanのパッケージをインストール":
+  job "Pacman":
+    let pkgs = [
+      "systemd",
+      "docker",
+      "docker-compose",
+      "yay",
+      "ibus",
+      "zip",
+      "glibc",
+      "sed",
+      "make",
+      "which",
+      "gcc",
+      "indent",
+      "python-pip",
+      "terraform",
+      "pulseaudio",
+      "pavucontrol",
+      "lmms",
+      "soundfont-fluid",
+      "steam",
+      "wine",
+      "winetricks",
+      "krita",
+      "xf86-input-wacom",
+      "snapper",
+      "dnsutils",
+      "lutris",
+      "blueberry",
+      "chromium",
+      "go",
+      "nodejs",
+      "npm",
+      "noto-fonts-emoji",
+      "noto-fonts-extra",
+      "noto-fonts-cjk",
+      "zsh",
+      "tmux",
+      "shellcheck",
+      "bash-bats",
+      "termite",
+      "code",
+      "ruby",
+      ]
+    for pkg in pkgs:
+      installPkg pkg
 
     job "yay":
       let pkgs = [
@@ -176,47 +160,90 @@ ibus-daemon -drx"""
       for pkg in pkgs:
         installPkg pkg, yay=true
 
-    job "curl":
-      let urls = [
-        "https://raw.githubusercontent.com/greymd/tmux-xpanes/v4.1.1/bin/xpanes",
-        "https://raw.githubusercontent.com/fumiyas/home-commands/master/echo-sd",
-        ]
-      for url in urls:
-        downloadFile url
-      downloadFile "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage", base="nvim"
+task setupBluetooth, "Bluetoothのセットアップ":
+  job "Setup bluetooth auto enable":
+    appendText "/etc/bluetooth/main.conf", "AutoEnable=true"
 
-    job "Setup docker":
-      addGroup "docker"
-      addUserToGroup user, "docker"
+task setupIME, "IMEのセットアップ":
+  job "Setup IME":
+    let prof = home / ".profile"
+    let s = """
+export DefaultImModule=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
+ibus-daemon -drx"""
+    appendText prof, s
 
-    job "Install clojure":
-      downloadFile "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
-      exec "lein"
+task setupNodeJS, "Node.jsのセットアップ":
+  job "Setup nodejs":
+    mkDir home / ".npm-global"
+    exec "npm config set prefix '~/.npm-global'"
 
-    job "Install programming font":
-      let version = "v1.3.0"
-      downloadFile &"https://github.com/yuru7/HackGen/releases/download/{version}/HackGen_{version}.zip", dstDir="/tmp"
-      withDir "/tmp":
-        exec &"unzip {version}.zip"
-      let fontDir = "/usr/share/fonts/truetype/hack-gen"
-      exec &"sudo install -d -o root -g root -m 0755 {fontDir}"
-      exec &"sudo cp -p /tmp/HackGen*.ttf {fontDir}"
-      exec &"sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji"
-      exec "fc-cache -f -v"
+task setupShell, "シェルのセットアップ":
+  job "Setup shells":
+    # bash / zsh
+    let dotDir = "$HOME/src/github.com/jiro4989/dotfiles"
+    appendText home / ".bashrc", "source {dotDir}/bash/bashrc"
+    appendText home / ".zshrc", "source {dotDir}/zsh/zshrc"
+    exec "chsh -s /usr/bin/zsh"
 
-    job "Linking i3 config":
-      symLink dotDir / "i3", confDir / "i3"
+task setupTerminal, "ターミナルのセットアップ":
+  job "Setup terminals":
+    # tmux
+    symLink dotDir / "tmux.conf", home / ".tmux.conf"
+    # termite
+    let termDir = confDir / "termite"
+    mkDir termDir
+    symLink termDir / "config", confDir / "termite" / "config"
 
-    job "Linking VSCode config":
-      let dst = confDir / "Code" / "User"
-      mkDir dst
-      let f = "settings.json"
-      symLink dotDir / "code" / "user" / f, dst / f
+task installShellCmds, "シェルスクリプトのインストール":
+  job "install shell cmds":
+    let urls = [
+      "https://raw.githubusercontent.com/greymd/tmux-xpanes/v4.1.1/bin/xpanes",
+      "https://raw.githubusercontent.com/fumiyas/home-commands/master/echo-sd",
+      ]
+    for url in urls:
+      downloadFile url
+    downloadFile "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage", base="nvim"
 
-    job "Install VSCode extensions":
-      withDir confDir / "code":
-        for pkg in readFile("extensions.txt").split("\n"):
-          exec &"code --install-extension {pkg}"
+task setupDocker, "Dockerのセットアップ":
+  job "Setup docker":
+    addGroup "docker"
+    addUserToGroup user, "docker"
+
+task setupClojure, "Clojureのセットアップ":
+  job "Install clojure":
+    downloadFile "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
+    exec "lein"
+
+task setupFont, "Fontのセットアップ":
+  job "Install programming font":
+    let version = "v1.3.0"
+    downloadFile &"https://github.com/yuru7/HackGen/releases/download/{version}/HackGen_{version}.zip", dstDir="/tmp"
+    withDir "/tmp":
+      exec &"unzip {version}.zip"
+    let fontDir = "/usr/share/fonts/truetype/hack-gen"
+    exec &"sudo install -d -o root -g root -m 0755 {fontDir}"
+    exec &"sudo cp -p /tmp/HackGen*.ttf {fontDir}"
+    exec &"sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji"
+    exec "fc-cache -f -v"
+
+task setupI3, "i3のセットアップ":
+  job "Linking i3 config":
+    symLink dotDir / "i3", confDir / "i3"
+
+task setupVSCode, "VSCodeのセットアップ":
+  job "Linking VSCode config":
+    let dst = confDir / "Code" / "User"
+    mkDir dst
+    let f = "settings.json"
+    symLink dotDir / "code" / "user" / f, dst / f
+
+  job "Install VSCode extensions":
+    withDir confDir / "code":
+      for pkg in readFile("extensions.txt").split("\n"):
+        exec &"code --install-extension {pkg}"
 
 task deploy, "各種設定の配置、リンク、アップデート":
   setCommand("installGoXXX")
@@ -248,7 +275,7 @@ task updateGitConfig, "ユーザの.gitconfigを更新する":
     for c in configs:
       gitConfig c.name, c.value
 
-task updateGoPkgs, "ユーザの.gitconfigを更新する":
+task updateGoPkgs, "Goのパッケージを更新する":
   job "Install go tools":
     let pkgs = [
       "github.com/motemen/ghq",
