@@ -23,6 +23,9 @@ template runExec(cmd: string) =
 
 template job(msg: string, body: untyped) =
   block:
+    echo ""
+    echo "=== " & msg & " ==="
+    echo ""
     body
 
 proc appendText(file, text: string) =
@@ -332,8 +335,8 @@ task initVim, "Vim環境の初期設定を行う":
     symLink vimDir, home / ".vim"
     symLink vimDir, confDir / "nvim"
 
-    let installer = tmpDir / "dein_installer.sh"
-    downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", installer
+    let installer = tmpDir / "installer.sh"
+    downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", dstDir=tmpDir
 
     let cacheDir = home / ".cache" / "dein"
     runExec &"{installer} {cacheDir}"
