@@ -12,7 +12,6 @@ services:
     image: zalox/manjaro
     environment:
       - TRAVIS_BRANCH
-      - DRY_RUN
     entrypoint:
       - sh
       - -c

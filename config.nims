@@ -23,24 +23,21 @@ template runExec(cmd: string) =
 
 template job(msg: string, body: untyped) =
   block:
-    echo msg
     body
 
 proc appendText(file, text: string) =
-  var f = open(file, fmAppend)
-  defer: close(f)
-  f.writeLine(text)
+  when defined(dryRun):
+    echo "DRY RUN: appendText " & text
+  else:
+    var f = open(file, fmAppend)
+    defer: close(f)
+    f.writeLine(text)
 
 proc addGroup(group: string) =
   runExec &"sudo groupadd {group}"
 
 proc addUserToGroup(user, group: string) =
   runExec &"sudo usermod -a -G {group} {user}"
-
-proc msg(s: string) =
-  echo "--------------------------------------------------------------------------------"
-  echo s
-  echo "--------------------------------------------------------------------------------"
 
 proc goGet(pkg: string) =
   runExec &"go get -u {pkg}"
@@ -67,7 +64,6 @@ proc installPkg(pkg: string, yay = false) =
     if yay: "yay"
     else: "pacman"
   let expr = &"sudo {cmd} -S --noconfirm {pkg}"
-  msg expr
   runExec expr
 
 proc downloadFile(url, dstDir = "/usr/local/bin", base = "", mode = "0755") =
@@ -79,7 +75,6 @@ proc downloadFile(url, dstDir = "/usr/local/bin", base = "", mode = "0755") =
 
   let dst = dstDir / base2
   let expr = &"curl -O {dst} {url}"
-  msg expr
   runExec expr
   runExec &"chmod {mode} {dst}"
 
@@ -93,35 +88,39 @@ proc symLink(src, dst: string) =
 # Tasks
 ################################################################################
 
+let dryRun =
+  when defined(dryRun): "-d:dryRun "
+  else: ""
+
 task setup, "環境を構築する (初期化、デプロイ)":
-  setCommand("init")
-  setCommand("deploy")
+  selfExec(dryRun & "--hints:off init")
+  selfExec(dryRun & "--hints:off deploy")
 
 task init, "パッケージ、ツール郡のインストール":
   if detectOs(Manjaro):
-    setCommand("installPacmanPkg")
-  setCommand("setupBluetooth")
-  setCommand("setupIME")
-  setCommand("setupNodeJS")
-  setCommand("setupShell")
-  setCommand("setupTerminal")
-  setCommand("installShellCmds")
-  setCommand("setupDocker")
-  setCommand("setupClojure")
-  setCommand("setupFont")
-  setCommand("setupI3")
-  setCommand("setupVSCode")
+    selfExec(dryRun & "--hints:off installPacmanPkg")
+  selfExec(dryRun & "--hints:off setupBluetooth")
+  selfExec(dryRun & "--hints:off setupIME")
+  selfExec(dryRun & "--hints:off setupNodeJS")
+  selfExec(dryRun & "--hints:off setupShell")
+  selfExec(dryRun & "--hints:off setupTerminal")
+  selfExec(dryRun & "--hints:off installShellCmds")
+  selfExec(dryRun & "--hints:off setupDocker")
+  selfExec(dryRun & "--hints:off setupClojure")
+  selfExec(dryRun & "--hints:off setupFont")
+  selfExec(dryRun & "--hints:off setupI3")
+  selfExec(dryRun & "--hints:off setupVSCode")
 
 task deploy, "各種設定の配置、リンク、アップデート":
-  setCommand("installGoXXX")
-  setCommand("updateGitConfig")
-  setCommand("updateGoPkgs")
-  setCommand("updateGitRepos")
-  setCommand("initVim")
-  setCommand("updateNpm")
-  setCommand("updatePip")
-  setCommand("updateGem")
-  setCommand("updateNimble")
+  selfExec(dryRun & "--hints:off installGoXXX")
+  selfExec(dryRun & "--hints:off updateGitConfig")
+  selfExec(dryRun & "--hints:off updateGoPkgs")
+  selfExec(dryRun & "--hints:off updateGitRepos")
+  selfExec(dryRun & "--hints:off initVim")
+  selfExec(dryRun & "--hints:off updateNpm")
+  selfExec(dryRun & "--hints:off updatePip")
+  selfExec(dryRun & "--hints:off updateGem")
+  selfExec(dryRun & "--hints:off updateNimble")
 
 task installPacmanPkg, "Pacmanのパッケージをインストール":
   job "Pacman":
