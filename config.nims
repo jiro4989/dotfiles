@@ -56,7 +56,7 @@ proc nimbleInstall(pkg: string) =
 proc npmInstall(pkg: string) =
   runExec &"npm install -g {pkg}"
 
-proc pipInstall(pkg: string, cmd="pip3") =
+proc pipInstall(pkg: string, cmd = "pip3") =
   runExec &"{cmd} install {pkg}"
 
 proc gemInstall(pkg: string) =
@@ -194,7 +194,7 @@ task installPacmanPkg, "Pacmanのパッケージをインストール":
         "chromium-widevine",
         ]
       for pkg in pkgs:
-        installPkg pkg, yay=true
+        installPkg pkg, yay = true
 
 task setupBluetooth, "Bluetoothのセットアップ":
   job "Setup bluetooth auto enable":
@@ -242,7 +242,7 @@ task installShellCmds, "シェルスクリプトのインストール":
       ]
     for url in urls:
       downloadFile url
-    downloadFile "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage", base="nvim"
+    downloadFile "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage", base = "nvim"
 
 task setupDocker, "Dockerのセットアップ":
   job "Setup docker":
@@ -257,7 +257,8 @@ task setupClojure, "Clojureのセットアップ":
 task setupFont, "Fontのセットアップ":
   job "Install programming font":
     let version = "v1.3.0"
-    downloadFile &"https://github.com/yuru7/HackGen/releases/download/{version}/HackGen_{version}.zip", dstDir="/tmp"
+    downloadFile &"https://github.com/yuru7/HackGen/releases/download/{version}/HackGen_{version}.zip",
+        dstDir = "/tmp"
     withDir "/tmp":
       runExec &"unzip {version}.zip"
     let fontDir = "/usr/share/fonts/truetype/hack-gen"
@@ -349,7 +350,8 @@ task initVim, "Vim環境の初期設定を行う":
     symLink vimDir, confDir / "nvim"
 
     let installer = tmpDir / "installer.sh"
-    downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh", dstDir=tmpDir
+    downloadFile "https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh",
+        dstDir = tmpDir
 
     let cacheDir = home / ".cache" / "dein"
     runExec &"{installer} {cacheDir}"
