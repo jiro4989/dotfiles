@@ -22,6 +22,7 @@ set incsearch        " インクリメンタルサーチ
 set hlsearch         " 検索語句のハイライト
 set display=lastline " テキストが長すぎて表示しきれない場合でも表示する
 set synmaxcol=200    " 1行あたりのシンタックス解析の文字数
+set nofoldenable     " 自動で折りたたみしない
 set lazyredraw
 set ttyfast
 
