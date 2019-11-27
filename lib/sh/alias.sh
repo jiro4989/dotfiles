@@ -95,3 +95,5 @@ rebase() {
   local target="${1:-master}"
   git rebase -i "$target"
 }
+
+alias lg='lazygit'
