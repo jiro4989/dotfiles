@@ -3,9 +3,9 @@
 
 " colorscheme
 if has("win32") || has("win64")
-  colorscheme torte
+  colorscheme molokai
 else
-  colorscheme torte
+  colorscheme molokai
   syntax on
   set t_Co=256
 endif
