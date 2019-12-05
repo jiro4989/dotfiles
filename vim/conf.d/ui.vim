@@ -3,18 +3,18 @@
 
 " colorscheme
 if has("win32") || has("win64")
-  colorscheme molokai
+  colorscheme tolte
 else
-  colorscheme molokai
+  colorscheme tolte
   syntax on
   set t_Co=256
 endif
 
-" " 背景を透過
-" highlight Normal ctermbg=NONE guibg=NONE
-" highlight NonText ctermbg=NONE guibg=NONE
-" highlight SpecialKey ctermbg=NONE guibg=NONE
-" highlight EndOfBuffer ctermbg=NONE guibg=NONE
+" 背景を透過
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 set number           " 行番号を表示
 set ruler            " カーソルの位置表示
