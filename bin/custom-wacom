@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# 指でカーソルが動くのを無効化
+#xsetwacom set "Wacom Intuos Pro M Finger touch" Touch off
+
+# Manjaro Linux環境だとこっちじゃないとダメだった
+xinput disable "Wacom Intuos Pro M Finger"
+
+# HDMIディスプレイのみでペンタブを稼働させる
+xsetwacom set "Wacom Intuos Pro M Pen stylus" MapToOutput HDMI1
+xsetwacom set "Wacom Intuos Pro M Pen eraser" MapToOutput HDMI1
+xsetwacom set "Wacom Intuos Pro M Pen cursor" MapToOutput HDMI1
+xsetwacom set "Wacom Intuos Pro M Pen pad" MapToOutput HDMI1
