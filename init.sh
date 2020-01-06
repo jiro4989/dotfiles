@@ -46,7 +46,7 @@ readonly PKGS=(
   ruby
 )
 for pkg in "${PKGS[@]}"; do
-  sudo pacman -S --noconfirm "$pkg"
+  pacman -S --noconfirm "$pkg"
 done
 
 readonly YAY_PKGS=(
