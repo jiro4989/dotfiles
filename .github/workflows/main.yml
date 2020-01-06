@@ -25,4 +25,4 @@ jobs:
       id: extract_branch
     - run: |
         echo "BRANCH=${{ steps.extract_branch.outputs.branch }}" > .env
-        docker-compose run "$SERVICE"
+        docker-compose run "${{ matrix.service }}"
