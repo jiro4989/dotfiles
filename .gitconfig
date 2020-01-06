@@ -1,0 +1,14 @@
+[user]
+	email = jiroron666@gmail.com
+	name = jiro4989
+[alias]
+	preq = pull-request
+	see = browse
+	fpr = "!f(){ git fetch origin pull/$1/head:$1; git checkout $1; };f"
+	co = checkout
+[commit]
+	template = ~/src/github.com/jiro4989/dotfiles/misc/gitcommit.template
+[ghq]
+	root = ~/src
+[pull]
+	ff = only

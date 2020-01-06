@@ -138,64 +138,6 @@ task deploy, "各種設定の配置、リンク、アップデート":
   for t in tasks:
     selfExec opt & t
 
-task installPacmanPkg, "Pacmanのパッケージをインストール":
-  job "Pacman":
-    let pkgs = [
-      "systemd",
-      "docker",
-      "docker-compose",
-      "yay",
-      "ibus",
-      "zip",
-      "glibc",
-      "sed",
-      "make",
-      "which",
-      "gcc",
-      "indent",
-      "python-pip",
-      "terraform",
-      "pulseaudio",
-      "pavucontrol",
-      "lmms",
-      "soundfont-fluid",
-      "steam",
-      "wine",
-      "winetricks",
-      "krita",
-      "xf86-input-wacom",
-      "snapper",
-      "dnsutils",
-      "lutris",
-      "blueberry",
-      "chromium",
-      "go",
-      "nodejs",
-      "npm",
-      "noto-fonts-emoji",
-      "noto-fonts-extra",
-      "noto-fonts-cjk",
-      "zsh",
-      "tmux",
-      "shellcheck",
-      "bash-bats",
-      "termite",
-      "code",
-      "ruby",
-      ]
-    for pkg in pkgs:
-      installPkg pkg
-
-    job "yay":
-      let pkgs = [
-        "mozc",
-        "ibus-mozc",
-        "unzip-iconv",
-        "chromium-widevine",
-        ]
-      for pkg in pkgs:
-        installPkg pkg, yay = true
-
 task setupBluetooth, "Bluetoothのセットアップ":
   job "Setup bluetooth auto enable":
     appendText "/etc/bluetooth/main.conf", "AutoEnable=true"
