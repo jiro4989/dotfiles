@@ -11,8 +11,8 @@ services:
   manjaro_curl:
     image: zalox/manjaro
     environment:
-      - TRAVIS_BRANCH
+      - BRANCH
     entrypoint:
       - sh
       - -c
-      - 'curl https://raw.githubusercontent.com/jiro4989/dotfiles/$TRAVIS_BRANCH/setup.sh | sh'
+      - 'curl https://raw.githubusercontent.com/jiro4989/dotfiles/$BRANCH/setup.sh | sh'
