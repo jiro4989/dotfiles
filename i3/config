@@ -417,4 +417,15 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+# ------------------------------------------------------------------------------
+#   Startup applications of user
+# ------------------------------------------------------------------------------
+
+# IME
 exec --no-startup-id fcitx
+
+# Browser
+exec chromium
+
+# Terminal
+exec termite
