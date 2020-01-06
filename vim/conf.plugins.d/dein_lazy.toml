@@ -111,3 +111,8 @@ on_ft = ['terraform', 'tf']
 hook_add = '''
 let g:terraform_align=1
 '''
+
+# Go
+[[plugins]]
+repo = 'mattn/vim-goimports'
+on_ft = ['go']
