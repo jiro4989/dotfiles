@@ -3,47 +3,52 @@
 set -eux
 
 readonly PKGS=(
-  systemd
+  bash-bats
+  blueberry
+  bluez
+  bluez-libs
+  bluez-utils
+  chromium
+  code
+  dnsutils
   docker
   docker-compose
-  yay
-  ibus
-  zip
-  glibc
-  sed
-  make
-  which
   gcc
-  indent
-  python-pip
-  terraform
-  pulseaudio
-  pavucontrol
-  lmms
-  soundfont-fluid
-  steam
-  wine
-  winetricks
-  krita
-  xf86-input-wacom
-  snapper
-  dnsutils
-  lutris
-  blueberry
-  chromium
+  glibc
   go
+  ibus
+  indent
+  krita
+  lmms
+  lutris
+  make
   nodejs
-  npm
+  noto-fonts-cjk
   noto-fonts-emoji
   noto-fonts-extra
-  noto-fonts-cjk
-  zsh
-  tmux
-  shellcheck
-  bash-bats
-  termite
-  code
+  npm
+  pavucontrol
+  pulseaudio
+  pulseaudio-alsa
+  pulseaudio-bluetooth
+  python-pip
   ruby
+  sed
+  shellcheck
+  snapper
+  soundfont-fluid
+  steam
+  systemd
+  termite
+  terraform
+  tmux
+  which
+  wine
+  winetricks
+  xf86-input-wacom
+  yay
+  zip
+  zsh
 )
 for pkg in "${PKGS[@]}"; do
   pacman -S --noconfirm "$pkg"
@@ -54,6 +59,7 @@ readonly YAY_PKGS=(
   ibus-mozc
   unzip-iconv
   chromium-widevine
+  bluez-firmware # Bluetooth
 )
 for pkg in "${YAY_PKGS[@]}"; do
   yay -S --noconfirm "$pkg"
