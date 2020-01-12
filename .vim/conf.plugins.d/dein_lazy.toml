@@ -1,6 +1,6 @@
-# シンタックス
-[[plugins]]
-repo = 'baabelfish/nvim-nim'
+# # シンタックス
+# [[plugins]]
+# repo = 'baabelfish/nvim-nim'
 
 # 補完
 [[plugins]]
