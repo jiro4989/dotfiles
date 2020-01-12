@@ -96,3 +96,4 @@ rebase() {
 }
 
 alias lg='lazygit'
+alias cf='cd "$(chof)"'
