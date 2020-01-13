@@ -116,3 +116,8 @@ let g:terraform_align=1
 [[plugins]]
 repo = 'mattn/vim-goimports'
 on_ft = ['go']
+
+# reStructuredText
+[[plugins]]
+repo = 'Rykka/riv.vim'
+on_ft = ['rst']
