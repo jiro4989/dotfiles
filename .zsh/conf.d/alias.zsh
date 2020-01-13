@@ -96,4 +96,9 @@ rebase() {
 }
 
 alias lg='lazygit'
-alias cf='cd "$(chof)"'
+cf() {
+  local dir="$(chof)"
+  if [[ "$dir" != "" ]]; then
+    cd "$dir"
+  fi
+}
