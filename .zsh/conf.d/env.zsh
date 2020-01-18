@@ -1,6 +1,7 @@
 #!/bin/bash
 
 readonly REPO_ROOT=$HOME/src/github.com/jiro4989
+readonly THIS_REPO=$REPO_ROOT/dotfiles
 
 # 日本語を使用
 export LANG=ja_JP.UTF-8
@@ -69,3 +70,6 @@ export TEXTIMG_FONT_FILE=/usr/share/fonts/truetype/hack-gen/HackGen-Regular.ttf
 # docui
 export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
+
+# git template
+export GIT_TEMPLATE_DIR=$THIS_REPO/.git_template
