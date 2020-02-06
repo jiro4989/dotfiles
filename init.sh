@@ -18,6 +18,7 @@ readonly PKGS=(
   go
   ibus
   indent
+  ntp
   krita
   lmms
   lutris
@@ -32,6 +33,7 @@ readonly PKGS=(
   pulseaudio-alsa
   pulseaudio-bluetooth
   python-pip
+  quota-tools
   ruby
   sed
   shellcheck
@@ -47,6 +49,7 @@ readonly PKGS=(
   winetricks
   xf86-input-wacom
   yay
+  supervisor
   zip
   zsh
 )
