@@ -13,12 +13,12 @@ readonly PKGS=(
   dnsutils
   docker
   docker-compose
+  fish
   gcc
   glibc
   go
   ibus
   indent
-  ntp
   krita
   lmms
   lutris
@@ -28,6 +28,7 @@ readonly PKGS=(
   noto-fonts-emoji
   noto-fonts-extra
   npm
+  ntp
   pavucontrol
   pulseaudio
   pulseaudio-alsa
@@ -40,6 +41,7 @@ readonly PKGS=(
   snapper
   soundfont-fluid
   steam
+  supervisor
   systemd
   termite
   terraform
@@ -49,7 +51,6 @@ readonly PKGS=(
   winetricks
   xf86-input-wacom
   yay
-  supervisor
   zip
   zsh
 )
@@ -67,3 +68,9 @@ readonly YAY_PKGS=(
 for pkg in "${YAY_PKGS[@]}"; do
   yay -S --noconfirm "$pkg"
 done
+
+# fish
+curl -L http://get.oh-my.fish | fish
+omf install peco
+# ghq + peco
+omf install https://github.com/yoshiori/fish-peco_select_ghq_repository
