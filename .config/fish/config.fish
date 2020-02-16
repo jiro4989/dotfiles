@@ -12,3 +12,6 @@ alias lg=lazygit
 alias cf=chof
 alias d=docker
 alias dc=docker-compose
+alias nims='nim --hints:off'
+alias clip='xsel --clipboard --input'
+
