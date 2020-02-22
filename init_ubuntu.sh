@@ -34,7 +34,7 @@ install_pkgs() {
 }
 
 func_apt() {
-  apt install -yqq "$1"
+  apt-get install -yqq "$1"
 }
 
 func_go() {
@@ -64,7 +64,7 @@ setup_font() {
 }
 
 echo -e "✨ updating packages ..."
-apt update -yqq
+apt-get update -yqq
 
 readonly APT_PKGS=(
   chromium-browser
