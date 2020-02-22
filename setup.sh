@@ -13,6 +13,6 @@ cd $_
 git clone https://github.com/jiro4989/dotfiles
 cd dotfiles
 #./init.sh
-bash ./init_ubuntu.sh
+bash ./script/init_ubuntu.sh
 cd $(~/bin/ghq root)
-bash ./deploy.sh
+bash ./script/deploy.sh

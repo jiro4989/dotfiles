@@ -81,7 +81,7 @@ source $PWD/.zsh/conf.d/env.zsh
 install_pkgs go < pkg/go
 install_pkgs ghq < pkg/ghq
 install_pkgs pip < pkg/pip
-./setup_font.sh
+./init_font.sh
 
 sudo add-apt-repository -y ppa:lazygit-team/release
 sudo apt-get update
