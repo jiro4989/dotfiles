@@ -148,6 +148,10 @@ install_pkgs ghq "${GHQ_PKGS[@]}"
 install_pkgs pip "${PIP_PKGS[@]}"
 ./setup_font.sh
 
+sudo add-apt-repository -y ppa:lazygit-team/release
+sudo apt-get update
+sudo apt-get install lazygit
+
 # shfmt
 curl -sSfL https://github.com/mvdan/sh/releases/download/v3.0.1/shfmt_v3.0.1_linux_amd64 > shfmt
 sudo install -o root -g root -m 0755 shfmt /usr/local/bin/shfmt
