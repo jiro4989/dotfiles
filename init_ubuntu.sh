@@ -25,7 +25,7 @@ install_pkgs() {
   local pkgs=("$@")
 
   for pkg in "${pkgs[@]}"; do
-    "func_$task" "$pkg" >> 2>&1 "$log_file"
+    "func_$task" "$pkg" 2>&1 >> "$log_file"
     ret=$?
 
     p="$(bold "$(underscore "$pkg")")"
