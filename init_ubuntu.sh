@@ -167,3 +167,4 @@ sudo install -o root -g root -m 0755 nvim /usr/local/bin/nvim
 curl https://nim-lang.org/choosenim/init.sh -sSf > nim.sh
 bash nim.sh -y
 choosenim update stable
+nimble install -y https://github.com/jiro4989/clitools
