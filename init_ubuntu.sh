@@ -66,6 +66,7 @@ setup_go() {
 readonly APT_PKGS=(
   chromium-browser
   curl
+  direnv
   dnsutils
   docker
   docker-compose
