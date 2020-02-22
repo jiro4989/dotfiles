@@ -103,7 +103,6 @@ readonly APT_PKGS=(
   steam
   supervisor
   systemd
-  terraform
   tmux
   vim
   wine
@@ -171,6 +170,8 @@ setup_font
 # Vim
 curl -sSf https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/install_dein.sh
 bash /tmp/install_dein.sh ~/.cache/dein
+curl -sSf https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > nvim
+sudo install -o root -g root -m 0755 nvim /usr/local/bin/nvim
 
 # Nim
 curl https://nim-lang.org/choosenim/init.sh -sSf > nim.sh
