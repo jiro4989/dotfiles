@@ -38,7 +38,7 @@ install_pkgs() {
 }
 
 func_apt() {
-  apt-get install -yqq "$1"
+  sudo apt-get install -yqq "$1"
 }
 
 func_go() {
@@ -60,15 +60,12 @@ setup_font() {
     cd /tmp
     unzip font.zip
     local font_dir=/usr/share/fonts/truetype/hack-gen
-    install -d -o root -g root -m 0755 $font_dir
+    sudo install -d -o root -g root -m 0755 $font_dir
     cp -p /tmp/HackGen*.ttf $font_dir
     sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji
     fc-cache -f -v
   )
 }
-
-echo -e "✨ updating packages ..."
-apt-get update -yqq
 
 readonly APT_PKGS=(
   chromium-browser
@@ -139,6 +136,9 @@ readonly PIP_PKGS=(
   "python-language-server"
   "pynvim"
 )
+
+echo -e "✨ updating packages ..."
+sudo apt-get update -yqq
 
 if exists_dir ~/ドキュメント; then
   LANG=C xdg-user-dirs-gtk-update
