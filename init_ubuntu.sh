@@ -64,8 +64,9 @@ setup_go() {
 }
 
 setup_font() {
-  local version=v1.3.0
-  curl -sSf https://github.com/yuru7/HackGen/releases/download/$version/HackGen_$version.zip > /tmp/font.zip
+  local version=v1.4.1
+  # リダイレクトするときは L
+  curl -sSfL https://github.com/yuru7/HackGen/releases/download/$version/HackGen_$version.zip > /tmp/font.zip
   (
     cd /tmp
     unzip font.zip
