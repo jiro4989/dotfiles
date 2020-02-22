@@ -79,11 +79,13 @@ setup_font() {
 
 readonly APT_PKGS=(
   chromium-browser
-  code
+  curl
   dnsutils
   docker
   docker-compose
   fish
+  git
+  guake
   indent
   krita
   lmms
@@ -102,6 +104,7 @@ readonly APT_PKGS=(
   termite
   terraform
   tmux
+  vim
   wine
   winetricks
   xf86-input-wacom
