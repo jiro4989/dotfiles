@@ -57,9 +57,9 @@ setup_go() {
   GO_VERSION=1.13.8
   local file=go$GO_VERSION.linux-amd64.tar.gz
   (
-  cd /tmp
-  curl -sSf https://dl.google.com/go/$file > $file
-  sudo tar -C /usr/local -xzf $file
+    cd /tmp
+    curl -sSf https://dl.google.com/go/$file > $file
+    sudo tar -C /usr/local -xzf $file
   )
 }
 
@@ -148,10 +148,14 @@ install_pkgs ghq "${GHQ_PKGS[@]}"
 install_pkgs pip "${PIP_PKGS[@]}"
 ./setup_font.sh
 
+# shfmt
+curl -sSfL https://github.com/mvdan/sh/releases/download/v3.0.1/shfmt_v3.0.1_linux_amd64 > shfmt
+sudo install -o root -g root -m 0755 shfmt /usr/local/bin/shfmt
+
 # Vim
 curl -sSf https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/install_dein.sh
 bash /tmp/install_dein.sh ~/.cache/dein
-curl -sSf https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > nvim
+curl -sSfL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > nvim
 sudo install -o root -g root -m 0755 nvim /usr/local/bin/nvim
 
 # Nim
