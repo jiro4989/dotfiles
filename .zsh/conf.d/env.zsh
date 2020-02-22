@@ -12,6 +12,7 @@ export JAVA_HOME=/usr/lib/jvm/default
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Go
+export PATH=/usr/local/go/bin:$PATH
 export GOPATH=$HOME
 
 # 追加したコマンド系
