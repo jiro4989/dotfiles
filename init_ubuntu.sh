@@ -63,26 +63,6 @@ setup_go() {
   )
 }
 
-setup_font() {
-  local version=v1.4.1
-  # リダイレクトするときは L
-  curl -sSfL https://github.com/yuru7/HackGen/releases/download/$version/HackGen_$version.zip > /tmp/font.zip
-  (
-    cd /tmp
-    unzip font.zip
-    local font_dir=/usr/share/fonts/truetype/hack-gen
-    if exists_dir $font_dir; then
-      return 0
-    fi
-
-    sudo install -d -o root -g root -m 0755 $font_dir
-    cd Hackgen*
-    cp -p /tmp/HackGen*.ttf $font_dir
-    sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji
-    fc-cache -f -v
-  )
-}
-
 readonly APT_PKGS=(
   chromium-browser
   curl
@@ -166,7 +146,7 @@ source $PWD/.zsh/conf.d/env.zsh
 install_pkgs go "${GO_PKGS[@]}"
 install_pkgs ghq "${GHQ_PKGS[@]}"
 install_pkgs pip "${PIP_PKGS[@]}"
-setup_font
+./setup_font.sh
 
 # Vim
 curl -sSf https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/install_dein.sh
