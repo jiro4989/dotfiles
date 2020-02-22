@@ -70,6 +70,10 @@ setup_font() {
     cd /tmp
     unzip font.zip
     local font_dir=/usr/share/fonts/truetype/hack-gen
+    if exists_dir $font_dir; then
+      return 0
+    fi
+
     sudo install -d -o root -g root -m 0755 $font_dir
     cp -p /tmp/HackGen*.ttf $font_dir
     sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji
