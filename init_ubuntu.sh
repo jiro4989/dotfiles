@@ -76,6 +76,7 @@ setup_font() {
     fi
 
     sudo install -d -o root -g root -m 0755 $font_dir
+    cd Hackgen*
     cp -p /tmp/HackGen*.ttf $font_dir
     sudo git clone https://github.com/googlefonts/noto-emoji /usr/local/src/noto-emoji
     fc-cache -f -v
