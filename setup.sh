@@ -3,7 +3,7 @@
 #pacman -Syyu --noconfirm git
 
 apt-get update -yqq
-apt-get install -yqq git ca-certificates
+apt-get install -yqq git ca-certificates apt-utils
 
 cd /tmp
 mkdir work
