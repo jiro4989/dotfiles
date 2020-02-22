@@ -14,4 +14,5 @@ git clone https://github.com/jiro4989/dotfiles
 cd dotfiles
 #./init.sh
 bash ./init_ubuntu.sh
-#bash ./deploy.sh
+cd $(~/bin/ghq root)
+bash ./deploy.sh
