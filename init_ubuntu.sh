@@ -136,6 +136,7 @@ readonly PIP_PKGS=(
   "pynvim"
 )
 
+LANG=C xdg-user-dirs-gtk-update
 git config --global user.email jiroron666@gmail.com
 git config --global user.name jiro4989
 git config --global ghq.root ~/src
