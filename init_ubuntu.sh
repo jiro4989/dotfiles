@@ -53,6 +53,16 @@ func_pip() {
   pip install "$1"
 }
 
+setup_go() {
+  GO_VERSION=1.13.8
+  local file=go$GO_VERSION.linux-amd64.tar.gz
+  (
+  cd /tmp
+  curl -sSf https://dl.google.com/go/$file > $file
+  sudo tar -C /usr/local -xzf $file
+  )
+}
+
 setup_font() {
   local version=v1.3.0
   curl -sSf https://github.com/yuru7/HackGen/releases/download/$version/HackGen_$version.zip > /tmp/font.zip
@@ -74,7 +84,6 @@ readonly APT_PKGS=(
   docker
   docker-compose
   fish
-  go
   indent
   krita
   lmms
@@ -151,6 +160,8 @@ git config --global alias.preq pull-request
 git config --global alias.see browse
 
 install_pkgs apt "${APT_PKGS[@]}"
+setup_go
+source $PWD/.zsh/conf.d/env.zsh
 install_pkgs go "${GO_PKGS[@]}"
 install_pkgs ghq "${GHQ_PKGS[@]}"
 install_pkgs pip "${PIP_PKGS[@]}"
