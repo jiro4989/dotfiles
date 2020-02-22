@@ -2,7 +2,7 @@
 
 set -eux
 
-readonly CONFIG_DIR="$HOME/.config"
+readonly CONFIG_DIR="$PWD/.config"
 
 mkdir -p "$CONFIG_DIR"
 ln -sfn "$CONFIG_DIR/termite" "$HOME/.config/"
