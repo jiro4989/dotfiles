@@ -6,6 +6,7 @@ sudo apt-get update -yqq
 sudo apt-get install -yqq git ca-certificates apt-utils
 
 cd /tmp
+rm -rf work
 mkdir work
 cd $_
 
