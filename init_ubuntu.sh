@@ -15,6 +15,10 @@ underscore() {
   echo -e "$char_underscore$*$char_reset"
 }
 
+exists_dir() {
+  [[ -d "$1" ]]
+}
+
 install_pkgs() {
   local task=$1
   shift
@@ -136,7 +140,10 @@ readonly PIP_PKGS=(
   "pynvim"
 )
 
-LANG=C xdg-user-dirs-gtk-update
+if exists_dir ~/ドキュメント; then
+  LANG=C xdg-user-dirs-gtk-update
+fi
+
 git config --global user.email jiroron666@gmail.com
 git config --global user.name jiro4989
 git config --global ghq.root ~/src
