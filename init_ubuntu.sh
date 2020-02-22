@@ -25,7 +25,7 @@ install_pkgs() {
   local pkgs=("$@")
 
   for pkg in "${pkgs[@]}"; do
-    "func_$task" "$pkg" >> "$log_file"
+    "func_$task" "$pkg" >> 2>&1 "$log_file"
     ret=$?
 
     p="$(bold "$(underscore "$pkg")")"
@@ -50,7 +50,7 @@ func_ghq() {
 }
 
 func_pip() {
-  pip install "$1"
+  pip3 install "$1"
 }
 
 setup_go() {
@@ -94,9 +94,6 @@ readonly APT_PKGS=(
   krita
   lmms
   nodejs
-  noto-fonts-cjk
-  noto-fonts-emoji
-  noto-fonts-extra
   npm
   python3
   python3-pip
@@ -105,20 +102,18 @@ readonly APT_PKGS=(
   steam
   supervisor
   systemd
-  termite
   terraform
   tmux
   vim
   wine
   winetricks
-  xf86-input-wacom
   zsh
 )
 
 readonly GO_PKGS=(
   "github.com/motemen/ghq"
   "golang.org/x/tools/cmd/godoc"
-  "golang.org/x/tools/cmd/gopls"
+  "golang.org/x/tools/gopls"
   "golang.org/x/tools/cmd/gorename"
   "github.com/atotto/clipboard/cmd/gocopy"
   "github.com/derekparker/delve/cmd/dlv"
@@ -131,8 +126,6 @@ readonly GO_PKGS=(
   "github.com/jiro4989/textimg"
   "github.com/xztaityozx/owari"
   "github.com/jiro4989/align"
-  "github.com/jiro4989/monit"
-  "github.com/mholt/archiver/cmd/arc"
 )
 
 # GHQ
