@@ -1,0 +1,15 @@
+github.com/motemen/ghq
+golang.org/x/tools/cmd/godoc
+golang.org/x/tools/gopls
+golang.org/x/tools/cmd/gorename
+github.com/atotto/clipboard/cmd/gocopy
+github.com/derekparker/delve/cmd/dlv
+github.com/hhatto/gocloc/cmd/gocloc
+github.com/mvdan/sh/cmd/shfmt
+github.com/peco/peco/cmd/peco/...
+github.com/ChimeraCoder/gojson/gojson
+github.com/mattn/twty
+github.com/greymd/ojichat
+github.com/jiro4989/textimg
+github.com/xztaityozx/owari
+github.com/jiro4989/align
