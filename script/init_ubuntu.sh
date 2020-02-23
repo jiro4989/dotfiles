@@ -106,3 +106,6 @@ curl https://nim-lang.org/choosenim/init.sh -sSf > nim.sh
 bash nim.sh -y
 choosenim update stable
 nimble install -y https://github.com/jiro4989/clitools
+
+# Ansible semaphore
+./script/init_semaphore.sh
