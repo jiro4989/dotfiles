@@ -22,6 +22,7 @@ if dein#load_state(s:dein_dir)
   " Add or remove your plugins here like this:
   call dein#load_toml(s:config_file,      {'lazy': 0})
   call dein#load_toml(s:lazy_config_file, {'lazy': 1})
+  "call dein#load_toml(s:lazy_config_file, {'lazy': 1})
 
   " Required:
   call dein#end()
@@ -30,7 +31,7 @@ endif
 
 " Required:
 filetype plugin indent on
-"syntax enable
+syntax enable
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
