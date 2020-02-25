@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -eu
+
+has() {
+  type "$1" >& /dev/null
+}
+
+REPO_DIR=$(
+  cd "$(dirname "${BASH_SOURCE:-$0}")/.." && pwd
+)
+readonly REPO_DIR
+readonly PKG_DIR="$REPO_DIR/pkg"
+readonly PACKAGE=$1
+
+pkg_file=""
+if has brew; then
+  brew install "$PACKAGE"
+  pkg_file="$PKG_DIR/macos"
+elif has apt; then
+  apt install -y "$PACKAGE"
+  pkg_file="$PKG_DIR/ubuntu"
+elif has pacman; then
+  pacman -S --noconfirm "$PACKAGE"
+  pkg_file="$PKG_DIR/manjaro_linux"
+else
+  echo "not supported" >&2
+  exit 1
+fi
+echo "$PACKAGE" >> "$pkg_file"
+sort -u "$pkg_file" -o "$pkg_file"
