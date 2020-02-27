@@ -1,8 +1,4 @@
 abusaidm.html-snippets
-avli.clojure
-cospaia.calva-fmt
-cospaia.clojure4vscode
-cospaia.paredit-revived
 danijel-malik.nimble
 ecmel.vscode-html-css
 hollowtree.vue-snippets

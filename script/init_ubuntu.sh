@@ -109,3 +109,5 @@ nimble install -y https://github.com/jiro4989/clitools
 
 # Ansible semaphore
 ./script/init_semaphore.sh
+
+./script/init_vscode.sh
