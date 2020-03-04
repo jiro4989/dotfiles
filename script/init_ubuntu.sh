@@ -87,6 +87,9 @@ sudo add-apt-repository -y ppa:lazygit-team/release
 sudo apt-get update
 sudo apt-get install lazygit
 
+curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
+sudo install -o root -g root -m 0755 /tmp/docker-compose /usr/local/bin/docker-compose
+
 # docker
 sudo groupadd docker
 sudo usermod -a -G docker jiro4989

@@ -4,7 +4,6 @@ curl
 direnv
 dnsutils
 docker
-docker-compose
 fish
 git
 guake
