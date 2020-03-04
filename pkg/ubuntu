@@ -8,11 +8,15 @@ docker-compose
 fish
 git
 guake
+hub
+imagemagick
 indent
 krita
 lmms
 nodejs
 npm
+peek
+plank
 python3
 python3-pip
 ruby
