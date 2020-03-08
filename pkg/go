@@ -1,5 +1,6 @@
 github.com/motemen/ghq
 golang.org/x/tools/cmd/godoc
+golang.org/x/tools/cmd/goimports
 golang.org/x/tools/gopls
 golang.org/x/tools/cmd/gorename
 github.com/atotto/clipboard/cmd/gocopy
