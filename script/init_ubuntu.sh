@@ -110,6 +110,9 @@ bash nim.sh -y
 choosenim update stable
 nimble install -y https://github.com/jiro4989/clitools
 
+# node.js
+sudo npm i -g yarn
+
 # Ansible semaphore
 ./script/init_semaphore.sh
 
