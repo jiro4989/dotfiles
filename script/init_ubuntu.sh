@@ -90,6 +90,9 @@ sudo apt-get install lazygit
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
 sudo install -o root -g root -m 0755 /tmp/docker-compose /usr/local/bin/docker-compose
 
+curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-$(uname -s)-$(uname -m) > /usr/local/bin/docker-machine
+chmod +x /usr/local/bin/docker-machine
+
 # docker
 sudo groupadd docker
 sudo usermod -a -G docker jiro4989
