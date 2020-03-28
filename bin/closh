@@ -1,0 +1,3 @@
+#!/bin/bash
+
+clojure -Sdeps '{:deps {closh {:git/url "https://github.com/dundalek/closh.git" :tag "v0.4.1" :sha "2bc9e645b65dc144233c5c41e5ca2685b1f54df7"}}}' -m closh.zero.frontend.rebel
