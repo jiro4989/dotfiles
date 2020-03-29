@@ -121,11 +121,10 @@ sudo npm i -g yarn
 
 ./script/init_vscode.sh
 
+# Clojure
 curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
 chmod +x linux-install-1.10.1.536.sh
 sudo ./linux-install-1.10.1.536.sh
 
-# CLojureワンライナー
-sudo add-apt-repository ppa:mfikes/planck
-sudo apt-get update
-sudo apt-get install planck
+# Clojureワンライナー
+bash <(curl -s https://raw.githubusercontent.com/borkdude/babashka/master/install)
