@@ -77,11 +77,13 @@ git config --global alias.see browse
 
 install_pkgs apt < pkg/ubuntu
 setup_go
-source $PWD/.zsh/conf.d/env.zsh
+export GOPATH=$HOME
+export PATH=$PATH:$HOME/bin:/usr/local/go/bin
+source $PWD/conf/.zsh/conf.d/env.zsh
 install_pkgs go < pkg/go
 install_pkgs ghq < pkg/ghq
 install_pkgs pip < pkg/pip
-./script/init_font.sh
+# ./script/init_font.sh
 
 sudo add-apt-repository -y ppa:lazygit-team/release
 sudo apt-get update
