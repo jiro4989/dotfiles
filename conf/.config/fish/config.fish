@@ -15,3 +15,4 @@ alias dc=docker-compose
 alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
 
+set PATH $PATH $HOME/.nimble/bin
