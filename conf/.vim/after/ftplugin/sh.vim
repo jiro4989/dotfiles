@@ -40,6 +40,11 @@ command! OpenTemplate call s:open_template()
 
 " 保存時にshfmtをかける
 function! s:exec_shfmt()
+  " shfmtがインストールされているときだけ実行する
+  if !executable("shfmt")
+    return
+  endif
+
   let l:pos = getcurpos()
   exe "%!shfmt -i 2 -ci -sr"
   exe ":w"
