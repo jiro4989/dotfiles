@@ -155,6 +155,19 @@ if executable('clojure-lsp')
     \ })
 endif
 
+" Kotlin
+if executable(expand('~/lsp/kotlin-language-server/server/bin/kotlin-language-server'))
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'kotlin-language-server',
+        \ 'cmd': {server_info->[
+        \     &shell,
+        \     &shellcmdflag,
+        \     expand('~/lsp/kotlin-language-server/server/bin/kotlin-language-server')
+        \ ]},
+        \ 'whitelist': ['kotlin']
+        \ })
+endif
+
 let g:lsp_async_completion = 1
 nnoremap <silent> gd :LspDefinition<CR>
 nnoremap <silent> gp :LspHover<CR>
