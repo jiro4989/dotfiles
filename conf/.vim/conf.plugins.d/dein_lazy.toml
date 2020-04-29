@@ -121,3 +121,9 @@ on_ft = ['go']
 [[plugins]]
 repo = 'Rykka/riv.vim'
 on_ft = ['rst']
+
+# Kotlin
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kotlin']
+
