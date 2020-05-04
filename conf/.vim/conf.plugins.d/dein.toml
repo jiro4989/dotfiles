@@ -188,7 +188,7 @@ if executable('java') && filereadable(expand(s:java_launcher))
         \     '-jar',
         \     expand(s:java_launcher),
         \     '-configuration',
-        \     expand(s:jdtls_dir . '/config_mac'),
+        \     expand(s:jdtls_dir . '/config_linux'),
         \     '-data',
         \     getcwd()
         \ ]},
