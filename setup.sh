@@ -24,8 +24,10 @@ ln -sfn "$DOT_CONFIG_DIR/fish/config.fish" "$DST_DOT_CONFIG_DIR/fish/config.fish
 
 # $HOME/.*rc
 # Vimは最初にディレクトリが作られてる場合があるので削除
-if [[ -d "$HOME/.vim" ]]; then
-  rm -rf "$HOME/.vim" || true
+readonly VIM_DIR="$HOME/.vim" 
+if [[ -d "$VIM_DIR" ]]; then
+  unlink "$VIM_DIR" || true
+  rm -rf "$VIM_DIR" || true
 fi
 
 # . で始まるファイル/ディレクトリをシンボリックリンク
