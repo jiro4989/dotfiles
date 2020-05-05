@@ -12,18 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: before
-    strategy:
-      matrix:
-        service:
-          - manjaro
-          - manjaro_curl
     steps:
     - uses: actions/checkout@v1
-    - name: Extract branch name
+    - name: Run deploy script
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
-    - run: |
-        :
-        # echo "BRANCH=${{ steps.extract_branch.outputs.branch }}" > .env
-        # docker-compose run "${{ matrix.service }}"
+      run: ./script/deploy.sh
