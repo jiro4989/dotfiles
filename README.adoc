@@ -1,59 +1,24 @@
-========
-dotfiles
-========
+= dotfiles
+:toc: left
+:sectnums:
 
-|gh-actions|
+image::https://github.com/jiro4989/dotfiles/workflows/test/badge.svg[]
 
-次郎の設定ファイルと環境構築スクリプトを管理する。
+次郎の設定ファイルとスクリプトを管理する。
 
-.. contents:: Table of contents
-   :depth: 3
+== 環境構築手順
 
-環境構築
-========
+これらの設定はホストOS上では実行しない想定。
+https://github.com/jiro4989/workspace[jiro4989/workspace]で管理しているVagrantの
+ゲストOS(Ubuntu)上で実行する。
 
-初期環境構築は以下のコマンドを実行する。
+Vagrant上で以下のコマンドを実行する。
 
-.. code-block:: Bash
+[source,bash]
+----
+./script/deploy.sh
+----
 
-   curl "https://raw.githubusercontent.com/jiro4989/dotfiles/master/setup.sh" | bash
+== LICENSE
 
-設定ファイルを更新したなどで再配置する際は以下を実行する。
-
-.. code-block:: Bash
-
-   ./deploy.sh
-
-メモ
-====
-
-この環境構築を実行する時はOSが切り替わったタイミングなので色々忘れてる気がするの
-で備忘録。
-
-ファイルマネージャー
---------------------
-
-ManjaroLinuxにはpcmanfmがデフォルトで使える。
-
-フォント名を調べる
-------------------
-
-.. code-block:: Bash
-
-   fc-list : family | grep HackGen
-
-ベースになるフォントを調べる？
-
-.. code-block:: Bash
-
-   xrdb -query | grep font
-
-git push時にパスワードを聞かれないようにする
---------------------------------------------
-
-- SSH鍵の生成 `ssh-keygen -t rsa -b 4096 -C "your@email"`
-- GitHubに公開鍵(id_rsa.pub)を登録
-- Git cloneするときにsshでcloneする
-
-.. |gh-actions| image:: https://github.com/jiro4989/dotfiles/workflows/test/badge.svg
-   :target: https://github.com/jiro4989/dotfiles/actions
+MIT
