@@ -16,7 +16,7 @@ Vagrant上で以下のコマンドを実行する。
 
 [source,bash]
 ----
-./script/deploy.sh
+./setup.sh
 ----
 
 == ディレクトリ構成

@@ -16,4 +16,4 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run deploy script
       shell: bash
-      run: ./script/deploy.sh
+      run: ./setup.sh
