@@ -155,47 +155,6 @@ if executable('clojure-lsp')
     \ })
 endif
 
-" Kotlin
-if executable(expand('kotlin-language-server'))
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'kotlin-language-server',
-        \ 'cmd': {server_info->[
-        \     &shell,
-        \     &shellcmdflag,
-        \     expand('kotlin-language-server')
-        \ ]},
-        \ 'whitelist': ['kotlin']
-        \ })
-endif
-
-" Java
-let s:jdtls_dir = '/opt/jdtls/current'
-let s:java_launcher = s:jdtls_dir . '/plugins/org.eclipse.equinox.launcher_1.5.700.v20200207-2156.jar'
-if executable('java') && filereadable(expand(s:java_launcher))
-
-    " vim-lsp の設定
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'eclipse.jdt.ls',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand(s:java_launcher),
-        \     '-configuration',
-        \     expand(s:jdtls_dir . '/config_linux'),
-        \     '-data',
-        \     getcwd()
-        \ ]},
-        \ 'whitelist': ['java'],
-        \ })
-endif
-
 let g:lsp_async_completion = 1
 nnoremap <silent> gd :LspDefinition<CR>
 nnoremap <silent> gp :LspHover<CR>
