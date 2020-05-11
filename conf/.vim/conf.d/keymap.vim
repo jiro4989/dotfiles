@@ -20,10 +20,6 @@ nnoremap <C-h> gT
 " 箇条書き文章の文章番号をインクリメントしてコピー
 nnoremap <C-b> yyp<C-a>
 
-" バッファ保存
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
-
 " 置換
 nnoremap gs :%s///g<Left><Left><Left>
 vnoremap gs :s///g<Left><Left><Left>
