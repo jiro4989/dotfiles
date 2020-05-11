@@ -25,5 +25,11 @@ alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
 
 set JAVA_HOME /opt/java/current
-set PATH $JAVA_HOME/bin $PATH $HOME/.nimble/bin $HOME/bin
+
+for dir in "$JAVA_HOME/bin" "$HOME/.nimble/bin" "$HOME/bin"
+  if test -d "$dir"
+    set PATH "$dir" $PATH
+  end
+end
+
 set EDITOR nvim
