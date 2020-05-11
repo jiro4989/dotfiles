@@ -7,21 +7,7 @@
 " に分類できないか、あるいはここの雑多な設定をまとめて別ファイルに吐き出せないか
 " 県とすること。
 
-" ターミナル以外を開いたときだけcdする
-function! s:change_dir()
-  if &l:buftype ==# 'terminal' || &l:buftype ==# 'nowrite'
-    return
-  endif
-
-  lcd %:p:h
-endfunction
-
-" 開いたファイルをカレントディレクトリに設定
-augroup grlcd
-  autocmd!
-  autocmd BufEnter *.* call s:change_dir()
-augroup END
-
+set autochdir   " 自動で開いたファイルにcdする
 set nobomb      " BOMなしで保存する
 set nrformats=  " 0から始まる数字もすべて10進数としてインクリメント可能に変更
 set history=200 " コマンドの履歴の保存上限を変更
