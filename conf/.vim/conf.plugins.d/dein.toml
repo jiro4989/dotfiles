@@ -15,10 +15,9 @@ nmap <Leader>u [denite]
 nmap <silent> [denite]h :<C-u>Denite file_mru<CR>
 nmap <silent> [denite]g :<C-u>Denite grep<CR>
 nmap <silent> [denite]t :<C-u>Denite filetype<CR>
-nmap <silent> [denite]p :<C-u>Denite file_rec<CR>
+nmap <silent> [denite]f :<C-u>Denite file/rec<CR>
 nmap <silent> [denite]j :<C-u>Denite line<CR>
 nmap <silent> [denite]] :<C-u>DeniteCursorWord grep<CR>
-nmap <silent> [denite]y :<C-u>Denite neoyank<CR>
 nmap <silent> [denite]r :<C-u>Denite -resume<CR>
 
 " Define mappings
