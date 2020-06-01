@@ -24,12 +24,11 @@ alias dc=docker-compose
 alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
 
-set JAVA_HOME /opt/java/current
-
 for dir in "$JAVA_HOME/bin" "$HOME/.nimble/bin" "$HOME/bin"
   if test -d "$dir"
     set PATH "$dir" $PATH
   end
 end
 
-set EDITOR nvim
+set -x JAVA_HOME /opt/java/current
+set -x EDITOR nvim
