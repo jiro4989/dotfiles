@@ -32,3 +32,13 @@ end
 
 set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
+
+# Regexp
+set -x REGEXP_IP_ADDRES '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+set -x REGEXP_EMAIL '[-_\.a-zA-Z0-9]+@[-_\.a-zA-Z0-9]+'
+set -x REGEXP_LOG_LEVEL_DEBUG '[dD][eE][bB][uU][gG]'
+set -x REGEXP_LOG_LEVEL_INFO '[iI][nN][fF][oO]'
+set -x REGEXP_LOG_LEVEL_WARN '[wW][aA][rR][nN][iI]?[nN]?[gG]?'
+set -x REGEXP_LOG_LEVEL_ERROR '[eE][rR][rR][oO]?[rR]?'
+set -x REGEXP_LOG_LEVEL_ALL "$REGEXP_LOG_LEVEL_DEBUG|$REGEXP_LOG_LEVEL_INFO|$REGEXP_LOG_LEVEL_WARN|$REGEXP_LOG_LEVEL_ERROR"
+set -x REGEXP_URL 'https?://[-\+_\.a-zA-Z0-9#%/]+'
