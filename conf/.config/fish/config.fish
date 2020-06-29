@@ -24,7 +24,7 @@ alias dc=docker-compose
 alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
 
-for dir in "$JAVA_HOME/bin" "$HOME/.nimble/bin" "$HOME/bin"
+for dir in "$JAVA_HOME/bin" "$HOME/.nimble/bin" "$HOME/bin" "$HOME/.cargo/bin"
   if test -d "$dir"
     set PATH "$dir" $PATH
   end
