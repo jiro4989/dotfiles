@@ -30,6 +30,14 @@ for dir in "$JAVA_HOME/bin" "$HOME/.nimble/bin" "$HOME/bin" "$HOME/.cargo/bin"
   end
 end
 
+# rbenv
+if test -d $HOME/.rbenv/bin
+  set PATH $HOME/.rbenv/bin $PATH
+  if which rbenv
+    rbenv init - | source
+  end
+end
+
 set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
 
