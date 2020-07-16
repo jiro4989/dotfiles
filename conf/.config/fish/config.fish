@@ -33,7 +33,7 @@ end
 # rbenv
 if test -d $HOME/.rbenv/bin
   set PATH $HOME/.rbenv/bin $PATH
-  if which rbenv
+  if which rbenv >/dev/null
     rbenv init - | source
   end
 end
