@@ -41,6 +41,11 @@ end
 set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
 
+# direnv
+if which direnv >/dev/null
+  eval (direnv hook fish)
+end
+
 # Regexp
 set -x REGEXP_IP_ADDRES '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
 set -x REGEXP_EMAIL '[-_\.a-zA-Z0-9]+@[-_\.a-zA-Z0-9]+'
