@@ -46,6 +46,11 @@ if which direnv >/dev/null
   eval (direnv hook fish)
 end
 
+# go
+if test -d /usr/local/go/bin >/dev/null
+  set PATH $PATH /usr/local/go/bin
+end
+
 # Regexp
 set -x REGEXP_IP_ADDRES '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
 set -x REGEXP_EMAIL '[-_\.a-zA-Z0-9]+@[-_\.a-zA-Z0-9]+'
