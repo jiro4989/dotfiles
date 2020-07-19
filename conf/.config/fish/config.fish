@@ -24,9 +24,9 @@ alias dc=docker-compose
 alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
 
-for dir in "$JAVA_HOME/bin" "$HOME/.nimble/bin" "$HOME/bin" "$HOME/.cargo/bin"
+for dir in /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/go/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin"
   if test -d "$dir"
-    set PATH "$dir" $PATH
+    set PATH $PATH "$dir"
   end
 end
 
@@ -44,11 +44,6 @@ set -x EDITOR nvim
 # direnv
 if which direnv >/dev/null
   eval (direnv hook fish)
-end
-
-# go
-if test -d /usr/local/go/bin >/dev/null
-  set PATH $PATH /usr/local/go/bin
 end
 
 # Regexp
