@@ -70,9 +70,10 @@ alias u=__cd_to_parent_dir
 alias v=nvim
 
 alias dc=docker-compose
-alias lg=lazygit
-alias wo=create_workdir
 alias gp='git pull'
+alias lg=lazygit
+alias wa=watch
+alias wo=create_workdir
 
 alias nr='nim c -r'
 alias nn=nimble
