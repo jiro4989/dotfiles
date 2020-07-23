@@ -74,6 +74,7 @@ alias dc=docker-compose
 alias gp='git pull'
 alias lg=lazygit
 alias pt='pstree -a'
+alias pg='ps aux | grep'
 alias wa=watch
 alias wo=create_workdir
 
