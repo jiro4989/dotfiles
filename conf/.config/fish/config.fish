@@ -45,7 +45,6 @@ alias t='cd /tmp'
 alias u=cd_to_parent_dir
 alias v=nvim
 
-alias cf=chof
 alias dc=docker-compose
 alias lg=lazygit
 
