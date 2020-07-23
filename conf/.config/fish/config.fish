@@ -31,7 +31,7 @@ function __cd_to_parent_dir
   end
 end
 
-function create_workdir
+function __create_workdir
   if [ -d work ]
     rm -rf work
   end
@@ -77,7 +77,7 @@ alias lg=lazygit
 alias pt='pstree -a'
 alias pg='ps aux | grep'
 alias wa=watch
-alias wo=create_workdir
+alias wo=__create_workdir
 
 alias nr='nim c -r'
 alias nn=nimble
