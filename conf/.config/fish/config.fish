@@ -64,18 +64,20 @@ alias c=__cd_with_peco
 alias d=docker
 alias g=git
 alias h=__helpall
+alias l=ls
 alias n=nim
 alias p='ps aux'
 alias t='cd /tmp'
 alias u=__cd_to_parent_dir
 alias v=nvim
 
-alias fi='nvim ~/.config/fish/config.fish'
+alias cg='cd .github/workflows'
 alias dc=docker-compose
+alias fi='nvim ~/.config/fish/config.fish'
 alias gp='git pull'
 alias lg=lazygit
-alias pt='pstree -a'
 alias pg='ps aux | grep'
+alias pt='pstree -a'
 alias wa=watch
 alias wo=__create_workdir
 
