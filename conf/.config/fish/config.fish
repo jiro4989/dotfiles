@@ -11,6 +11,26 @@ function ghq_peco_repo
   end
 end
 
+# change directory with peco
+function cd_with_peco
+  set dir (find $argv[1] -type d -name '.git' -prune -o -type d -print | peco)
+  if [ -n "$dir" ]
+    cd "$dir"
+    echo "$dir"
+    commandline -f repaint
+  end
+end
+
+function cd_to_parent_dir
+  if [ -n "$argv[1]" ]
+    for i in (seq $argv[1])
+      cd ../
+    end
+  else
+    cd ../
+  end
+end
+
 # Shortcut keys
 function fish_user_key_bindings
   bind \cp 'stty sane; ghq_peco_repo'
@@ -23,6 +43,11 @@ alias d=docker
 alias dc=docker-compose
 alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
+alias c=cd_with_peco
+alias u=cd_to_parent_dir
+
+set -x JAVA_HOME /opt/java/current
+set -x EDITOR nvim
 
 for dir in /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/go/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin"
   if test -d "$dir"
@@ -37,9 +62,6 @@ if test -d $HOME/.rbenv/bin
     rbenv init - | source
   end
 end
-
-set -x JAVA_HOME /opt/java/current
-set -x EDITOR nvim
 
 # direnv
 if which direnv >/dev/null
