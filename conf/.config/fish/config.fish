@@ -39,6 +39,9 @@ end
 # alias
 alias c=cd_with_peco
 alias d=docker
+alias g=git
+alias n=nim
+alias t='cd /tmp'
 alias u=cd_to_parent_dir
 alias v=nvim
 
@@ -46,8 +49,14 @@ alias cf=chof
 alias dc=docker-compose
 alias lg=lazygit
 
+alias nr='nim c -r'
+alias nn=nimble
+alias nnb='nimble build -Y'
+alias nnt='nimble test -Y'
 alias nims='nim --hints:off'
+
 alias clip='xsel --clipboard --input'
+alias work='mkdir work; and cd work'
 
 set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
