@@ -36,15 +36,18 @@ function fish_user_key_bindings
   bind \cp 'stty sane; ghq_peco_repo'
 end
 
-alias v=nvim
-alias lg=lazygit
-alias cf=chof
+# alias
+alias c=cd_with_peco
 alias d=docker
+alias u=cd_to_parent_dir
+alias v=nvim
+
+alias cf=chof
 alias dc=docker-compose
+alias lg=lazygit
+
 alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
-alias c=cd_with_peco
-alias u=cd_to_parent_dir
 
 set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
