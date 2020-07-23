@@ -70,6 +70,7 @@ alias t='cd /tmp'
 alias u=__cd_to_parent_dir
 alias v=nvim
 
+alias fi='nvim ~/.config/fish/config.fish'
 alias dc=docker-compose
 alias gp='git pull'
 alias lg=lazygit
