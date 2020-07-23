@@ -31,6 +31,13 @@ function cd_to_parent_dir
   end
 end
 
+function create_workdir
+  if [ -d work ]
+    rm -rf work
+  end
+  mkdir work; and cd work
+end
+
 # Shortcut keys
 function fish_user_key_bindings
   bind \cp 'stty sane; ghq_peco_repo'
@@ -47,6 +54,7 @@ alias v=nvim
 
 alias dc=docker-compose
 alias lg=lazygit
+alias wo=create_workdir
 
 alias nr='nim c -r'
 alias nn=nimble
@@ -55,7 +63,6 @@ alias nnt='nimble test -Y'
 alias nims='nim --hints:off'
 
 alias clip='xsel --clipboard --input'
-alias work='mkdir work; and cd work'
 
 set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
