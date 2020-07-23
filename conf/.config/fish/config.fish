@@ -2,7 +2,7 @@
 # set fish_theme agnoster
 # set fish_theme bira
 
-function ghq_peco_repo
+function __ghq_peco_repo
   set selected_repository (ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_repository" ]
     cd $selected_repository
@@ -12,7 +12,7 @@ function ghq_peco_repo
 end
 
 # change directory with peco
-function cd_with_peco
+function __cd_with_peco
   set dir (find $argv[1] -type d -name '.git' -prune -o -type d -print | peco)
   if [ -n "$dir" ]
     cd "$dir"
@@ -21,7 +21,7 @@ function cd_with_peco
   end
 end
 
-function cd_to_parent_dir
+function __cd_to_parent_dir
   if [ -n "$argv[1]" ]
     for i in (seq $argv[1])
       cd ../
@@ -38,7 +38,7 @@ function create_workdir
   mkdir work; and cd work
 end
 
-function helpall
+function __helpall
   set cmd $argv[1]
   if not which $cmd >/dev/null
     echo "$cmd is not found" >&2
@@ -56,17 +56,17 @@ end
 
 # Shortcut keys
 function fish_user_key_bindings
-  bind \cp 'stty sane; ghq_peco_repo'
+  bind \cp 'stty sane; __ghq_peco_repo'
 end
 
 # alias
-alias c=cd_with_peco
+alias c=__cd_with_peco
 alias d=docker
 alias g=git
-alias h=helpall
+alias h=__helpall
 alias n=nim
 alias t='cd /tmp'
-alias u=cd_to_parent_dir
+alias u=__cd_to_parent_dir
 alias v=nvim
 
 alias dc=docker-compose
