@@ -65,6 +65,7 @@ alias d=docker
 alias g=git
 alias h=__helpall
 alias n=nim
+alias p='ps aux'
 alias t='cd /tmp'
 alias u=__cd_to_parent_dir
 alias v=nvim
@@ -72,6 +73,7 @@ alias v=nvim
 alias dc=docker-compose
 alias gp='git pull'
 alias lg=lazygit
+alias pt='pstree -a'
 alias wa=watch
 alias wo=create_workdir
 
