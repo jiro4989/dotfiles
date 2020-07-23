@@ -55,6 +55,7 @@ alias v=nvim
 alias dc=docker-compose
 alias lg=lazygit
 alias wo=create_workdir
+alias gp='git pull'
 
 alias nr='nim c -r'
 alias nn=nimble
