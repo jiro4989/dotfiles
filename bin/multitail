@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -eu
-
-trap 'kill $(jobs -p)' EXIT
-for f in "$@"; do
-  tail -f "$f" &
-done
-wait
