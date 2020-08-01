@@ -7,3 +7,4 @@ scoop install vscode
 scoop install keepass
 scoop install krita
 scoop install steam
+scoop install googlechrome
