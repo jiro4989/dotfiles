@@ -8,3 +8,5 @@ scoop install keepass
 scoop install krita
 scoop install steam
 scoop install googlechrome
+scoop install portable-virtualbox
+scoop install vagrant
