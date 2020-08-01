@@ -8,7 +8,8 @@ image::https://github.com/jiro4989/dotfiles/workflows/test/badge.svg[]
 
 == 環境構築手順
 
-これらの設定はホストOS上では実行しない想定。
+=== Ubuntu on Vagrant
+
 https://github.com/jiro4989/workspace[jiro4989/workspace]で管理しているVagrantの
 ゲストOS(Ubuntu)上で実行する。
 
@@ -17,6 +18,17 @@ Vagrant上で以下のコマンドを実行する。
 [source,bash]
 ----
 ./setup.sh
+----
+
+=== Windows
+
+Windowsホスト用のツール郡をインストールする。
+以下のコマンドを実行する。
+
+[source,ps1]
+----
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+setup.ps1
 ----
 
 == ディレクトリ構成
