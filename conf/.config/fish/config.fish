@@ -1,5 +1,3 @@
-fish_vi_key_bindings
-
 function __ghq_peco_repo
   set selected_repository (ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_repository" ]
