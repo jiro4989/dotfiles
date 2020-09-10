@@ -7,6 +7,7 @@ scoop install discord
 scoop install slack
 scoop install vscode
 scoop install keepass
+scoop install windows-terminal
 scoop install krita
 scoop install steam
 scoop install googlechrome
