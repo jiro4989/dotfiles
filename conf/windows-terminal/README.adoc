@@ -1,0 +1,13 @@
+= windows-terminal
+
+scoopでインストールしたwindows terminalのメニューバーから「設定」を開いてコピペ
+で貼り付ける。
+
+元の設定にはコメントが残っていてjqにかけられないので注意。
+(JSONにはコメントは規定されていない)
+
+[source,bash]
+----
+cat settings.json | jq . > settings.json.tmp
+mv settings.json.tmp settings.json
+----
