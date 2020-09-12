@@ -5,7 +5,7 @@
   "copyFormatting": false,
   "profiles": {
     "defaults": {
-      "fontFace": "HackGenNerd",
+      "fontFace": "HackGenNerd Console",
       "fontSize": 14,
       "colorScheme": "Dracula"
     },
