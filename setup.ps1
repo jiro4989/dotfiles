@@ -5,6 +5,7 @@ scoop install teraterm
 scoop install autohotkey
 scoop install discord
 scoop install slack
+scoop install 7zip
 scoop install vscode
 scoop install keepass
 scoop install windows-terminal
