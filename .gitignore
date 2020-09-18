@@ -1,4 +1,4 @@
 .netrwhist
-/vim/plugged/
+conf/.vim/plugged/
 secrets.sh
 conf/.config/Code/*
