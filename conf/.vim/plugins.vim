@@ -1,39 +1,46 @@
-if &compatible
-  set nocompatible " Be iMproved
-endif
+function! s:source_conf(conf)
+  execute('source ' . g:CONFIG_ROOT_DIR . '/conf.plugins.d/' . a:conf)
+endfunction
 
-" Required:
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+call plug#begin('~/.vim/plugged')
 
-let s:dein_dir = $HOME . '/.cache/dein'
+" ファイラー
+Plug 'cocopon/vaffle.vim'
+call s:source_conf('vaffle.vim')
 
-" Required:
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+" 桁揃え
+Plug 'h1mesuke/vim-alignta'
+call s:source_conf('vim-alignta.vim')
 
-  " Let dein manage dein
-  " Required:
-  call dein#add(s:dein_dir . '/repos/github.com/Shougo/dein.vim')
+" 括弧補完
+Plug 'cohama/lexima.vim'
 
-  let s:plugin_config_dir = g:CONFIG_ROOT_DIR . '/conf.plugins.d'
-  let s:config_file       = s:plugin_config_dir . '/dein.toml'
-  let s:lazy_config_file  = s:plugin_config_dir . '/dein_lazy.toml'
+" コメントアウト
+Plug 'tyru/caw.vim'
+call s:source_conf('caw.vim')
 
-  " Add or remove your plugins here like this:
-  call dein#load_toml(s:config_file,      {'lazy': 0})
-  call dein#load_toml(s:lazy_config_file, {'lazy': 1})
-  "call dein#load_toml(s:lazy_config_file, {'lazy': 1})
+" 折りたたみ時のタイトル表示変更
+Plug 'LeafCage/foldCC'
 
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
+" スニペット
+Plug 'honza/vim-snippets'
 
-" Required:
-filetype plugin indent on
-syntax enable
+" オートコンプリート + Language Server Protocol
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+call s:source_conf('vim-lsp.vim')
+Plug 'prabirshrestha/asyncomplete.vim'
+call s:source_conf('asyncomplete.vim')
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'natebosch/vim-lsc'
+" LSPのシンボル・タグビューワ
+Plug 'liuchengxu/vista.vim'
+call s:source_conf('vista.vim')
 
-" If you want to install not installed plugins on startup.
-if dein#check_install()
- call dein#install()
-endif
+" 差分表示を左端に表示
+Plug 'airblade/vim-gitgutter'
+
+" 非同期コードチェック
+Plug 'w0rp/ale'
+
+call plug#end()
