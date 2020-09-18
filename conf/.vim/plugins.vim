@@ -11,6 +11,8 @@ call s:source_conf('vaffle.vim')
 " 桁揃え
 Plug 'h1mesuke/vim-alignta'
 call s:source_conf('vim-alignta.vim')
+" FIXME: 何故かインストールしていた
+" Plug 'vim-scripts/Align'
 
 " 括弧補完
 Plug 'cohama/lexima.vim'
@@ -42,5 +44,49 @@ Plug 'airblade/vim-gitgutter'
 
 " 非同期コードチェック
 Plug 'w0rp/ale'
+
+" Nim補完
+Plug 'alaviss/nim.nvim', { 'for': ['nim', 'nimble'] }
+call s:source_conf('nim.nvim.vim')
+
+" HTMLスニペット
+Plug 'mattn/emmet-vim', { 'for': 'html' }
+
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
+" メソッド補完
+Plug 'mattn/jscomplete-vim', { 'for': 'javascript' }
+call s:source_conf('jscomplete-vim.vim')
+
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+
+Plug 'PProvost/vim-ps1', { 'for': ['ps1', 'powershell'] }
+
+Plug 'myhere/vim-nodejs-complete', { 'for': 'javascript' }
+call s:source_conf('vim-nodejs-complete.vim')
+
+Plug 'godlygeek/tabular', { 'for': ['markdown', 'md'] }
+
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'md'] }
+
+" Markdown形式の目次を自動生成する
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['markdown', 'md'] }
+
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+
+" CSVハイライト
+Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
+
+Plug 'vim-scripts/SQLUtilities', { 'for': 'sql' }
+
+Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+
+Plug 'hashivim/vim-terraform', { 'for': ['terraform', 'tf'] }
+call s:source_conf('vim-terraform.vim')
+
+Plug 'mattn/vim-goimports', { 'for': 'go' }
+
+" reStructuredText
+Plug 'Rykka/riv.vim', { 'for': 'rst' }
 
 call plug#end()
