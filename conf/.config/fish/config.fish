@@ -34,22 +34,6 @@ function __create_workdir
   mkdir work; and cd work
 end
 
-function __helpall
-  set cmd $argv[1]
-  if not which $cmd >/dev/null
-    echo "$cmd is not found" >&2
-    return 1
-  end
-
-  if not eval $cmd --help
-    if not eval $cmd -help
-      if not man $cmd
-        eval $cmd -h
-      end
-    end
-  end
-end
-
 # Shortcut keys
 function fish_user_key_bindings
   bind \cp 'stty sane; __ghq_peco_repo'
@@ -59,7 +43,6 @@ end
 alias c=__cd_with_peco
 alias d=docker
 alias g=git
-alias h=__helpall
 alias l=ls
 alias n=nim
 alias p='ps aux'
