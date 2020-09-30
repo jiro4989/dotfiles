@@ -45,6 +45,11 @@ Plug 'airblade/vim-gitgutter'
 " 非同期コードチェック
 Plug 'w0rp/ale'
 
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call s:source_conf('fzf.vim')
+
 " Nim補完
 Plug 'alaviss/nim.nvim', { 'for': ['nim', 'nimble'] }
 call s:source_conf('nim.nvim.vim')
