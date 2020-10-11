@@ -1,15 +1,22 @@
 
 
 # ======== Emoji Prefix ========
-# 🎉  :tada:     初めてのコミット     (Initial commit)
+# 🎉  :tada:     初めてのコミット     initial commit
+# ✨  :sparkles: 新機能               feature
+# 🐛  :bug:      バグ修正             bug fix
+# ✅  :white_check_mark: テスト系     tests
+# 📝  :memo:     ドキュメント書いた   write documents
+# 🔥  :fire:     コード/ファイル削除  remove file or code
+# 🚚  :truck:    コードの移動         move or rename file
+# ♻   :recycle:  CI系                 CI
+# 🔧  :wrench:   設定ファイルの変更   change configuration files
+# 👍  :+1:       その他               chore
+#
 # ✨  :sparkles: 新機能               (New features)
-# 🔧  :wrench:   設定ファイルの変更   (Changing configuration files)
 # 💄  :lipstick: UI/スタイル改善      (Updating the UI and style files)
 # ✏   :pencil2:  typo修正             (Fixing typos)
 # 📝  :memo:     ドキュメントを書いた (Writing docs)
-# 🔥  :fire:     コード/ファイル削除  (Removing code or files.)
 # 🐛  :bug:      バグ修正             (Fixing a bug)
-# ♻   :recycle:  リファクタリング     (Refactoring code)
 # 🚨  :rotating_light: Removing linter warnings.
 # 🚧  :construction: 実装中 (Work in progress)
 # 💩  :hankey: Writing bad code that needs to be improved.
@@ -26,7 +33,6 @@
 # ⏪  :rewind: Reverting changes.
 # 🔀  :twisted_rightwards_arrows: Merging branches.
 # 💡  :bulb: Documenting source code.
-# 💚  :green_heart: Fixing CI Build.
 # 👷  :construction_worker: Adding CI build system.
 # 🐳  :whale: Work about Docker.
 # 🚚  :truck: Moving or renaming files.
