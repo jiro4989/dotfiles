@@ -14,7 +14,6 @@ scoop install krita
 scoop install steam
 scoop install googlechrome
 scoop install vivaldi
-scoop install firefox
 scoop install powertoys
 scoop install portable-virtualbox
 scoop install vagrant
