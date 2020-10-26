@@ -77,7 +77,7 @@ set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
 
 set PATH /snap/bin $PATH
-for dir in /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/go/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin"
+for dir in /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/go/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin" "$HOME/relma/bin"
   if test -d "$dir"
     set PATH $PATH "$dir"
   end
