@@ -1,3 +1,8 @@
+function tagpush
+  git tag $argv[1]
+  git push origin $argv[1]
+end
+
 function __ghq_peco_repo
   set selected_repository (ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_repository" ]
