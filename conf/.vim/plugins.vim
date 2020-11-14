@@ -94,4 +94,9 @@ Plug 'mattn/vim-goimports', { 'for': 'go' }
 " reStructuredText
 Plug 'Rykka/riv.vim', { 'for': 'rst' }
 
+" Clojure
+Plug 'guns/vim-sexp',    {'for': 'clojure'}
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
+call s:source_conf('vim-iced.vim')
+
 call plug#end()
