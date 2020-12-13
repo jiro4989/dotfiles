@@ -1,3 +1,18 @@
+function install_go
+  set go_version $argv[1]
+  if [ ! -n "$go_version" ]
+    echo "第一引数 (バージョン)は必須です"
+    return 1
+  end
+
+  set cmd go$go_version
+  go get golang.org/dl/$cmd
+  $cmd download
+  $cmd version
+  ln -sfn $HOME/go/bin/$cmd $HOME/go/bin/go
+  go version
+end
+
 function tagpush
   git tag $argv[1]
   git push origin $argv[1]
@@ -77,7 +92,7 @@ set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
 
 set PATH /snap/bin $PATH
-for dir in /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/.anyenv/bin" "$HOME/go/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin" "$HOME/relma/bin" "$HOME/.vim/plugged/vim-iced/bin"
+for dir in "$HOME/go/bin" /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/.anyenv/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin" "$HOME/relma/bin" "$HOME/.vim/plugged/vim-iced/bin"
   if test -d "$dir"
     set PATH $PATH "$dir"
   end
