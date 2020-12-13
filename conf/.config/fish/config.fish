@@ -77,18 +77,15 @@ set -x JAVA_HOME /opt/java/current
 set -x EDITOR nvim
 
 set PATH /snap/bin $PATH
-for dir in /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/go/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin" "$HOME/relma/bin" "$HOME/.vim/plugged/vim-iced/bin"
+for dir in /usr/local/go/bin "$HOME/bin" "$HOME/.nimble/bin" "$HOME/.anyenv/bin" "$HOME/go/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin" "$HOME/relma/bin" "$HOME/.vim/plugged/vim-iced/bin"
   if test -d "$dir"
     set PATH $PATH "$dir"
   end
 end
 
-# rbenv
-if test -d $HOME/.rbenv/bin
-  set PATH $HOME/.rbenv/bin $PATH
-  if which rbenv >/dev/null
-    rbenv init - | source
-  end
+# anyenv
+if which anyenv
+  eval (anyenv init - | source)
 end
 
 # direnv
