@@ -1,0 +1,260 @@
+version: '3'
+
+vars:
+  USER_NAME: jiro4989
+  USER_EMAIL: jiroron666@gmail.com
+  GLOBAL_BIN_DIR: /usr/local/bin
+  NODE_VERSION: 14.15.1
+
+tasks:
+  setup:
+    desc: "開発環境を構築する"
+    deps:
+      - install:apt
+      - install:docker-compose
+      - install:neovim
+      - install:ghq
+      - install:shfmt
+      - install:fzf
+      - install:go
+      - install:java
+      - install:mmv
+      - install:direnv
+    cmds:
+      - config:git
+      - config:dotfiles
+      - config:fish
+      - config:docker
+      - config:default-shell
+      - install:nim
+      - install:gopls
+      - install:ripgrep
+      - install:gopls
+      - install:anyenv
+      - install:clojure
+
+  install:apt:
+    desc: "docker-composeをインストールする"
+    cmds:
+      - sudo add-apt-repository -y ppa:lazygit-team/release
+      - sudo add-apt-repository -y ppa:cwchien/gradle
+      - sudo apt-get update -yqq
+      - sudo apt-get install -y build-essential ca-certificates ctags ctop curl docker.io fish git gradle htop lazygit npm peco python3 python3-pip tmux unzip vim wget xsel xvfb
+      - sudo add-apt-repository -y ppa:git-core/ppa
+      - sudo apt-get install -y git
+    status:
+      - which fish
+
+  install:docker-compose:
+    desc: "docker-composeをインストールする"
+    dir: /tmp
+    cmds:
+      - curl -sL "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
+      - sudo install -m 0755 docker-compose {{.GLOBAL_BIN_DIR}}/docker-compose
+    status:
+      - test -f {{.GLOBAL_BIN_DIR}}/docker-compose
+
+  install:neovim:
+    desc: "neovimをインストールする"
+    dir: /tmp
+    cmds:
+      - curl -sSfL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > nvim
+      - sudo install -m 0755 nvim {{.GLOBAL_BIN_DIR}}/nvim
+    status:
+      - test -f {{.GLOBAL_BIN_DIR}}/nvim
+
+  install:ghq:
+    desc: "ghqをインストールする"
+    dir: /tmp
+    cmds:
+      - curl -sSL https://github.com/x-motemen/ghq/releases/download/v1.1.0/ghq_linux_amd64.zip > ghq_linux_amd64.zip
+      - unzip ghq_linux_amd64.zip
+      - sudo install -m 0755 ghq_linux_amd64/ghq {{.GLOBAL_BIN_DIR}}/ghq
+    status:
+      - test -f {{.GLOBAL_BIN_DIR}}/ghq
+
+  install:shfmt:
+    desc: "shfmtをインストールする"
+    dir: /tmp
+    cmds:
+      - curl -sSfL https://github.com/mvdan/sh/releases/download/v3.0.1/shfmt_v3.0.1_linux_amd64 > shfmt
+      - sudo install -m 0755 shfmt {{.GLOBAL_BIN_DIR}}/shfmt
+    status:
+      - test -f {{.GLOBAL_BIN_DIR}}/shfmt
+
+  install:fzf:
+    desc: "fzfをインストールする"
+    dir: /tmp
+    cmds:
+      - wget https://github.com/junegunn/fzf-bin/releases/download/0.22.0/fzf-0.22.0-linux_amd64.tgz
+      - tar xzf fzf-*-linux_amd64.tgz
+      - sudo install -m 0755 fzf {{.GLOBAL_BIN_DIR}}/fzf
+    status:
+      - test -f {{.GLOBAL_BIN_DIR}}/fzf
+
+  install:ripgrep:
+    desc: "ripgrepをインストールする"
+    dir: /tmp
+    cmds:
+      - curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
+      - sudo dpkg -i ./ripgrep_*_amd64.deb
+    status:
+      - which rg
+
+  install:go:
+    desc: "goをインストールする"
+    dir: /usr/local
+    cmds:
+      - sudo wget https://golang.org/dl/go1.14.6.linux-amd64.tar.gz
+      - sudo tar xzf go*.linux-amd64.tar.gz
+    status:
+      - test -d /usr/local/go
+
+  install:java:
+    desc: "javaをインストールする"
+    dir: /tmp
+    cmds:
+      - curl -O https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz
+      - tar xvf openjdk-14_linux-x64_bin.tar.gz
+      - sudo mkdir -p /opt/java
+      - sudo mv jdk-14 /opt/java/
+      - sudo ln -sfn /opt/java/jdk-14 /opt/java/current
+    status:
+      - test -e /opt/java/current
+      - test -e /opt/java/jdk-14
+
+  config:git:
+    desc: "git configを設定する"
+    cmds:
+      - git config --global user.name {{.USER_NAME}}
+      - git config --global user.email {{.USER_EMAIL}}
+      - git config --global alias.preq pull-request
+      - git config --global alias.see browse
+      - git config --global ghq.root ~/src
+    status:
+      - git config --global --get ghq.root
+
+  install:nim:
+    desc: "nimをインストールする"
+    dir: /tmp
+    cmds:
+      - curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
+      - sh init.sh -y > /dev/null 2>&1
+      - export PATH=$PATH:$HOME/.nimble/bin
+      - nimble install -Y inim bump subnet nimjson
+    status:
+      - test -e $HOME/.nimble/bin/nim
+      - test -e $HOME/.nimble/bin/nimble
+      - test -e $HOME/.nimble/bin/nimjson
+
+  install:mmv:
+    desc: "mmvをインストールする"
+    dir: /tmp
+    cmds:
+      - mkdir -p $HOME/bin
+      - wget https://github.com/itchyny/mmv/releases/download/v0.1.1/mmv_v0.1.1_linux_amd64.tar.gz
+      - tar xzf ./mmv*.tar.gz
+      - install -m 0755 ./mmv*/mmv $HOME/bin/mmv
+    status:
+      - test -e $HOME/bin/mmv
+
+  install:direnv:
+    desc: "direnvをインストールする"
+    dir: /tmp
+    cmds:
+      - mkdir -p $HOME/bin
+      - wget https://github.com/direnv/direnv/releases/download/v2.21.3/direnv.linux-amd64
+      - install -m 0755 ./direnv* $HOME/bin/direnv
+    status:
+      - test -e $HOME/bin/direnv
+
+  install:gopls:
+    desc: "goplsをインストールする"
+    deps:
+      - install:go
+    cmds:
+      - go get -v -u golang.org/x/tools/gopls
+    status:
+      - test -e $HOME/go/bin/gopls
+
+  install:anyenv:
+    desc: "anyenvをインストールする"
+    cmds:
+      - git clone https://github.com/riywo/anyenv ~/.anyenv
+    status:
+      - test -e $HOME/.anyenv/bin/anyenv
+
+  install:nodenv:
+    desc: "nodenvをインストールする"
+    deps:
+      - install:anyenv
+    cmds:
+      - export PATH="$HOME/.anyenv/bin:$PATH"
+      - mkdir -p $(anyenv root)/plugins
+      - yes | anyenv install --init
+      - git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+      - anyenv install nodenv
+      - eval "$(anyenv init -)"
+      - nodenv install {{.NODE_VERSION}}
+      - nodenv local {{.NODE_VERSION}}
+      - nodenv local
+      - node -v
+    status:
+      - test -e $HOME/.anyenv/envs/nodenv/bin/nodenv
+
+  install:clojure:
+    desc: "clojureをインストールする"
+    dir: /tmp
+    deps:
+      - install:java
+    cmds:
+      - export JAVA_HOME=/opt/java/current
+      - export PATH=$PATH:$JAVA_HOME/bin
+      - mkdir -p $HOME/bin
+      - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+      - install -m 0755 lein $HOME/bin/lein
+      - lein
+    status:
+      - test -e $HOME/bin/lein
+
+  config:dotfiles:
+    desc: "dotfilesをインストールする"
+    dir: $HOME
+    cmds:
+      - git clone https://github.com/jiro4989/dotfiles
+      - cd dotfiles
+      - ./setup.sh
+    status:
+      - test -d $HOME/dotfiles
+      - test -e $HOME/.config/fish/config.fish
+
+  config:fish:
+    desc: "fishのプラグインを入れる"
+    deps:
+      - install:apt
+      - config:dotfiles
+    cmds:
+      - curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+      - fish -c "fisher install edc/bass"
+      - fish -c "fisher install oh-my-fish/theme-clearance"
+      - fish -c "fisher install fisherman/z"
+    status:
+      - test $(fish -c 'fisher list' | wc -l) -ne 0
+
+  config:docker:
+    desc: "dockerの設定をする"
+    deps:
+      - install:apt
+    cmds:
+      - sudo usermod -a -G docker {{.USER_NAME}}
+    status:
+      - test $(groups | grep docker | wc -l) -eq 1
+
+  config:default-shell:
+    desc: "デフォルトシェルを変更する"
+    deps:
+      - install:apt
+    cmds:
+      - sudo chsh -s $(which tmux) {{.USER_NAME}}
+    status:
+      - test $(cat /etc/passwd | grep {{.USER_NAME}} | grep tmux | wc -l) -eq 1
