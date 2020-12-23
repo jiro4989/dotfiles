@@ -204,7 +204,6 @@ tasks:
     cmds:
       - anyenv install nodenv
       - |
-        exec $SHELL -l
         anyenv init - | source
         nodenv install {{.NODE_VERSION}}
         nodenv local {{.NODE_VERSION}}
@@ -212,7 +211,7 @@ tasks:
         node -v
     status:
       - test -e $HOME/.anyenv/envs/nodenv/bin/nodenv
-      - nodenv -v
+      - test $(nodenv -v | grep {{.NODE_VERSION}} | wc -l) -eq 1
 
   install:clojure:
     desc: "clojureをインストールする"
