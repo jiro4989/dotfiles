@@ -204,7 +204,8 @@ tasks:
     cmds:
       - anyenv install nodenv
       - |
-        eval "$(anyenv init -)"
+        exec $SHELL -l
+        anyenv init - | source
         nodenv install {{.NODE_VERSION}}
         nodenv local {{.NODE_VERSION}}
         nodenv local
