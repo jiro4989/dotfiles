@@ -35,7 +35,9 @@ setup.ps1
 
 [source,bash]
 ----
-curl -sSl https://raw.githubusercontent.com/jiro4989/dotfiles/master/provisioning.sh | bash
+cd /tmp
+wget https://raw.githubusercontent.com/jiro4989/dotfiles/master/init.sh
+bash init.sh
 ----
 
 == ディレクトリ構成
