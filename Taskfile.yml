@@ -65,6 +65,8 @@ tasks:
 
   install:ghq:
     desc: "ghqをインストールする"
+    deps:
+      - install:apt
     dir: /tmp
     cmds:
       - curl -sSL https://github.com/x-motemen/ghq/releases/download/v1.1.0/ghq_linux_amd64.zip > ghq_linux_amd64.zip
