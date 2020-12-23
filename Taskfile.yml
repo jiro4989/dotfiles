@@ -37,6 +37,7 @@ tasks:
       - task: install:ripgrep
       - task: install:gopls
       - task: install:anyenv
+      - task: install:nodenv
       - task: install:clojure
 
   install:apt:
