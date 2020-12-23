@@ -21,17 +21,17 @@ tasks:
       - install:mmv
       - install:direnv
     cmds:
-      - config:git
-      - config:dotfiles
-      - config:fish
-      - config:docker
-      - config:default-shell
-      - install:nim
-      - install:gopls
-      - install:ripgrep
-      - install:gopls
-      - install:anyenv
-      - install:clojure
+      - task: config:git
+      - task: config:dotfiles
+      - task: config:fish
+      - task: config:docker
+      - task: config:default-shell
+      - task: install:nim
+      - task: install:gopls
+      - task: install:ripgrep
+      - task: install:gopls
+      - task: install:anyenv
+      - task: install:clojure
 
   install:apt:
     desc: "docker-composeをインストールする"
