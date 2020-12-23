@@ -209,7 +209,7 @@ tasks:
       - install:java
     cmds:
       - export JAVA_HOME=/opt/java/current
-      - export PATH=$PATH:$JAVA_HOME/bin
+      - export PATH=$PATH:$JAVA_HOME/bin:$HOME/bin
       - mkdir -p $HOME/bin
       - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
       - install -m 0755 lein $HOME/bin/lein
