@@ -142,7 +142,7 @@ mkdir -p $(anyenv root)/plugins
 yes | anyenv install --init
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
-anyenv install nodeenv
+anyenv install nodenv
 eval "$(anyenv init -)"
 
 node_version=14.15.1
