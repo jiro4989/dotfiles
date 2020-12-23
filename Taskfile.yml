@@ -9,6 +9,7 @@ vars:
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
+  SHELL: /bin/bash
   PATH:
     sh: echo "$PATH:$HOME/.nimble/bin:$HOME/.anyenv/bin:{{.JAVA_HOME}}/bin:$HOME/bin:/usr/local/go/bin"
 
@@ -201,13 +202,15 @@ tasks:
       - mkdir -p $(anyenv root)/plugins
       - git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
       - anyenv install nodenv
-      - eval "$(anyenv init -)"
-      - nodenv install {{.NODE_VERSION}}
-      - nodenv local {{.NODE_VERSION}}
-      - nodenv local
-      - node -v
+      - |
+        eval "$(anyenv init -)"
+        nodenv install {{.NODE_VERSION}}
+        nodenv local {{.NODE_VERSION}}
+        nodenv local
+        node -v
     status:
       - test -e $HOME/.anyenv/envs/nodenv/bin/nodenv
+      - nodenv -v
 
   install:clojure:
     desc: "clojureをインストールする"
