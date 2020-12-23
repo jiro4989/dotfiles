@@ -13,7 +13,6 @@ tasks:
       - install:apt
       - install:docker-compose
       - install:neovim
-      - install:ghq
       - install:shfmt
       - install:fzf
       - install:go
@@ -21,6 +20,7 @@ tasks:
       - install:mmv
       - install:direnv
     cmds:
+      - task: install:ghq
       - task: config:git
       - task: config:dotfiles
       - task: config:fish
