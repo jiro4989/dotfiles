@@ -8,9 +8,9 @@ vars:
   JAVA_HOME: /opt/java/current
 
 env:
-  JAVA_HOME: {{.JAVA_HOME}}
+  JAVA_HOME: "{{.JAVA_HOME}}"
   PATH:
-    sh: echo $PATH:$HOME/.nimble/bin:$HOME/.anyenv/bin:{{.JAVA_HOME}}/bin:$HOME/bin:/usr/local/go/bin
+    sh: echo "$PATH:$HOME/.nimble/bin:$HOME/.anyenv/bin:{{.JAVA_HOME}}/bin:$HOME/bin:/usr/local/go/bin"
 
 tasks:
   setup:
