@@ -6,6 +6,11 @@ vars:
   GLOBAL_BIN_DIR: /usr/local/bin
   NODE_VERSION: 14.15.1
 
+env:
+  JAVA_HOME: /opt/java/current
+  PATH:
+    sh: echo $PATH:$HOME/.nimble/bin:$HOME/.anyenv/bin:$JAVA_HOME/bin:$HOME/bin
+
 tasks:
   setup:
     desc: "開発環境を構築する"
@@ -142,7 +147,6 @@ tasks:
     cmds:
       - curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
       - sh init.sh -y > /dev/null 2>&1
-      - export PATH=$PATH:$HOME/.nimble/bin
       - nimble install -Y inim bump subnet nimjson
     status:
       - test -e $HOME/.nimble/bin/nim
@@ -191,7 +195,6 @@ tasks:
     deps:
       - install:anyenv
     cmds:
-      - export PATH="$HOME/.anyenv/bin:$PATH"
       - mkdir -p $(anyenv root)/plugins
       - yes | anyenv install --init
       - git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
@@ -210,8 +213,6 @@ tasks:
     deps:
       - install:java
     cmds:
-      - export JAVA_HOME=/opt/java/current
-      - export PATH=$PATH:$JAVA_HOME/bin:$HOME/bin
       - mkdir -p $HOME/bin
       - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
       - install -m 0755 lein $HOME/bin/lein
