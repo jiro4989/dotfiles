@@ -31,6 +31,13 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 setup.ps1
 ----
 
+=== WSL2
+
+[source,bash]
+----
+curl -sSl https://raw.githubusercontent.com/jiro4989/dotfiles/master/provisioning.sh | bash
+----
+
 == ディレクトリ構成
 
 [options="header"]
