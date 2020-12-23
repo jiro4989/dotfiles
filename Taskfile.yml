@@ -224,8 +224,7 @@ tasks:
     dir: $HOME
     cmds:
       - git clone https://github.com/jiro4989/dotfiles
-      - cd dotfiles
-      - ./setup.sh
+      - cd dotfiles && ./setup.sh
     status:
       - test -d $HOME/dotfiles
       - test -e $HOME/.config/fish/config.fish
