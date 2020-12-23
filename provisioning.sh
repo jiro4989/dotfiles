@@ -118,7 +118,7 @@ repos=(
 )
 for r in \${repos[@]}; do
   # ghq getできない
-  ghq get -p "\$r" || true
+  yes | ghq get -p "\$r" || true
 done
 
 mkdir -p ~/bin
