@@ -190,17 +190,18 @@ tasks:
     desc: "anyenvをインストールする"
     cmds:
       - git clone https://github.com/riywo/anyenv ~/.anyenv
+      - mkdir -p $(anyenv root)/plugins
       - yes | anyenv install --init
+      - git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
     status:
       - test -e $HOME/.anyenv/bin/anyenv
+      - test -e $HOME/.anyenv/plugins/anyenv-update
 
   install:nodenv:
     desc: "nodenvをインストールする"
     deps:
       - install:anyenv
     cmds:
-      - mkdir -p $(anyenv root)/plugins
-      - git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
       - anyenv install nodenv
       - |
         eval "$(anyenv init -)"
