@@ -24,6 +24,7 @@ echo "wsl --import $distro $wsl_dir\$distro $base_file"
 
 $yes = Read-Host "Create? [y/n]"
 if ($yes = "y") {
+  wsl --import $distro $wsl_dir\$distro $base_file
   wsl -l -v
   echo "Successfully creating VM: distribution = $distro"
   exit
