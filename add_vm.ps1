@@ -28,3 +28,5 @@ if ($yes = "y") {
   echo "Successfully creating VM: distribution = $distro"
   exit
 }
+
+echo "Canceled"
