@@ -6,6 +6,7 @@ vars:
   GLOBAL_BIN_DIR: /usr/local/bin
   NODE_VERSION: 14.15.1
   JAVA_HOME: /opt/java/current
+  MOUNT_HOME: /mnt/c/Users/jiro4989
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -27,6 +28,8 @@ tasks:
       - install:mmv
       - install:direnv
     cmds:
+      - task: copy:netrc
+      - task: copy:ssh-config
       - task: install:ghq
       - task: config:git
       - task: config:dotfiles
@@ -266,3 +269,25 @@ tasks:
       - sudo chsh -s $(which tmux) {{.USER_NAME}}
     status:
       - test $(cat /etc/passwd | grep {{.USER_NAME}} | grep tmux | wc -l) -eq 1
+
+  copy:netrc:
+    desc: ".netrcをコピー"
+    cmds:
+      - cp {{.MOUNT_HOME}}/.netrc ~/
+    status:
+      - test -f ~/.netrc
+
+  copy:ssh-config:
+    desc: "ssh configをコピー"
+    cmds:
+      - install -o {{.USER_NAME}} -g {{.USER_NAME}} -m 0700 -d ~/.ssh
+      - cp -r {{.MOUNT_HOME}}/.ssh/config ~/.ssh/
+      - cp -r {{.MOUNT_HOME}}/.ssh/conf.d ~/.ssh/
+      - chmod 0600 ~/.ssh/conf.d/*
+      - chmod 0700 ~/.ssh/conf.d
+      - chown -R {{.USER_NAME}}:{{.USER_NAME}} ~/.ssh/conf.d
+    status:
+      - test -d ~/.ssh
+      - test -d ~/.ssh/conf.d
+      - test -f ~/.ssh/conf.d/jiro4989
+      - test -f ~/.ssh/config
