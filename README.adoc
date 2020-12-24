@@ -10,6 +10,10 @@ image::https://github.com/jiro4989/dotfiles/workflows/test/badge.svg[]
 
 === WSL2
 
+WSL2環境の構築は以下ドキュメントを参照する。
+
+[WSL2のインストール](https://scrapbox.io/jiro4989/WSL2%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+
 WSL2のUbuntu20.04環境で以下のコマンドを実行する。
 
 [source,bash]
