@@ -8,6 +8,17 @@ image::https://github.com/jiro4989/dotfiles/workflows/test/badge.svg[]
 
 == 環境構築手順
 
+=== WSL2
+
+WSL2のUbuntu20.04環境で以下のコマンドを実行する。
+
+[source,bash]
+----
+cd /tmp
+wget https://raw.githubusercontent.com/jiro4989/dotfiles/master/init.sh
+bash init.sh
+----
+
 === Ubuntu on Vagrant
 
 https://github.com/jiro4989/workspace[jiro4989/workspace]で管理しているVagrantの
@@ -29,15 +40,6 @@ Windowsホスト用のツール郡をインストールする。
 ----
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 setup.ps1
-----
-
-=== WSL2
-
-[source,bash]
-----
-cd /tmp
-wget https://raw.githubusercontent.com/jiro4989/dotfiles/master/init.sh
-bash init.sh
 ----
 
 == ディレクトリ構成
