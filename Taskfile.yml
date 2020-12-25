@@ -37,7 +37,6 @@ tasks:
       - task: config:docker
       - task: config:default-shell
       - task: install:nim
-      - task: install:gopls
       - task: install:ripgrep
       - task: install:gopls
       - task: install:anyenv
