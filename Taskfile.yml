@@ -42,6 +42,7 @@ tasks:
       - task: install:anyenv
       - task: install:nodenv
       - task: install:clojure
+      - task: install:repos
 
   install:apt:
     desc: "docker-composeをインストールする"
@@ -290,3 +291,25 @@ tasks:
       - test -d ~/.ssh/conf.d
       - test -f ~/.ssh/conf.d/jiro4989
       - test -f ~/.ssh/config
+
+  install:repos:
+    desc: "必要なリポジトリをcloneしてくる"
+    dpes:
+      - install:ghq
+    vars:
+      REPOS: >
+        jiro4989/workspace
+        jiro4989/sandbox
+        jiro4989/setup-nim-action
+        jiro4989/websh
+        jiro4989/textimg
+        jiro4989/faker
+        jiro4989/nimjson
+    cmds:
+      - '{{.GLOBAL_BIN_DIR}}/ghq get -P {{.REPOS}}'
+    status:
+      - |
+        for repo in {{.REPOS}}; do
+          repo_path=$({{.GLOBAL_BIN_DIR}}/ghq root)/github.com/$repo
+          test -d "$repo_path"
+        done
