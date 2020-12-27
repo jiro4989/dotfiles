@@ -305,6 +305,7 @@ tasks:
         jiro4989/textimg
         jiro4989/faker
         jiro4989/nimjson
+        jiro4989/scripts
     cmds:
       - '{{.GLOBAL_BIN_DIR}}/ghq get -P {{.REPOS}}'
     status:
