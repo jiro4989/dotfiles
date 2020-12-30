@@ -42,6 +42,7 @@ tasks:
       - task: install:anyenv
       - task: install:nodenv
       - task: install:clojure
+      - task: install:lein
       - task: install:repos
 
   install:apt:
@@ -218,6 +219,18 @@ tasks:
 
   install:clojure:
     desc: "clojureをインストールする"
+    dir: /tmp
+    deps:
+      - install:java
+    cmds:
+      - curl -O https://download.clojure.org/install/linux-install-1.10.1.763.sh
+      - chmod +x linux-install-1.10.1.763.sh
+      - sudo ./linux-install-1.10.1.763.sh
+    status:
+      - test -e /usr/local/bin/clojure
+
+  install:lein:
+    desc: "leinをインストールする"
     dir: /tmp
     deps:
       - install:java
