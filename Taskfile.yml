@@ -13,6 +13,7 @@ vars:
   RIPGREP_VERSION: 12.1.1
   FZF_VERSION: 0.22.0
   SHFMT_VERSION: 3.0.1
+  GHQ_VERSION: 1.1.0
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -87,11 +88,12 @@ tasks:
       - install:apt
     dir: /tmp
     cmds:
-      - curl -sSL https://github.com/x-motemen/ghq/releases/download/v1.1.0/ghq_linux_amd64.zip > ghq_linux_amd64.zip
+      - 'curl -sSL https://github.com/x-motemen/ghq/releases/download/v{{.GHQ_VERSION}}/ghq_linux_amd64.zip > ghq_linux_amd64.zip'
       - unzip ghq_linux_amd64.zip
       - sudo install -m 0755 ghq_linux_amd64/ghq {{.GLOBAL_BIN_DIR}}/ghq
     status:
       - test -f {{.GLOBAL_BIN_DIR}}/ghq
+      - '{{.GLOBAL_BIN_DIR}}/ghq --version | grep "{{.GHQ_VERSION}}"'
 
   install:shfmt:
     desc: "shfmtをインストールする"
