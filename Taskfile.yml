@@ -122,11 +122,10 @@ tasks:
     desc: "ripgrepをインストールする"
     dir: /tmp
     cmds:
-      - "curl -LO https://github.com/BurntSushi/ripgrep/releases/download/{{.RIPGREP_VERSION}}/ripgrep_{{.RIPGREP_VERSION}}_amd64.deb"
-      - sudo dpkg -i ./ripgrep_*_amd64.deb
+      - "relma install https://github.com/BurntSushi/ripgrep/releases/download/{{.RIPGREP_VERSION}}/ripgrep-{{.RIPGREP_VERSION}}-x86_64-unknown-linux-musl.tar.gz"
     status:
-      - which rg
-      - rg --version | grep "{{.RIPGREP_VERSION}}"
+      - test -f {{.RELMA_BIN_DIR}}/rg
+      - '{{.RELMA_BIN_DIR}}/rg --version | grep "{{.RIPGREP_VERSION}}"'
 
   install:go:
     desc: "goをインストールする"
