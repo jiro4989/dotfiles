@@ -113,12 +113,10 @@ tasks:
     desc: "fzfをインストールする"
     dir: /tmp
     cmds:
-      - "wget https://github.com/junegunn/fzf-bin/releases/download/{{.FZF_VERSION}}/fzf-{{.FZF_VERSION}}-linux_amd64.tgz"
-      - tar xzf fzf-*-linux_amd64.tgz
-      - sudo install -m 0755 fzf {{.GLOBAL_BIN_DIR}}/fzf
+      - "relma install https://github.com/junegunn/fzf-bin/releases/download/{{.FZF_VERSION}}/fzf-{{.FZF_VERSION}}-linux_amd64.tgz"
     status:
-      - test -f {{.GLOBAL_BIN_DIR}}/fzf
-      - '{{.GLOBAL_BIN_DIR}}/fzf --version | grep "{{.FZF_VERSION}}"'
+      - test -f {{.RELMA_BIN_DIR}}/fzf
+      - '{{.RELMA_BIN_DIR}}/fzf --version | grep "{{.FZF_VERSION}}"'
 
   install:ripgrep:
     desc: "ripgrepをインストールする"
