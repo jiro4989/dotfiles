@@ -4,9 +4,9 @@ vars:
   USER_NAME: jiro4989
   USER_EMAIL: jiroron666@gmail.com
   GLOBAL_BIN_DIR: /usr/local/bin
-  NODE_VERSION: 14.15.1
   JAVA_HOME: /opt/java/current
   MOUNT_HOME: /mnt/c/Users/jiro4989
+  NODE_VERSION: 14.15.1
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
