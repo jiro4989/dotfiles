@@ -8,6 +8,7 @@ vars:
   MOUNT_HOME: /mnt/c/Users/jiro4989
   NODE_VERSION: 14.15.1
   CLOJURE_VERSION: 1.10.1.763
+  DIRENV_VERSION: 2.21.3
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -177,10 +178,11 @@ tasks:
     dir: /tmp
     cmds:
       - mkdir -p $HOME/bin
-      - wget https://github.com/direnv/direnv/releases/download/v2.21.3/direnv.linux-amd64
+      - "wget https://github.com/direnv/direnv/releases/download/v{{.DIRENV_VERSION}}/direnv.linux-amd64"
       - install -m 0755 ./direnv* $HOME/bin/direnv
     status:
       - test -e $HOME/bin/direnv
+      - $HOME/bin/direnv version | grep "{{.DIRENV_VERSION}}"
 
   install:gopls:
     desc: "goplsをインストールする"
