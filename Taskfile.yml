@@ -7,6 +7,7 @@ vars:
   JAVA_HOME: /opt/java/current
   MOUNT_HOME: /mnt/c/Users/jiro4989
   NODE_VERSION: 14.15.1
+  CLOJURE_VERSION: 1.10.1.763
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -222,10 +223,12 @@ tasks:
     dir: /tmp
     deps:
       - install:java
+    vars:
+      INSTALL_SCRIPT: 'linux-install-{{.CLOJURE_VERSION}}.sh'
     cmds:
-      - curl -O https://download.clojure.org/install/linux-install-1.10.1.763.sh
-      - chmod +x linux-install-1.10.1.763.sh
-      - sudo ./linux-install-1.10.1.763.sh
+      - "curl -O https://download.clojure.org/install/{{.INSTALL_SCRIPT}}"
+      - "chmod +x {{.INSTALL_SCRIPT}}"
+      - "sudo ./{{.INSTALL_SCRIPT}}"
     status:
       - test -e /usr/local/bin/clojure
 
