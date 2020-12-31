@@ -12,6 +12,7 @@ vars:
   MMV_VERSION: 0.1.1
   RIPGREP_VERSION: 12.1.1
   FZF_VERSION: 0.22.0
+  SHFMT_VERSION: 3.0.1
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -96,10 +97,11 @@ tasks:
     desc: "shfmtをインストールする"
     dir: /tmp
     cmds:
-      - curl -sSfL https://github.com/mvdan/sh/releases/download/v3.0.1/shfmt_v3.0.1_linux_amd64 > shfmt
+      - 'curl -sSfL https://github.com/mvdan/sh/releases/download/v{{.SHFMT_VERSION}}/shfmt_v{{.SHFMT_VERSION}}_linux_amd64 > shfmt'
       - sudo install -m 0755 shfmt {{.GLOBAL_BIN_DIR}}/shfmt
     status:
       - test -f {{.GLOBAL_BIN_DIR}}/shfmt
+      - '{{.GLOBAL_BIN_DIR}}/shfmt -version | grep "{{.SHFMT_VERSION}}"'
 
   install:fzf:
     desc: "fzfをインストールする"
