@@ -231,6 +231,7 @@ tasks:
       - "sudo ./{{.INSTALL_SCRIPT}}"
     status:
       - test -e /usr/local/bin/clojure
+      - /usr/local/bin/clojure -e '(clojure-version)' | grep "$(echo {{.CLOJURE_VERSION}} | sed -E 's/.[0-9]+$//')"
 
   install:lein:
     desc: "leinをインストールする"
