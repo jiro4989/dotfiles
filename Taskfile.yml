@@ -176,13 +176,10 @@ tasks:
     desc: "mmvをインストールする"
     dir: /tmp
     cmds:
-      - mkdir -p $HOME/bin
-      - "wget https://github.com/itchyny/mmv/releases/download/v0.1.1/mmv_v{{.MMV_VERSION}}_linux_amd64.tar.gz"
-      - tar xzf ./mmv*.tar.gz
-      - install -m 0755 ./mmv*/mmv $HOME/bin/mmv
+      - "relma install https://github.com/itchyny/mmv/releases/download/v{{.MMV_VERSION}}/mmv_v{{.MMV_VERSION}}_linux_amd64.tar.gz"
     status:
-      - test -e $HOME/bin/mmv
-      - $HOME/bin/mmv -version | grep "{{.MMV_VERSION}}"
+      - test -e {{.RELMA_BIN_DIR}}/mmv
+      - '{{.RELMA_BIN_DIR}}/mmv -version | grep "{{.MMV_VERSION}}"'
 
   install:direnv:
     desc: "direnvをインストールする"
