@@ -14,6 +14,7 @@ vars:
   FZF_VERSION: 0.22.0
   SHFMT_VERSION: 3.0.1
   GHQ_VERSION: 1.1.0
+  DOCKERCOMPOSE_VERSION: 1.25.4
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -68,10 +69,11 @@ tasks:
     desc: "docker-composeをインストールする"
     dir: /tmp
     cmds:
-      - curl -sL "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
+      - curl -sL "https://github.com/docker/compose/releases/download/{{.DOCKERCOMPOSE_VERSION}}/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
       - sudo install -m 0755 docker-compose {{.GLOBAL_BIN_DIR}}/docker-compose
     status:
       - test -f {{.GLOBAL_BIN_DIR}}/docker-compose
+      - "{{.GLOBAL_BIN_DIR}}/docker-compose version | grep '{{.DOCKERCOMPOSE_VERSION}}'"
 
   install:neovim:
     desc: "neovimをインストールする"
