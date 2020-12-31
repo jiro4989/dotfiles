@@ -4,6 +4,8 @@ vars:
   USER_NAME: jiro4989
   USER_EMAIL: jiroron666@gmail.com
   GLOBAL_BIN_DIR: /usr/local/bin
+  RELMA_BIN_DIR:
+    sh: echo "$HOME/relma/bin"
   JAVA_HOME: /opt/java/current
   MOUNT_HOME: /mnt/c/Users/jiro4989
   NODE_VERSION: 14.15.1
@@ -15,6 +17,7 @@ vars:
   SHFMT_VERSION: 3.0.1
   GHQ_VERSION: 1.1.0
   DOCKERCOMPOSE_VERSION: 1.25.4
+  RELMA_VERSION: 1.1.7
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -88,14 +91,13 @@ tasks:
     desc: "ghqをインストールする"
     deps:
       - install:apt
+      - install:relma
     dir: /tmp
     cmds:
-      - 'curl -sSL https://github.com/x-motemen/ghq/releases/download/v{{.GHQ_VERSION}}/ghq_linux_amd64.zip > ghq_linux_amd64.zip'
-      - unzip ghq_linux_amd64.zip
-      - sudo install -m 0755 ghq_linux_amd64/ghq {{.GLOBAL_BIN_DIR}}/ghq
+      - 'relma install https://github.com/x-motemen/ghq/releases/download/v{{.GHQ_VERSION}}/ghq_linux_amd64.zip'
     status:
-      - test -f {{.GLOBAL_BIN_DIR}}/ghq
-      - '{{.GLOBAL_BIN_DIR}}/ghq --version | grep "{{.GHQ_VERSION}}"'
+      - test -f {{.RELMA_BIN_DIR}}/ghq
+      - '{{.RELMA_BIN_DIR}}/ghq --version | grep "{{.GHQ_VERSION}}"'
 
   install:shfmt:
     desc: "shfmtをインストールする"
@@ -345,3 +347,13 @@ tasks:
           repo_path=$({{.GLOBAL_BIN_DIR}}/ghq root)/github.com/$repo
           test -d "$repo_path"
         done
+
+  install:relma:
+    desc: "relmaをインストールする"
+    dir: /tmp
+    cmds:
+      - 'wget https://github.com/jiro4989/relma/releases/download/v{{.RELMA_VERSION}}/relma_{{.RELMA_VERSION}}_amd64.deb'
+      - sudo dpkg -i ./relma*.deb
+      - relma init
+    status:
+      - which relma
