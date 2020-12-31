@@ -25,11 +25,11 @@ bash init.sh
 
 ==== 環境のバックアップ
 
-backup_vm.batをダブルクリックしてください。
+script/backup_vm.batをダブルクリックしてください。
 
 ==== バックアップファイルからVMを複製
 
-add_vm.batをダブルクリックしてください。
+script/add_vm.batをダブルクリックしてください。
 プロンプトが起動するので指示に従ってください。
 
 === Ubuntu on Vagrant
