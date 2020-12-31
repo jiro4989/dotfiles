@@ -41,6 +41,7 @@ tasks:
     cmds:
       - task: copy:netrc
       - task: copy:ssh-config
+      - task: install:relma
       - task: install:ghq
       - task: config:git
       - task: config:dotfiles
