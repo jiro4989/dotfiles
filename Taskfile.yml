@@ -11,6 +11,7 @@ vars:
   DIRENV_VERSION: 2.21.3
   MMV_VERSION: 0.1.1
   RIPGREP_VERSION: 12.1.1
+  FZF_VERSION: 0.22.0
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -104,11 +105,12 @@ tasks:
     desc: "fzfをインストールする"
     dir: /tmp
     cmds:
-      - wget https://github.com/junegunn/fzf-bin/releases/download/0.22.0/fzf-0.22.0-linux_amd64.tgz
+      - "wget https://github.com/junegunn/fzf-bin/releases/download/{{.FZF_VERSION}}/fzf-{{.FZF_VERSION}}-linux_amd64.tgz"
       - tar xzf fzf-*-linux_amd64.tgz
       - sudo install -m 0755 fzf {{.GLOBAL_BIN_DIR}}/fzf
     status:
       - test -f {{.GLOBAL_BIN_DIR}}/fzf
+      - '{{.GLOBAL_BIN_DIR}}/fzf --version | grep "{{.FZF_VERSION}}"'
 
   install:ripgrep:
     desc: "ripgrepをインストールする"
