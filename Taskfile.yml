@@ -47,6 +47,7 @@ tasks:
       - task: install:nim
       - task: install:ripgrep
       - task: install:gopls
+      - task: install:goimports
       - task: install:anyenv
       - task: install:nodenv
       - task: install:clojure
@@ -204,6 +205,15 @@ tasks:
       - go get -v -u golang.org/x/tools/gopls
     status:
       - test -e $HOME/go/bin/gopls
+
+  install:goimports:
+    desc: "goimportsをインストールする"
+    deps:
+      - install:go
+    cmds:
+      - go get -v -u golang.org/x/tools/cmd/goimports
+    status:
+      - test -e $HOME/go/bin/goimports
 
   install:anyenv:
     desc: "anyenvをインストールする"
