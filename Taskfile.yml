@@ -12,7 +12,7 @@ vars:
   DIRENV_VERSION: 2.21.3
   MMV_VERSION: 0.1.1
   RIPGREP_VERSION: 12.1.1
-  FZF_VERSION: 0.22.0
+  FZF_VERSION: 0.25.1
   SHFMT_VERSION: 3.0.1
   GHQ_VERSION: 1.1.0
   DOCKERCOMPOSE_VERSION: 1.25.4
@@ -114,8 +114,8 @@ tasks:
     desc: "fzfをインストールする"
     dir: /tmp
     cmds:
-      - "wget https://github.com/junegunn/fzf-bin/releases/download/{{.FZF_VERSION}}/fzf-{{.FZF_VERSION}}-linux_amd64.tgz"
-      - tar xzf fzf-*-linux_amd64.tgz
+      - "wget https://github.com/junegunn/fzf/releases/download/{{.FZF_VERSION}}/fzf-{{.FZF_VERSION}}-linux_amd64.tar.gz"
+      - tar xzf fzf-*-linux_amd64.tar.gz
       - sudo install -m 0755 fzf {{.GLOBAL_BIN_DIR}}/fzf
     status:
       - test -f {{.GLOBAL_BIN_DIR}}/fzf
