@@ -28,6 +28,9 @@ Plug 'LeafCage/foldCC'
 Plug 'honza/vim-snippets'
 
 " オートコンプリート + Language Server Protocol
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call s:source_conf('coc.nvim.vim')
+
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 call s:source_conf('vim-lsp.vim')
