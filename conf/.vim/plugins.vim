@@ -67,9 +67,6 @@ Plug 'vim-scripts/SQLUtilities', { 'for': 'sql' }
 
 Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
 
-Plug 'hashivim/vim-terraform', { 'for': ['terraform', 'tf'] }
-call s:source_conf('vim-terraform.vim')
-
 " reStructuredText
 Plug 'Rykka/riv.vim', { 'for': 'rst' }
 
