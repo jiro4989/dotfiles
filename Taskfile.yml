@@ -55,6 +55,7 @@ tasks:
       - task: install:clojure-lsp
       - task: install:lein
       - task: install:repos
+      - task: install:bash-language-server
 
   install:apt:
     desc: "docker-composeをインストールする"
@@ -207,6 +208,13 @@ tasks:
       - go get -v -u golang.org/x/tools/gopls
     status:
       - test -e $HOME/go/bin/gopls
+
+  install:bash-language-server:
+    desc: "bash-language-serverをインストールする"
+    cmds:
+      - sudo npm i -g bash-language-server
+    status:
+      - which bash-language-server
 
   install:goimports:
     desc: "goimportsをインストールする"
