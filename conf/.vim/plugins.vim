@@ -11,8 +11,6 @@ call s:source_conf('vaffle.vim')
 " 桁揃え
 Plug 'h1mesuke/vim-alignta'
 call s:source_conf('vim-alignta.vim')
-" FIXME: 何故かインストールしていた
-" Plug 'vim-scripts/Align'
 
 " 括弧補完
 Plug 'cohama/lexima.vim'
