@@ -7,7 +7,7 @@
 #
 # To enable this hook, rename this file to "pre-commit".
 
-if git rev-parse --verify HEAD >/dev/null 2>&1; then
+if git rev-parse --verify HEAD > /dev/null 2>&1; then
   against=HEAD
 else
   # Initial commit: diff against an empty tree object
@@ -29,7 +29,7 @@ if [ "$allownonascii" != "true" ] &&
   # the square bracket bytes happen to fall in the designated range.
   test $(git diff --cached --name-only --diff-filter=A -z $against |
     LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0; then
-  cat <<\EOF
+  cat << \EOF
 Error: Attempt to add a non-ASCII file name.
 
 This can cause problems if you want to work with people on other platforms.
@@ -54,7 +54,7 @@ git diff --staged --name-only | while read -r f; do
       terraform fmt "$f"
       ;;
     sh)
-      shfmt -i 2 -ci -sr "$f"
+      shfmt -i 2 -ci -sr -w "$f"
       ;;
     nim)
       nimpretty "$f"
@@ -62,7 +62,7 @@ git diff --staged --name-only | while read -r f; do
     py)
       black "$f"
       ;;
-    yml|yaml)
+    yml | yaml)
       yamllint "$f"
       ;;
   esac
