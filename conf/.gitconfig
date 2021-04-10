@@ -1,3 +1,5 @@
+[init]
+	templatedir = ~/.git_template
 [user]
 	email = jiroron666@gmail.com
 	name = jiro4989
