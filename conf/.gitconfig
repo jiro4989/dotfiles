@@ -7,7 +7,7 @@
 	fpr = "!f(){ git fetch origin pull/$1/head:$1; git checkout $1; };f"
 	co = checkout
 [commit]
-	template = ~/src/github.com/jiro4989/dotfiles/conf/misc/gitcommit.template
+	template = ~/dotfiles/conf/misc/gitcommit.template
 [ghq]
 	root = ~/src
 [pull]
