@@ -59,6 +59,12 @@ git diff --staged --name-only | while read -r f; do
     nim)
       nimpretty "$f"
       ;;
+    py)
+      black "$f"
+      ;;
+    yml|yaml)
+      yamllint "$f"
+      ;;
   esac
 done
 
