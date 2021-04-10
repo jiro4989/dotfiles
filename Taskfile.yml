@@ -385,7 +385,7 @@ tasks:
 
   install:repos:
     desc: "必要なリポジトリをcloneしてくる"
-    dpes:
+    deps:
       - install:ghq
     vars:
       REPOS: >
