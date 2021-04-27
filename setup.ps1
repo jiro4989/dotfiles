@@ -14,3 +14,4 @@ scoop install krita
 scoop install steam
 scoop install obs-studio # streeming capture software
 scoop install googlechrome
+scoop install wireshark
