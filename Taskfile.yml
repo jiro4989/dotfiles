@@ -16,6 +16,7 @@ vars:
   SHFMT_VERSION: 3.0.1
   GHQ_VERSION: 1.1.0
   DOCKERCOMPOSE_VERSION: 1.25.4
+  GRON_VERSION: 0.6.1
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -57,6 +58,7 @@ tasks:
       - task: install:lein
       - task: install:repos
       - task: install:bash-language-server
+      - task: install:gron
 
   install:apt:
     desc: "aptパッケージをインストールする"
@@ -242,6 +244,16 @@ tasks:
       - sudo npm i -g bash-language-server
     status:
       - which bash-language-server
+
+  install:gron:
+    desc: "gronをインストールする"
+    dir: /tmp
+    cmds:
+      - wget https://github.com/tomnomnom/gron/releases/download/v{{.GRON_VERSION}}/gron-linux-amd64-{{.GRON_VERSION}}.tgz
+      - tar xzf gron-linux-amd64-{{.GRON_VERSION}}.tgz
+      - sudo install -m 0755 gron {{.GLOBAL_BIN_DIR}}/gron
+    status:
+      - which gron
 
   install:goimports:
     desc: "goimportsをインストールする"
