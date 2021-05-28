@@ -15,3 +15,7 @@ scoop install steam
 scoop install obs-studio # streeming capture software
 scoop install googlechrome
 scoop install wireshark
+
+# Java
+scoop bucket add java
+scoop install openjdk17
