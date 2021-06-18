@@ -1,0 +1,86 @@
+[
+  {
+    "URL": "https://github.com/x-motemen/ghq/releases/download/v1.2.1/ghq_linux_amd64.zip",
+    "Owner": "x-motemen",
+    "Repo": "ghq",
+    "Version": "v1.2.1",
+    "LatestVersion": "v1.2.1",
+    "AssetFileName": "ghq_linux_amd64.zip",
+    "InstalledFiles": [
+      {
+        "Src": "ghq",
+        "Dest": "ghq"
+      }
+    ]
+  },
+  {
+    "URL": "https://github.com/junegunn/fzf-bin/releases/download/0.23.1/fzf-0.23.1-linux_amd64.tgz",
+    "Owner": "junegunn",
+    "Repo": "fzf-bin",
+    "Version": "0.23.1",
+    "LatestVersion": "0.23.1",
+    "AssetFileName": "fzf-0.23.1-linux_amd64.tgz",
+    "InstalledFiles": [
+      {
+        "Src": "fzf",
+        "Dest": "fzf"
+      }
+    ]
+  },
+  {
+    "URL": "https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz",
+    "Owner": "BurntSushi",
+    "Repo": "ripgrep",
+    "Version": "13.0.0",
+    "LatestVersion": "13.0.0",
+    "AssetFileName": "ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz",
+    "InstalledFiles": [
+      {
+        "Src": "rg",
+        "Dest": "rg"
+      }
+    ]
+  },
+  {
+    "URL": "https://github.com/itchyny/mmv/releases/download/v0.1.3/mmv_v0.1.3_linux_amd64.tar.gz",
+    "Owner": "itchyny",
+    "Repo": "mmv",
+    "Version": "v0.1.3",
+    "LatestVersion": "v0.1.3",
+    "AssetFileName": "mmv_v0.1.3_linux_amd64.tar.gz",
+    "InstalledFiles": [
+      {
+        "Src": "mmv",
+        "Dest": "mmv"
+      }
+    ]
+  },
+  {
+    "URL": "https://github.com/tomnomnom/gron/releases/download/v0.6.1/gron-linux-amd64-0.6.1.tgz",
+    "Owner": "tomnomnom",
+    "Repo": "gron",
+    "Version": "v0.6.1",
+    "LatestVersion": "v0.6.1",
+    "AssetFileName": "gron-linux-amd64-0.6.1.tgz",
+    "InstalledFiles": [
+      {
+        "Src": "gron",
+        "Dest": "gron"
+      }
+    ]
+  },
+  {
+    "URL": "https://github.com/clojure-lsp/clojure-lsp/releases/download/2021.06.14-17.00.47/clojure-lsp-native-linux-amd64.zip",
+    "Owner": "clojure-lsp",
+    "Repo": "clojure-lsp",
+    "Version": "2021.06.14-17.00.47",
+    "LatestVersion": "2021.06.14-17.00.47",
+    "AssetFileName": "clojure-lsp-native-linux-amd64.zip",
+    "InstalledFiles": [
+      {
+        "Src": "clojure-lsp",
+        "Dest": "clojure-lsp"
+      }
+    ]
+  }
+]
