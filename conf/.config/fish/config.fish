@@ -18,8 +18,8 @@ function tagpush
   git push origin $argv[1]
 end
 
-function __ghq_peco_repo
-  set selected_repository (ghq list -p | peco --query "$LBUFFER")
+function __ghq_list_cd
+  set selected_repository (ghq list -p | fzf)
   if [ -n "$selected_repository" ]
     cd $selected_repository
     echo " $selected_repository "
@@ -28,8 +28,8 @@ function __ghq_peco_repo
 end
 
 # change directory with peco
-function __cd_with_peco
-  set dir (find $argv[1] -type d -name '.git' -prune -o -type d -print | peco)
+function __recur_cd
+  set dir (find $argv[1] -type d -name '.git' -prune -o -type d -print | fzf)
   if [ -n "$dir" ]
     cd "$dir"
     echo "$dir"
@@ -56,11 +56,11 @@ end
 
 # Shortcut keys
 function fish_user_key_bindings
-  bind \cp 'stty sane; __ghq_peco_repo'
+  bind \cp 'stty sane; __ghq_list_cd'
 end
 
 # alias
-alias c=__cd_with_peco
+alias c=__recur_cd
 alias d=docker
 alias g=git
 alias l=ls
