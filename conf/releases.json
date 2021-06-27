@@ -82,5 +82,19 @@
         "Dest": "clojure-lsp"
       }
     ]
+  },
+  {
+    "URL": "https://github.com/mvdan/sh/releases/download/v3.3.0/shfmt_v3.3.0_linux_amd64",
+    "Owner": "mvdan",
+    "Repo": "sh",
+    "Version": "v3.3.0",
+    "LatestVersion": "v3.3.0",
+    "AssetFileName": "shfmt_v3.3.0_linux_amd64",
+    "InstalledFiles": [
+      {
+        "Src": "shfmt_v3.3.0_linux_amd64",
+        "Dest": "shfmt_v3.3.0_linux_amd64"
+      }
+    ]
   }
 ]
