@@ -1,18 +1,3 @@
-function install_go
-  set go_version $argv[1]
-  if [ ! -n "$go_version" ]
-    echo "第一引数 (バージョン)は必須です"
-    return 1
-  end
-
-  set cmd go$go_version
-  go get golang.org/dl/$cmd
-  $cmd download
-  $cmd version
-  ln -sfn $HOME/go/bin/$cmd $HOME/go/bin/go
-  go version
-end
-
 function tagpush
   git tag $argv[1]
   git push origin $argv[1]
