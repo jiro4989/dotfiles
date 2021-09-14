@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -eu
+
+if [[ $# -lt 1 ]]; then
+  echo "[ERR] 第一引数(バージョン)は必須です" >&2
+  exit 1
+fi
+
+readonly GO_VERSION="$1"
+readonly GO_CMD="go${GO_VERSION}"
+go get "golang.org/dl/${GO_CMD}"
+${GO_CMD} download
+${GO_CMD} version
+ln -sfn "$HOME/go/bin/${GO_CMD}" "$HOME/go/bin/go"
+
+echo "[INFO] 新バージョン(${GO_VERSION})のインストールは正常に終了しました"
+go version
