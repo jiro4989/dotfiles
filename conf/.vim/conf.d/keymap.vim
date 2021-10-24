@@ -71,10 +71,6 @@ nnoremap <Right> <C-w>>
 
 "" 挿入モード終了時にIME状態を保存しない
 inoremap <Silent> <Esc> <Esc>
-inoremap <Silent> <C-j> <Esc>
-
-"" 行末にセミコロンを追加
-inoremap <C-l> <ESC>$a;
 
 "}}}
 
@@ -93,8 +89,6 @@ nnoremap <Leader><Leader>. :e $HOME/.vim/vimrc<CR>
 
 "" プラグイン初期化ファイルを開く
 nnoremap <Leader><Leader>p :e $HOME/.vim/plugins.vim<CR>
-nnoremap <Leader><Leader>d :e $HOME/.vim/conf.plugins.d/dein.toml<CR>
-nnoremap <Leader><Leader>D :e $HOME/.vim/conf.plugins.d/dein_lazy.toml<CR>
 
 "}}}
 

@@ -5,10 +5,6 @@ inoremap jj <Esc>
 nnoremap <Space>w :w<CR>
 nnoremap <Space>q :q<CR>
 
-" Escの置き換え
-noremap <C-j> <Esc>
-noremap! <C-j> <Esc>
-
 " コロンの置き換え
 nnoremap <C-n> :
 
