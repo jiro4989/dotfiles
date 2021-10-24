@@ -14,7 +14,11 @@ end
 
 # change directory with peco
 function __recur_cd
-  set dir (find $argv[1] -type d -name '.git' -prune -o -type d -print | fzf)
+  set dir $argv[1]
+  if [ dir = '' ]
+    set dir '.'
+  end
+  set dir (find $dir -type d -name '.git' -prune -o -type d -print | fzf)
   if [ -n "$dir" ]
     cd "$dir"
     echo "$dir"
