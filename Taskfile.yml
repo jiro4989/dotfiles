@@ -17,6 +17,7 @@ vars:
   GHQ_VERSION: 1.1.0
   DOCKERCOMPOSE_VERSION: 1.25.4
   GRON_VERSION: 0.6.1
+  NEOVIM_VERSION: 0.5.1
 
 env:
   JAVA_HOME: "{{.JAVA_HOME}}"
@@ -111,7 +112,7 @@ tasks:
     desc: "neovimをインストールする"
     dir: /tmp
     cmds:
-      - curl -sSfL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > nvim
+      - "curl -sSfL https://github.com/neovim/neovim/releases/download/v{{ .NEOVIM_VERSION }}/nvim.appimage > nvim"
       - sudo install -m 0755 nvim {{.GLOBAL_BIN_DIR}}/nvim
     status:
       - test -f {{.GLOBAL_BIN_DIR}}/nvim
