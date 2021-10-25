@@ -18,6 +18,12 @@ let g:eskk#no_default_mappings = 1           "デフォルトのマッピング�
 let g:eskk#keep_state = 0                    "ノーマルモードに戻るとeskkモードを初期値にする
 let g:eskk#egg_like_newline = 1              "漢字変換を確定しても改行しない。
 
+" 三角記号では判別ができないため
+let g:eskk#marker_henkan = "[変換]"
+let g:eskk#marker_henkan_select = "[選択]"
+let g:eskk#marker_okuri = "[送り]"
+let g:eskk#marker_jisyo_touroku = "[辞書]"
+
 " 何故か <C-j> を押したらEnterになる。 :verbose imap <C-j> でも見つからない
 autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
 autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
