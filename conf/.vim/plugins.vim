@@ -5,8 +5,8 @@ endfunction
 call plug#begin('~/.vim/plugged')
 
 " SKK (日本語入力用)
-Plug 'tyru/eskk.vim'
-call s:source_conf('eskk.vim')
+" Plug 'tyru/eskk.vim'
+" call s:source_conf('eskk.vim')
 
 " ファイラー
 Plug 'cocopon/vaffle.vim'
