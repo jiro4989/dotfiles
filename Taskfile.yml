@@ -173,15 +173,17 @@ tasks:
   install:java:
     desc: "javaをインストールする"
     dir: /tmp
+    vars:
+      JAVA_VERSION: 16.0.1
     cmds:
-      - curl -O https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz
-      - tar xvf openjdk-14_linux-x64_bin.tar.gz
+      - wget https://download.java.net/java/GA/jdk16.0.1/7147401fd7354114ac51ef3e1328291f/9/GPL/openjdk-16.0.1_linux-x64_bin.tar.gz
+      - "tar xvf openjdk-{{ .JAVA_VERSION }}_linux-x64_bin.tar.gz"
       - sudo mkdir -p /opt/java
-      - sudo mv jdk-14 /opt/java/
-      - sudo ln -sfn /opt/java/jdk-14 /opt/java/current
+      - "sudo mv jdk-{{ .JAVA_VERSION }} /opt/java/"
+      - "sudo ln -sfn /opt/java/jdk-{{ .JAVA_VERSION }} /opt/java/current"
     status:
       - test -e /opt/java/current
-      - test -e /opt/java/jdk-14
+      - "test -e /opt/java/jdk-{{ .JAVA_VERSION }}"
 
   config:git:
     desc: "git configを設定する"
