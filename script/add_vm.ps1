@@ -23,7 +23,7 @@ if ($distro -lt 5) {
 echo "wsl --import $distro $wsl_dir\$distro $base_file"
 
 $yes = Read-Host "Create? [y/n]"
-if ($yes = "y") {
+if ($yes -eq "y") {
   if (!(Test-Path $wsl_dir)) {
     mkdir $wsl_dir
     echo "Created $wsl_dir"
