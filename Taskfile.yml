@@ -414,12 +414,21 @@ tasks:
       REPOS: >
         jiro4989/workspace
         jiro4989/sandbox
+        jiro4989/dist-illust
         jiro4989/setup-nim-action
         jiro4989/websh
         jiro4989/textimg
         jiro4989/faker
         jiro4989/nimjson
         jiro4989/scripts
+        jiro4989/relma
+        jiro4989/TKoolFacetileMaker2
+        jiro4989/slide
+        jiro4989/build-deb-action
+        jiro4989/build-rpm-action
+        jiro4989/nim-basolato
+        jiro4989/Nim
+        nim-lang/Nim
     cmds:
       - '{{.GLOBAL_BIN_DIR}}/ghq get -P {{.REPOS}}'
     status:
