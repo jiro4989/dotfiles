@@ -7,7 +7,7 @@ info "Current working directory is:"
 pwd | Write-Host
 
 # 1ヶ月以上前のファイルを取得
-$files = Get-ChildItem | ? { $_.Name -ne "FireShot" } | ? { $_.LastWriteTime -lt (Get-Date).AddDays(-1) }
+$files = Get-ChildItem | ? { $_.Name -ne "FireShot" } | ? { $_.LastWriteTime -lt (Get-Date).AddDays(-30) }
 
 if ($files.Length -lt 1) {
   info "No deletable files"
