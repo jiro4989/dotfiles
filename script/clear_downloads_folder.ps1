@@ -2,10 +2,6 @@ function info($msg) {
   Write-Host "[$(Get-Date -UFormat "%Y/%m/%d %H:%M%:%S")] [INFO] $msg"
 }
 
-function err($msg) {
-  Write-Host "[$(Get-Date -UFormat "%Y/%m/%d %H:%M%:%S")] [ERR ] $msg"
-}
-
 # Change directory‚É¸”s‚µ‚½‚çˆ—‚ğ’†’f‚·‚é
 cd $Env:UserProfile\Downloads -ErrorAction stop
 
