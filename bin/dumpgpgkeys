@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -eu
+
+# gpg鍵をカレントディレクトリ配下に出力する。
+# バックアップ用途。
+# 実行するとパスフレーズの入力を求められる。
+
+readonly email="jiroron666@gmail.com"
+
+# 公開鍵を出力する
+gpg --export --armor "${email}" > gpg.public.key
+
+# 秘密鍵を出力する
+gpg --export-secret-keys --armor "${email}" > gpg.private.key
+
+ls -lah ./gpg.*.key
