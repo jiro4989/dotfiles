@@ -17,7 +17,8 @@ mkdir $out_dir
 wsl --export $distr $out_file
 info "Successfully saving backups: path = $out_file"
 
-# バックアップファイルを圧縮
+# バックアップファイルを圧縮。
+# PowerShell標準で使える Compress-Archive は2GB以上のファイル圧縮が不可能なので .NET の機能を使う
 info "Compress ..."
 $zip_file = "${out_dir}.zip"
 Add-Type -AssemblyName System.IO.Compression.FileSystem
