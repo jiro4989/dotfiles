@@ -403,7 +403,6 @@ tasks:
     status:
       - test -d ~/.ssh
       - test -d ~/.ssh/conf.d
-      - test -f ~/.ssh/conf.d/jiro4989
       - test -f ~/.ssh/config
 
   install:repos:
