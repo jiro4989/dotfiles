@@ -3,6 +3,7 @@
 set -eux
 
 readonly WORKDIR=/tmp/work
+export WORKUSER=$USER
 export MOUNT_HOME=/mnt/c/Users/jiro4989
 readonly SHFMT_VERSION=3.0.1
 readonly DIRENV_VERSION=2.21.3

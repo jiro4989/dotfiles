@@ -32,4 +32,4 @@ apt-get install -yqq \
   xvfb \
   ;
 
-chsh -s "$(command -v tmux)" "$USER"
+chsh -s "$(command -v tmux)" "${WORKUSER:-$USER}"
