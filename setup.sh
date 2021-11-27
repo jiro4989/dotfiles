@@ -3,9 +3,7 @@
 set -eux
 
 readonly WORKDIR=/tmp/work
-readonly USERNAME=jiro4989
 readonly MOUNT_HOME=/mnt/c/Users/jiro4989
-readonly DOCKERCOMPOSE_VERSION=1.25.4
 readonly SHFMT_VERSION=3.0.1
 readonly DIRENV_VERSION=2.21.3
 readonly NODE_VERSION=16.9.1
@@ -22,13 +20,12 @@ add-apt-repository -y ppa:git-core/ppa
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 apt-get update -y
-apt-get install -y \
+apt-get install -y   \
   build-essential \
   ca-certificates \
   ctags \
   ctop \
   curl \
-  docker.io \
   fish \
   git \
   gradle \
@@ -52,7 +49,6 @@ inst() {
   install -m 0755 "\$2" "/usr/local/bin/\$2"
 }
 
-inst "https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" docker-compose
 inst "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" nvim
 inst "https://github.com/mvdan/sh/releases/download/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_linux_amd64" shfmt
 inst "https://github.com/direnv/direnv/releases/download/v${DIRENV_VERSION}/direnv.linux-amd64" direnv
@@ -74,12 +70,12 @@ wget https://github.com/jiro4989/relma/releases/download/v1.4.0/relma-linux-amd6
 tar xzf relma-linux-amd64.tar.gz
 install -m 0755 ./relma /usr/local/bin/relma
 
-usermod -a -G docker $USERNAME
-chsh -s \$(which tmux) $USERNAME
+chsh -s \$(which tmux) $USER
 
 (
   git clone https://github.com/jiro4989/dotfiles
   cd dotfiles
+  ./script/setup/docker.sh
   ./script/setup/wsl_gui_with_rdp.sh
 )
 EOS
@@ -114,8 +110,8 @@ pip3 install --user cfn-lint
   relma install -f ./conf/releases.json
 )
 
-git config --global user.name $USERNAME
-git config --global user.email $USERNAME
+git config --global user.name $USER
+git config --global user.email $USER
 git config --global alias.preq pull-request
 git config --global alias.see browse
 git config --global ghq.root ~/src
@@ -127,12 +123,12 @@ fish -c "fisher install fisherman/z"
 
 cp $MOUNT_HOME/.netrc ~/
 
-install -o ${USERNAME} -g ${USERNAME} -m 0700 -d ~/.ssh
+install -o ${USER} -g ${USER} -m 0700 -d ~/.ssh
 cp -r ${MOUNT_HOME}/.ssh/config ~/.ssh/
 cp -r ${MOUNT_HOME}/.ssh/conf.d ~/.ssh/
 chmod 0600 ~/.ssh/conf.d/*
 chmod 0700 ~/.ssh/conf.d
-chown -R ${USERNAME}:${USERNAME} ~/.ssh/conf.d
+chown -R ${USER}:${USER} ~/.ssh/conf.d
 
 export PATH=$PATH:$HOME/relma/bin
 ghq get -P \
