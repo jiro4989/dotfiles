@@ -10,6 +10,9 @@ readonly DIRENV_VERSION=2.21.3
 # GitHub Actions側で設定されてる値
 export CI=${CI:-false}
 
+# 権限の問題で先に作っておく
+mkdir -p /tmp/work
+
 sudo bash << EOS
 set -eux
 
