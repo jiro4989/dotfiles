@@ -2,9 +2,9 @@
 
 set -eux
 
-apt update -y
-apt upgrade -y
-apt install -y xfce4 xrdp
+apt update -yqq
+apt upgrade -yqq
+apt install -yqq xfce4 xrdp
 
 cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
 sed -i \

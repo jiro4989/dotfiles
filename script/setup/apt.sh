@@ -2,13 +2,13 @@
 
 set -eux
 
-add-apt-repository -y ppa:lazygit-team/release
-add-apt-repository -y ppa:cwchien/gradle
-add-apt-repository -y ppa:git-core/ppa
+add-apt-repository -yqq ppa:lazygit-team/release
+add-apt-repository -yqq ppa:cwchien/gradle
+add-apt-repository -yqq ppa:git-core/ppa
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-apt-get update -y
-apt-get install -y \
+apt-get update -yqq
+apt-get install -yqq \
   build-essential \
   ca-certificates \
   ctags \
