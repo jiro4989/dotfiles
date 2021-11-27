@@ -16,7 +16,7 @@ pushd $WORKDIR
 sudo bash << EOS
 set -eux
 
-./dotfiles/script/setup/apt.sh
+./script/setup/apt.sh
 
 inst() {
   (
@@ -31,13 +31,13 @@ inst "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" 
 inst "https://github.com/mvdan/sh/releases/download/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_linux_amd64" shfmt
 inst "https://github.com/direnv/direnv/releases/download/v${DIRENV_VERSION}/direnv.linux-amd64" direnv
 
-./dotfiles/script/setup/go.sh &
+./script/setup/go.sh &
 p1=\$!
-./dotfiles/script/setup/relma.sh &
+./script/setup/relma.sh &
 p2=\$!
-./dotfiles/script/setup/java.sh &
+./script/setup/java.sh &
 p3=\$!
-./dotfiles/script/setup/wsl_gui_with_rdp.sh &
+./script/setup/wsl_gui_with_rdp.sh &
 p4=\$!
 
 wait \$p1
@@ -46,19 +46,19 @@ wait \$p3
 wait \$p4
 
 if [ "$CI" = false ]; then
-  ./dotfiles/script/setup/docker.sh
+  ./script/setup/docker.sh
 fi
 EOS
 
-./dotfiles/script/setup/link_config.sh
+./script/setup/link_config.sh
 
-./dotfiles/script/setup/nim.sh &
+./script/setup/nim.sh &
 p1=$!
-./dotfiles/script/setup/go_tools.sh &
+./script/setup/go_tools.sh &
 p2=$!
-./dotfiles/script/setup/anyenv.sh &
+./script/setup/anyenv.sh &
 p3=$!
-relma install -f ./dotfiles/conf/releases.json &
+relma install -f ./conf/releases.json &
 p4=$!
 
 wait $p1
@@ -68,8 +68,8 @@ wait $p4
 
 if [ "$CI" = false ]; then
   cp $MOUNT_HOME/.netrc ~/
-  ./dotfiles/script/setup/ssh.sh
+  ./script/setup/ssh.sh
 fi
-./dotfiles/script/setup/gitconfig.sh
-./dotfiles/script/setup/fish.sh
-./dotfiles/script/setup/repos.sh
+./script/setup/gitconfig.sh
+./script/setup/fish.sh
+./script/setup/repos.sh
