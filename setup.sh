@@ -27,13 +27,13 @@ inst "https://github.com/mvdan/sh/releases/download/v${SHFMT_VERSION}/shfmt_v${S
 inst "https://github.com/direnv/direnv/releases/download/v${DIRENV_VERSION}/direnv.linux-amd64" direnv
 
 ./dotfiles/script/setup/go.sh &
-p1=$!
+p1=\$!
 ./dotfiles/script/setup/relma.sh &
-p2=$!
+p2=\$!
 ./dotfiles/script/setup/java.sh &
-p3=$!
+p3=\$!
 ./dotfiles/script/setup/wsl_gui_with_rdp.sh &
-p4=$!
+p4=\$!
 
 wait \$p1
 wait \$p2
