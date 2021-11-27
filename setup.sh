@@ -13,18 +13,18 @@ export CI=${CI:-false}
 mkdir -p $WORKDIR
 pushd $WORKDIR
 
-DOTFILES_BRANCH=${GITHUB_REF/refs?heads?/}
-readonly DOTFILES_BRANCH=${DOTFILES_BRANCH:-master}
-git clone -b "${DOTFILES_BRANCH}" https://github.com/jiro4989/dotfiles
-
 sudo bash << EOS
 set -eux
 
 ./dotfiles/script/setup/apt.sh
 
 inst() {
-  curl -sSfL "\$1" -o "\$2"
-  install -m 0755 "\$2" "/usr/local/bin/\$2"
+  (
+    mkdir -p /tmp/work
+    cd /tmp/work
+    curl -sSfL "\$1" -o "\$2"
+    install -m 0755 "\$2" "/usr/local/bin/\$2"
+  )
 }
 
 inst "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" nvim
@@ -45,10 +45,12 @@ wait \$p2
 wait \$p3
 wait \$p4
 
-if [ "\$CI" = false ]; then
+if [ "$CI" = false ]; then
   ./dotfiles/script/setup/docker.sh
 fi
 EOS
+
+./dotfiles/script/setup/link_config.sh
 
 ./dotfiles/script/setup/nim.sh &
 p1=$!
@@ -56,7 +58,7 @@ p1=$!
 p2=$!
 ./dotfiles/script/setup/anyenv.sh &
 p3=$!
-./dotfiles/script/setup/dotfiles.sh &
+relma install -f ./dotfiles/conf/releases.json &
 p4=$!
 
 wait $p1
