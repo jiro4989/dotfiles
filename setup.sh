@@ -55,6 +55,7 @@ p1=$!
 p2=$!
 ./script/setup/anyenv.sh &
 p3=$!
+relma init
 relma install -f ./conf/releases.json &
 p4=$!
 
