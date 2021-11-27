@@ -9,4 +9,4 @@ export PATH=$PATH:$HOME/.nimble/bin
 
 curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
 bash init.sh -y
-nimble install -Y subnet
+nimble install -Y subnet || true
