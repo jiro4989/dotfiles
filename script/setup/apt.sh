@@ -14,7 +14,6 @@ apt-get install -yqq \
   ctags \
   ctop \
   curl \
-  fish \
   git \
   gradle \
   htop \
