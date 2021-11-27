@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -eux
+
+/etc/init.d/xrdp start
