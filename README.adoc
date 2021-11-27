@@ -18,9 +18,10 @@ WSL2のUbuntu20.04環境で以下のコマンドを実行する。
 
 [source,bash]
 ----
-cd /tmp
-wget https://raw.githubusercontent.com/jiro4989/dotfiles/master/init.sh
-bash init.sh
+cd
+git clone https://github.com/jiro4989/dotfiles
+cd dotfiles
+./setup.sh
 ----
 
 ==== 環境のバックアップ
