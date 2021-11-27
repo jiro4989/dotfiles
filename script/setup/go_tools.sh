@@ -3,5 +3,6 @@
 set -eux
 
 cd /tmp
-go install golang.org/x/tools/gopls@latest
-go install golang.org/x/tools/cmd/goimports@latest
+export GO111MODULE=on
+go get golang.org/x/tools/gopls@latest
+go get golang.org/x/tools/cmd/goimports@latest
