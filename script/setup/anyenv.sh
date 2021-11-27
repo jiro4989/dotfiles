@@ -18,9 +18,9 @@ nodenv global $NODE_VERSION
 
 npm i -g bash-language-server
 
-anyenv install pyenv
-eval "$(anyenv init -)"
-pyenv install $PYTHON_VERSION
-pyenv global $PYTHON_VERSION
-eval "$(anyenv init -)"
-pip install --user cfn-lint
+# anyenv install pyenv
+# eval "$(anyenv init -)"
+# pyenv install $PYTHON_VERSION
+# pyenv global $PYTHON_VERSION
+# eval "$(anyenv init -)"
+# pip install --user cfn-lint
