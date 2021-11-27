@@ -14,6 +14,9 @@ export CI=${CI:-false}
 # 権限の問題で先に作っておく
 mkdir -p /tmp/work
 
+./script/setup/anyenv.sh &
+p3=$!
+
 sudo bash << EOS
 set -eux
 
@@ -57,8 +60,6 @@ EOS
 p1=$!
 ./script/setup/go_tools.sh &
 p2=$!
-./script/setup/anyenv.sh &
-p3=$!
 relma init
 relma install -f ./conf/releases.json &
 p4=$!
