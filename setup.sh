@@ -10,7 +10,9 @@ readonly DIRENV_VERSION=2.21.3
 mkdir -p $WORKDIR
 pushd $WORKDIR
 
-git clone https://github.com/jiro4989/dotfiles
+DOTFILES_BRANCH=${GITHUB_REF/refs?heads?/}
+readonly DOTFILES_BRANCH=${DOTFILES_BRANCH:-master}
+git clone -b "${DOTFILES_BRANCH}" https://github.com/jiro4989/dotfiles
 
 sudo bash << EOS
 set -eux
