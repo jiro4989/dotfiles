@@ -42,7 +42,9 @@ wait \$p2
 wait \$p3
 wait \$p4
 
-./dotfiles/script/setup/docker.sh || true
+if [ -z "\$CI" ]; then
+  ./dotfiles/script/setup/docker.sh
+fi
 EOS
 
 ./dotfiles/script/setup/nim.sh &
@@ -59,8 +61,10 @@ wait $p2
 wait $p3
 wait $p4
 
-cp $MOUNT_HOME/.netrc ~/
-./dotfiles/script/setup/ssh.sh
+if [ -z "$CI" ]; then
+  cp $MOUNT_HOME/.netrc ~/
+  ./dotfiles/script/setup/ssh.sh
+fi
 ./dotfiles/script/setup/gitconfig.sh
 ./dotfiles/script/setup/fish.sh
 ./dotfiles/script/setup/repos.sh
