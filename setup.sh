@@ -7,6 +7,9 @@ readonly MOUNT_HOME=/mnt/c/Users/jiro4989
 readonly SHFMT_VERSION=3.0.1
 readonly DIRENV_VERSION=2.21.3
 
+# GitHub Actions側で設定されてる値
+export CI=${CI:-false}
+
 mkdir -p $WORKDIR
 pushd $WORKDIR
 
@@ -42,7 +45,7 @@ wait \$p2
 wait \$p3
 wait \$p4
 
-if [ -z "\$CI" ]; then
+if [ "\$CI" = false ]; then
   ./dotfiles/script/setup/docker.sh
 fi
 EOS
@@ -61,7 +64,7 @@ wait $p2
 wait $p3
 wait $p4
 
-if [ -z "$CI" ]; then
+if [ "$CI" = false ]; then
   cp $MOUNT_HOME/.netrc ~/
   ./dotfiles/script/setup/ssh.sh
 fi
