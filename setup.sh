@@ -54,22 +54,11 @@ fi
 EOS
 
 ./script/setup/link_config.sh
-
-./script/setup/nim.sh &
-p1=$!
-./script/setup/go_tools.sh &
-p2=$!
-./script/setup/anyenv.sh &
-p3=$!
+./script/setup/nim.sh
+./script/setup/go_tools.sh
+./script/setup/anyenv.sh
 relma init
-relma install -f ./conf/releases.json &
-p4=$!
-
-wait $p1
-wait $p2
-wait $p3
-wait $p4
-
+relma install -f ./conf/releases.json
 if [ "$CI" = false ]; then
   cp $MOUNT_HOME/.netrc ~/
   ./script/setup/ssh.sh
