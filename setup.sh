@@ -2,46 +2,75 @@
 
 set -eux
 
-readonly CONFIG_DIR="$PWD/conf"
-readonly DOT_CONFIG_DIR="$CONFIG_DIR/.config"
-readonly DST_DOT_CONFIG_DIR="$HOME/.config"
+readonly WORKDIR=/tmp/work
+readonly MOUNT_HOME=/mnt/c/Users/jiro4989
+readonly SHFMT_VERSION=3.0.1
+readonly DIRENV_VERSION=2.21.3
 
-# .config
-mkdir -p "$DST_DOT_CONFIG_DIR/"
-for dir in "$DOT_CONFIG_DIR/"*; do
-  # fishだけリンクの仕方が違うのでスキップ
-  base="$(basename "$dir")"
-  if [[ "$base" =~ ^(fish|\.{1,2})$ ]]; then
-    continue
-  fi
+# GitHub Actions側で設定されてる値
+export CI=${CI:-false}
 
-  ln -sfn "$dir" "$DST_DOT_CONFIG_DIR/"
-done
+# 権限の問題で先に作っておく
+mkdir -p /tmp/work
 
-# fish
-mkdir -p "$DST_DOT_CONFIG_DIR/fish"
-ln -sfn "$DOT_CONFIG_DIR/fish/config.fish" "$DST_DOT_CONFIG_DIR/fish/config.fish"
+sudo bash << EOS
+set -eux
 
-# $HOME/.*rc
-# Vimは最初にディレクトリが作られてる場合があるので削除
-readonly VIM_DIR="$HOME/.vim" 
-if [[ -d "$VIM_DIR" ]]; then
-  unlink "$VIM_DIR" || true
-  rm -rf "$VIM_DIR" || true
+./script/setup/apt.sh
+
+inst() {
+  (
+    mkdir -p /tmp/work
+    cd /tmp/work
+    curl -sSfL "\$1" -o "\$2"
+    install -m 0755 "\$2" "/usr/local/bin/\$2"
+  )
+}
+
+inst "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" nvim
+inst "https://github.com/mvdan/sh/releases/download/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_linux_amd64" shfmt
+inst "https://github.com/direnv/direnv/releases/download/v${DIRENV_VERSION}/direnv.linux-amd64" direnv
+
+./script/setup/go.sh &
+p1=\$!
+./script/setup/relma.sh &
+p2=\$!
+./script/setup/java.sh &
+p3=\$!
+./script/setup/wsl_gui_with_rdp.sh &
+p4=\$!
+
+wait \$p1
+wait \$p2
+wait \$p3
+wait \$p4
+
+if [ "$CI" = false ]; then
+  ./script/setup/docker.sh
 fi
+EOS
 
-# . で始まるファイル/ディレクトリをシンボリックリンク
-for dir in "$CONFIG_DIR/".*; do
-  # . ディレクトリはスキップ
-  base="$(basename "$dir")"
-  if [[ "$base" =~ ^(\.config|\.{1,2})$ ]]; then
-    continue
-  fi
+./script/setup/link_config.sh
 
-  ln -sfn "$dir" "$HOME/"
-done
+./script/setup/nim.sh &
+p1=$!
+./script/setup/go_tools.sh &
+p2=$!
+./script/setup/anyenv.sh &
+p3=$!
+relma init
+relma install -f ./conf/releases.json &
+p4=$!
 
-# 会社用にリポジトリで管理しないスクリプトが存在するときだけ実行する
-if [[ -f secrets.sh ]]; then
-  ./secrets.sh
+wait $p1
+wait $p2
+wait $p3
+wait $p4
+
+if [ "$CI" = false ]; then
+  cp $MOUNT_HOME/.netrc ~/
+  ./script/setup/ssh.sh
 fi
+./script/setup/gitconfig.sh
+./script/setup/fish.sh
+./script/setup/repos.sh
