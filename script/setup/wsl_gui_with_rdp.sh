@@ -20,4 +20,5 @@ sed -i \
   -e 's_^exec /bin/sh /etc/X11/Xsession.*_# &_' \
   /etc/xrdp/startwm.sh
 echo startxfce4 >> /etc/xrdp/startwm.sh
-diff -u /etc/xrdp/startwm.sh.bak /etc/xrdp/startwm.sh
+
+diff -u /etc/xrdp/startwm.sh.bak /etc/xrdp/startwm.sh || true
