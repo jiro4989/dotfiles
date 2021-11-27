@@ -3,17 +3,9 @@ name: test
 on: push
 
 jobs:
-  before:
+  test:
     runs-on: ubuntu-latest
-    if: "! contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-      - run: echo "not contains '[skip ci]'"
-
-  build:
-    runs-on: ubuntu-latest
-    needs: before
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run deploy script
-      shell: bash
-      run: ./setup.sh
+      - uses: actions/checkout@v2
+      - name: Run deploy script
+        run: ./setup.sh
