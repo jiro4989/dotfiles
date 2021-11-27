@@ -16,7 +16,7 @@ mkdir -p /tmp/work
 
 ./script/setup/fish.sh
 
-sudo bash << EOS
+sudo -E bash << EOS
 set -eux
 
 ./script/setup/apt.sh
