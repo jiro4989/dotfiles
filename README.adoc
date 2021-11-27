@@ -4,11 +4,12 @@
 
 image::https://github.com/jiro4989/dotfiles/workflows/test/badge.svg[]
 
-次郎の設定ファイルとスクリプトを管理する。
+次郎の設定ファイルと普段使いのスクリプトと開発環境構築用スクリプトを管理する。
+もはやdotfilesの粋を超えている気がするけれどdotfilesです。
 
 == 環境構築手順
 
-=== WSL2
+=== Ubuntu on WSL2
 
 WSL2環境の構築は以下ドキュメントを参照する。
 
@@ -24,27 +25,6 @@ cd dotfiles
 ./setup.sh
 ----
 
-==== 環境のバックアップ
-
-script/backup_vm.batをダブルクリックしてください。
-
-==== バックアップファイルからVMを複製
-
-script/add_vm.batをダブルクリックしてください。
-プロンプトが起動するので指示に従ってください。
-
-=== Ubuntu on Vagrant
-
-https://github.com/jiro4989/workspace[jiro4989/workspace]で管理しているVagrantの
-ゲストOS(Ubuntu)上で実行する。
-
-Vagrant上で以下のコマンドを実行する。
-
-[source,bash]
-----
-./setup.sh
-----
-
 === Windows
 
 Windowsホスト用のツール郡をインストールする。
@@ -56,6 +36,17 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 setup.ps1
 ----
 
+== WSL2の運用手順
+
+=== 環境のバックアップ
+
+script/backup_vm.batをダブルクリックする。
+
+=== バックアップファイルからVMを複製
+
+script/add_vm.batをダブルクリックする。
+プロンプトが起動するので指示に従ってください。
+
 == ディレクトリ構成
 
 [options="header"]
@@ -63,6 +54,7 @@ setup.ps1
 | ディレクトリ名 | 説明
 | bin            | 普段使うコマンド類
 | conf           | 各種設定ファイル
+| script         | このリポジトリ上での運用に使うスクリプト
 |===========================================================
 
 == LICENSE
