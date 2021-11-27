@@ -2,5 +2,5 @@
 
 set -eux
 
-go get -v -u golang.org/x/tools/gopls
-go get -v -u golang.org/x/tools/cmd/goimports
+go install golang.org/x/tools/gopls@latest
+go install golang.org/x/tools/cmd/goimports@latest
