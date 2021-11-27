@@ -22,7 +22,7 @@ add-apt-repository -y ppa:git-core/ppa
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 apt-get update -y
-apt-get install -y  \
+apt-get install -y \
   build-essential \
   ca-certificates \
   ctags \
@@ -76,6 +76,12 @@ install -m 0755 ./relma /usr/local/bin/relma
 
 usermod -a -G docker $USERNAME
 chsh -s \$(which tmux) $USERNAME
+
+(
+  git clone https://github.com/jiro4989/dotfiles
+  cd dotfiles
+  ./script/setup/wsl_gui_with_rdp.sh
+)
 EOS
 
 curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
