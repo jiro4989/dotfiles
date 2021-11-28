@@ -15,7 +15,7 @@ export CI=${CI:-false}
 mkdir -p /tmp/work
 
 ./script/setup/fish.sh
-sudo ./script/setup/apt.sh
+sudo -E ./script/setup/apt.sh
 ./script/setup/anyenv.sh
 ./script/setup/nim.sh
 sudo ./script/setup/go.sh
