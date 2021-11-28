@@ -15,6 +15,10 @@ export CI=${CI:-false}
 mkdir -p /tmp/work
 
 ./script/setup/fish.sh
+./script/setup/anyenv.sh
+./script/setup/nim.sh
+sudo ./script/setup/go.sh
+./script/setup/go_tools.sh
 
 sudo -E bash << EOS
 set -eux
@@ -34,8 +38,6 @@ inst "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" 
 inst "https://github.com/mvdan/sh/releases/download/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_linux_amd64" shfmt
 inst "https://github.com/direnv/direnv/releases/download/v${DIRENV_VERSION}/direnv.linux-amd64" direnv
 
-./script/setup/go.sh &
-p1=\$!
 ./script/setup/relma.sh &
 p2=\$!
 ./script/setup/java.sh &
@@ -43,7 +45,6 @@ p3=\$!
 ./script/setup/wsl_gui_with_rdp.sh &
 p4=\$!
 
-wait \$p1
 wait \$p2
 wait \$p3
 wait \$p4
@@ -54,9 +55,6 @@ fi
 EOS
 
 ./script/setup/link_config.sh
-./script/setup/nim.sh
-./script/setup/go_tools.sh
-./script/setup/anyenv.sh
 relma init
 relma install -f ./conf/releases.json
 if [ "$CI" = false ]; then
