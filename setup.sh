@@ -3,7 +3,8 @@
 set -eux
 
 readonly WORKDIR=/tmp/work
-readonly MOUNT_HOME=/mnt/c/Users/jiro4989
+export WORKUSER=$USER
+export MOUNT_HOME=/mnt/c/Users/jiro4989
 readonly SHFMT_VERSION=3.0.1
 readonly DIRENV_VERSION=2.21.3
 
@@ -13,10 +14,15 @@ export CI=${CI:-false}
 # 権限の問題で先に作っておく
 mkdir -p /tmp/work
 
-sudo bash << EOS
-set -eux
+./script/setup/fish.sh
+sudo -E ./script/setup/apt.sh
+./script/setup/anyenv.sh
+./script/setup/nim.sh
+sudo ./script/setup/go.sh
+./script/setup/go_tools.sh
 
-./script/setup/apt.sh
+sudo -E bash << EOS
+set -eux
 
 inst() {
   (
@@ -31,8 +37,6 @@ inst "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" 
 inst "https://github.com/mvdan/sh/releases/download/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_linux_amd64" shfmt
 inst "https://github.com/direnv/direnv/releases/download/v${DIRENV_VERSION}/direnv.linux-amd64" direnv
 
-./script/setup/go.sh &
-p1=\$!
 ./script/setup/relma.sh &
 p2=\$!
 ./script/setup/java.sh &
@@ -40,7 +44,6 @@ p3=\$!
 ./script/setup/wsl_gui_with_rdp.sh &
 p4=\$!
 
-wait \$p1
 wait \$p2
 wait \$p3
 wait \$p4
@@ -51,26 +54,11 @@ fi
 EOS
 
 ./script/setup/link_config.sh
-
-./script/setup/nim.sh &
-p1=$!
-./script/setup/go_tools.sh &
-p2=$!
-./script/setup/anyenv.sh &
-p3=$!
 relma init
-relma install -f ./conf/releases.json &
-p4=$!
-
-wait $p1
-wait $p2
-wait $p3
-wait $p4
-
+relma install -f ./conf/releases.json
 if [ "$CI" = false ]; then
   cp $MOUNT_HOME/.netrc ~/
   ./script/setup/ssh.sh
 fi
 ./script/setup/gitconfig.sh
-./script/setup/fish.sh
 ./script/setup/repos.sh

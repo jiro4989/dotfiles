@@ -2,6 +2,7 @@
 
 set -eux
 
+export DEBIAN_FRONTEND=noninteractive
 apt update -yqq
 apt upgrade -yqq
 apt install -yqq xfce4 xrdp

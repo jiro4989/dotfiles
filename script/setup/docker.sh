@@ -15,4 +15,4 @@ inst() {
 curl -o docker-compose -sSfL "https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 install -m 0755 docker-compose /usr/local/bin/
 
-usermod -a -G docker "$USER"
+usermod -a -G docker "${WORKUSER:-$USER}"
