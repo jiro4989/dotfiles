@@ -10,7 +10,7 @@
 	co = checkout
 [commit]
 	template = ~/dotfiles/conf/misc/gitcommit.template
-	gpgsign = true
+  #gpgsign = true
 [ghq]
 	root = ~/src
 [pull]
