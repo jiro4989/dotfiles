@@ -24,7 +24,7 @@ ln -sfn "$DOT_CONFIG_DIR/fish/config.fish" "$DST_DOT_CONFIG_DIR/fish/config.fish
 
 # $HOME/.*rc
 # Vimは最初にディレクトリが作られてる場合があるので削除
-readonly VIM_DIR="$HOME/.vim" 
+readonly VIM_DIR="$HOME/.vim"
 if [[ -d "$VIM_DIR" ]]; then
   unlink "$VIM_DIR" || true
   rm -rf "$VIM_DIR" || true
@@ -38,8 +38,16 @@ for dir in "$CONFIG_DIR/".*; do
     continue
   fi
 
+  # .gitconfigはシンボリックリンクしない
+  if [[ "$base" =~ ^\.gitconfig$ ]]; then
+    continue
+  fi
+
   ln -sfn "$dir" "$HOME/"
 done
+
+# .gitconfigはコピーで配置
+cp "$CONFIG_DIR/.gitconfig" "$HOME/"
 
 # 会社用にリポジトリで管理しないスクリプトが存在するときだけ実行する
 if [[ -f secrets.sh ]]; then
