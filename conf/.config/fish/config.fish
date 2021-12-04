@@ -92,6 +92,12 @@ if which anyenv
   eval (anyenv init - | source)
 end
 
+# pyenv
+if which pyenv
+  eval (pyenv init - | source)
+  set PATH (pyenv root)/shims $PATH
+end
+
 # direnv
 if which direnv >/dev/null
   eval (direnv hook fish)
