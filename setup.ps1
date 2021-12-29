@@ -1,6 +1,5 @@
 iwr -useb get.scoop.sh | iex
 scoop bucket add extras
-scoop bucket add jetbrains
 
 scoop install teraterm
 scoop install foobar2000
@@ -16,7 +15,6 @@ scoop install steam
 scoop install obs-studio # streeming capture software
 scoop install googlechrome
 scoop install wireshark
-scoop install IntelliJ-IDEA
 
 # Java
 scoop bucket add java
