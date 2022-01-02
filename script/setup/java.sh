@@ -4,11 +4,9 @@ set -eux
 
 mkdir -p /tmp/work
 cd /tmp/work
+curl -O "https://github.com/adoptium/temurin16-binaries/releases/download/jdk-16.0.2%2B7/OpenJDK16U-jdk_x64_linux_hotspot_16.0.2_7.tar.gz"
+tar xf OpenJDK16U-jdk_x64_linux_hotspot_16.0.2_7.tar.gz
 
-curl -O https://download.java.net/openjdk/jdk17/ri/openjdk-17+35_linux-x64_bin.tar.gz
-tar xvf openjdk-17+35_linux-x64_bin.tar.gz
-
-java_version=17
 mkdir -p /opt/java
-mv jdk-${java_version} /opt/java/
-ln -sfn /opt/java/jdk-${java_version} /opt/java/current
+mv jdk-16.0.2+7/ /opt/java/
+ln -sfn /opt/java/jdk-16.0.2+7/ /opt/java/current
