@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+
+opts = {
+  major: false,
+  minor: false,
+  patch: false,
+  dryrun: false,
+}
+OptionParser.new do |p|
+  p.on("-M", "--major", "メジャーバージョンをあげる"){|v| opts[:major] = true}
+  p.on("-m", "--minor", "マイナーバージョンをあげる"){|v| opts[:minor] = true}
+  p.on("-p", "--patch", "パッチバージョンをあげる"){|v| opts[:patch] = true}
+  p.on("-d", "--dryrun", "DryRunする"){|v| opts[:dryrun] = true}
+  p.parse!(ARGV)
+end
+
+dryrun = opts[:dryrun]
+
+tag = `git tag | sort -V | tail -n 1`.strip()
+src_tag = tag
+cols = tag.split(".")
+major = cols[0]
+minor = cols[1]
+patch = cols[2]
+prefix = major.slice(/^[\D]+/)
+if prefix
+  major = major[prefix.length..]
+else
+  prefix = ""
+end
+
+if opts[:major]
+  major = major.to_i + 1
+  minor = 0
+  patch = 0
+elsif opts[:minor]
+  minor = minor.to_i + 1
+  patch = 0
+elsif opts[:patch]
+  patch = patch.to_i + 1
+end
+tag = "#{prefix}#{major}.#{minor}.#{patch}"
+
+puts "#{src_tag} -> #{tag}"
+if not dryrun
+  puts `git tag #{tag}`
+  puts `git push origin #{tag}`
+end
