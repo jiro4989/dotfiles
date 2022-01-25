@@ -40,6 +40,9 @@ elsif opts[:minor]
   patch = 0
 elsif opts[:patch]
   patch = patch.to_i + 1
+else
+  puts "使い方が間違ってます。-hを参照"
+  exit 1
 end
 tag = "#{prefix}#{major}.#{minor}.#{patch}"
 
