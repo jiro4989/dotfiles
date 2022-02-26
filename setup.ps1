@@ -2,7 +2,6 @@ iwr -useb get.scoop.sh | iex
 scoop bucket add extras
 
 scoop install teraterm
-scoop install foobar2000
 scoop install autohotkey
 scoop install discord
 scoop install slack
