@@ -13,6 +13,7 @@ scoop install steam
 scoop install obs-studio # streeming capture software
 scoop install googlechrome
 scoop install wireshark
+scoop install vivaldi
 
 # Java
 scoop bucket add java
