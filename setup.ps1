@@ -10,7 +10,6 @@ scoop install 7zip
 scoop install vscode
 scoop install keepass
 scoop install windows-terminal
-scoop install krita
 scoop install steam
 scoop install obs-studio # streeming capture software
 scoop install googlechrome
