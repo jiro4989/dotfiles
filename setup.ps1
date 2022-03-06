@@ -13,6 +13,7 @@ scoop install obs-studio # streeming capture software
 scoop install googlechrome
 scoop install wireshark
 scoop install vivaldi
+scoop install blender
 
 # Java
 scoop bucket add java
