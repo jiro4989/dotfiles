@@ -16,6 +16,7 @@ mkdir -p /tmp/work
 
 ./script/setup/fish.sh
 sudo -E ./script/setup/apt.sh
+sudo ./script/setup/sam.sh
 ./script/setup/anyenv.sh
 ./script/setup/nim.sh
 sudo ./script/setup/go.sh
