@@ -6,8 +6,8 @@
 set -eux
 
 cd /tmp/work
-wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
-unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+wget -q https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
+unzip -q aws-sam-cli-linux-x86_64.zip -d sam-installation
 ./sam-installation/install
 sam --version
 rm -rf sam-installation
