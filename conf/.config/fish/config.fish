@@ -92,6 +92,10 @@ if which anyenv
   eval (anyenv init - | source)
 end
 
+if which nodenv
+  eval (nodenv init - | source)
+end
+
 # pyenv
 if which pyenv
   eval (pyenv init - | source)
