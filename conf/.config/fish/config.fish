@@ -57,11 +57,11 @@ alias n=nim
 alias p='ps aux'
 alias t='cd /tmp'
 alias u=__cd_to_parent_dir
-alias v=nvim
+alias v='$EDITOR'
 
 alias cg='cd .github/workflows'
 alias dc=docker-compose
-alias fi='nvim ~/.config/fish/config.fish'
+alias fi='$EDITOR ~/.config/fish/config.fish'
 alias gp='git pull'
 alias lg=lazygit
 alias pg='ps aux | grep'
@@ -78,7 +78,7 @@ alias nims='nim --hints:off'
 alias clip='xsel --clipboard --input'
 
 set -x JAVA_HOME /opt/java/current
-set -x EDITOR nvim
+set -x EDITOR vim
 
 set PATH /snap/bin $PATH
 for dir in "$HOME/go/bin" /usr/local/go/bin "$HOME/bin" "$HOME/dotfiles/bin" "$HOME/.nimble/bin" "$HOME/.anyenv/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/relma/bin" "$HOME/.vim/plugged/vim-iced/bin"
