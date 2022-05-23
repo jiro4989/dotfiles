@@ -119,3 +119,6 @@ set -x REGEXP_URL 'https?://[-\+_\.a-zA-Z0-9#%/]+'
 
 # GPG key
 set -x GPG_TTY (tty)
+
+# Customize color
+set fish_color_autosuggestion white
