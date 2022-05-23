@@ -26,9 +26,6 @@ set nofoldenable     " 自動で折りたたみしない
 set lazyredraw
 set ttyfast
 
-" Windows terminalでコメントの色がうすすぎて全然見えなかったので調整
-hi Comment ctermfg=50
-
 " 不可視文字の表示
 set list
 " 不可視文字を表示方法
