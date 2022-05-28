@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -eu
+
+run=${1:-""}
+
+tag="$(git tag | sort -V | tail -n 1)"
+src_tag="${tag}"
+read -r major minor patch < <(awk -F . '{print $1, $2, $3}' <<< "$tag")
+prefix="$(echo "$major" | grep -Eo '^[^0-9]+' || true)"
+major="$(echo "${major}" | sed -E 's/^[^0-9]+//')"
+minor=$((minor+1))
+patch=0
+tag="${prefix}${major}.${minor}.${patch}"
+
+echo "${src_tag} -> ${tag}"
+if [[ "$run" == run ]]; then
+  git tag "${tag}"
+  git push origin "${tag}"
+fi
