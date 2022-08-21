@@ -51,6 +51,8 @@ Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
 
 Plug 'PProvost/vim-ps1', { 'for': ['ps1', 'powershell'] }
 
+Plug 'udalov/kotlin-vim', { 'for': ['kotlin', 'kt'] }
+
 Plug 'godlygeek/tabular', { 'for': ['markdown', 'md'] }
 
 " Markdown形式の目次を自動生成する
