@@ -1,17 +1,18 @@
 [
   {
-    "URL": "https://github.com/x-motemen/ghq/releases/download/v1.2.1/ghq_linux_amd64.zip",
+    "URL": "https://github.com/x-motemen/ghq/releases/download/v1.3.0/ghq_linux_amd64.zip",
     "Owner": "x-motemen",
     "Repo": "ghq",
-    "Version": "v1.2.1",
-    "LatestVersion": "v1.2.1",
+    "Version": "v1.3.0",
+    "LatestVersion": "v1.3.0",
     "AssetFileName": "ghq_linux_amd64.zip",
     "InstalledFiles": [
       {
         "Src": "ghq",
         "Dest": "ghq"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
     "URL": "https://github.com/junegunn/fzf-bin/releases/download/0.23.1/fzf-0.23.1-linux_amd64.tgz",
@@ -25,7 +26,8 @@
         "Src": "fzf",
         "Dest": "fzf"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
     "URL": "https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz",
@@ -39,7 +41,8 @@
         "Src": "rg",
         "Dest": "rg"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
     "URL": "https://github.com/itchyny/mmv/releases/download/v0.1.4/mmv_v0.1.4_linux_amd64.tar.gz",
@@ -53,90 +56,82 @@
         "Src": "mmv",
         "Dest": "mmv"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
     "URL": "https://github.com/tomnomnom/gron/releases/download/v0.6.1/gron-linux-amd64-0.6.1.tgz",
     "Owner": "tomnomnom",
     "Repo": "gron",
     "Version": "v0.6.1",
-    "LatestVersion": "v0.6.1",
+    "LatestVersion": "v0.7.1",
     "AssetFileName": "gron-linux-amd64-0.6.1.tgz",
     "InstalledFiles": [
       {
         "Src": "gron",
         "Dest": "gron"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
-    "URL": "https://github.com/clojure-lsp/clojure-lsp/releases/download/2022.02.01-20.02.32/clojure-lsp-native-linux-amd64.zip",
-    "Owner": "clojure-lsp",
-    "Repo": "clojure-lsp",
-    "Version": "2022.02.01-20.02.32",
-    "LatestVersion": "2022.02.01-20.02.32",
-    "AssetFileName": "clojure-lsp-native-linux-amd64.zip",
-    "InstalledFiles": [
-      {
-        "Src": "clojure-lsp",
-        "Dest": "clojure-lsp"
-      }
-    ]
-  },
-  {
-    "URL": "https://github.com/mvdan/sh/releases/download/v3.4.3/shfmt_v3.4.3_linux_amd64",
+    "URL": "https://github.com/mvdan/sh/releases/download/v3.5.1/shfmt_v3.5.1_linux_amd64",
     "Owner": "mvdan",
     "Repo": "sh",
-    "Version": "v3.4.3",
-    "LatestVersion": "v3.4.3",
-    "AssetFileName": "shfmt_v3.4.3_linux_amd64",
+    "Version": "v3.5.1",
+    "LatestVersion": "v3.5.1",
+    "AssetFileName": "shfmt_v3.5.1_linux_amd64",
     "InstalledFiles": [
       {
-        "Src": "shfmt_v3.4.3_linux_amd64",
-        "Dest": "shfmt_v3.4.3_linux_amd64"
+        "Src": "shfmt_v3.5.1_linux_amd64",
+        "Dest": "shfmt_v3.5.1_linux_amd64"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
-    "URL": "https://github.com/go-task/task/releases/download/v3.11.0/task_linux_amd64.tar.gz",
+    "URL": "https://github.com/go-task/task/releases/download/v3.14.1/task_linux_amd64.tar.gz",
     "Owner": "go-task",
     "Repo": "task",
-    "Version": "v3.11.0",
-    "LatestVersion": "v3.11.0",
+    "Version": "v3.14.1",
+    "LatestVersion": "v3.14.1",
     "AssetFileName": "task_linux_amd64.tar.gz",
     "InstalledFiles": [
       {
         "Src": "task",
         "Dest": "task"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
-    "URL": "https://github.com/jiro4989/nimjson/releases/download/v2.0.0/nimjson_linux.tar.gz",
+    "URL": "https://github.com/jiro4989/nimjson/releases/download/v2.0.1/nimjson_linux.tar.gz",
     "Owner": "jiro4989",
     "Repo": "nimjson",
-    "Version": "v2.0.0",
-    "LatestVersion": "v2.0.0",
+    "Version": "v2.0.1",
+    "LatestVersion": "v2.0.1",
     "AssetFileName": "nimjson_linux.tar.gz",
     "InstalledFiles": [
       {
         "Src": "bin/nimjson",
         "Dest": "nimjson"
       }
-    ]
+    ],
+    "Locked": false
   },
   {
     "URL": "https://github.com/sheepla/websh-prompt/releases/download/v0.0.2/websh-prompt_0.0.2_Linux_x86_64.tar.gz",
     "Owner": "sheepla",
     "Repo": "websh-prompt",
     "Version": "v0.0.2",
-    "LatestVersion": "v0.0.2",
+    "LatestVersion": "v0.0.5",
     "AssetFileName": "websh-prompt_0.0.2_Linux_x86_64.tar.gz",
     "InstalledFiles": [
       {
         "Src": "websh-prompt",
         "Dest": "websh-prompt"
       }
-    ]
+    ],
+    "Locked": false
   }
 ]
