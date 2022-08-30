@@ -83,7 +83,7 @@ set -x EDITOR vim
 set PATH /snap/bin $PATH
 for dir in "$HOME/go/bin" /usr/local/go/bin "$HOME/bin" "$HOME/dotfiles/bin" "$HOME/.nimble/bin" "$HOME/.anyenv/bin" "$JAVA_HOME/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/relma/bin" "$HOME/.vim/plugged/vim-iced/bin"
   if test -d "$dir"
-    set PATH $PATH "$dir"
+    set PATH "$dir" $PATH
   end
 end
 
