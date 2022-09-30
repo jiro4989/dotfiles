@@ -19,5 +19,8 @@
       "initializationOptions": {},
       "settings": {}
     }
-  }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "rust"
+  ]
 }
