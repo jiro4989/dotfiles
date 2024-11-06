@@ -20,7 +20,10 @@ done
 
 # fish
 mkdir -p "$DST_DOT_CONFIG_DIR/fish"
-ln -sfn "$DOT_CONFIG_DIR/fish/config.fish" "$DST_DOT_CONFIG_DIR/fish/config.fish"
+mkdir -p "$DST_DOT_CONFIG_DIR/fish/functions"
+for path in config.fish functions/fish_prompt.fish; do
+  ln -sfn "$DOT_CONFIG_DIR/fish/$path" "$DST_DOT_CONFIG_DIR/fish/$path"
+done
 
 # $HOME/.*rc
 # Vimは最初にディレクトリが作られてる場合があるので削除
