@@ -1,7 +1,8 @@
 function fish_prompt
   set -l ret $status
 
-  echo (set_color yellow)(date +"%Y-%m-%dT%H:%M:%S") (set_color cyan)(prompt_pwd)(set_color magenta)(__fish_git_prompt)
+  echo -n (set_color yellow)(date +"%Y-%m-%dT%H:%M:%S") (set_color cyan)(prompt_pwd)
+  echo (set_color magenta)(__fish_git_prompt)
   set -l user_prompt "%"
   if test $USER = "root"
     set user_prompt "#"
