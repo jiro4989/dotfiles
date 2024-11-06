@@ -119,3 +119,6 @@ set -x REGEXP_URL 'https?://[-\+_\.a-zA-Z0-9#%/]+'
 
 # GPG key
 set -x GPG_TTY (tty)
+
+# prompt_pwd で表示されるディレクトリ名を変更
+set -g fish_prompt_pwd_dir_length 5
