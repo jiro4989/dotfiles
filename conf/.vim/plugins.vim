@@ -5,8 +5,8 @@ endfunction
 call plug#begin('~/.vim/plugged')
 
 " ファイラー
-Plug 'cocopon/vaffle.vim'
-call s:source_conf('vaffle.vim')
+Plug 'lambdalisue/fern.vim'
+call s:source_conf('fern.vim')
 
 " 桁揃え
 Plug 'h1mesuke/vim-alignta'
