@@ -11,10 +11,6 @@ autocmd BufWritePre *.md :silent call CocAction('runCommand', 'markdownlint.fixA
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> g<space> <Plug>(coc-format)
 
-" TODO: Vim のバージョンが古いと表示される警告。
-" Vim をアップグレードしたら消す。
-let g:coc_disable_startup_warning = 1
-
 "
 " ここから下は公式READMEのコピペ
 "
