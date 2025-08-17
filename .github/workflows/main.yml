@@ -4,7 +4,13 @@ name: test
 
 "on":
   push:
+    branches:
+      - master
+    paths:
+      - '**.sh'
   pull_request:
+    paths:
+      - '**.sh'
 
 jobs:
   test:
