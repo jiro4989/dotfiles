@@ -9,9 +9,9 @@ readonly DST_DOT_CONFIG_DIR="$HOME/.config"
 # .config
 mkdir -p "$DST_DOT_CONFIG_DIR/"
 for dir in "$DOT_CONFIG_DIR/"*; do
-  # fishだけリンクの仕方が違うのでスキップ
+  # fish, zellij だけリンクの仕方が違うのでスキップ
   base="$(basename "$dir")"
-  if [[ "$base" =~ ^(fish|\.{1,2})$ ]]; then
+  if [[ "$base" =~ ^(fish|zellij|\.{1,2})$ ]]; then
     continue
   fi
 
