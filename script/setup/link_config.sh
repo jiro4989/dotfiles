@@ -25,6 +25,9 @@ for path in config.fish functions/fish_prompt.fish; do
   ln -sfn "$DOT_CONFIG_DIR/fish/$path" "$DST_DOT_CONFIG_DIR/fish/$path"
 done
 
+# zellij
+ln -sfn "$DOT_CONFIG_DIR/zellij/config.kdl" "$DST_DOT_CONFIG_DIR/zellij/config.kdl"
+
 # $HOME/.*rc
 # Vimは最初にディレクトリが作られてる場合があるので削除
 readonly VIM_DIR="$HOME/.vim"
