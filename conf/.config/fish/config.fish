@@ -45,7 +45,7 @@ end
 
 # Shortcut keys
 function fish_user_key_bindings
-  bind \cp 'stty sane; __ghq_list_cd'
+  bind \cy 'stty sane; __ghq_list_cd'
 end
 
 # alias
