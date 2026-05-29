@@ -8,8 +8,6 @@
 	see = browse
 	fpr = "!f(){ git fetch origin pull/$1/head:$1; git checkout $1; };f"
 	co = checkout
-[commit]
-	template = ~/dotfiles/conf/misc/gitcommit.template
   #gpgsign = true
 [ghq]
 	root = ~/src
