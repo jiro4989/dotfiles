@@ -53,4 +53,4 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-(package! exec-path-from-shell)
+(package! exec-path-from-shell :pin "dae820da35ad46234cbca31626ffb6da7928694a")
