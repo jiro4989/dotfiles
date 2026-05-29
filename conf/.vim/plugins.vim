@@ -34,6 +34,7 @@ Plug 'airblade/vim-gitgutter'
 
 " 非同期コードチェック
 Plug 'w0rp/ale'
+call s:source_conf('ale.vim')
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
