@@ -11,22 +11,28 @@ mkdir -p "$DST_DOT_CONFIG_DIR/"
 for dir in "$DOT_CONFIG_DIR/"*; do
   # fish, zellij だけリンクの仕方が違うのでスキップ
   base="$(basename "$dir")"
-  if [[ "$base" =~ ^(fish|zellij|\.{1,2})$ ]]; then
+  if [[ "$base" =~ ^(fish|zellij|doom|\.{1,2})$ ]]; then
     continue
   fi
 
   ln -sfn "$dir" "$DST_DOT_CONFIG_DIR/"
 done
 
-# fish
+# fish, zellij, doom emacs
 mkdir -p "$DST_DOT_CONFIG_DIR/fish"
 mkdir -p "$DST_DOT_CONFIG_DIR/fish/functions"
-for path in config.fish functions/fish_prompt.fish; do
-  ln -sfn "$DOT_CONFIG_DIR/fish/$path" "$DST_DOT_CONFIG_DIR/fish/$path"
+mkdir -p "$DST_DOT_CONFIG_DIR/zellij"
+mkdir -p "$DST_DOT_CONFIG_DIR/doom"
+for path in \
+    fish/config.fish \
+    fish/functions/fish_prompt.fish \
+    zellij/config.kdl \
+    doom/init.el \
+    doom/config.el \
+    doom/packages.el
+do
+  ln -sfn "$DOT_CONFIG_DIR/$path" "$DST_DOT_CONFIG_DIR/$path"
 done
-
-# zellij
-ln -sfn "$DOT_CONFIG_DIR/zellij/config.kdl" "$DST_DOT_CONFIG_DIR/zellij/config.kdl"
 
 # $HOME/.*rc
 # Vimは最初にディレクトリが作られてる場合があるので削除
