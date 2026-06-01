@@ -106,3 +106,13 @@
   :config
   ;; input/japanese/config.elでtext-mode-hookに挿入されているので削除する
   (remove-hook 'text-mode-hook #'pangu-spacing-mode))
+
+;; org-roam
+(setq org-roam-directory "~/workspace/memo")
+(org-roam-db-autosync-mode)
+;; ショートカットキーの割りあて
+(map! :leader
+      (:prefix ("n r" . "org-roam")
+       :desc "Find node" "f" #'org-roam-node-find
+       :desc "Insert node" "i" #'org-roam-node-insert
+       :desc "Buffer" "b" #'org-roam-buffer-toggle))

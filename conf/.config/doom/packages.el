@@ -54,3 +54,4 @@
 ;; (unpin! t)
 
 (package! exec-path-from-shell :pin "dae820da35ad46234cbca31626ffb6da7928694a")
+(package! org-roam)
