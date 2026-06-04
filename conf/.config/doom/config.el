@@ -116,3 +116,17 @@
        :desc "Find node" "f" #'org-roam-node-find
        :desc "Insert node" "i" #'org-roam-node-insert
        :desc "Buffer" "b" #'org-roam-buffer-toggle))
+
+;; ミニバッファ（検索欄）でもSKKを使えるようにする
+(add-hook 'minibuffer-setup-hook
+          (lambda ()
+            (when (and (boundp 'skk-mode) (not skk-mode))
+              ;; ミニバッファ内で C-x C-j を有効にするための処理
+              (local-set-key (kbd "C-x C-j") 'skk-mode))))
+
+;; Verticoなどの補完バッファでSKKの挙動を安定させる（おまじない）
+(with-eval-after-load 'skk
+  (setq skk-egg-like-newline t) ; 確定時の挙動をマイルドにする
+  ;; 必要に応じて、ミニバッファに入った瞬間に最初からSKKをONにしたい場合は以下を有効化
+  ;; (add-hook 'minibuffer-setup-hook #'skk-mode)
+  )
