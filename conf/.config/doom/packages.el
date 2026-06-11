@@ -53,4 +53,11 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
+;; Emacs 起動時にシェルの PATH を通す
 (package! exec-path-from-shell :pin "dae820da35ad46234cbca31626ffb6da7928694a")
+
+;; 自作のパッケージ
+(package! eltimer
+  :recipe (:host github
+           :repo "jiro4989/eltimer"
+           :files ("src/*.el")))
