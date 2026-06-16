@@ -157,12 +157,17 @@
 
 (defun github-pages-page-rename-file-to-today ()
   "Rename a current buffer to today file."
+
+  ;; バッファがファイルに保存済みでない場合は異常終了させる
+  (unless (and (buffer-file-name) (file-exists-p (buffer-file-name)))
+    (user-error "このバッファはディスク上に保存されたファイルではありません"))
+
   (let* ((current-file (buffer-file-name))
          (dir (file-name-directory current-file))
          (file-name (file-name-nondirectory current-file))
          (today-str (format-time-string "%Y-%m-%d"))
          (new-file (file-name-concat dir (concat today-str (substring file-name 10)))))
-    (when (not (string= current-file new-file))
+    (unless (string= current-file new-file)
       (rename-file current-file new-file 1)
       (set-visited-file-name new-file)
       (set-buffer-modified-p nil)
