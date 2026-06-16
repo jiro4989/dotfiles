@@ -130,3 +130,13 @@
   ;; 必要に応じて、ミニバッファに入った瞬間に最初からSKKをONにしたい場合は以下を有効化
   ;; (add-hook 'minibuffer-setup-hook #'skk-mode)
   )
+
+;; eat 起動時のシェルを変更
+(when (executable-find "fish")
+  (setq eat-shell (executable-find "fish")))
+
+;; 保存時に自動で import を整理させたかったのだが、なぜか上手く機能しない。
+;; しかたないので、ショートカットキーで呼び出せるようにする
+(map! :leader
+      (:prefix ("e g" . "eglot")
+       :desc "Organize import" "i" #'eglot-code-action-organize-imports))
