@@ -140,3 +140,38 @@
 (map! :leader
       (:prefix ("e g" . "eglot")
        :desc "Organize import" "i" #'eglot-code-action-organize-imports))
+
+(defun github-pages-page-set-date-header ()
+  "Set a today to date of header."
+  (save-excursion
+    (goto-char (point-min))
+    ;; 先頭から10行目の末尾の文字位置（ポイント）を取得
+    (let ((end-point (save-excursion
+                       (forward-line 10)
+                       (point)))
+          (today-str (format-time-string "%Y-%m-%d %H:%M:%S +0900")))
+      ;; 先頭10行の範囲内で、行頭の "date:" を検索
+      (while (re-search-forward "^date:\\(.*\\)$" end-point t)
+        ;; "date: " の後ろに日付を埋め込む（既存の日付があれば置換する）
+        (replace-match (concat "date: " today-str))))))
+
+(defun github-pages-page-rename-file-to-today ()
+  "Rename a current buffer to today file."
+  (let* ((current-file (buffer-file-name))
+         (dir (file-name-directory current-file))
+         (file-name (file-name-nondirectory current-file))
+         (today-str (format-time-string "%Y-%m-%d"))
+         (new-file (file-name-concat dir (concat today-str (substring file-name 10)))))
+    (when (not (string= current-file new-file))
+      (rename-file current-file new-file 1)
+      (set-visited-file-name new-file)
+      (set-buffer-modified-p nil)
+      (kill-buffer (current-buffer))
+      (find-file new-file)
+      (message "ファイルを %s にリネームして開き直しました" (file-name-nondirectory new-file)))))
+
+(defun github-pages-page-update-date ()
+  "Update date to github pages posts."
+  (interactive)
+  (github-pages-page-rename-file-to-today)
+  (github-pages-page-set-date-header))
