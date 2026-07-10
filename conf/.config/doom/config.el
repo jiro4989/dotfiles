@@ -186,7 +186,7 @@
   (github-pages-page-rename-file-to-today)
   (github-pages-page-set-date-header))
 
-;; JavaScript 関連のモードが読み込まれたら、インデントを 4 に設定する
+;; JavaScript 関連のモードが読み込まれたらインデントサイズを変更
 (setq-hook! '(js-mode-hook
               js2-mode-hook
               rjsx-mode-hook
