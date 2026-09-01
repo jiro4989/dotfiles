@@ -64,3 +64,9 @@
 
 ;; Terminal emulator
 (package! eat :pin "c8d54d649872bfe7b2b9f49ae5c2addbf12d3b99")
+
+;; Terminal emulator
+(package! ghostel)
+(use-package evil-ghostel
+  :after (ghostel evil)
+  :hook (ghostel-mode . evil-ghostel-mode))
